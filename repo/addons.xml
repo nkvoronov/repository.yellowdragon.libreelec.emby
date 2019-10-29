@@ -2,7 +2,7 @@
 <addons>
 <addon id="service.embyu"
        name="Emby Server Ubuntu"
-       version="9.1.368"
+       version="9.2.0.368"
        provider-name="ubuntu">
   <requires>
     <import addon="os.libreelec.tv" version="9.1"/>
@@ -32,14 +32,14 @@ Emby Server (4.2.1.0) brings your home videos, music, and photos together, autom
   </extension>
 </addon>
 
-<addon id="repository.yellowdragon.libreelec.emby" name="LibreELEC Emby Yellow Dragon Repository" version="9.1" provider-name="YLLOW_DRAGON">
+<addon id="repository.yellowdragon.libreelec.emby" name="LibreELEC Emby Yellow Dragon Repository" version="9.2.0" provider-name="YLLOW_DRAGON">
     <requires>
         <import addon="xbmc.addon" version="12.0.0"/>
     </requires>
     <extension point="xbmc.addon.repository" name="LibreELEC Emby Yellow Dragon Repository">
-        <info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.libreelec.emby/9.1/repo/addons.xml</info>
-        <checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.libreelec.emby/9.1/repo/addons.xml.md5</checksum>
-        <datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.libreelec.emby/9.1/repo/</datadir>
+        <info compressed="false">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.libreelec.emby/9.2.0/repo/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.libreelec.emby/9.2.0/repo/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/nkvoronov/repository.yellowdragon.libreelec.emby/9.2.0/repo/</datadir>
         <hashes>false</hashes>
     </extension>
     <extension point="xbmc.addon.metadata">
@@ -58,7 +58,7 @@ Emby Server (4.2.1.0) brings your home videos, music, and photos together, autom
 
 <addon id="service.jellyfin"
        name="Jellyfin Server"
-       version="9.1.5"
+       version="9.2.0.5"
        provider-name="Team LibreELEC">
   <requires>
     <import addon="os.libreelec.tv" version="9.1"/>
