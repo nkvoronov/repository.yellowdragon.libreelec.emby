@@ -1,1 +1,0 @@
-service.embyu-*.zip filter=lfs diff=lfs merge=lfs -text

@@ -1,1 +1,0 @@
-define(["cardBuilder"],function(cardBuilder){"use strict";return{buildPeopleCards:function(items,options){options=Object.assign(options||{},{cardLayout:!1,centerText:!0,showTitle:!0,cardFooterAside:!1,showPersonRoleOrType:!0,cardCssClass:"personCard",defaultCardImageIcon:"&#xE7FD;",multiSelect:!1}),cardBuilder.buildCards(items,options)}}});

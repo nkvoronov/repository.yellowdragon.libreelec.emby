@@ -1,37 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="service.embyu"
-       name="Emby Server Ubuntu"
-       version="9.2.0.368"
-       provider-name="ubuntu">
-  <requires>
-    <import addon="os.libreelec.tv" version="9.1"/>
-    <import addon="xbmc.python" version="2.1.0"/>
-
-  </requires>
-  <extension point="xbmc.service" library="default.py">
-    <provides></provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Emby Server: a personal media server</summary>
-    <description>
-Emby Server (4.2.1.0) brings your home videos, music, and photos together, automatically converting and streaming your media on-the-fly to any device
-    </description>
-    <disclaimer>
-
-    </disclaimer>
-    <platform>all</platform>
-    <news>
-
-    </news>
-    <assets>
-      <icon>resources/icon.png</icon>
-      <fanart>resources/fanart.png</fanart>
-
-    </assets>
-  </extension>
-</addon>
-
 <addon id="repository.yellowdragon.libreelec.emby" name="LibreELEC Emby Yellow Dragon Repository" version="9.2.0" provider-name="YLLOW_DRAGON">
     <requires>
         <import addon="xbmc.addon" version="12.0.0"/>
