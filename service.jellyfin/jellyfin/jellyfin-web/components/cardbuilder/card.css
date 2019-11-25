@@ -156,7 +156,7 @@ button {
 }
 
 .cardImageContainer {
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     display: -webkit-flex;
@@ -232,10 +232,9 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
-    border: none;
+    background-position: center bottom;
 }
 
 .cardImage-img {

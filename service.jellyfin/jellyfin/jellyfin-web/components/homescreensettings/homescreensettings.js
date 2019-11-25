@@ -330,7 +330,6 @@ define(['require', 'apphost', 'layoutManager', 'focusManager', 'globalize', 'loa
                     if (next) {
                         viewItem.parentNode.removeChild(viewItem);
                         next.parentNode.insertBefore(viewItem, next.nextSibling);
-                        focusManager.focus(e.target);
                     }
 
                 } else {
@@ -340,7 +339,6 @@ define(['require', 'apphost', 'layoutManager', 'focusManager', 'globalize', 'loa
                     if (prev) {
                         viewItem.parentNode.removeChild(viewItem);
                         prev.parentNode.insertBefore(viewItem, prev);
-                        focusManager.focus(e.target);
                     }
                 }
             }

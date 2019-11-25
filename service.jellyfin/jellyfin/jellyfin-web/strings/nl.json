@@ -86,6 +86,7 @@
     "ButtonNextTrack": "Volgende track",
     "ButtonOff": "Uit",
     "ButtonOpen": "Openen",
+    "ButtonOther": "Andere",
     "ButtonParentalControl": "Ouderlijk toezicht",
     "ButtonPause": "Pauze",
     "ButtonPlay": "Afspelen",
@@ -241,6 +242,7 @@
     "FolderTypeTvShows": "TV Series",
     "FolderTypeUnset": "Gemengde inhoud",
     "Folders": "Mappen",
+    "ForAdditionalLiveTvOptions": "Voor extra Live TV providers, klik op de Diensten tab om de mogelijke opties te zien.",
     "FormatValue": "Formaat: {0}",
     "Friday": "Vrijdag",
     "Fullscreen": "Volledig scherm",
@@ -1327,6 +1329,5 @@
     "LabelProfileVideoCodecs": "Video codecs:",
     "LabelProtocolInfo": "Protocol info:",
     "LabelServerName": "Server naam:",
-    "LabelSkin": "Skin:",
-    "ButtonAddImage": "Voeg afbeelding toe"
+    "LabelSkin": "Skin:"
 }

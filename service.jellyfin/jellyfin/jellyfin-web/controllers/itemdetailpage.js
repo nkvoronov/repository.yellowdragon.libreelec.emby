@@ -256,36 +256,66 @@ define(["loading", "appRouter", "layoutManager", "connectionManager", "cardBuild
     }
 
     function renderDetailPageBackdrop(page, item, apiClient) {
-        var imgUrl, screenWidth = screen.availWidth,
-            hasbackdrop = !1,
-            itemBackdropElement = page.querySelector("#itemBackdrop"),
-            usePrimaryImage = ("Video" === item.MediaType && "Movie" !== item.Type && "Trailer" !== item.Type) || (item.MediaType && "Video" !== item.MediaType) || ("MusicAlbum" === item.Type) || ("MusicArtist" === item.Type);
-        return "Program" === item.Type && item.ImageTags && item.ImageTags.Thumb ? (imgUrl = apiClient.getScaledImageUrl(item.Id, {
-            type: "Thumb",
-            index: 0,
-            maxWidth: screenWidth,
-            tag: item.ImageTags.Thumb
-        }), itemBackdropElement.classList.remove("noBackdrop"), imageLoader.lazyImage(itemBackdropElement, imgUrl, !1), hasbackdrop = !0) : usePrimaryImage && item.ImageTags && item.ImageTags.Primary ? (imgUrl = apiClient.getScaledImageUrl(item.Id, {
-            type: "Primary",
-            index: 0,
-            maxWidth: screenWidth,
-            tag: item.ImageTags.Primary
-        }), itemBackdropElement.classList.remove("noBackdrop"), imageLoader.lazyImage(itemBackdropElement, imgUrl, !1), hasbackdrop = !0) : item.BackdropImageTags && item.BackdropImageTags.length ? (imgUrl = apiClient.getScaledImageUrl(item.Id, {
-            type: "Backdrop",
-            index: 0,
-            maxWidth: screenWidth,
-            tag: item.BackdropImageTags[0]
-        }), itemBackdropElement.classList.remove("noBackdrop"), imageLoader.lazyImage(itemBackdropElement, imgUrl, !1), hasbackdrop = !0) : item.ParentBackdropItemId && item.ParentBackdropImageTags && item.ParentBackdropImageTags.length ? (imgUrl = apiClient.getScaledImageUrl(item.ParentBackdropItemId, {
-            type: "Backdrop",
-            index: 0,
-            tag: item.ParentBackdropImageTags[0],
-            maxWidth: screenWidth
-        }), itemBackdropElement.classList.remove("noBackdrop"), imageLoader.lazyImage(itemBackdropElement, imgUrl, !1), hasbackdrop = !0) : item.ImageTags && item.ImageTags.Thumb ? (imgUrl = apiClient.getScaledImageUrl(item.Id, {
-            type: "Thumb",
-            index: 0,
-            maxWidth: screenWidth,
-            tag: item.ImageTags.Thumb
-        }), itemBackdropElement.classList.remove("noBackdrop"), imageLoader.lazyImage(itemBackdropElement, imgUrl, !1), hasbackdrop = !0) : (itemBackdropElement.classList.add("noBackdrop"), itemBackdropElement.style.backgroundImage = ""), hasbackdrop
+        var imgUrl;
+        var screenWidth = screen.availWidth;
+        var hasbackdrop = false;
+        var itemBackdropElement = page.querySelector("#itemBackdrop");
+        var usePrimaryImage = item.MediaType === "Video" && item.Type !== "Movie" && item.Type !== "Trailer" ||
+            item.MediaType && item.MediaType !== "Video" ||
+            item.Type === "MusicAlbum" ||
+            item.Type === "MusicArtist";
+
+        if ("Program" === item.Type && item.ImageTags && item.ImageTags.Thumb) {
+            imgUrl = apiClient.getScaledImageUrl(item.Id, {
+                type: "Thumb",
+                index: 0,
+                tag: item.ImageTags.Thumb
+            });
+            itemBackdropElement.classList.remove("noBackdrop");
+            imageLoader.lazyImage(itemBackdropElement, imgUrl, false);
+            hasbackdrop = true;
+        } else if (usePrimaryImage && item.ImageTags && item.ImageTags.Primary) {
+            imgUrl = apiClient.getScaledImageUrl(item.Id, {
+                type: "Primary",
+                index: 0,
+                tag: item.ImageTags.Primary
+            });
+            itemBackdropElement.classList.remove("noBackdrop");
+            imageLoader.lazyImage(itemBackdropElement, imgUrl, false);
+            hasbackdrop = true;
+        } else if (item.BackdropImageTags && item.BackdropImageTags.length) {
+            imgUrl = apiClient.getScaledImageUrl(item.Id, {
+                type: "Backdrop",
+                index: 0,
+                tag: item.BackdropImageTags[0]
+            });
+            itemBackdropElement.classList.remove("noBackdrop");
+            imageLoader.lazyImage(itemBackdropElement, imgUrl, false);
+            hasbackdrop = true;
+        } else if (item.ParentBackdropItemId && item.ParentBackdropImageTags && item.ParentBackdropImageTags.length) {
+            imgUrl = apiClient.getScaledImageUrl(item.ParentBackdropItemId, {
+                type: "Backdrop",
+                index: 0,
+                tag: item.ParentBackdropImageTags[0]
+            });
+            itemBackdropElement.classList.remove("noBackdrop");
+            imageLoader.lazyImage(itemBackdropElement, imgUrl, false);
+            hasbackdrop = true;
+        } else if (item.ImageTags && item.ImageTags.Thumb) {
+            imgUrl = apiClient.getScaledImageUrl(item.Id, {
+                type: "Thumb",
+                index: 0,
+                tag: item.ImageTags.Thumb
+            });
+            itemBackdropElement.classList.remove("noBackdrop");
+            imageLoader.lazyImage(itemBackdropElement, imgUrl, false);
+            hasbackdrop = true;
+        } else {
+            itemBackdropElement.classList.add("noBackdrop");
+            itemBackdropElement.style.backgroundImage = "";
+        }
+
+        return hasbackdrop;
     }
 
     function reloadFromItem(instance, page, params, item, user) {
@@ -429,24 +459,31 @@ define(["loading", "appRouter", "layoutManager", "connectionManager", "cardBuild
             detectRatio = !1;
         imageTags.Primary ? (url = apiClient.getScaledImageUrl(item.Id, {
             type: "Primary",
+            maxHeight: 460,
             tag: item.ImageTags.Primary
         }), detectRatio = !0) : item.BackdropImageTags && item.BackdropImageTags.length ? (url = apiClient.getScaledImageUrl(item.Id, {
             type: "Backdrop",
+            maxHeight: 360,
             tag: item.BackdropImageTags[0]
         }), shape = "thumb") : imageTags.Thumb ? (url = apiClient.getScaledImageUrl(item.Id, {
             type: "Thumb",
+            maxHeight: 360,
             tag: item.ImageTags.Thumb
         }), shape = "thumb") : imageTags.Disc ? (url = apiClient.getScaledImageUrl(item.Id, {
             type: "Disc",
+            maxHeight: 360,
             tag: item.ImageTags.Disc
         }), shape = "square") : item.AlbumId && item.AlbumPrimaryImageTag ? (url = apiClient.getScaledImageUrl(item.AlbumId, {
             type: "Primary",
+            maxHeight: 360,
             tag: item.AlbumPrimaryImageTag
         }), shape = "square") : item.SeriesId && item.SeriesPrimaryImageTag ? url = apiClient.getScaledImageUrl(item.SeriesId, {
             type: "Primary",
+            maxHeight: 360,
             tag: item.SeriesPrimaryImageTag
         }) : item.ParentPrimaryImageItemId && item.ParentPrimaryImageTag && (url = apiClient.getScaledImageUrl(item.ParentPrimaryImageItemId, {
             type: "Primary",
+            maxHeight: 360,
             tag: item.ParentPrimaryImageTag
         })), html += '<div style="position:relative;">', editable && (html += "<a class='itemDetailGalleryLink' is='emby-linkbutton' style='display:block;padding:2px;margin:0;' href='#'>"), detectRatio && item.PrimaryImageAspectRatio && (item.PrimaryImageAspectRatio >= 1.48 ? shape = "thumb" : item.PrimaryImageAspectRatio >= .85 && item.PrimaryImageAspectRatio <= 1.34 && (shape = "square")), html += "<img class='itemDetailImage lazy' src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' />", editable && (html += "</a>");
         var progressHtml = item.IsFolder || !item.UserData ? "" : indicators.getProgressBarHtml(item);
@@ -818,7 +855,7 @@ define(["loading", "appRouter", "layoutManager", "connectionManager", "cardBuild
                     imageSize: "large",
                     enableSideMediaInfo: !1,
                     highlight: !1,
-                    action: layoutManager.tv ? "resume" : "none",
+                    action: "none",
                     infoButton: !0,
                     imagePlayButton: !0,
                     includeParentInfoInTitle: !1

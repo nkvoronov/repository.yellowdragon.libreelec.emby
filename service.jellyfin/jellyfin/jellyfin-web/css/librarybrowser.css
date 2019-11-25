@@ -67,12 +67,9 @@
     display: inline-block
 }
 
-.headerUserButtonRound div {
+.headerUserButtonRound img {
     -webkit-border-radius: 100em;
-    border-radius: 100em;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    border-radius: 100em
 }
 
 .headerButton {
