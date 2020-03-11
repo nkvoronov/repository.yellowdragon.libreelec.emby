@@ -60,7 +60,7 @@ Emby Server (4.2.1.0) brings your home videos, music, and photos together, autom
 
 <addon id="service.jellyfin"
        name="Jellyfin Server"
-       version="9.2.0.9"
+       version="9.2.0.10"
        provider-name="Team LibreELEC">
   <requires>
     <import addon="os.libreelec.tv" version="9.2"/>
@@ -74,7 +74,7 @@ Emby Server (4.2.1.0) brings your home videos, music, and photos together, autom
   <extension point="xbmc.addon.metadata">
     <summary>Jellyfin Server: The Free Software Media System</summary>
     <description>
-Jellyfin Server (10.4.3) is the Free Software Media System that puts you in control of managing and streaming your media.There are no strings attached, no premium licenses or features, and no hidden agendas.
+Jellyfin Server (10.5.0) is the Free Software Media System that puts you in control of managing and streaming your media.There are no strings attached, no premium licenses or features, and no hidden agendas.
     </description>
     <disclaimer>
 

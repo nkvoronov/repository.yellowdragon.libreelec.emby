@@ -63,12 +63,15 @@ define([], function () {
     var supportsCaptureOption = false;
     try {
         var opts = Object.defineProperty({}, 'capture', {
+            // eslint-disable-next-line getter-return
             get: function () {
                 supportsCaptureOption = true;
             }
         });
         window.addEventListener("test", null, opts);
-    } catch (e) { }
+    } catch (e) {
+        console.debug('error checking capture support');
+    }
 
     function addEventListenerWithOptions(target, type, handler, options) {
         var optionsOrCapture = options;
@@ -116,8 +119,8 @@ define([], function () {
             return _animationEvent;
         }
 
-        var t,
-            el = document.createElement("div");
+        var t;
+        var el = document.createElement("div");
         var animations = {
             "animation": "animationend",
             "OAnimation": "oAnimationEnd",
@@ -146,8 +149,8 @@ define([], function () {
             return _transitionEvent;
         }
 
-        var t,
-            el = document.createElement("div");
+        var t;
+        var el = document.createElement("div");
         var transitions = {
             "transition": "transitionend",
             "OTransition": "oTransitionEnd",
