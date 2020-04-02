@@ -1,4 +1,1 @@
-(function() {
-    "use strict";
-    window.appMode = 'standalone';
-})();
+"use strict";window.appMode="standalone";

@@ -1,18 +1,1 @@
-define(['multi-download'], function (multiDownload) {
-    'use strict';
-
-    return {
-        download: function (items) {
-
-            if (window.NativeShell) {
-                items.map(function (item) {
-                    window.NativeShell.downloadFile(item.url);
-                });
-            } else {
-                multiDownload(items.map(function (item) {
-                    return item.url;
-                }));
-            }
-        }
-    };
-});
+"use strict";define(["multi-download"],(function(multiDownload){return{download:function download(items){window.NativeShell?items.map((function(item){window.NativeShell.downloadFile(item.url)})):multiDownload(items.map((function(item){return item.url})))}}}));

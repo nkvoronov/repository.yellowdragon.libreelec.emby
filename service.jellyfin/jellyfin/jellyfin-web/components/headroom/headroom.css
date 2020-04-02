@@ -1,11 +1,1 @@
-.headroom {
-    transition: transform 140ms linear;
-}
-
-.headroom--pinned {
-    transform: none;
-}
-
-.headroom--unpinned:not(.headroomDisabled) {
-    transform: translateY(-100%);
-}
+.headroom{transition:-webkit-transform .14s linear;transition:transform .14s linear;transition:transform .14s linear,-webkit-transform .14s linear}.headroom--pinned{-webkit-transform:none;transform:none}.headroom--unpinned:not(.headroomDisabled){-webkit-transform:translateY(-100%);transform:translateY(-100%)}
