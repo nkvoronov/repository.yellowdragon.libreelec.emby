@@ -1,1 +1,180 @@
-"use strict";define(["apphost","userSettings","browser","events","pluginManager","backdrop","globalize","require","appSettings"],(function(appHost,userSettings,browser,events,pluginManager,backdrop,globalize,require,appSettings){var themeStyleElement,currentThemeId;var skinManager={getThemes:function getThemes(){return[{name:"Apple TV",id:"appletv"},{name:"Blue Radiance",id:"blueradiance"},{name:"Dark",id:"dark",isDefault:!0,isDefaultServerDashboard:!0},{name:"Light",id:"light"},{name:"Purple Haze",id:"purplehaze"},{name:"Windows Media Center",id:"wmc"}]},loadUserSkin:function loadUserSkin(options){(options=options||{}).start?Emby.Page.invokeShortcut(options.start):Emby.Page.goHome()}};var currentSound,themeResources={},lastSound=0;function onViewBeforeShow(e){e.detail&&"video-osd"===e.detail.type||(themeResources.backdrop&&backdrop.setBackdrop(themeResources.backdrop),!browser.mobile&&userSettings.enableThemeSongs()&&(0===lastSound?themeResources.themeSong&&playSound(themeResources.themeSong):(new Date).getTime()-lastSound>3e4&&themeResources.effect&&playSound(themeResources.effect)))}function playSound(path,volume){lastSound=(new Date).getTime(),require(["howler"],(function(howler){try{var sound=new Howl({src:[path],volume:volume||.1});sound.play(),currentSound=sound}catch(err){console.error("error playing sound: "+err)}}))}return skinManager.setTheme=function(id,context){return new Promise((function(resolve,reject){if(currentThemeId&&currentThemeId===id)resolve();else{var info=function getThemeStylesheetInfo(id,isDefaultProperty){for(var defaultTheme,selectedTheme,themes=skinManager.getThemes(),i=0,length=themes.length;i<length;i++){var theme=themes[i];theme[isDefaultProperty]&&(defaultTheme=theme),id===theme.id&&(selectedTheme=theme)}return selectedTheme=selectedTheme||defaultTheme,{stylesheetPath:require.toUrl("themes/"+selectedTheme.id+"/theme.css"),themeId:selectedTheme.id}}(id,"serverdashboard"===context?"isDefaultServerDashboard":"isDefault");if(currentThemeId&&currentThemeId===info.themeId)resolve();else{var linkUrl=info.stylesheetPath;!function unloadTheme(){var elem=themeStyleElement;elem&&(elem.parentNode.removeChild(elem),themeStyleElement=null,currentThemeId=null)}();var link=document.createElement("link");link.setAttribute("rel","stylesheet"),link.setAttribute("type","text/css"),link.onload=function(){!function onThemeLoaded(){document.documentElement.classList.remove("preload");try{var color=getComputedStyle(document.querySelector(".skinHeader")).getPropertyValue("background-color");color&&appHost.setThemeColor(color)}catch(err){console.error("error setting theme color: "+err)}}(),resolve()},link.setAttribute("href",linkUrl),document.head.appendChild(link),themeStyleElement=link,currentThemeId=info.themeId,function loadThemeResources(id){lastSound=0,currentSound&&(currentSound.stop(),currentSound=null),backdrop.clear()}(info.themeId),onViewBeforeShow({})}}}))},document.addEventListener("viewshow",onViewBeforeShow),skinManager}));
+define(['apphost', 'userSettings', 'browser', 'events', 'pluginManager', 'backdrop', 'globalize', 'require', 'appSettings'], function (appHost, userSettings, browser, events, pluginManager, backdrop, globalize, require, appSettings) {
+    'use strict';
+
+    var themeStyleElement;
+    var currentThemeId;
+
+    function unloadTheme() {
+        var elem = themeStyleElement;
+        if (elem) {
+            elem.parentNode.removeChild(elem);
+            themeStyleElement = null;
+            currentThemeId = null;
+        }
+    }
+
+    function loadUserSkin(options) {
+        options = options || {};
+        if (options.start) {
+            Emby.Page.invokeShortcut(options.start);
+        } else {
+            Emby.Page.goHome();
+        }
+    }
+
+    function getThemes() {
+        return [{
+            name: "Apple TV",
+            id: "appletv"
+        }, {
+            name: "Blue Radiance",
+            id: "blueradiance"
+        }, {
+            name: "Dark",
+            id: "dark",
+            isDefault: true,
+            isDefaultServerDashboard: true
+        }, {
+            name: "Light",
+            id: "light"
+        }, {
+            name: "Purple Haze",
+            id: "purplehaze"
+        }, {
+            name: "Windows Media Center",
+            id: "wmc"
+        }];
+    }
+
+    var skinManager = {
+        getThemes: getThemes,
+        loadUserSkin: loadUserSkin
+    };
+
+    function getThemeStylesheetInfo(id, isDefaultProperty) {
+        var themes = skinManager.getThemes();
+        var defaultTheme;
+        var selectedTheme;
+
+        for (var i = 0, length = themes.length; i < length; i++) {
+
+            var theme = themes[i];
+            if (theme[isDefaultProperty]) {
+                defaultTheme = theme;
+            }
+            if (id === theme.id) {
+                selectedTheme = theme;
+            }
+        }
+
+        selectedTheme = selectedTheme || defaultTheme;
+        return {
+            stylesheetPath: require.toUrl('themes/' + selectedTheme.id + '/theme.css'),
+            themeId: selectedTheme.id
+        };
+    }
+
+    var themeResources = {};
+    var lastSound = 0;
+    var currentSound;
+
+    function loadThemeResources(id) {
+        lastSound = 0;
+        if (currentSound) {
+            currentSound.stop();
+            currentSound = null;
+        }
+
+        backdrop.clear();
+    }
+
+    function onThemeLoaded() {
+        document.documentElement.classList.remove('preload');
+        try {
+            var color = getComputedStyle(document.querySelector('.skinHeader')).getPropertyValue("background-color");
+            if (color) {
+                appHost.setThemeColor(color);
+            }
+        } catch (err) {
+            console.error('error setting theme color: ' + err);
+        }
+    }
+
+    skinManager.setTheme = function (id, context) {
+        return new Promise(function (resolve, reject) {
+            if (currentThemeId && currentThemeId === id) {
+                resolve();
+                return;
+            }
+
+            var isDefaultProperty = context === 'serverdashboard' ? 'isDefaultServerDashboard' : 'isDefault';
+            var info = getThemeStylesheetInfo(id, isDefaultProperty);
+            if (currentThemeId && currentThemeId === info.themeId) {
+                resolve();
+                return;
+            }
+
+            var linkUrl = info.stylesheetPath;
+            unloadTheme();
+            var link = document.createElement('link');
+
+            link.setAttribute('rel', 'stylesheet');
+            link.setAttribute('type', 'text/css');
+            link.onload = function () {
+                onThemeLoaded();
+                resolve();
+            };
+
+            link.setAttribute('href', linkUrl);
+            document.head.appendChild(link);
+            themeStyleElement = link;
+            currentThemeId = info.themeId;
+            loadThemeResources(info.themeId);
+
+            onViewBeforeShow({});
+        });
+    };
+
+    function onViewBeforeShow(e) {
+        if (e.detail && e.detail.type === 'video-osd') {
+            return;
+        }
+
+        if (themeResources.backdrop) {
+            backdrop.setBackdrop(themeResources.backdrop);
+        }
+
+        if (!browser.mobile && userSettings.enableThemeSongs()) {
+            if (lastSound === 0) {
+                if (themeResources.themeSong) {
+                    playSound(themeResources.themeSong);
+                }
+            } else if ((new Date().getTime() - lastSound) > 30000) {
+                if (themeResources.effect) {
+                    playSound(themeResources.effect);
+                }
+            }
+        }
+    }
+
+    document.addEventListener('viewshow', onViewBeforeShow);
+
+    function playSound(path, volume) {
+        lastSound = new Date().getTime();
+        require(['howler'], function (howler) {
+            /* globals Howl */
+            try {
+                var sound = new Howl({
+                    src: [path],
+                    volume: volume || 0.1
+                });
+                sound.play();
+                currentSound = sound;
+            } catch (err) {
+                console.error('error playing sound: ' + err);
+            }
+        });
+    }
+
+    return skinManager;
+});

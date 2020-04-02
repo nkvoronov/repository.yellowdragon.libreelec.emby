@@ -1,0 +1,4050 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaBrowser.Api</name>
+    </assembly>
+    <members>
+        <member name="T:MediaBrowser.Api.ApiEntryPoint">
+            <summary>
+            Class ServerEntryPoint.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.ApiEntryPoint.Instance">
+            <summary>
+            The instance.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.ApiEntryPoint._logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.ApiEntryPoint._serverConfigurationManager">
+            <summary>
+            The configuration manager.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.ApiEntryPoint._activeTranscodingJobs">
+            <summary>
+            The active transcoding jobs
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Session.ISessionManager,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Library.IMediaSourceManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.ApiEntryPoint" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="sessionManager">The session manager.</param>
+            <param name="config">The configuration.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="mediaSourceManager">The media source manager.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.RunAsync">
+            <summary>
+            Runs this instance.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.DeleteEncodedMediaCache">
+            <summary>
+            Deletes the encoded media cache.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="dispose"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.OnTranscodeBeginning(System.String,System.String,System.String,System.String,MediaBrowser.Controller.MediaEncoding.TranscodingJobType,System.Diagnostics.Process,System.String,MediaBrowser.Api.Playback.StreamState,System.Threading.CancellationTokenSource)">
+            <summary>
+            Called when [transcode beginning].
+            </summary>
+            <param name="path">The path.</param>
+            <param name="playSessionId">The play session identifier.</param>
+            <param name="liveStreamId">The live stream identifier.</param>
+            <param name="transcodingJobId">The transcoding job identifier.</param>
+            <param name="type">The type.</param>
+            <param name="process">The process.</param>
+            <param name="deviceId">The device id.</param>
+            <param name="state">The state.</param>
+            <param name="cancellationTokenSource">The cancellation token source.</param>
+            <returns>TranscodingJob.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.OnTranscodeFailedToStart(System.String,MediaBrowser.Controller.MediaEncoding.TranscodingJobType,MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            <summary>
+            The progressive
+            </summary>
+            Called when [transcode failed to start].
+            </summary>
+            <param name="path">The path.</param>
+            <param name="type">The type.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.HasActiveTranscodingJob(System.String,MediaBrowser.Controller.MediaEncoding.TranscodingJobType)">
+            <summary>
+            Determines whether [has active transcoding job] [the specified path].
+            </summary>
+            <param name="path">The path.</param>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if [has active transcoding job] [the specified path]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.OnTranscodeBeginRequest(System.String,MediaBrowser.Controller.MediaEncoding.TranscodingJobType)">
+            <summary>
+            Called when [transcode begin request].
+            </summary>
+            <param name="path">The path.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.OnTranscodeKillTimerStopped(System.Object)">
+            <summary>
+            Called when [transcode kill timer stopped].
+            </summary>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.KillTranscodingJobs(System.String,System.String,System.Func{System.String,System.Boolean})">
+            <summary>
+            Kills the single transcoding job.
+            </summary>
+            <param name="deviceId">The device id.</param>
+            <param name="playSessionId">The play session identifier.</param>
+            <param name="deleteFiles">The delete files.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.KillTranscodingJobs(System.Func{MediaBrowser.Api.TranscodingJob,System.Boolean},System.Func{System.String,System.Boolean})">
+            <summary>
+            Kills the transcoding jobs.
+            </summary>
+            <param name="killJob">The kill job.</param>
+            <param name="deleteFiles">The delete files.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.KillTranscodingJob(MediaBrowser.Api.TranscodingJob,System.Boolean,System.Func{System.String,System.Boolean})">
+            <summary>
+            Kills the transcoding job.
+            </summary>
+            <param name="job">The job.</param>
+            <param name="closeLiveStream">if set to <c>true</c> [close live stream].</param>
+            <param name="delete">The delete.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.DeleteProgressivePartialStreamFiles(System.String)">
+            <summary>
+            Deletes the progressive partial stream files.
+            </summary>
+            <param name="outputFilePath">The output file path.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.DeleteHlsPartialStreamFiles(System.String)">
+            <summary>
+            Deletes the HLS partial stream files.
+            </summary>
+            <param name="outputFilePath">The output file path.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.BaseApiService">
+            <summary>
+            Class BaseApiService
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseApiService.Logger">
+            <summary>
+            Gets the logger.
+            </summary>
+            <value>The logger.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseApiService.ServerConfigurationManager">
+            <summary>
+            Gets or sets the server configuration manager.
+            </summary>
+            <value>The server configuration manager.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseApiService.ResultFactory">
+            <summary>
+            Gets the HTTP result factory.
+            </summary>
+            <value>The HTTP result factory.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseApiService.Request">
+            <summary>
+            Gets or sets the request context.
+            </summary>
+            <value>The request context.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.BaseApiService.ToOptimizedResult``1(``0)">
+            <summary>
+            To the optimized result.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result">The result.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.BaseApiService.GetSession(MediaBrowser.Controller.Net.ISessionContext)">
+            <summary>
+            Gets the session.
+            </summary>
+            <returns>SessionInfo.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.BaseApiService.GetPathValue(System.Int32)">
+            <summary>
+            Gets the path segment at the specified index.
+            </summary>
+            <param name="index">The index of the path segment.</param>
+            <returns>The path segment at the specified index.</returns>
+            <exception cref="T:System.IndexOutOfRangeException" >Path doesn't contain enough segments.</exception>
+            <exception cref="T:System.IO.InvalidDataException" >Path doesn't start with the base url.</exception>
+        </member>
+        <member name="M:MediaBrowser.Api.BaseApiService.GetItemByName(System.String,System.String,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.DtoOptions)">
+            <summary>
+            Gets the name of the item by.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetChannels.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetChannels.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetChannels.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetChannels.IsFavorite">
+            <summary>
+            Gets or sets a value indicating whether this instance is favorite.
+            </summary>
+            <value><c>null</c> if [is favorite] contains no value, <c>true</c> if [is favorite]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetChannelItems.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetChannelItems.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetChannelItems.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.GetChannelItems.GetFilters">
+            <summary>
+            Gets the filters.
+            </summary>
+            <returns>IEnumerable{ItemFilter}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.GetChannelItems.GetOrderBy">
+            <summary>
+            Gets the order by.
+            </summary>
+            <returns>IEnumerable{ItemSortBy}.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.GetLatestChannelItems.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetLatestChannelItems.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetLatestChannelItems.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.GetLatestChannelItems.GetFilters">
+            <summary>
+            Gets the filters.
+            </summary>
+            <returns>IEnumerable{ItemFilter}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.GetConfiguration">
+            <summary>
+            Class GetConfiguration
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdateConfiguration">
+            <summary>
+            Class UpdateConfiguration
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.ConfigurationService._jsonSerializer">
+            <summary>
+            The _json serializer
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.ConfigurationService._configurationManager">
+            <summary>
+            The _configuration manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.ConfigurationService.Get(MediaBrowser.Api.GetConfiguration)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ConfigurationService.Post(MediaBrowser.Api.UpdateConfiguration)">
+            <summary>
+            Posts the specified configuraiton.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdateDisplayPreferences">
+            <summary>
+            Class UpdateDisplayPreferences
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdateDisplayPreferences.DisplayPreferencesId">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetDisplayPreferences.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.DisplayPreferencesService">
+            <summary>
+            Class DisplayPreferencesService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.DisplayPreferencesService._displayPreferencesManager">
+            <summary>
+            The _display preferences manager
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.DisplayPreferencesService._jsonSerializer">
+            <summary>
+            The _json serializer
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.DisplayPreferencesService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.DisplayPreferencesService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Model.Serialization.IJsonSerializer,MediaBrowser.Controller.Persistence.IDisplayPreferencesRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.DisplayPreferencesService" /> class.
+            </summary>
+            <param name="jsonSerializer">The json serializer.</param>
+            <param name="displayPreferencesManager">The display preferences manager.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.DisplayPreferencesService.Get(MediaBrowser.Api.GetDisplayPreferences)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.DisplayPreferencesService.Post(MediaBrowser.Api.UpdateDisplayPreferences)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.GetDirectoryContents">
+            <summary>
+            Class GetDirectoryContents
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetDirectoryContents.Path">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>The path.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetDirectoryContents.IncludeFiles">
+            <summary>
+            Gets or sets a value indicating whether [include files].
+            </summary>
+            <value><c>true</c> if [include files]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetDirectoryContents.IncludeDirectories">
+            <summary>
+            Gets or sets a value indicating whether [include directories].
+            </summary>
+            <value><c>true</c> if [include directories]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.ValidatePath.Path">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>The path.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetNetworkShares.Path">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>The path.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.GetDrives">
+            <summary>
+            Class GetDrives
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.GetNetworkDevices">
+            <summary>
+            Class GetNetworkComputers
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetParentPath.Path">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>The path.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.EnvironmentService">
+            <summary>
+            Class EnvironmentService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.EnvironmentService._networkManager">
+            <summary>
+            The _network manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.EnvironmentService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.EnvironmentService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Common.Net.INetworkManager,MediaBrowser.Model.IO.IFileSystem)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.EnvironmentService" /> class.
+            </summary>
+            <param name="networkManager">The network manager.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.EnvironmentService.Get(MediaBrowser.Api.GetDirectoryContents)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.EnvironmentService.Get(MediaBrowser.Api.GetDrives)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.EnvironmentService.GetDrives">
+            <summary>
+            Gets the list that is returned when an empty path is supplied
+            </summary>
+            <returns>IEnumerable{FileSystemEntryInfo}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.EnvironmentService.Get(MediaBrowser.Api.GetNetworkDevices)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.EnvironmentService.GetFileSystemEntries(MediaBrowser.Api.GetDirectoryContents)">
+            <summary>
+            Gets the file system entries.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>IEnumerable{FileSystemEntryInfo}.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.GetQueryFiltersLegacy.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetQueryFilters.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.IHasItemFields">
+            <summary>
+            Interface IHasItemFields
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.IHasItemFields.Fields">
+            <summary>
+            Gets or sets the fields.
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.ItemFieldsExtensions">
+            <summary>
+            Class ItemFieldsExtensions.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.ItemFieldsExtensions.GetItemFields(MediaBrowser.Api.IHasItemFields)">
+            <summary>
+            Gets the item fields.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>IEnumerable{ItemFields}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.GetGeneralImage">
+            <summary>
+            Class GetGeneralImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetGeneralImage.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.GetRatingImage">
+            <summary>
+            Class GetRatingImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetRatingImage.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetRatingImage.Theme">
+            <summary>
+            Gets or sets the theme.
+            </summary>
+            <value>The theme.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.GetMediaInfoImage">
+            <summary>
+            Class GetMediaInfoImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetMediaInfoImage.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetMediaInfoImage.Theme">
+            <summary>
+            Gets or sets the theme.
+            </summary>
+            <value>The theme.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.ImageByNameService">
+            <summary>
+            Class ImageByNameService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Images.ImageByNameService._appPaths">
+            <summary>
+            The _app paths
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageByNameService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Images.ImageByNameService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Model.IO.IFileSystem)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.Images.ImageByNameService" /> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageByNameService.Get(MediaBrowser.Api.Images.GetGeneralImage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageByNameService.Get(MediaBrowser.Api.Images.GetRatingImage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageByNameService.Get(MediaBrowser.Api.Images.GetMediaInfoImage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.ImageRequest">
+            <summary>
+            Class ImageRequest
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.ImageRequest.MaxWidth">
+            <summary>
+            The max width
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.ImageRequest.MaxHeight">
+            <summary>
+            The max height
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.ImageRequest.Width">
+            <summary>
+            The width
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.ImageRequest.Height">
+            <summary>
+            The height
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.ImageRequest.Quality">
+            <summary>
+            Gets or sets the quality.
+            </summary>
+            <value>The quality.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.ImageRequest.Tag">
+            <summary>
+            Gets or sets the tag.
+            </summary>
+            <value>The tag.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.DeleteImageRequest">
+            <summary>
+            Class DeleteImageRequest
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.DeleteImageRequest.Type">
+            <summary>
+            Gets or sets the type of the image.
+            </summary>
+            <value>The type of the image.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.DeleteImageRequest.Index">
+            <summary>
+            Gets or sets the index.
+            </summary>
+            <value>The index.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.GetItemImageInfos">
+            <summary>
+            Class GetItemImage.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetItemImageInfos.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetItemImage.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.UpdateItemImageIndex">
+            <summary>
+            Class UpdateItemImageIndex
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.UpdateItemImageIndex.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.UpdateItemImageIndex.Type">
+            <summary>
+            Gets or sets the type of the image.
+            </summary>
+            <value>The type of the image.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.UpdateItemImageIndex.Index">
+            <summary>
+            Gets or sets the index.
+            </summary>
+            <value>The index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.UpdateItemImageIndex.NewIndex">
+            <summary>
+            Gets or sets the new index.
+            </summary>
+            <value>The new index.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.GetItemByNameImage">
+            <summary>
+            Class GetPersonImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetItemByNameImage.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.GetUserImage">
+            <summary>
+            Class GetUserImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetUserImage.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.DeleteItemImage">
+            <summary>
+            Class DeleteItemImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.DeleteItemImage.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.DeleteUserImage">
+            <summary>
+            Class DeleteUserImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.DeleteUserImage.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.PostUserImage">
+            <summary>
+            Class PostUserImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.PostUserImage.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.PostUserImage.RequestStream">
+            <summary>
+            The raw Http Request Input Stream
+            </summary>
+            <value>The request stream.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.PostItemImage">
+            <summary>
+            Class PostItemImage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.PostItemImage.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.PostItemImage.RequestStream">
+            <summary>
+            The raw Http Request Input Stream
+            </summary>
+            <value>The request stream.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Images.ImageService">
+            <summary>
+            Class ImageService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Images.ImageService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Providers.IProviderManager,MediaBrowser.Controller.Drawing.IImageProcessor,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Net.IAuthorizationContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.Images.ImageService" /> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Get(MediaBrowser.Api.Images.GetItemImageInfos)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.GetItemImageInfos(MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the item image infos.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>Task{List{ImageInfo}}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Get(MediaBrowser.Api.Images.GetItemImage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Head(MediaBrowser.Api.Images.GetItemImage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Get(MediaBrowser.Api.Images.GetUserImage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Post(MediaBrowser.Api.Images.PostUserImage)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Post(MediaBrowser.Api.Images.PostItemImage)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Delete(MediaBrowser.Api.Images.DeleteUserImage)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Delete(MediaBrowser.Api.Images.DeleteItemImage)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.Post(MediaBrowser.Api.Images.UpdateItemImageIndex)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.UpdateItemIndex(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Model.Entities.ImageType,System.Int32,System.Int32)">
+            <summary>
+            Updates the index of the item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="type">The type.</param>
+            <param name="currentIndex">Index of the current.</param>
+            <param name="newIndex">The new index.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.GetImage(MediaBrowser.Api.Images.ImageRequest,System.Guid,MediaBrowser.Controller.Entities.BaseItem,System.Boolean)">
+            <summary>
+            Gets the image.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="item">The item.</param>
+            <param name="isHeadRequest">if set to <c>true</c> [is head request].</param>
+            <returns>System.Object.</returns>
+            <exception cref="T:MediaBrowser.Common.Extensions.ResourceNotFoundException"></exception>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.GetImageInfo(MediaBrowser.Api.Images.ImageRequest,MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the image path.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="item">The item.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.ImageService.PostImage(MediaBrowser.Controller.Entities.BaseItem,System.IO.Stream,MediaBrowser.Model.Entities.ImageType,System.String)">
+            <summary>
+            Posts the image.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="inputStream">The input stream.</param>
+            <param name="imageType">Type of the image.</param>
+            <param name="mimeType">Type of the MIME.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.BaseRemoteImageRequest.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.BaseRemoteImageRequest.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetRemoteImages.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.GetRemoteImageProviders.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Images.DownloadRemoteImage.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.RemoteImageService.Post(MediaBrowser.Api.Images.DownloadRemoteImage)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.RemoteImageService.DownloadRemoteImage(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Api.Images.BaseDownloadRemoteImage)">
+            <summary>
+            Downloads the remote image.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="request">The request.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.RemoteImageService.Get(MediaBrowser.Api.Images.GetRemoteImage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.RemoteImageService.DownloadImage(System.String,System.Guid,System.String)">
+            <summary>
+            Downloads the image.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="urlHash">The URL hash.</param>
+            <param name="pointerCachePath">The pointer cache path.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Images.RemoteImageService.GetFullCachePath(System.String)">
+            <summary>
+            Gets the full cache path.
+            </summary>
+            <param name="filename">The filename.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.GetExternalIdInfos.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.ItemLookupService.GetRemoteImage(MediaBrowser.Api.GetRemoteSearchImage)">
+            <summary>
+            Gets the remote image.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{System.Object}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ItemLookupService.DownloadImage(System.String,System.String,System.Guid,System.String)">
+            <summary>
+            Downloads the image.
+            </summary>
+            <param name="providerName">Name of the provider.</param>
+            <param name="url">The URL.</param>
+            <param name="urlHash">The URL hash.</param>
+            <param name="pointerCachePath">The pointer cache path.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ItemLookupService.GetFullCachePath(System.String)">
+            <summary>
+            Gets the full cache path.
+            </summary>
+            <param name="filename">The filename.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ItemRefreshService.Post(MediaBrowser.Api.RefreshItem)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetFile.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.GetCriticReviews">
+            <summary>
+            Class GetCriticReviews
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetCriticReviews.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetCriticReviews.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetCriticReviews.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.GetThemeSongs">
+            <summary>
+            Class GetThemeSongs
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetThemeSongs.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetThemeSongs.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.GetThemeVideos">
+            <summary>
+            Class GetThemeVideos
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetThemeVideos.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetThemeVideos.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.GetThemeMedia">
+            <summary>
+            Class GetThemeVideos
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetThemeMedia.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetThemeMedia.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetAncestors.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetAncestors.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.GetPhyscialPaths">
+            <summary>
+            Class GetPhyscialPaths
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetDownload.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.LibraryService">
+            <summary>
+            Class LibraryService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Library.LibraryService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Providers.IProviderManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext,MediaBrowser.Model.Activity.IActivityManager,MediaBrowser.Model.Globalization.ILocalizationManager,MediaBrowser.Controller.Library.ILibraryMonitor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.Library.LibraryService" /> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Get(MediaBrowser.Api.Library.GetPhyscialPaths)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Get(MediaBrowser.Api.Library.GetAncestors)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.GetAncestors(MediaBrowser.Api.Library.GetAncestors)">
+            <summary>
+            Gets the ancestors.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{BaseItemDto[]}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Get(MediaBrowser.Api.Library.GetCriticReviews)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Get(MediaBrowser.Api.Library.GetItemCounts)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Post(MediaBrowser.Api.Library.RefreshLibrary)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Delete(MediaBrowser.Api.Library.DeleteItems)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Delete(MediaBrowser.Api.Library.DeleteItem)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Get(MediaBrowser.Api.Library.GetThemeSongs)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryService.Get(MediaBrowser.Api.Library.GetThemeVideos)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.GetVirtualFolders">
+            <summary>
+            Class GetDefaultVirtualFolders
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.GetVirtualFolders.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.AddVirtualFolder.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.AddVirtualFolder.CollectionType">
+            <summary>
+            Gets or sets the type of the collection.
+            </summary>
+            <value>The type of the collection.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.AddVirtualFolder.RefreshLibrary">
+            <summary>
+            Gets or sets a value indicating whether [refresh library].
+            </summary>
+            <value><c>true</c> if [refresh library]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.AddVirtualFolder.Paths">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>The path.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RemoveVirtualFolder.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RemoveVirtualFolder.RefreshLibrary">
+            <summary>
+            Gets or sets a value indicating whether [refresh library].
+            </summary>
+            <value><c>true</c> if [refresh library]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RenameVirtualFolder.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RenameVirtualFolder.NewName">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RenameVirtualFolder.RefreshLibrary">
+            <summary>
+            Gets or sets a value indicating whether [refresh library].
+            </summary>
+            <value><c>true</c> if [refresh library]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.AddMediaPath.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.AddMediaPath.Path">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.AddMediaPath.RefreshLibrary">
+            <summary>
+            Gets or sets a value indicating whether [refresh library].
+            </summary>
+            <value><c>true</c> if [refresh library]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.UpdateMediaPath.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RemoveMediaPath.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RemoveMediaPath.Path">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Library.RemoveMediaPath.RefreshLibrary">
+            <summary>
+            Gets or sets a value indicating whether [refresh library].
+            </summary>
+            <value><c>true</c> if [refresh library]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Library.LibraryStructureService">
+            <summary>
+            Class LibraryStructureService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Library.LibraryStructureService._appPaths">
+            <summary>
+            The _app paths
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Library.LibraryStructureService._libraryManager">
+            <summary>
+            The _library manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Library.LibraryStructureService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.ILibraryMonitor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.Library.LibraryStructureService" /> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.Get(MediaBrowser.Api.Library.GetVirtualFolders)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.Post(MediaBrowser.Api.Library.AddVirtualFolder)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.Post(MediaBrowser.Api.Library.RenameVirtualFolder)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.Delete(MediaBrowser.Api.Library.RemoveVirtualFolder)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.Post(MediaBrowser.Api.Library.AddMediaPath)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.Post(MediaBrowser.Api.Library.UpdateMediaPath)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Library.LibraryStructureService.Delete(MediaBrowser.Api.Library.RemoveMediaPath)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.LiveTv.GetLiveTvInfo">
+            <summary>
+            This is insecure right now to avoid windows phone refactoring
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetChannels.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetChannels.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetChannels.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.LiveTv.GetChannels.GetOrderBy">
+            <summary>
+            Gets the order by.
+            </summary>
+            <returns>IEnumerable{ItemSortBy}.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetChannel.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetRecordings.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetRecordingSeries.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetPrograms.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.LiveTv.GetRecommendedPrograms.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.LiveTv.LiveTvService.GetHashedString(System.String)">
+            <summary>
+            Gets the hashed string.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.GetCultures">
+            <summary>
+            Class GetCultures
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.GetCountries">
+            <summary>
+            Class GetCountries
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.GetParentalRatings">
+            <summary>
+            Class ParentalRatings
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.GetLocalizationOptions">
+            <summary>
+            Class ParentalRatings
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.LocalizationService">
+            <summary>
+            Class CulturesService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.LocalizationService._localization">
+            <summary>
+            The _localization
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.LocalizationService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.LocalizationService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Model.Globalization.ILocalizationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.LocalizationService"/> class.
+            </summary>
+            <param name="localization">The localization.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.LocalizationService.Get(MediaBrowser.Api.GetParentalRatings)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.LocalizationService.Get(MediaBrowser.Api.GetCountries)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.LocalizationService.Get(MediaBrowser.Api.GetCultures)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.Movies.GetMovieRecommendations.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Movies.GetMovieRecommendations.ParentId">
+            <summary>
+            Specify this to localize the search to a specific item or folder. Omit to use the root.
+            </summary>
+            <value>The parent id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Movies.MoviesService">
+            <summary>
+            Class MoviesService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Movies.MoviesService._userManager">
+            <summary>
+            The _user manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Movies.MoviesService.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.Movies.MoviesService" /> class.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.Movies.TrailersService">
+            <summary>
+            Class TrailersService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Movies.TrailersService._userManager">
+            <summary>
+            The _user manager
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Movies.TrailersService._libraryManager">
+            <summary>
+            The _library manager
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Music.AlbumsService._userManager">
+            <summary>
+            The _user manager
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Music.AlbumsService._userDataRepository">
+            <summary>
+            The _user data repository
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Music.AlbumsService._libraryManager">
+            <summary>
+            The _library manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Music.AlbumsService.Get(MediaBrowser.Api.Music.GetSimilarAlbums)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Music.AlbumsService.GetAlbumSimilarityScore(MediaBrowser.Controller.Entities.BaseItem,System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the album similarity score.
+            </summary>
+            <param name="item1">The item1.</param>
+            <param name="item1People">The item1 people.</param>
+            <param name="allPeople">All people.</param>
+            <param name="item2">The item2.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.GetPackage">
+            <summary>
+            Class GetPackage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPackage.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPackage.AssemblyGuid">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.GetPackages">
+            <summary>
+            Class GetPackages
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPackages.PackageType">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.InstallPackage">
+            <summary>
+            Class InstallPackage
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.InstallPackage.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.InstallPackage.AssemblyGuid">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.InstallPackage.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.InstallPackage.UpdateClass">
+            <summary>
+            Gets or sets the update class.
+            </summary>
+            <value>The update class.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.CancelPackageInstallation">
+            <summary>
+            Class CancelPackageInstallation
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.CancelPackageInstallation.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.PackageService">
+            <summary>
+            Class PackageService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.PackageService.Get(MediaBrowser.Api.GetPackage)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.PackageService.Get(MediaBrowser.Api.GetPackages)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.PackageService.Post(MediaBrowser.Api.InstallPackage)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <exception cref="T:MediaBrowser.Common.Extensions.ResourceNotFoundException"></exception>
+        </member>
+        <member name="M:MediaBrowser.Api.PackageService.Delete(MediaBrowser.Api.CancelPackageInstallation)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.BaseStreamingService">
+            <summary>
+            Class BaseStreamingService
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.BaseStreamingService.UserManager">
+            <summary>
+            Gets or sets the user manager.
+            </summary>
+            <value>The user manager.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.BaseStreamingService.LibraryManager">
+            <summary>
+            Gets or sets the library manager.
+            </summary>
+            <value>The library manager.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.BaseStreamingService.IsoManager">
+            <summary>
+            Gets or sets the iso manager.
+            </summary>
+            <value>The iso manager.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.BaseStreamingService.MediaEncoder">
+            <summary>
+            Gets or sets the media encoder.
+            </summary>
+            <value>The media encoder.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.BaseStreamingService.TranscodingJobType">
+            <summary>
+            Gets the type of the transcoding job.
+            </summary>
+            <value>The type of the transcoding job.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Model.IO.IIsoManager,MediaBrowser.Controller.MediaEncoding.IMediaEncoder,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Dlna.IDlnaManager,MediaBrowser.Controller.Devices.IDeviceManager,MediaBrowser.Controller.Library.IMediaSourceManager,MediaBrowser.Model.Serialization.IJsonSerializer,MediaBrowser.Controller.Net.IAuthorizationContext,MediaBrowser.Controller.MediaEncoding.EncodingHelper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.Playback.BaseStreamingService" /> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.GetCommandLineArguments(System.String,MediaBrowser.Model.Configuration.EncodingOptions,MediaBrowser.Api.Playback.StreamState,System.Boolean)">
+            <summary>
+            Gets the command line arguments.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.GetOutputFileExtension(MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Gets the output file extension.
+            </summary>
+            <param name="state">The state.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.GetOutputFilePath(MediaBrowser.Api.Playback.StreamState,MediaBrowser.Model.Configuration.EncodingOptions,System.String)">
+            <summary>
+            Gets the output file path.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.StartFfMpeg(MediaBrowser.Api.Playback.StreamState,System.String,System.Threading.CancellationTokenSource,System.String)">
+            <summary>
+            Starts the FFMPEG.
+            </summary>
+            <param name="state">The state.</param>
+            <param name="outputPath">The output path.</param>
+            <param name="cancellationTokenSource">The cancellation token source.</param>
+            <param name="workingDirectory">The working directory.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.OnFfMpegProcessExited(System.Diagnostics.Process,MediaBrowser.Api.TranscodingJob,MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Processes the exited.
+            </summary>
+            <param name="process">The process.</param>
+            <param name="job">The job.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.ParseParams(MediaBrowser.Api.Playback.StreamRequest)">
+            <summary>
+            Parses the parameters.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.ParseStreamOptions(MediaBrowser.Api.Playback.StreamRequest)">
+            <summary>
+            Parses query parameters as StreamOptions.
+            </summary>
+            <param name="request">The stream request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.ParseDlnaHeaders(MediaBrowser.Api.Playback.StreamRequest)">
+            <summary>
+            Parses the dlna headers.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.ParseTimeSeekHeader(System.String)">
+            <summary>
+            Parses the time seek header.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.GetState(MediaBrowser.Api.Playback.StreamRequest,System.Threading.CancellationToken)">
+            <summary>
+            Gets the state.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>StreamState.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.AddDlnaHeaders(MediaBrowser.Api.Playback.StreamState,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            Adds the dlna headers.
+            </summary>
+            <param name="state">The state.</param>
+            <param name="responseHeaders">The response headers.</param>
+            <param name="isStaticallyStreamed">if set to <c>true</c> [is statically streamed].</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Hls.BaseHlsService">
+            <summary>
+            Class BaseHlsService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.BaseHlsService.GetAudioArguments(MediaBrowser.Api.Playback.StreamState,MediaBrowser.Model.Configuration.EncodingOptions)">
+            <summary>
+            Gets the audio arguments.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.BaseHlsService.GetVideoArguments(MediaBrowser.Api.Playback.StreamState,MediaBrowser.Model.Configuration.EncodingOptions)">
+            <summary>
+            Gets the video arguments.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.BaseHlsService.GetSegmentFileExtension(MediaBrowser.Api.Playback.StreamRequest)">
+            <summary>
+            Gets the segment file extension.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Hls.BaseHlsService.TranscodingJobType">
+            <summary>
+            Gets the type of the transcoding job.
+            </summary>
+            <value>The type of the transcoding job.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.BaseHlsService.ProcessRequestAsync(MediaBrowser.Api.Playback.StreamRequest,System.Boolean)">
+            <summary>
+            Processes the request async.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="isLive">if set to <c>true</c> [is live].</param>
+            <returns>Task{System.Object}.</returns>
+            <exception cref="T:System.ArgumentException">A video bitrate is required
+            or
+            An audio bitrate is required</exception>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Hls.GetMasterHlsVideoPlaylist">
+            <summary>
+            Options is needed for chromecast. Threw Head in there since it's related
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsVideoSegment.SegmentId">
+            <summary>
+            Gets or sets the segment id.
+            </summary>
+            <value>The segment id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsAudioSegment.SegmentId">
+            <summary>
+            Gets or sets the segment id.
+            </summary>
+            <value>The segment id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Hls.GetHlsAudioSegmentLegacy">
+            <summary>
+            Class GetHlsAudioSegment
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsAudioSegmentLegacy.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsAudioSegmentLegacy.SegmentId">
+            <summary>
+            Gets or sets the segment id.
+            </summary>
+            <value>The segment id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Hls.GetHlsPlaylistLegacy">
+            <summary>
+            Class GetHlsVideoSegment
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsPlaylistLegacy.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Hls.GetHlsVideoSegmentLegacy">
+            <summary>
+            Class GetHlsVideoSegment
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsVideoSegmentLegacy.SegmentId">
+            <summary>
+            Gets or sets the segment id.
+            </summary>
+            <value>The segment id.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.HlsSegmentService.Get(MediaBrowser.Api.Playback.Hls.GetHlsVideoSegmentLegacy)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.HlsSegmentService.Get(MediaBrowser.Api.Playback.Hls.GetHlsAudioSegmentLegacy)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Hls.VideoHlsService">
+            <summary>
+            Class VideoHlsService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.VideoHlsService.GetAudioArguments(MediaBrowser.Api.Playback.StreamState,MediaBrowser.Model.Configuration.EncodingOptions)">
+            <summary>
+            Gets the audio arguments.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.VideoHlsService.GetVideoArguments(MediaBrowser.Api.Playback.StreamState,MediaBrowser.Model.Configuration.EncodingOptions)">
+            <summary>
+            Gets the video arguments.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Progressive.GetAudioStream">
+            <summary>
+            Class GetAudioStream
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Progressive.AudioService">
+            <summary>
+            Class AudioService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.AudioService.Get(MediaBrowser.Api.Playback.Progressive.GetAudioStream)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.AudioService.Head(MediaBrowser.Api.Playback.Progressive.GetAudioStream)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService">
+            <summary>
+            Class BaseProgressiveStreamingService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService.GetOutputFileExtension(MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Gets the output file extension.
+            </summary>
+            <param name="state">The state.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService.TranscodingJobType">
+            <summary>
+            Gets the type of the transcoding job.
+            </summary>
+            <value>The type of the transcoding job.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService.ProcessRequest(MediaBrowser.Api.Playback.StreamRequest,System.Boolean)">
+            <summary>
+            Processes the request.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="isHeadRequest">if set to <c>true</c> [is head request].</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService.GetStaticRemoteStreamResult(MediaBrowser.Api.Playback.StreamState,System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean,System.Threading.CancellationTokenSource)">
+            <summary>
+            Gets the static remote stream result.
+            </summary>
+            <param name="state">The state.</param>
+            <param name="responseHeaders">The response headers.</param>
+            <param name="isHeadRequest">if set to <c>true</c> [is head request].</param>
+            <param name="cancellationTokenSource">The cancellation token source.</param>
+            <returns>Task{System.Object}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService.GetStreamResult(MediaBrowser.Api.Playback.StreamRequest,MediaBrowser.Api.Playback.StreamState,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Threading.CancellationTokenSource)">
+            <summary>
+            Gets the stream result.
+            </summary>
+            <param name="state">The state.</param>
+            <param name="responseHeaders">The response headers.</param>
+            <param name="isHeadRequest">if set to <c>true</c> [is head request].</param>
+            <param name="cancellationTokenSource">The cancellation token source.</param>
+            <returns>Task{System.Object}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService.GetEstimatedContentLength(MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Gets the length of the estimated content.
+            </summary>
+            <param name="state">The state.</param>
+            <returns>System.Nullable{System.Int64}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Progressive.GetVideoStream">
+            <summary>
+            Class GetVideoStream
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.Progressive.VideoService">
+            <summary>
+            Class VideoService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.VideoService.Get(MediaBrowser.Api.Playback.Progressive.GetVideoStream)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Progressive.VideoService.Head(MediaBrowser.Api.Playback.Progressive.GetVideoStream)">
+            <summary>
+            Heads the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.StaticRemoteStreamWriter">
+            <summary>
+            Class StaticRemoteStreamWriter
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Playback.StaticRemoteStreamWriter._response">
+            <summary>
+            The _input stream
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Playback.StaticRemoteStreamWriter._options">
+            <summary>
+            The _options
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.StaticRemoteStreamWriter.Headers">
+            <summary>
+            Gets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Playback.StreamRequest">
+            <summary>
+            Class StreamRequest
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.VideoStreamRequest.HasFixedResolution">
+            <summary>
+            Gets a value indicating whether this instance has fixed resolution.
+            </summary>
+            <value><c>true</c> if this instance has fixed resolution; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Playback.BaseUniversalRequest.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.AddToPlaylist.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.MoveItem.NewIndex">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPlaylistItems.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPlaylistItems.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPlaylistItems.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPlaylistItems.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.GetPlugins">
+            <summary>
+            Class Plugins
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UninstallPlugin">
+            <summary>
+            Class UninstallPlugin
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UninstallPlugin.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.GetPluginConfiguration">
+            <summary>
+            Class GetPluginConfiguration
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetPluginConfiguration.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdatePluginConfiguration">
+            <summary>
+            Class UpdatePluginConfiguration
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdatePluginConfiguration.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdatePluginConfiguration.RequestStream">
+            <summary>
+            The raw Http Request Input Stream
+            </summary>
+            <value>The request stream.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.GetPluginSecurityInfo">
+            <summary>
+            Class GetPluginSecurityInfo
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdatePluginSecurityInfo">
+            <summary>
+            Class UpdatePluginSecurityInfo
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.PluginService">
+            <summary>
+            Class PluginsService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.PluginService._jsonSerializer">
+            <summary>
+            The _json serializer
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.PluginService._appHost">
+            <summary>
+            The _app host
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.PluginService.Get(MediaBrowser.Api.GetRegistrationStatus)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.PluginService.Get(MediaBrowser.Api.GetPlugins)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.PluginService.Get(MediaBrowser.Api.GetPluginConfiguration)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.PluginService.Get(MediaBrowser.Api.GetPluginSecurityInfo)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.PluginService.Post(MediaBrowser.Api.UpdatePluginSecurityInfo)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.PluginService.Post(MediaBrowser.Api.UpdatePluginConfiguration)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.PluginService.Delete(MediaBrowser.Api.UninstallPlugin)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.ScheduledTasks.GetScheduledTask">
+            <summary>
+            Class GetScheduledTask
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.ScheduledTasks.GetScheduledTask.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.ScheduledTasks.GetScheduledTasks">
+            <summary>
+            Class GetScheduledTasks
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.ScheduledTasks.StartScheduledTask">
+            <summary>
+            Class StartScheduledTask
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.ScheduledTasks.StartScheduledTask.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.ScheduledTasks.StopScheduledTask">
+            <summary>
+            Class StopScheduledTask
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.ScheduledTasks.StopScheduledTask.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.ScheduledTasks.UpdateScheduledTaskTriggers">
+            <summary>
+            Class UpdateScheduledTaskTriggers
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.ScheduledTasks.UpdateScheduledTaskTriggers.Id">
+            <summary>
+            Gets or sets the task id.
+            </summary>
+            <value>The task id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService">
+            <summary>
+            Class ScheduledTasksService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService._taskManager">
+            <summary>
+            The task manager.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.ScheduledTasks.ScheduledTaskService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Model.Tasks.ITaskManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService" /> class.
+            </summary>
+            <param name="taskManager">The task manager.</param>
+            <exception cref="T:System.ArgumentNullException">taskManager</exception>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService.Get(MediaBrowser.Api.ScheduledTasks.GetScheduledTasks)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>IEnumerable{TaskInfo}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService.Get(MediaBrowser.Api.ScheduledTasks.GetScheduledTask)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>IEnumerable{TaskInfo}.</returns>
+            <exception cref="T:MediaBrowser.Common.Extensions.ResourceNotFoundException">Task not found</exception>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService.Post(MediaBrowser.Api.ScheduledTasks.StartScheduledTask)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <exception cref="T:MediaBrowser.Common.Extensions.ResourceNotFoundException">Task not found</exception>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService.Delete(MediaBrowser.Api.ScheduledTasks.StopScheduledTask)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <exception cref="T:MediaBrowser.Common.Extensions.ResourceNotFoundException">Task not found</exception>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService.Post(MediaBrowser.Api.ScheduledTasks.UpdateScheduledTaskTriggers)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <exception cref="T:MediaBrowser.Common.Extensions.ResourceNotFoundException">Task not found</exception>
+        </member>
+        <member name="T:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener">
+            <summary>
+            Class ScheduledTasksWebSocketListener
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener.TaskManager">
+            <summary>
+            Gets or sets the task manager.
+            </summary>
+            <value>The task manager.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Model.Tasks.ITaskManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener" /> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener.GetDataToSend">
+            <summary>
+            Gets the data to send.
+            </summary>
+            <returns>Task{IEnumerable{TaskInfo}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.GetSearchHints">
+            <summary>
+            Class GetSearchHints
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetSearchHints.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetSearchHints.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetSearchHints.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetSearchHints.SearchTerm">
+            <summary>
+            Search characters used to find items
+            </summary>
+            <value>The index by.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.SearchService">
+            <summary>
+            Class SearchService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.SearchService._searchEngine">
+            <summary>
+            The _search engine
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.SearchService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.SearchService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.ISearchEngine,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Drawing.IImageProcessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.SearchService" /> class.
+            </summary>
+            <param name="searchEngine">The search engine.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="dtoService">The dto service.</param>
+            <param name="imageProcessor">The image processor.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SearchService.Get(MediaBrowser.Api.GetSearchHints)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.SearchService.GetSearchHintsAsync(MediaBrowser.Api.GetSearchHints)">
+            <summary>
+            Gets the search hints async.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{IEnumerable{SearchHintResult}}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.SearchService.GetSearchHintResult(MediaBrowser.Controller.Library.SearchHintInfo)">
+            <summary>
+            Gets the search hint result.
+            </summary>
+            <param name="hintInfo">The hint info.</param>
+            <returns>SearchHintResult.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener">
+            <summary>
+            Class SessionInfoWebSocketListener
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="F:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener._sessionManager">
+            <summary>
+            The _kernel
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Session.ISessionManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener"/> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener.GetDataToSend">
+            <summary>
+            Gets the data to send.
+            </summary>
+            <returns>Task{SystemInfo}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.Sessions.GetSessions">
+            <summary>
+            Class GetSessions.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.Sessions.DisplayContent">
+            <summary>
+            Class DisplayContent.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.DisplayContent.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.DisplayContent.ItemType">
+            <summary>
+            Artist, Genre, Studio, Person, or any kind of BaseItem
+            </summary>
+            <value>The type of the item.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.DisplayContent.ItemId">
+            <summary>
+            Artist name, genre name, item Id, etc
+            </summary>
+            <value>The item identifier.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.DisplayContent.ItemName">
+            <summary>
+            Gets or sets the name of the item.
+            </summary>
+            <value>The name of the item.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.Play.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SendPlaystateCommand.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SendSystemCommand.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SendSystemCommand.Command">
+            <summary>
+            Gets or sets the command.
+            </summary>
+            <value>The play command.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SendGeneralCommand.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SendGeneralCommand.Command">
+            <summary>
+            Gets or sets the command.
+            </summary>
+            <value>The play command.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SendFullGeneralCommand.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.SendMessageCommand.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.PostCapabilities.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Sessions.PostFullCapabilities.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.Sessions.SessionService">
+            <summary>
+            Class SessionsService.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Sessions.SessionService._sessionManager">
+            <summary>
+            The session manager.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionService.Get(MediaBrowser.Api.Sessions.GetSessions)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionService.Post(MediaBrowser.Api.Sessions.DisplayContent)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionService.Post(MediaBrowser.Api.Sessions.SendSystemCommand)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionService.Post(MediaBrowser.Api.Sessions.SendMessageCommand)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionService.Post(MediaBrowser.Api.Sessions.Play)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.BaseGetSimilarItemsFromItem">
+            <summary>
+            Class BaseGetSimilarItemsFromItem
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseGetSimilarItemsFromItem.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseGetSimilarItems.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseGetSimilarItems.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.BaseGetSimilarItems.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.SimilarItemsHelper">
+            <summary>
+            Class SimilarItemsHelper
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.SimilarItemsHelper.GetSimilaritems(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ILibraryManager,System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},System.Func{MediaBrowser.Controller.Entities.BaseItem,System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},MediaBrowser.Controller.Entities.BaseItem,System.Int32})">
+            <summary>
+            Gets the similaritems.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="inputItems">The input items.</param>
+            <param name="getSimilarityScore">The get similarity score.</param>
+            <returns>IEnumerable{BaseItem}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.SimilarItemsHelper.GetSimiliarityScore(MediaBrowser.Controller.Entities.BaseItem,System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the similiarity score.
+            </summary>
+            <param name="item1">The item1.</param>
+            <param name="item1People">The item1 people.</param>
+            <param name="allPeople">All people.</param>
+            <param name="item2">The item2.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.Subtitles.DeleteSubtitle.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Subtitles.GetSubtitle.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.Subtitles.GetSubtitlePlaylist.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.System.GetActivityLogs.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.System.GetActivityLogs.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.System.ActivityLogWebSocketListener">
+            <summary>
+            Class SessionInfoWebSocketListener
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.System.ActivityLogWebSocketListener.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="F:MediaBrowser.Api.System.ActivityLogWebSocketListener._activityManager">
+            <summary>
+            The _kernel
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.System.ActivityLogWebSocketListener.GetDataToSend">
+            <summary>
+            Gets the data to send.
+            </summary>
+            <returns>Task{SystemInfo}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.System.GetSystemInfo">
+            <summary>
+            Class GetSystemInfo
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.System.RestartApplication">
+            <summary>
+            Class RestartApplication
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.System.ShutdownApplication">
+            <summary>
+            This is currently not authenticated because the uninstaller needs to be able to shutdown the server.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.System.SystemService">
+            <summary>
+            Class SystemInfoService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.System.SystemService._appHost">
+            <summary>
+            The _app host
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.System.SystemService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.System.SystemService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.IServerApplicationHost,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Net.INetworkManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.System.SystemService" /> class.
+            </summary>
+            <param name="appHost">The app host.</param>
+            <param name="fileSystem">The file system.</param>
+            <exception cref="T:System.ArgumentNullException">jsonSerializer</exception>
+        </member>
+        <member name="M:MediaBrowser.Api.System.SystemService.Get(MediaBrowser.Api.System.GetSystemInfo)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.System.SystemService.Post(MediaBrowser.Api.System.RestartApplication)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.System.SystemService.Post(MediaBrowser.Api.System.ShutdownApplication)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.TranscodingJob">
+            <summary>
+            Class TranscodingJob.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.TranscodingJob.PlaySessionId">
+            <summary>
+            Gets or sets the play session identifier.
+            </summary>
+            <value>The play session identifier.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.TranscodingJob.LiveStreamId">
+            <summary>
+            Gets or sets the live stream identifier.
+            </summary>
+            <value>The live stream identifier.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.TranscodingJob.MediaSource">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>The path.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.TranscodingJob.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.TranscodingJob.Process">
+            <summary>
+            Gets or sets the process.
+            </summary>
+            <value>The process.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.TranscodingJob.ActiveRequestCount">
+            <summary>
+            Gets or sets the active request count.
+            </summary>
+            <value>The active request count.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.TranscodingJob.KillTimer">
+            <summary>
+            Gets or sets the kill timer.
+            </summary>
+            <value>The kill timer.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.GetNextUpEpisodes">
+            <summary>
+            Class GetNextUpEpisodes
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetNextUpEpisodes.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetNextUpEpisodes.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetNextUpEpisodes.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetNextUpEpisodes.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetNextUpEpisodes.ParentId">
+            <summary>
+            Specify this to localize the search to a specific item or folder. Omit to use the root.
+            </summary>
+            <value>The parent id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetUpcomingEpisodes.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetUpcomingEpisodes.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetUpcomingEpisodes.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetUpcomingEpisodes.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetUpcomingEpisodes.ParentId">
+            <summary>
+            Specify this to localize the search to a specific item or folder. Omit to use the root.
+            </summary>
+            <value>The parent id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetEpisodes.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetEpisodes.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetEpisodes.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetEpisodes.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetSeasons.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.GetSeasons.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.TvShowsService">
+            <summary>
+            Class TvShowsService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.TvShowsService._userManager">
+            <summary>
+            The _user manager
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.TvShowsService._libraryManager">
+            <summary>
+            The _library manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.TvShowsService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.TvShowsService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.TV.ITVSeriesManager,MediaBrowser.Controller.Net.IAuthorizationContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.TvShowsService" /> class.
+            </summary>
+            <param name="userManager">The user manager.</param>
+            <param name="userDataManager">The user data repository.</param>
+            <param name="libraryManager">The library manager.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.TvShowsService.Get(MediaBrowser.Api.GetNextUpEpisodes)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.TvShowsService.ApplyPaging(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Applies the paging.
+            </summary>
+            <param name="items">The items.</param>
+            <param name="startIndex">The start index.</param>
+            <param name="limit">The limit.</param>
+            <returns>IEnumerable{BaseItem}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetArtists">
+            <summary>
+            Class GetArtists
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetArtist.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetArtist.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.ArtistsService">
+            <summary>
+            Class ArtistsService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ArtistsService.Get(MediaBrowser.Api.UserLibrary.GetArtist)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ArtistsService.GetItem(MediaBrowser.Api.UserLibrary.GetArtist)">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{BaseItemDto}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ArtistsService.Get(MediaBrowser.Api.UserLibrary.GetArtists)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ArtistsService.Get(MediaBrowser.Api.UserLibrary.GetAlbumArtists)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ArtistsService.GetAllItems(MediaBrowser.Api.UserLibrary.GetItemsByName,System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
+            <summary>
+            Gets all items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="items">The items.</param>
+            <returns>IEnumerable{Tuple{System.StringFunc{System.Int32}}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1">
+            <summary>
+            Class BaseItemsByNameService
+            </summary>
+            <typeparam name="TItemType">The type of the T item type.</typeparam>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserDataManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1" /> class.
+            </summary>
+            <param name="userManager">The user manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="userDataRepository">The user data repository.</param>
+            <param name="dtoService">The dto service.</param>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.UserManager">
+            <summary>
+            Gets the _user manager.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.LibraryManager">
+            <summary>
+            Gets the library manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.GetResult(MediaBrowser.Api.UserLibrary.GetItemsByName)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{ItemsResult}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.FilterItem(MediaBrowser.Api.UserLibrary.GetItemsByName,MediaBrowser.Controller.Entities.BaseItem,System.String[],System.String[],System.String[])">
+            <summary>
+            Filters the items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="f">The f.</param>
+            <param name="excludeItemTypes">The exclude item types.</param>
+            <param name="includeItemTypes">The include item types.</param>
+            <param name="mediaTypes">The media types.</param>
+            <returns>IEnumerable{BaseItem}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.GetAllItems(MediaBrowser.Api.UserLibrary.GetItemsByName,System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
+            <summary>
+            Gets all items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="items">The items.</param>
+            <returns>IEnumerable{Task{`0}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetItemsByName">
+            <summary>
+            Class GetItemsByName
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.MaxOfficialRating">
+            <summary>
+            Gets or sets the max offical rating.
+            </summary>
+            <value>The max offical rating.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.StartIndex">
+            <summary>
+            Skips over a given number of items within the results. Use for paging.
+            </summary>
+            <value>The start index.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Limit">
+            <summary>
+            The maximum number of items to return
+            </summary>
+            <value>The limit.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Recursive">
+            <summary>
+            Whether or not to perform the query recursively
+            </summary>
+            <value><c>true</c> if recursive; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.SortOrder">
+            <summary>
+            Gets or sets the sort order.
+            </summary>
+            <value>The sort order.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.ParentId">
+            <summary>
+            Specify this to localize the search to a specific item or folder. Omit to use the root.
+            </summary>
+            <value>The parent id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Fields">
+            <summary>
+            Fields to return within the items, in addition to basic information
+            </summary>
+            <value>The fields.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.ExcludeItemTypes">
+            <summary>
+            Gets or sets the exclude item types.
+            </summary>
+            <value>The exclude item types.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.IncludeItemTypes">
+            <summary>
+            Gets or sets the include item types.
+            </summary>
+            <value>The include item types.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Filters">
+            <summary>
+            Filters to apply to the results
+            </summary>
+            <value>The filters.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.IsFavorite">
+            <summary>
+            Gets or sets the Isfavorite option
+            </summary>
+            <value>IsFavorite</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.MediaTypes">
+            <summary>
+            Gets or sets the media types.
+            </summary>
+            <value>The media types.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.ImageTypes">
+            <summary>
+            Gets or sets the image types.
+            </summary>
+            <value>The image types.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.SortBy">
+            <summary>
+            What to sort the results by
+            </summary>
+            <value>The sort by.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Genres">
+            <summary>
+            Limit results to items containing specific genres
+            </summary>
+            <value>The genres.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Years">
+            <summary>
+            Limit results to items containing specific years
+            </summary>
+            <value>The years.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Person">
+            <summary>
+            Limit results to items containing a specific person
+            </summary>
+            <value>The person.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.PersonTypes">
+            <summary>
+            If the Person filter is used, this can also be used to restrict to a specific person type
+            </summary>
+            <value>The type of the person.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Studios">
+            <summary>
+            Limit results to items containing specific studios
+            </summary>
+            <value>The studios.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Artists">
+            <summary>
+            Gets or sets the studios.
+            </summary>
+            <value>The studios.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Ids">
+            <summary>
+            Gets or sets the item ids.
+            </summary>
+            <value>The item ids.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.VideoTypes">
+            <summary>
+            Gets or sets the video types.
+            </summary>
+            <value>The video types.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.MinOfficialRating">
+            <summary>
+            Gets or sets the min offical rating.
+            </summary>
+            <value>The min offical rating.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Is3D">
+            <summary>
+            Gets or sets the video formats.
+            </summary>
+            <value>The video formats.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.SeriesStatus">
+            <summary>
+            Gets or sets the series status.
+            </summary>
+            <value>The series status.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsRequest.GetFilters">
+            <summary>
+            Gets the filters.
+            </summary>
+            <returns>IEnumerable{ItemFilter}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsRequest.GetImageTypes">
+            <summary>
+            Gets the image types.
+            </summary>
+            <returns>IEnumerable{ImageType}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsRequest.GetOrderBy">
+            <summary>
+            Gets the order by.
+            </summary>
+            <returns>IEnumerable{ItemSortBy}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetGenres">
+            <summary>
+            Class GetGenres
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetGenre">
+            <summary>
+            Class GetGenre
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetGenre.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetGenre.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GenresService">
+            <summary>
+            Class GenresService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.GenresService.Get(MediaBrowser.Api.UserLibrary.GetGenre)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.GenresService.GetItem(MediaBrowser.Api.UserLibrary.GetGenre)">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{BaseItemDto}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.GenresService.Get(MediaBrowser.Api.UserLibrary.GetGenres)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.GenresService.GetAllItems(MediaBrowser.Api.UserLibrary.GetItemsByName,System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
+            <summary>
+            Gets all items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="items">The items.</param>
+            <returns>IEnumerable{Tuple{System.StringFunc{System.Int32}}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetItems">
+            <summary>
+            Class GetItems
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.ItemsService">
+            <summary>
+            Class ItemsService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.UserLibrary.ItemsService._userManager">
+            <summary>
+            The _user manager
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.UserLibrary.ItemsService._libraryManager">
+            <summary>
+            The _library manager
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Model.Globalization.ILocalizationManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Api.UserLibrary.ItemsService" /> class.
+            </summary>
+            <param name="userManager">The user manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="localization">The localization.</param>
+            <param name="dtoService">The dto service.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.Get(MediaBrowser.Api.UserLibrary.GetItems)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.GetItems(MediaBrowser.Api.UserLibrary.GetItems)">
+            <summary>
+            Gets the items.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.GetQueryResult(MediaBrowser.Api.UserLibrary.GetItems,MediaBrowser.Controller.Dto.DtoOptions,MediaBrowser.Controller.Entities.User)">
+            <summary>
+            Gets the items to serialize.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.DateCreatedComparer">
+            <summary>
+            Class DateCreatedComparer
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.DateCreatedComparer.Compare(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Compares the specified x.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetMusicGenre.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetMusicGenre.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.MusicGenresService.Get(MediaBrowser.Api.UserLibrary.GetMusicGenre)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.MusicGenresService.GetItem(MediaBrowser.Api.UserLibrary.GetMusicGenre)">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{BaseItemDto}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.MusicGenresService.Get(MediaBrowser.Api.UserLibrary.GetMusicGenres)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.MusicGenresService.GetAllItems(MediaBrowser.Api.UserLibrary.GetItemsByName,System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
+            <summary>
+            Gets all items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="items">The items.</param>
+            <returns>IEnumerable{Tuple{System.StringFunc{System.Int32}}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetPersons">
+            <summary>
+            Class GetPersons
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetPerson">
+            <summary>
+            Class GetPerson
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetPerson.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetPerson.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.PersonsService">
+            <summary>
+            Class PersonsService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PersonsService.Get(MediaBrowser.Api.UserLibrary.GetPerson)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PersonsService.GetItem(MediaBrowser.Api.UserLibrary.GetPerson)">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{BaseItemDto}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PersonsService.Get(MediaBrowser.Api.UserLibrary.GetPersons)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PersonsService.GetAllItems(MediaBrowser.Api.UserLibrary.GetItemsByName,System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
+            <summary>
+            Gets all items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="items">The items.</param>
+            <returns>IEnumerable{Tuple{System.StringFunc{System.Int32}}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.MarkPlayedItem">
+            <summary>
+            Class MarkPlayedItem
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.MarkPlayedItem.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.MarkPlayedItem.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.MarkUnplayedItem">
+            <summary>
+            Class MarkUnplayedItem
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.MarkUnplayedItem.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.MarkUnplayedItem.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.OnPlaybackStart">
+            <summary>
+            Class OnPlaybackStart
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackStart.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackStart.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.OnPlaybackProgress">
+            <summary>
+            Class OnPlaybackProgress
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackProgress.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackProgress.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackProgress.PositionTicks">
+            <summary>
+            Gets or sets the position ticks.
+            </summary>
+            <value>The position ticks.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.OnPlaybackStopped">
+            <summary>
+            Class OnPlaybackStopped
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackStopped.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackStopped.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackStopped.PositionTicks">
+            <summary>
+            Gets or sets the position ticks.
+            </summary>
+            <value>The position ticks.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.Post(MediaBrowser.Api.UserLibrary.MarkPlayedItem)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.Post(MediaBrowser.Api.UserLibrary.OnPlaybackStart)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.Post(MediaBrowser.Api.UserLibrary.OnPlaybackProgress)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.Delete(MediaBrowser.Api.UserLibrary.OnPlaybackStopped)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.Delete(MediaBrowser.Api.UserLibrary.MarkUnplayedItem)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.UpdatePlayedStatus(MediaBrowser.Controller.Entities.User,System.String,System.Boolean,System.Nullable{System.DateTime})">
+            <summary>
+            Updates the played status.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="itemId">The item id.</param>
+            <param name="wasPlayed">if set to <c>true</c> [was played].</param>
+            <param name="datePlayed">The date played.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetStudios">
+            <summary>
+            Class GetStudios
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetStudio">
+            <summary>
+            Class GetStudio
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetStudio.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetStudio.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.StudiosService">
+            <summary>
+            Class StudiosService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.StudiosService.Get(MediaBrowser.Api.UserLibrary.GetStudio)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.StudiosService.GetItem(MediaBrowser.Api.UserLibrary.GetStudio)">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{BaseItemDto}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.StudiosService.Get(MediaBrowser.Api.UserLibrary.GetStudios)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.StudiosService.GetAllItems(MediaBrowser.Api.UserLibrary.GetItemsByName,System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
+            <summary>
+            Gets all items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="items">The items.</param>
+            <returns>IEnumerable{Tuple{System.StringFunc{System.Int32}}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetItem">
+            <summary>
+            Class GetItem
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetItem.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetItem.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetRootFolder">
+            <summary>
+            Class GetItem
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetRootFolder.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetIntros">
+            <summary>
+            Class GetIntros
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetIntros.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetIntros.Id">
+            <summary>
+            Gets or sets the item id.
+            </summary>
+            <value>The item id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.MarkFavoriteItem">
+            <summary>
+            Class MarkFavoriteItem
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.MarkFavoriteItem.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.MarkFavoriteItem.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.UnmarkFavoriteItem">
+            <summary>
+            Class UnmarkFavoriteItem
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.UnmarkFavoriteItem.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.UnmarkFavoriteItem.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.DeleteUserItemRating">
+            <summary>
+            Class ClearUserItemRating
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.DeleteUserItemRating.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.DeleteUserItemRating.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.UpdateUserItemRating">
+            <summary>
+            Class UpdateUserItemRating
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.UpdateUserItemRating.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.UpdateUserItemRating.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.UpdateUserItemRating.Likes">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:MediaBrowser.Api.UserLibrary.UpdateUserItemRating" /> is likes.
+            </summary>
+            <value><c>true</c> if likes; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetLocalTrailers">
+            <summary>
+            Class GetLocalTrailers
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetLocalTrailers.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetLocalTrailers.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetSpecialFeatures">
+            <summary>
+            Class GetSpecialFeatures
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetSpecialFeatures.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetSpecialFeatures.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetLatestMedia.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.UserLibraryService">
+            <summary>
+            Class UserLibraryService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Get(MediaBrowser.Api.UserLibrary.GetSpecialFeatures)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Get(MediaBrowser.Api.UserLibrary.GetLocalTrailers)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Get(MediaBrowser.Api.UserLibrary.GetItem)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Get(MediaBrowser.Api.UserLibrary.GetRootFolder)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Get(MediaBrowser.Api.UserLibrary.GetIntros)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Post(MediaBrowser.Api.UserLibrary.MarkFavoriteItem)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Delete(MediaBrowser.Api.UserLibrary.UnmarkFavoriteItem)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.MarkFavorite(System.Guid,System.Guid,System.Boolean)">
+            <summary>
+            Marks the favorite.
+            </summary>
+            <param name="userId">The user id.</param>
+            <param name="itemId">The item id.</param>
+            <param name="isFavorite">if set to <c>true</c> [is favorite].</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Delete(MediaBrowser.Api.UserLibrary.DeleteUserItemRating)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Post(MediaBrowser.Api.UserLibrary.UpdateUserItemRating)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.UpdateUserItemRating(System.Guid,System.Guid,System.Nullable{System.Boolean})">
+            <summary>
+            Updates the user item rating.
+            </summary>
+            <param name="userId">The user id.</param>
+            <param name="itemId">The item id.</param>
+            <param name="likes">if set to <c>true</c> [likes].</param>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetUserViews.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetGroupingOptions.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetYears">
+            <summary>
+            Class GetYears
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.GetYear">
+            <summary>
+            Class GetYear
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetYear.Year">
+            <summary>
+            Gets or sets the year.
+            </summary>
+            <value>The year.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UserLibrary.GetYear.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UserLibrary.YearsService">
+            <summary>
+            Class YearsService
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.YearsService.Get(MediaBrowser.Api.UserLibrary.GetYear)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.YearsService.GetItem(MediaBrowser.Api.UserLibrary.GetYear)">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Task{BaseItemDto}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.YearsService.Get(MediaBrowser.Api.UserLibrary.GetYears)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserLibrary.YearsService.GetAllItems(MediaBrowser.Api.UserLibrary.GetItemsByName,System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
+            <summary>
+            Gets all items.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="items">The items.</param>
+            <returns>IEnumerable{Tuple{System.StringFunc{System.Int32}}}.</returns>
+        </member>
+        <member name="T:MediaBrowser.Api.GetUsers">
+            <summary>
+            Class GetUsers
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.GetUser">
+            <summary>
+            Class GetUser
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.GetUser.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.DeleteUser">
+            <summary>
+            Class DeleteUser
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.DeleteUser.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.AuthenticateUser">
+            <summary>
+            Class AuthenticateUser
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.AuthenticateUser.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.AuthenticateUser.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.AuthenticateUserByName">
+            <summary>
+            Class AuthenticateUser
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.AuthenticateUserByName.Username">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.AuthenticateUserByName.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdateUserPassword">
+            <summary>
+            Class UpdateUserPassword
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdateUserPassword.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdateUserPassword.CurrentPassword">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdateUserPassword.ResetPassword">
+            <summary>
+            Gets or sets a value indicating whether [reset password].
+            </summary>
+            <value><c>true</c> if [reset password]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdateUserEasyPassword">
+            <summary>
+            Class UpdateUserEasyPassword
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdateUserEasyPassword.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdateUserEasyPassword.NewPassword">
+            <summary>
+            Gets or sets the new password.
+            </summary>
+            <value>The new password.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.UpdateUserEasyPassword.ResetPassword">
+            <summary>
+            Gets or sets a value indicating whether [reset password].
+            </summary>
+            <value><c>true</c> if [reset password]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdateUser">
+            <summary>
+            Class UpdateUser
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdateUserPolicy">
+            <summary>
+            Class UpdateUser
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UpdateUserConfiguration">
+            <summary>
+            Class UpdateUser
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.CreateUserByName">
+            <summary>
+            Class CreateUser
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Api.UserService">
+            <summary>
+            Class UsersService
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.UserService._userManager">
+            <summary>
+            The user manager.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.UserService.Get(MediaBrowser.Api.GetUsers)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserService.Get(MediaBrowser.Api.GetUser)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.UserService.Delete(MediaBrowser.Api.DeleteUser)">
+            <summary>
+            Deletes the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserService.Post(MediaBrowser.Api.AuthenticateUser)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserService.Post(MediaBrowser.Api.UpdateUserPassword)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserService.Post(MediaBrowser.Api.UpdateUser)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.UserService.Post(MediaBrowser.Api.CreateUserByName)">
+            <summary>
+            Posts the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="P:MediaBrowser.Api.GetAdditionalParts.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.VideosService.Get(MediaBrowser.Api.GetAdditionalParts)">
+            <summary>
+            Gets the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>System.Object.</returns>
+        </member>
+    </members>
+</doc>

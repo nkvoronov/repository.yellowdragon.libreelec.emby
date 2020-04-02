@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jellyfin.Drawing.Skia</name>
+    </assembly>
+    <members>
+        <member name="T:Jellyfin.Drawing.Skia.PercentPlayedDrawer">
+            <summary>
+            Static helper class used to draw percentage-played indicators on images.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.PercentPlayedDrawer.Process(SkiaSharp.SKCanvas,MediaBrowser.Model.Drawing.ImageDimensions,System.Double)">
+            <summary>
+            Draw a percentage played indicator on a canvas.
+            </summary>
+            <param name="canvas">The canvas to draw the indicator on.</param>
+            <param name="imageSize">The size of the image being drawn on.</param>
+            <param name="percent">The percentage played to display with the indicator.</param>
+        </member>
+        <member name="T:Jellyfin.Drawing.Skia.PlayedIndicatorDrawer">
+            <summary>
+            Static helper class for drawing 'played' indicators.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.PlayedIndicatorDrawer.DrawPlayedIndicator(SkiaSharp.SKCanvas,MediaBrowser.Model.Drawing.ImageDimensions)">
+            <summary>
+            Draw a 'played' indicator in the top right corner of a canvas.
+            </summary>
+            <param name="canvas">The canvas to draw the indicator on.</param>
+            <param name="imageSize">
+            The dimensions of the image to draw the indicator on. The width is used to determine the x-position of the
+            indicator.
+            </param>
+        </member>
+        <member name="T:Jellyfin.Drawing.Skia.SkiaCodecException">
+            <summary>
+            Represents errors that occur during interaction with Skia codecs.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaCodecException.#ctor(SkiaSharp.SKCodecResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Drawing.Skia.SkiaCodecException" /> class.
+            </summary>
+            <param name="result">The non-successful codec result returned by Skia.</param>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaCodecException.#ctor(SkiaSharp.SKCodecResult,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Drawing.Skia.SkiaCodecException" /> class
+            with a specified error message.
+            </summary>
+            <param name="result">The non-successful codec result returned by Skia.</param>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="P:Jellyfin.Drawing.Skia.SkiaCodecException.CodecResult">
+            <summary>
+            Gets the non-successful codec result returned by Skia.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaCodecException.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Drawing.Skia.SkiaEncoder">
+            <summary>
+            Image encoder that uses <see cref="N:SkiaSharp"/> to manipulate images.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaEncoder.#ctor(Microsoft.Extensions.Logging.ILogger{Jellyfin.Drawing.Skia.SkiaEncoder},MediaBrowser.Common.Configuration.IApplicationPaths)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Drawing.Skia.SkiaEncoder"/> class.
+            </summary>
+            <param name="logger">The application logger.</param>
+            <param name="appPaths">The application paths.</param>
+        </member>
+        <member name="P:Jellyfin.Drawing.Skia.SkiaEncoder.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Drawing.Skia.SkiaEncoder.SupportsImageCollageCreation">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Drawing.Skia.SkiaEncoder.SupportsImageEncoding">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Drawing.Skia.SkiaEncoder.SupportedInputFormats">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Drawing.Skia.SkiaEncoder.SupportedOutputFormats">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaEncoder.TestSkia">
+            <summary>
+            Test to determine if the native lib is available.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaEncoder.GetImageFormat(MediaBrowser.Model.Drawing.ImageFormat)">
+            <summary>
+            Convert a <see cref="T:MediaBrowser.Model.Drawing.ImageFormat"/> to a <see cref="T:SkiaSharp.SKEncodedImageFormat"/>.
+            </summary>
+            <param name="selectedFormat">The format to convert.</param>
+            <returns>The converted format.</returns>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaEncoder.GetImageSize(System.String)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">The path is null.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">The path is not valid.</exception>
+            <exception cref="T:Jellyfin.Drawing.Skia.SkiaCodecException">The file at the specified path could not be used to generate a codec.</exception>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaEncoder.Decode(System.String,System.Boolean,System.Nullable{MediaBrowser.Model.Drawing.ImageOrientation},SkiaSharp.SKEncodedOrigin@)">
+            <summary>
+            Decode an image.
+            </summary>
+            <param name="path">The filepath of the image to decode.</param>
+            <param name="forceCleanBitmap">Whether to force clean the bitmap.</param>
+            <param name="orientation">The orientation of the image.</param>
+            <param name="origin">The detected origin of the image.</param>
+            <returns>The resulting bitmap of the image.</returns>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaEncoder.EncodeImage(System.String,System.DateTime,System.String,System.Boolean,System.Nullable{MediaBrowser.Model.Drawing.ImageOrientation},System.Int32,MediaBrowser.Controller.Drawing.ImageProcessingOptions,MediaBrowser.Model.Drawing.ImageFormat)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaEncoder.CreateImageCollage(MediaBrowser.Controller.Drawing.ImageCollageOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Jellyfin.Drawing.Skia.SkiaException">
+            <summary>
+            Represents errors that occur during interaction with Skia.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Drawing.Skia.SkiaException"/> class.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Drawing.Skia.SkiaException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Drawing.Skia.SkiaException"/> class with a specified error message and a
+            reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">
+            The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if
+            no inner exception is specified.
+            </param>
+        </member>
+        <member name="T:Jellyfin.Drawing.Skia.SkiaHelper">
+            <summary>
+            Class containing helper methods for working with SkiaSharp.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.SkiaHelper.EnsureSuccess(SkiaSharp.SKCodecResult)">
+            <summary>
+            Ensures the result is a success
+            by throwing an exception when that's not the case.
+            </summary>
+            <param name="result">The result returned by Skia.</param>
+        </member>
+        <member name="T:Jellyfin.Drawing.Skia.StripCollageBuilder">
+            <summary>
+            Used to build collages of multiple images arranged in vertical strips.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.StripCollageBuilder.#ctor(Jellyfin.Drawing.Skia.SkiaEncoder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Drawing.Skia.StripCollageBuilder"/> class.
+            </summary>
+            <param name="skiaEncoder">The encoder to use for building collages.</param>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.StripCollageBuilder.GetEncodedFormat(System.String)">
+            <summary>
+            Check which format an image has been encoded with using its filename extension.
+            </summary>
+            <param name="outputPath">The path to the image to get the format for.</param>
+            <returns>The image format.</returns>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.StripCollageBuilder.BuildSquareCollage(System.String[],System.String,System.Int32,System.Int32)">
+            <summary>
+            Create a square collage.
+            </summary>
+            <param name="paths">The paths of the images to use in the collage.</param>
+            <param name="outputPath">The path at which to place the resulting collage image.</param>
+            <param name="width">The desired width of the collage.</param>
+            <param name="height">The desired height of the collage.</param>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.StripCollageBuilder.BuildThumbCollage(System.String[],System.String,System.Int32,System.Int32)">
+            <summary>
+            Create a thumb collage.
+            </summary>
+            <param name="paths">The paths of the images to use in the collage.</param>
+            <param name="outputPath">The path at which to place the resulting image.</param>
+            <param name="width">The desired width of the collage.</param>
+            <param name="height">The desired height of the collage.</param>
+        </member>
+        <member name="T:Jellyfin.Drawing.Skia.UnplayedCountIndicator">
+            <summary>
+            Static helper class for drawing unplayed count indicators.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Drawing.Skia.UnplayedCountIndicator.OffsetFromTopRightCorner">
+            <summary>
+            The x-offset used when drawing an unplayed count indicator.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Drawing.Skia.UnplayedCountIndicator.DrawUnplayedCountIndicator(SkiaSharp.SKCanvas,MediaBrowser.Model.Drawing.ImageDimensions,System.Int32)">
+            <summary>
+            Draw an unplayed count indicator in the top right corner of a canvas.
+            </summary>
+            <param name="canvas">The canvas to draw the indicator on.</param>
+            <param name="imageSize">
+            The dimensions of the image to draw the indicator on. The width is used to determine the x-position of the
+            indicator.
+            </param>
+            <param name="count">The number to draw in the indicator.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emby.Notifications</name>
+    </assembly>
+    <members>
+        <member name="T:Emby.Notifications.NotificationEntryPoint">
+            <summary>
+            Creates notifications for various system events.
+            </summary>
+        </member>
+        <member name="M:Emby.Notifications.NotificationEntryPoint.#ctor(Microsoft.Extensions.Logging.ILogger{Emby.Notifications.NotificationEntryPoint},MediaBrowser.Model.Activity.IActivityManager,MediaBrowser.Model.Globalization.ILocalizationManager,MediaBrowser.Controller.Notifications.INotificationManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.IServerApplicationHost,MediaBrowser.Common.Configuration.IConfigurationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Emby.Notifications.NotificationEntryPoint" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="activityManager">The activity manager.</param>
+            <param name="localization">The localization manager.</param>
+            <param name="notificationManager">The notification manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="appHost">The application host.</param>
+            <param name="config">The configuration manager.</param>
+        </member>
+        <member name="M:Emby.Notifications.NotificationEntryPoint.RunAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Notifications.NotificationEntryPoint.GetItemName(MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Creates a human readable name for the item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>A human readable name for the item.</returns>
+        </member>
+        <member name="M:Emby.Notifications.NotificationEntryPoint.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Notifications.NotificationEntryPoint.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and optionally managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Emby.Notifications.NotificationManager">
+            <summary>
+            NotificationManager class.
+            </summary>
+        </member>
+        <member name="M:Emby.Notifications.NotificationManager.#ctor(Microsoft.Extensions.Logging.ILogger{Emby.Notifications.NotificationManager},MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Configuration.IServerConfigurationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Emby.Notifications.NotificationManager" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="userManager">The user manager.</param>
+            <param name="config">The server configuration manager.</param>
+        </member>
+        <member name="M:Emby.Notifications.NotificationManager.SendNotification(MediaBrowser.Model.Notifications.NotificationRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Notifications.NotificationManager.SendNotification(MediaBrowser.Model.Notifications.NotificationRequest,MediaBrowser.Controller.Entities.BaseItem,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Notifications.NotificationManager.AddParts(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Notifications.INotificationService},System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Notifications.INotificationTypeFactory})">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Notifications.NotificationManager.GetNotificationTypes">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Notifications.NotificationManager.GetNotificationServices">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

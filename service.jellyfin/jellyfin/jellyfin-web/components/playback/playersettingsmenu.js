@@ -1,1 +1,266 @@
-"use strict";define(["connectionManager","actionsheet","datetime","playbackManager","globalize","appSettings","qualityoptions"],(function(connectionManager,actionsheet,datetime,playbackManager,globalize,appSettings,qualityoptions){function showWithUser(options,player,user){var supportedCommands=playbackManager.getSupportedCommands(player),menuItems=(options.mediaType,[]);if(-1!==supportedCommands.indexOf("SetAspectRatio")){var currentAspectRatioId=playbackManager.getAspectRatio(player),currentAspectRatio=playbackManager.getSupportedAspectRatios(player).filter((function(i){return i.id===currentAspectRatioId}))[0];menuItems.push({name:globalize.translate("AspectRatio"),id:"aspectratio",asideText:currentAspectRatio?currentAspectRatio.name:null})}if(user&&user.Policy.EnableVideoPlaybackTranscoding){var secondaryQualityText=function getQualitySecondaryText(player){var state=playbackManager.getPlayerState(player),videoStream=(playbackManager.enableAutomaticBitrateDetection(player),playbackManager.getMaxStreamingBitrate(player),playbackManager.currentMediaSource(player).MediaStreams.filter((function(stream){return"Video"===stream.Type}))[0]),videoWidth=videoStream?videoStream.Width:null,options=qualityoptions.getVideoQualityOptions({currentMaxBitrate:playbackManager.getMaxStreamingBitrate(player),isAutomaticBitrateEnabled:playbackManager.enableAutomaticBitrateDetection(player),videoWidth:videoWidth,enableAuto:!0}),selectedOption=(options.map((function(o){var opt={name:o.name,id:o.bitrate,asideText:o.secondaryText};return o.selected&&(opt.selected=!0),opt})),options.filter((function(o){return o.selected})));if(!selectedOption.length)return null;var text=(selectedOption=selectedOption[0]).name;return selectedOption.autoText&&(state.PlayState&&"Transcode"!==state.PlayState.PlayMethod?text+=" - Direct":text+=" "+selectedOption.autoText),text}(player);menuItems.push({name:globalize.translate("Quality"),id:"quality",asideText:secondaryQualityText})}var repeatMode=playbackManager.getRepeatMode(player);return-1!==supportedCommands.indexOf("SetRepeatMode")&&playbackManager.currentMediaSource(player).RunTimeTicks&&menuItems.push({name:globalize.translate("RepeatMode"),id:"repeatmode",asideText:"RepeatNone"===repeatMode?globalize.translate("None"):globalize.translate(""+repeatMode)}),options.suboffset&&menuItems.push({name:globalize.translate("SubtitleOffset"),id:"suboffset",asideText:null}),options.stats&&menuItems.push({name:globalize.translate("PlaybackData"),id:"stats",asideText:null}),actionsheet.show({items:menuItems,positionTo:options.positionTo}).then((function(id){return function handleSelectedOption(id,options,player){switch(id){case"quality":return function showQualityMenu(player,btn){var videoStream=playbackManager.currentMediaSource(player).MediaStreams.filter((function(stream){return"Video"===stream.Type}))[0],videoWidth=videoStream?videoStream.Width:null,options=qualityoptions.getVideoQualityOptions({currentMaxBitrate:playbackManager.getMaxStreamingBitrate(player),isAutomaticBitrateEnabled:playbackManager.enableAutomaticBitrateDetection(player),videoWidth:videoWidth,enableAuto:!0}),menuItems=options.map((function(o){var opt={name:o.name,id:o.bitrate,asideText:o.secondaryText};return o.selected&&(opt.selected=!0),opt})),selectedId=options.filter((function(o){return o.selected}));return selectedId=selectedId.length?selectedId[0].bitrate:null,actionsheet.show({items:menuItems,positionTo:btn}).then((function(id){var bitrate=parseInt(id);bitrate!==selectedId&&playbackManager.setMaxStreamingBitrate({enableAutomaticBitrateDetection:!bitrate,maxBitrate:bitrate},player)}))}(player,options.positionTo);case"aspectratio":return function showAspectRatioMenu(player,btn){var currentId=playbackManager.getAspectRatio(player),menuItems=playbackManager.getSupportedAspectRatios(player).map((function(i){return{id:i.id,name:i.name,selected:i.id===currentId}}));return actionsheet.show({items:menuItems,positionTo:btn}).then((function(id){return id?(playbackManager.setAspectRatio(id,player),Promise.resolve()):Promise.reject()}))}(player,options.positionTo);case"repeatmode":return function showRepeatModeMenu(player,btn){var menuItems=[],currentValue=playbackManager.getRepeatMode(player);return menuItems.push({name:globalize.translate("RepeatAll"),id:"RepeatAll",selected:"RepeatAll"===currentValue}),menuItems.push({name:globalize.translate("RepeatOne"),id:"RepeatOne",selected:"RepeatOne"===currentValue}),menuItems.push({name:globalize.translate("None"),id:"RepeatNone",selected:"RepeatNone"===currentValue}),actionsheet.show({items:menuItems,positionTo:btn}).then((function(mode){mode&&playbackManager.setRepeatMode(mode,player)}))}(player,options.positionTo);case"stats":return options.onOption&&options.onOption("stats"),Promise.resolve();case"suboffset":return options.onOption&&options.onOption("suboffset"),Promise.resolve()}return Promise.reject()}(id,options,player)}))}return{show:function show(options){var player=options.player,currentItem=playbackManager.currentItem(player);return currentItem&&currentItem.ServerId?connectionManager.getApiClient(currentItem.ServerId).getCurrentUser().then((function(user){return showWithUser(options,player,user)})):showWithUser(options,player,null)}}}));
+define(['connectionManager', 'actionsheet', 'datetime', 'playbackManager', 'globalize', 'appSettings', 'qualityoptions'], function (connectionManager, actionsheet, datetime, playbackManager, globalize, appSettings, qualityoptions) {
+    'use strict';
+
+    function showQualityMenu(player, btn) {
+
+        var videoStream = playbackManager.currentMediaSource(player).MediaStreams.filter(function (stream) {
+            return stream.Type === "Video";
+        })[0];
+        var videoWidth = videoStream ? videoStream.Width : null;
+
+        var options = qualityoptions.getVideoQualityOptions({
+            currentMaxBitrate: playbackManager.getMaxStreamingBitrate(player),
+            isAutomaticBitrateEnabled: playbackManager.enableAutomaticBitrateDetection(player),
+            videoWidth: videoWidth,
+            enableAuto: true
+        });
+
+        var menuItems = options.map(function (o) {
+            var opt = {
+                name: o.name,
+                id: o.bitrate,
+                asideText: o.secondaryText
+            };
+
+            if (o.selected) {
+                opt.selected = true;
+            }
+
+            return opt;
+        });
+
+        var selectedId = options.filter(function (o) {
+            return o.selected;
+        });
+
+        selectedId = selectedId.length ? selectedId[0].bitrate : null;
+
+        return actionsheet.show({
+            items: menuItems,
+            positionTo: btn
+        }).then(function (id) {
+            var bitrate = parseInt(id);
+            if (bitrate !== selectedId) {
+                playbackManager.setMaxStreamingBitrate({
+                    enableAutomaticBitrateDetection: bitrate ? false : true,
+                    maxBitrate: bitrate
+                }, player);
+            }
+        });
+    }
+
+    function showRepeatModeMenu(player, btn) {
+        var menuItems = [];
+        var currentValue = playbackManager.getRepeatMode(player);
+
+        menuItems.push({
+            name: globalize.translate('RepeatAll'),
+            id: 'RepeatAll',
+            selected: currentValue === 'RepeatAll'
+        });
+
+        menuItems.push({
+            name: globalize.translate('RepeatOne'),
+            id: 'RepeatOne',
+            selected: currentValue === 'RepeatOne'
+        });
+
+        menuItems.push({
+            name: globalize.translate('None'),
+            id: 'RepeatNone',
+            selected: currentValue === 'RepeatNone'
+        });
+
+        return actionsheet.show({
+            items: menuItems,
+            positionTo: btn
+        }).then(function (mode) {
+            if (mode) {
+                playbackManager.setRepeatMode(mode, player);
+            }
+        });
+    }
+
+    function getQualitySecondaryText(player) {
+        var state = playbackManager.getPlayerState(player);
+        var isAutoEnabled = playbackManager.enableAutomaticBitrateDetection(player);
+        var currentMaxBitrate = playbackManager.getMaxStreamingBitrate(player);
+
+        var videoStream = playbackManager.currentMediaSource(player).MediaStreams.filter(function (stream) {
+            return stream.Type === "Video";
+        })[0];
+
+        var videoWidth = videoStream ? videoStream.Width : null;
+
+        var options = qualityoptions.getVideoQualityOptions({
+            currentMaxBitrate: playbackManager.getMaxStreamingBitrate(player),
+            isAutomaticBitrateEnabled: playbackManager.enableAutomaticBitrateDetection(player),
+            videoWidth: videoWidth,
+            enableAuto: true
+        });
+
+        var menuItems = options.map(function (o) {
+            var opt = {
+                name: o.name,
+                id: o.bitrate,
+                asideText: o.secondaryText
+            };
+
+            if (o.selected) {
+                opt.selected = true;
+            }
+
+            return opt;
+        });
+
+        var selectedOption = options.filter(function (o) {
+            return o.selected;
+        });
+
+        if (!selectedOption.length) {
+            return null;
+        }
+
+        selectedOption = selectedOption[0];
+        var text = selectedOption.name;
+
+        if (selectedOption.autoText) {
+            if (state.PlayState && state.PlayState.PlayMethod !== 'Transcode') {
+                text += ' - Direct';
+            } else {
+                text += ' ' + selectedOption.autoText;
+            }
+        }
+
+        return text;
+    }
+
+    function showAspectRatioMenu(player, btn) {
+        // each has a name and id
+        var currentId = playbackManager.getAspectRatio(player);
+        var menuItems = playbackManager.getSupportedAspectRatios(player).map(function (i) {
+            return {
+                id: i.id,
+                name: i.name,
+                selected: i.id === currentId
+            };
+        });
+
+        return actionsheet.show({
+            items: menuItems,
+            positionTo: btn
+        }).then(function (id) {
+            if (id) {
+                playbackManager.setAspectRatio(id, player);
+                return Promise.resolve();
+            }
+
+            return Promise.reject();
+        });
+    }
+
+    function showWithUser(options, player, user) {
+        var supportedCommands = playbackManager.getSupportedCommands(player);
+        var mediaType = options.mediaType;
+
+        var menuItems = [];
+        if (supportedCommands.indexOf('SetAspectRatio') !== -1) {
+            var currentAspectRatioId = playbackManager.getAspectRatio(player);
+            var currentAspectRatio = playbackManager.getSupportedAspectRatios(player).filter(function (i) {
+                return i.id === currentAspectRatioId;
+            })[0];
+
+            menuItems.push({
+                name: globalize.translate('AspectRatio'),
+                id: 'aspectratio',
+                asideText: currentAspectRatio ? currentAspectRatio.name : null
+            });
+        }
+
+        if (user && user.Policy.EnableVideoPlaybackTranscoding) {
+            var secondaryQualityText = getQualitySecondaryText(player);
+
+            menuItems.push({
+                name: globalize.translate('Quality'),
+                id: 'quality',
+                asideText: secondaryQualityText
+            });
+        }
+
+        var repeatMode = playbackManager.getRepeatMode(player);
+
+        if (supportedCommands.indexOf('SetRepeatMode') !== -1 && playbackManager.currentMediaSource(player).RunTimeTicks) {
+            menuItems.push({
+                name: globalize.translate('RepeatMode'),
+                id: 'repeatmode',
+                asideText: repeatMode === 'RepeatNone' ? globalize.translate('None') : globalize.translate('' + repeatMode)
+            });
+        }
+
+        if (options.suboffset) {
+            menuItems.push({
+                name: globalize.translate('SubtitleOffset'),
+                id: 'suboffset',
+                asideText: null
+            });
+        }
+
+        if (options.stats) {
+            menuItems.push({
+                name: globalize.translate('PlaybackData'),
+                id: 'stats',
+                asideText: null
+            });
+        }
+
+        return actionsheet.show({
+            items: menuItems,
+            positionTo: options.positionTo
+        }).then(function (id) {
+            return handleSelectedOption(id, options, player);
+        });
+    }
+
+    function show(options) {
+        var player = options.player;
+        var currentItem = playbackManager.currentItem(player);
+
+        if (!currentItem || !currentItem.ServerId) {
+            return showWithUser(options, player, null);
+        }
+
+        var apiClient = connectionManager.getApiClient(currentItem.ServerId);
+        return apiClient.getCurrentUser().then(function (user) {
+            return showWithUser(options, player, user);
+        });
+    }
+
+    function handleSelectedOption(id, options, player) {
+        switch (id) {
+            case 'quality':
+                return showQualityMenu(player, options.positionTo);
+            case 'aspectratio':
+                return showAspectRatioMenu(player, options.positionTo);
+            case 'repeatmode':
+                return showRepeatModeMenu(player, options.positionTo);
+            case 'stats':
+                if (options.onOption) {
+                    options.onOption('stats');
+                }
+                return Promise.resolve();
+            case 'suboffset':
+                if (options.onOption) {
+                    options.onOption('suboffset');
+                }
+                return Promise.resolve();
+            default:
+                break;
+        }
+
+        return Promise.reject();
+    }
+
+    return {
+        show: show
+    };
+});

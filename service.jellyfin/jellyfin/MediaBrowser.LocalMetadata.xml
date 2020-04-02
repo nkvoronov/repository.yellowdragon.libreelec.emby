@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaBrowser.LocalMetadata</name>
+    </assembly>
+    <members>
+        <member name="T:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1">
+            <summary>
+            Provides a base class for parsing metadata xml
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.Logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Fetches metadata for an item from one xml file
+            </summary>
+            <param name="item">The item.</param>
+            <param name="metadataFile">The metadata file.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Xml.XmlReaderSettings,System.Text.Encoding,System.Threading.CancellationToken)">
+            <summary>
+            Fetches the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="metadataFile">The metadata file.</param>
+            <param name="settings">The settings.</param>
+            <param name="encoding">The encoding.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{`0})">
+            <summary>
+            Fetches metadata from one Xml Element
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="itemResult">The item result.</param>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.FetchFromTaglinesNode(System.Xml.XmlReader,`0)">
+            <summary>
+            Fetches from taglines node.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.FetchFromGenresNode(System.Xml.XmlReader,`0)">
+            <summary>
+            Fetches from genres node.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.FetchDataFromPersonsNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{`0})">
+            <summary>
+            Fetches the data from persons node.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.FetchFromStudiosNode(System.Xml.XmlReader,`0)">
+            <summary>
+            Fetches from studios node.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.GetPersonsFromXmlNode(System.Xml.XmlReader)">
+            <summary>
+            Gets the persons from XML node.
+            </summary>
+            <param name="reader">The reader.</param>
+            <returns>IEnumerable{PersonInfo}.</returns>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.SplitNames(System.String)">
+            <summary>
+            Used to split names of comma or pipe delimeted genres and people
+            </summary>
+            <param name="value">The value.</param>
+            <returns>IEnumerable{System.String}.</returns>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Parsers.BaseItemXmlParser`1.Split(System.String,System.Char[],System.StringSplitOptions)">
+            <summary>
+            Provides an additional overload for string.split
+            </summary>
+            <param name="val">The val.</param>
+            <param name="separators">The separators.</param>
+            <param name="options">The options.</param>
+            <returns>System.String[][].</returns>
+        </member>
+        <member name="T:MediaBrowser.LocalMetadata.Providers.BoxSetXmlProvider">
+            <summary>
+            Class BoxSetXmlProvider.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Savers.BaseXmlSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the save path.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Savers.BaseXmlSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the name of the root element.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Savers.BaseXmlSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <summary>
+            Determines whether [is enabled for] [the specified item].
+            </summary>
+            <param name="item">The item.</param>
+            <param name="updateType">Type of the update.</param>
+            <returns><c>true</c> if [is enabled for] [the specified item]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Savers.BaseXmlSaver.AddCommonNodes(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager)">
+            <summary>
+            Adds the common nodes.
+            </summary>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.LocalMetadata.Savers.BaseXmlSaver.AddMediaInfo``1(``0,System.Xml.XmlWriter)">
+            <summary>
+            Appends the media info.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:MediaBrowser.LocalMetadata.Savers.PlaylistXmlSaver.DefaultPlaylistFilename">
+            <summary>
+            The default file name to use when creating a new playlist.
+            </summary>
+        </member>
+    </members>
+</doc>

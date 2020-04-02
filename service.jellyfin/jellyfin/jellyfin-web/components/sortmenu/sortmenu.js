@@ -1,1 +1,124 @@
-"use strict";define(["require","dom","focusManager","dialogHelper","loading","layoutManager","connectionManager","globalize","userSettings","emby-select","paper-icon-button-light","material-icons","css!./../formdialog","emby-button","flexStyles"],(function(require,dom,focusManager,dialogHelper,loading,layoutManager,connectionManager,globalize,userSettings){function onSubmit(e){return e.preventDefault(),!1}function centerFocus(elem,horiz,on){require(["scrollHelper"],(function(scrollHelper){var fn=on?"on":"off";scrollHelper.centerFocus[fn](elem,horiz)}))}function SortMenu(){}return SortMenu.prototype.show=function(options){return new Promise((function(resolve,reject){require(["text!./sortmenu.template.html"],(function(template){var dialogOptions={removeOnClose:!0,scrollY:!1};layoutManager.tv?dialogOptions.size="fullscreen":dialogOptions.size="small";var dlg=dialogHelper.createDialog(dialogOptions);dlg.classList.add("formDialog");var submitted,html="";html+='<div class="formDialogHeader">',html+='<button is="paper-icon-button-light" class="btnCancel hide-mouse-idle-tv" tabindex="-1"><i class="material-icons arrow_back"></i></button>',html+='<h3 class="formDialogHeaderTitle">${Sort}</h3>',html+="</div>",html+=template,dlg.innerHTML=globalize.translateDocument(html,"core"),function fillSortBy(context,options){context.querySelector(".selectSortBy").innerHTML=options.map((function(o){return'<option value="'+o.value+'">'+o.name+"</option>"})).join("")}(dlg,options.sortOptions),function initEditor(context,settings){context.querySelector("form").addEventListener("submit",onSubmit),context.querySelector(".selectSortOrder").value=settings.sortOrder,context.querySelector(".selectSortBy").value=settings.sortBy}(dlg,options.settings),dlg.querySelector(".btnCancel").addEventListener("click",(function(){dialogHelper.close(dlg)})),layoutManager.tv&&centerFocus(dlg.querySelector(".formDialogContent"),!1,!0),dlg.querySelector("form").addEventListener("change",(function(){submitted=!0}),!0),dialogHelper.open(dlg).then((function(){if(layoutManager.tv&&centerFocus(dlg.querySelector(".formDialogContent"),!1,!1),submitted)return function saveValues(context,settings,settingsKey){userSettings.setFilter(settingsKey+"-sortorder",context.querySelector(".selectSortOrder").value),userSettings.setFilter(settingsKey+"-sortby",context.querySelector(".selectSortBy").value)}(dlg,options.settings,options.settingsKey),void resolve();reject()}))}))}))},SortMenu}));
+define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutManager', 'connectionManager', 'globalize', 'userSettings', 'emby-select', 'paper-icon-button-light', 'material-icons', 'css!./../formdialog', 'emby-button', 'flexStyles'], function (require, dom, focusManager, dialogHelper, loading, layoutManager, connectionManager, globalize, userSettings) {
+    'use strict';
+
+    function onSubmit(e) {
+
+        e.preventDefault();
+        return false;
+    }
+
+    function initEditor(context, settings) {
+
+        context.querySelector('form').addEventListener('submit', onSubmit);
+
+        context.querySelector('.selectSortOrder').value = settings.sortOrder;
+        context.querySelector('.selectSortBy').value = settings.sortBy;
+    }
+
+    function centerFocus(elem, horiz, on) {
+        require(['scrollHelper'], function (scrollHelper) {
+            var fn = on ? 'on' : 'off';
+            scrollHelper.centerFocus[fn](elem, horiz);
+        });
+    }
+
+    function fillSortBy(context, options) {
+        var selectSortBy = context.querySelector('.selectSortBy');
+
+        selectSortBy.innerHTML = options.map(function (o) {
+
+            return '<option value="' + o.value + '">' + o.name + '</option>';
+
+        }).join('');
+    }
+
+    function saveValues(context, settings, settingsKey) {
+
+        userSettings.setFilter(settingsKey + '-sortorder', context.querySelector('.selectSortOrder').value);
+        userSettings.setFilter(settingsKey + '-sortby', context.querySelector('.selectSortBy').value);
+    }
+
+    function SortMenu() {
+
+    }
+
+    SortMenu.prototype.show = function (options) {
+
+        return new Promise(function (resolve, reject) {
+
+            require(['text!./sortmenu.template.html'], function (template) {
+
+                var dialogOptions = {
+                    removeOnClose: true,
+                    scrollY: false
+                };
+
+                if (layoutManager.tv) {
+                    dialogOptions.size = 'fullscreen';
+                } else {
+                    dialogOptions.size = 'small';
+                }
+
+                var dlg = dialogHelper.createDialog(dialogOptions);
+
+                dlg.classList.add('formDialog');
+
+                var html = '';
+
+                html += '<div class="formDialogHeader">';
+                html += '<button is="paper-icon-button-light" class="btnCancel hide-mouse-idle-tv" tabindex="-1"><i class="material-icons arrow_back"></i></button>';
+                html += '<h3 class="formDialogHeaderTitle">${Sort}</h3>';
+
+                html += '</div>';
+
+                html += template;
+
+                dlg.innerHTML = globalize.translateDocument(html, 'core');
+
+                fillSortBy(dlg, options.sortOptions);
+                initEditor(dlg, options.settings);
+
+                dlg.querySelector('.btnCancel').addEventListener('click', function () {
+
+                    dialogHelper.close(dlg);
+                });
+
+                if (layoutManager.tv) {
+                    centerFocus(dlg.querySelector('.formDialogContent'), false, true);
+                }
+
+                var submitted;
+
+                dlg.querySelector('form').addEventListener('change', function () {
+
+                    submitted = true;
+                    //if (options.onChange) {
+                    //    saveValues(dlg, options.settings, options.settingsKey);
+                    //    options.onChange();
+                    //}
+
+                }, true);
+
+                dialogHelper.open(dlg).then(function () {
+
+                    if (layoutManager.tv) {
+                        centerFocus(dlg.querySelector('.formDialogContent'), false, false);
+                    }
+
+                    if (submitted) {
+
+                        //if (!options.onChange) {
+                        saveValues(dlg, options.settings, options.settingsKey);
+                        resolve();
+                        //}
+                        return;
+                    }
+
+                    reject();
+                });
+            });
+        });
+    };
+
+    return SortMenu;
+});

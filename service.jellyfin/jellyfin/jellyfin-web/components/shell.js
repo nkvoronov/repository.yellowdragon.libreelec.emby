@@ -1,1 +1,30 @@
-"use strict";define([],(function(){return{openUrl:function openUrl(url,target){window.NativeShell?window.NativeShell.openUrl(url,target):window.open(url,target||"_blank")},canExec:!1,exec:function exec(options){return Promise.reject()},enableFullscreen:function enableFullscreen(){window.NativeShell&&window.NativeShell.enableFullscreen()},disableFullscreen:function disableFullscreen(){window.NativeShell&&window.NativeShell.disableFullscreen()}}}));
+define([], function () {
+    'use strict';
+
+    return {
+        openUrl: function (url, target) {
+            if (window.NativeShell) {
+                window.NativeShell.openUrl(url, target);
+            } else {
+                window.open(url, target || '_blank');
+            }
+
+        },
+        canExec: false,
+        exec: function (options) {
+            // options.path
+            // options.arguments
+            return Promise.reject();
+        },
+        enableFullscreen: function () {
+            if (window.NativeShell) {
+                window.NativeShell.enableFullscreen();
+            }
+        },
+        disableFullscreen: function () {
+            if (window.NativeShell) {
+                window.NativeShell.disableFullscreen();
+            }
+        }
+    };
+});

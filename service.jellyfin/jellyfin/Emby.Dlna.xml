@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emby.Dlna</name>
+    </assembly>
+    <members>
+        <member name="M:Emby.Dlna.Api.DlnaServerService.GetPathValue(System.Int32)">
+            <summary>
+            Gets the path segment at the specified index.
+            </summary>
+            <param name="index">The index of the path segment.</param>
+            <returns>The path segment at the specified index.</returns>
+            <exception cref="T:System.IndexOutOfRangeException" >Path doesn't contain enough segments.</exception>
+            <exception cref="T:System.IO.InvalidDataException" >Path doesn't start with the base url.</exception>
+        </member>
+        <member name="M:Emby.Dlna.Common.DeviceIcon.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.Common.DeviceService.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.Common.ServiceAction.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.Common.StateVariable.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.ConnectionManager.ConnectionManager.GetServiceXml">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.ConnectionManager.ConnectionManager.ProcessControlRequestAsync(Emby.Dlna.ControlRequest)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.ConnectionManager.ControlHandler.WriteResult(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.ContentDirectory.ContentDirectory.GetServiceXml">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.ContentDirectory.ContentDirectory.ProcessControlRequestAsync(Emby.Dlna.ControlRequest)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.ContentDirectory.ControlHandler.WriteResult(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.Didl.DidlBuilder.AddCommonFields(MediaBrowser.Controller.Entities.BaseItem,System.Nullable{Emby.Dlna.ContentDirectory.StubType},MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter,Emby.Dlna.Didl.Filter)">
+            <summary>
+            Adds fields used by both items and folders
+            </summary>
+        </member>
+        <member name="M:Emby.Dlna.DlnaManager.ReserializeProfile(MediaBrowser.Model.Dlna.DeviceProfile)">
+            <summary>
+            Recreates the object using serialization, to ensure it's not a subclass.
+            If it's a subclass it may not serlialize properly to xml (different root element tag name)
+            </summary>
+            <param name="profile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Emby.Dlna.IEventManager.CancelEventSubscription(System.String)">
+            <summary>
+            Cancels the event subscription.
+            </summary>
+            <param name="subscriptionId">The subscription identifier.</param>
+        </member>
+        <member name="M:Emby.Dlna.IEventManager.RenewEventSubscription(System.String,System.String,System.String,System.String)">
+            <summary>
+            Renews the event subscription.
+            </summary>
+        </member>
+        <member name="M:Emby.Dlna.IEventManager.CreateEventSubscription(System.String,System.String,System.String)">
+            <summary>
+            Creates the event subscription.
+            </summary>
+        </member>
+        <member name="M:Emby.Dlna.IUpnpService.GetServiceXml">
+            <summary>
+            Gets the content directory XML.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Emby.Dlna.IUpnpService.ProcessControlRequestAsync(Emby.Dlna.ControlRequest)">
+            <summary>
+            Processes the control request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>ControlResponse.</returns>
+        </member>
+        <member name="M:Emby.Dlna.MediaReceiverRegistrar.ControlHandler.WriteResult(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.MediaReceiverRegistrar.MediaReceiverRegistrar.GetServiceXml">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.MediaReceiverRegistrar.MediaReceiverRegistrar.ProcessControlRequestAsync(Emby.Dlna.ControlRequest)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.PlayTo.Device.RestartTimerInactive">
+            <summary>
+            Restarts the timer in inactive mode.
+            </summary>
+        </member>
+        <member name="M:Emby.Dlna.PlayTo.Device.SetVolume(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Sets volume on a scale of 0-100
+            </summary>
+        </member>
+        <member name="M:Emby.Dlna.PlayTo.PlayToController.PlayItems(System.Collections.Generic.IEnumerable{Emby.Dlna.PlayTo.PlaylistItem})">
+            <summary>
+            Plays the items.
+            </summary>
+            <param name="items">The items.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Emby.Dlna.Server.DescriptionXmlBuilder.Escape(System.String)">
+            <summary>Replaces invalid XML characters in a string with their valid XML equivalent.</summary>
+            <returns>The input string with invalid characters replaced.</returns>
+            <param name="str">The string within which to escape invalid characters. </param>
+        </member>
+        <member name="E:Emby.Dlna.Ssdp.DeviceDiscovery.DeviceDiscovered">
+            <inheritdoc />
+        </member>
+        <member name="E:Emby.Dlna.Ssdp.DeviceDiscovery.DeviceLeft">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.Ssdp.DeviceDiscovery.Dispose">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

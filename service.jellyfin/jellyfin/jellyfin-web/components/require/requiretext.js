@@ -1,1 +1,43 @@
-"use strict";define((function(){var addRedirectPrevention=null!=self.dashboardVersion&&self.Dashboard&&!self.AppInfo.isNativeApp;return{load:function load(url,req,_load,config){-1===url.indexOf("://")&&(url=config.baseUrl+url),config.urlArgs&&(url+=config.urlArgs(url,url)),addRedirectPrevention&&(-1===url.indexOf("?")?url+="?":url+="&",url+="r=0");var xhr=new XMLHttpRequest;xhr.open("GET",url,!0),xhr.onload=function(e){_load(this.response)},xhr.send()},normalize:function normalize(name,_normalize){return _normalize(name)}}}));
+define(function () {
+    'use strict';
+
+    // hack to work around the server's auto-redirection feature
+    var addRedirectPrevention = self.dashboardVersion != null && self.Dashboard && !self.AppInfo.isNativeApp;
+
+    return {
+
+        load: function (url, req, load, config) {
+
+            if (url.indexOf('://') === -1) {
+                url = config.baseUrl + url;
+            }
+
+            if (config.urlArgs) {
+                url += config.urlArgs(url, url);
+            }
+
+            if (addRedirectPrevention) {
+                if (url.indexOf('?') === -1) {
+                    url += '?';
+                } else {
+                    url += '&';
+                }
+
+                url += 'r=0';
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+
+            xhr.onload = function (e) {
+                load(this.response);
+            };
+
+            xhr.send();
+        },
+
+        normalize: function (name, normalize) {
+            return normalize(name);
+        }
+    };
+});

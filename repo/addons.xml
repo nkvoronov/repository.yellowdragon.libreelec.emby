@@ -60,7 +60,7 @@ Emby Server (4.2.1.0) brings your home videos, music, and photos together, autom
 
 <addon id="service.jellyfin"
        name="Jellyfin Server"
-       version="9.2.0.13"
+       version="9.2.0.14"
        provider-name="Team LibreELEC">
   <requires>
     <import addon="os.libreelec.tv" version="9.2"/>

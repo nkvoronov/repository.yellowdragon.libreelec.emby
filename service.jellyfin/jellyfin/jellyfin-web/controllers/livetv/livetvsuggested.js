@@ -1,1 +1,393 @@
-"use strict";define(["layoutManager","userSettings","inputManager","loading","globalize","libraryBrowser","mainTabsManager","cardBuilder","apphost","imageLoader","scrollStyles","emby-itemscontainer","emby-tabs","emby-button"],(function(layoutManager,userSettings,inputManager,loading,globalize,libraryBrowser,mainTabsManager,cardBuilder,appHost,imageLoader){function enableScrollX(){return!layoutManager.desktop}function getLimit(){return enableScrollX()?12:9}function reload(page,enableFullRender){enableFullRender&&(!function loadRecommendedPrograms(page){loading.show();var limit=getLimit();enableScrollX()&&(limit*=2),ApiClient.getLiveTvRecommendedPrograms({userId:Dashboard.getCurrentUserId(),IsAiring:!0,limit:limit,ImageTypeLimit:1,EnableImageTypes:"Primary,Thumb,Backdrop",EnableTotalRecordCount:!1,Fields:"ChannelInfo,PrimaryImageAspectRatio"}).then((function(result){renderItems(page,result.Items,"activeProgramItems","play",{showAirDateTime:!1,showAirEndTime:!0}),loading.hide(),require(["autoFocuser"],(function(autoFocuser){autoFocuser.autoFocus(page)}))}))}(page),ApiClient.getLiveTvPrograms({userId:Dashboard.getCurrentUserId(),HasAired:!1,limit:getLimit(),IsMovie:!1,IsSports:!1,IsKids:!1,IsNews:!1,IsSeries:!0,EnableTotalRecordCount:!1,Fields:"ChannelInfo,PrimaryImageAspectRatio",EnableImageTypes:"Primary,Thumb"}).then((function(result){renderItems(page,result.Items,"upcomingEpisodeItems")})),ApiClient.getLiveTvPrograms({userId:Dashboard.getCurrentUserId(),HasAired:!1,limit:getLimit(),IsMovie:!0,EnableTotalRecordCount:!1,Fields:"ChannelInfo",EnableImageTypes:"Primary,Thumb"}).then((function(result){renderItems(page,result.Items,"upcomingTvMovieItems",null,{shape:enableScrollX()?"overflowPortrait":"portrait",preferThumb:null,showParentTitle:!1})})),ApiClient.getLiveTvPrograms({userId:Dashboard.getCurrentUserId(),HasAired:!1,limit:getLimit(),IsSports:!0,EnableTotalRecordCount:!1,Fields:"ChannelInfo,PrimaryImageAspectRatio",EnableImageTypes:"Primary,Thumb"}).then((function(result){renderItems(page,result.Items,"upcomingSportsItems")})),ApiClient.getLiveTvPrograms({userId:Dashboard.getCurrentUserId(),HasAired:!1,limit:getLimit(),IsKids:!0,EnableTotalRecordCount:!1,Fields:"ChannelInfo,PrimaryImageAspectRatio",EnableImageTypes:"Primary,Thumb"}).then((function(result){renderItems(page,result.Items,"upcomingKidsItems")})),ApiClient.getLiveTvPrograms({userId:Dashboard.getCurrentUserId(),HasAired:!1,limit:getLimit(),IsNews:!0,EnableTotalRecordCount:!1,Fields:"ChannelInfo,PrimaryImageAspectRatio",EnableImageTypes:"Primary,Thumb"}).then((function(result){renderItems(page,result.Items,"upcomingNewsItems",null,{showParentTitleOrTitle:!0,showTitle:!1,showParentTitle:!1})})))}function renderItems(page,items,sectionClass,overlayButton,cardOptions){var html=cardBuilder.getCardsHtml(Object.assign({items:items,preferThumb:"auto",inheritThumb:!1,shape:enableScrollX()?"autooverflow":"auto",defaultShape:enableScrollX()?"overflowBackdrop":"backdrop",showParentTitle:!0,showTitle:!0,centerText:!0,coverImage:!0,overlayText:!1,lazy:!0,overlayPlayButton:"play"===overlayButton,overlayMoreButton:"more"===overlayButton,overlayInfoButton:"info"===overlayButton,allowBottomPadding:!enableScrollX(),showAirTime:!0,showAirDateTime:!0},cardOptions||{})),elem=page.querySelector("."+sectionClass);elem.innerHTML=html,imageLoader.lazyChildren(elem)}function getTabs(){return[{name:globalize.translate("Programs")},{name:globalize.translate("TabGuide")},{name:globalize.translate("TabChannels")},{name:globalize.translate("TabRecordings")},{name:globalize.translate("HeaderSchedule")},{name:globalize.translate("TabSeries")},{name:globalize.translate("ButtonSearch"),cssClass:"searchTabButton"}]}return function(view,params){function onBeforeTabChange(evt){!function preLoadTab(page,index){getTabController(page,index,(function(controller){-1===renderedTabs.indexOf(index)&&controller.preRender&&controller.preRender()}))}(view,parseInt(evt.detail.selectedTabIndex))}function onTabChange(evt){var previousTabController=tabControllers[parseInt(evt.detail.previousIndex)];previousTabController&&previousTabController.onHide&&previousTabController.onHide(),function loadTab(page,index){currentTabIndex=index,getTabController(page,index,(function(controller){initialTabIndex=null,-1==renderedTabs.indexOf(index)?(1===index&&renderedTabs.push(index),controller.renderTab()):controller.onShow&&controller.onShow(),currentTabController=controller}))}(view,parseInt(evt.detail.selectedTabIndex))}function getTabContainers(){return view.querySelectorAll(".pageTabContent")}function getTabController(page,index,callback){var depends=[];switch(index){case 0:break;case 1:depends.push("controllers/livetv/livetvguide");break;case 2:depends.push("controllers/livetv/livetvchannels");break;case 3:depends.push("controllers/livetv/livetvrecordings");break;case 4:depends.push("controllers/livetv/livetvschedule");break;case 5:depends.push("controllers/livetv/livetvseriestimers");break;case 6:depends.push("scripts/searchtab")}require(depends,(function(controllerFactory){var tabContent;0==index&&(tabContent=view.querySelector(".pageTabContent[data-index='"+index+"']"),self.tabContent=tabContent);var controller=tabControllers[index];controller||(tabContent=view.querySelector(".pageTabContent[data-index='"+index+"']"),controller=0===index?self:6===index?new controllerFactory(view,tabContent,{collectionType:"livetv"}):new controllerFactory(view,params,tabContent),tabControllers[index]=controller,controller.initTab&&controller.initTab()),callback(controller)}))}function onInputCommand(evt){"search"===evt.detail.command&&(evt.preventDefault(),Dashboard.navigate("search.html?collectionType=livetv"))}var currentTabController,self=this,currentTabIndex=parseInt(params.tab||function getDefaultTabIndex(folderId){return"guide"===userSettings.get("landing-"+folderId)?1:0}("livetv")),initialTabIndex=currentTabIndex,lastFullRender=0;[].forEach.call(view.querySelectorAll(".sectionTitleTextButton-programs"),(function(link){var href=link.href;href&&(link.href=href+"&serverId="+ApiClient.serverId())})),self.initTab=function(){for(var elem,containers=view.querySelector(".pageTabContent[data-index='0']").querySelectorAll(".itemsContainer"),i=0,length=containers.length;i<length;i++)elem=containers[i],enableScrollX()?(elem.classList.add("hiddenScrollX"),layoutManager.tv&&elem.classList.add("smoothScrollX"),elem.classList.add("scrollX"),elem.classList.remove("vertical-wrap")):(elem.classList.remove("hiddenScrollX"),elem.classList.remove("smoothScrollX"),elem.classList.remove("scrollX"),elem.classList.add("vertical-wrap"))},self.renderTab=function(){var tabContent=view.querySelector(".pageTabContent[data-index='0']");!function enableFullRender(){return(new Date).getTime()-lastFullRender>3e5}()?reload(tabContent):(reload(tabContent,!0),lastFullRender=(new Date).getTime())};var tabControllers=[],renderedTabs=[];view.addEventListener("viewbeforeshow",(function(evt){evt.detail.isRestored,function initTabs(){mainTabsManager.setTabs(view,currentTabIndex,getTabs,getTabContainers,onBeforeTabChange,onTabChange)}()})),view.addEventListener("viewshow",(function(evt){evt.detail.isRestored||mainTabsManager.selectedTabIndex(initialTabIndex),inputManager.on(window,onInputCommand)})),view.addEventListener("viewbeforehide",(function(e){currentTabController&&currentTabController.onHide&&currentTabController.onHide(),inputManager.off(window,onInputCommand)})),view.addEventListener("viewdestroy",(function(evt){tabControllers.forEach((function(tabController){tabController.destroy&&tabController.destroy()}))}))}}));
+define(["layoutManager", "userSettings", "inputManager", "loading", "globalize", "libraryBrowser", "mainTabsManager", "cardBuilder", "apphost", "imageLoader", "scrollStyles", "emby-itemscontainer", "emby-tabs", "emby-button"], function (layoutManager, userSettings, inputManager, loading, globalize, libraryBrowser, mainTabsManager, cardBuilder, appHost, imageLoader) {
+    "use strict";
+
+    function enableScrollX() {
+        return !layoutManager.desktop;
+    }
+
+    function getBackdropShape() {
+        if (enableScrollX()) {
+            return "overflowBackdrop";
+        }
+        return "backdrop";
+    }
+
+    function getPortraitShape() {
+        if (enableScrollX()) {
+            return "overflowPortrait";
+        }
+        return "portrait";
+    }
+
+    function getLimit() {
+        if (enableScrollX()) {
+            return 12;
+        }
+
+        return 9;
+    }
+
+    function loadRecommendedPrograms(page) {
+        loading.show();
+        var limit = getLimit();
+
+        if (enableScrollX()) {
+            limit *= 2;
+        }
+
+        ApiClient.getLiveTvRecommendedPrograms({
+            userId: Dashboard.getCurrentUserId(),
+            IsAiring: true,
+            limit: limit,
+            ImageTypeLimit: 1,
+            EnableImageTypes: "Primary,Thumb,Backdrop",
+            EnableTotalRecordCount: false,
+            Fields: "ChannelInfo,PrimaryImageAspectRatio"
+        }).then(function (result) {
+            renderItems(page, result.Items, "activeProgramItems", "play", {
+                showAirDateTime: false,
+                showAirEndTime: true
+            });
+            loading.hide();
+
+            require(["autoFocuser"], function (autoFocuser) {
+                autoFocuser.autoFocus(page);
+            });
+        });
+    }
+
+    function reload(page, enableFullRender) {
+        if (enableFullRender) {
+            loadRecommendedPrograms(page);
+            ApiClient.getLiveTvPrograms({
+                userId: Dashboard.getCurrentUserId(),
+                HasAired: false,
+                limit: getLimit(),
+                IsMovie: false,
+                IsSports: false,
+                IsKids: false,
+                IsNews: false,
+                IsSeries: true,
+                EnableTotalRecordCount: false,
+                Fields: "ChannelInfo,PrimaryImageAspectRatio",
+                EnableImageTypes: "Primary,Thumb"
+            }).then(function (result) {
+                renderItems(page, result.Items, "upcomingEpisodeItems");
+            });
+            ApiClient.getLiveTvPrograms({
+                userId: Dashboard.getCurrentUserId(),
+                HasAired: false,
+                limit: getLimit(),
+                IsMovie: true,
+                EnableTotalRecordCount: false,
+                Fields: "ChannelInfo",
+                EnableImageTypes: "Primary,Thumb"
+            }).then(function (result) {
+                renderItems(page, result.Items, "upcomingTvMovieItems", null, {
+                    shape: getPortraitShape(),
+                    preferThumb: null,
+                    showParentTitle: false
+                });
+            });
+            ApiClient.getLiveTvPrograms({
+                userId: Dashboard.getCurrentUserId(),
+                HasAired: false,
+                limit: getLimit(),
+                IsSports: true,
+                EnableTotalRecordCount: false,
+                Fields: "ChannelInfo,PrimaryImageAspectRatio",
+                EnableImageTypes: "Primary,Thumb"
+            }).then(function (result) {
+                renderItems(page, result.Items, "upcomingSportsItems");
+            });
+            ApiClient.getLiveTvPrograms({
+                userId: Dashboard.getCurrentUserId(),
+                HasAired: false,
+                limit: getLimit(),
+                IsKids: true,
+                EnableTotalRecordCount: false,
+                Fields: "ChannelInfo,PrimaryImageAspectRatio",
+                EnableImageTypes: "Primary,Thumb"
+            }).then(function (result) {
+                renderItems(page, result.Items, "upcomingKidsItems");
+            });
+            ApiClient.getLiveTvPrograms({
+                userId: Dashboard.getCurrentUserId(),
+                HasAired: false,
+                limit: getLimit(),
+                IsNews: true,
+                EnableTotalRecordCount: false,
+                Fields: "ChannelInfo,PrimaryImageAspectRatio",
+                EnableImageTypes: "Primary,Thumb"
+            }).then(function (result) {
+                renderItems(page, result.Items, "upcomingNewsItems", null, {
+                    showParentTitleOrTitle: true,
+                    showTitle: false,
+                    showParentTitle: false
+                });
+            });
+        }
+    }
+
+    function renderItems(page, items, sectionClass, overlayButton, cardOptions) {
+        var html = cardBuilder.getCardsHtml(Object.assign({
+            items: items,
+            preferThumb: "auto",
+            inheritThumb: false,
+            shape: enableScrollX() ? "autooverflow" : "auto",
+            defaultShape: getBackdropShape(),
+            showParentTitle: true,
+            showTitle: true,
+            centerText: true,
+            coverImage: true,
+            overlayText: false,
+            lazy: true,
+            overlayPlayButton: "play" === overlayButton,
+            overlayMoreButton: "more" === overlayButton,
+            overlayInfoButton: "info" === overlayButton,
+            allowBottomPadding: !enableScrollX(),
+            showAirTime: true,
+            showAirDateTime: true
+        }, cardOptions || {}));
+        var elem = page.querySelector("." + sectionClass);
+        elem.innerHTML = html;
+        imageLoader.lazyChildren(elem);
+    }
+
+    function getTabs() {
+        return [{
+            name: globalize.translate("Programs")
+        }, {
+            name: globalize.translate("TabGuide")
+        }, {
+            name: globalize.translate("TabChannels")
+        }, {
+            name: globalize.translate("TabRecordings")
+        }, {
+            name: globalize.translate("HeaderSchedule")
+        }, {
+            name: globalize.translate("TabSeries")
+        }, {
+            name: globalize.translate("ButtonSearch"),
+            cssClass: "searchTabButton"
+        }];
+    }
+
+    function setScrollClasses(elem, scrollX) {
+        if (scrollX) {
+            elem.classList.add("hiddenScrollX");
+
+            if (layoutManager.tv) {
+                elem.classList.add("smoothScrollX");
+            }
+
+            elem.classList.add("scrollX");
+            elem.classList.remove("vertical-wrap");
+        } else {
+            elem.classList.remove("hiddenScrollX");
+            elem.classList.remove("smoothScrollX");
+            elem.classList.remove("scrollX");
+            elem.classList.add("vertical-wrap");
+        }
+    }
+
+    function getDefaultTabIndex(folderId) {
+        if (userSettings.get("landing-" + folderId) === "guide") {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    return function (view, params) {
+        function enableFullRender() {
+            return new Date().getTime() - lastFullRender > 3e5;
+        }
+
+        function onBeforeTabChange(evt) {
+            preLoadTab(view, parseInt(evt.detail.selectedTabIndex));
+        }
+
+        function onTabChange(evt) {
+            var previousTabController = tabControllers[parseInt(evt.detail.previousIndex)];
+
+            if (previousTabController && previousTabController.onHide) {
+                previousTabController.onHide();
+            }
+
+            loadTab(view, parseInt(evt.detail.selectedTabIndex));
+        }
+
+        function getTabContainers() {
+            return view.querySelectorAll(".pageTabContent");
+        }
+
+        function initTabs() {
+            mainTabsManager.setTabs(view, currentTabIndex, getTabs, getTabContainers, onBeforeTabChange, onTabChange);
+        }
+
+        function getTabController(page, index, callback) {
+            var depends = [];
+
+            // TODO int is a little hard to read
+            switch (index) {
+                case 0:
+                    break;
+
+                case 1:
+                    depends.push("controllers/livetv/livetvguide");
+                    break;
+
+                case 2:
+                    depends.push("controllers/livetv/livetvchannels");
+                    break;
+
+                case 3:
+                    depends.push("controllers/livetv/livetvrecordings");
+                    break;
+
+                case 4:
+                    depends.push("controllers/livetv/livetvschedule");
+                    break;
+
+                case 5:
+                    depends.push("controllers/livetv/livetvseriestimers");
+                    break;
+
+                case 6:
+                    depends.push("scripts/searchtab");
+            }
+
+            require(depends, function (controllerFactory) {
+                var tabContent;
+
+                if (0 == index) {
+                    tabContent = view.querySelector(".pageTabContent[data-index='" + index + "']");
+                    self.tabContent = tabContent;
+                }
+
+                var controller = tabControllers[index];
+
+                if (!controller) {
+                    tabContent = view.querySelector(".pageTabContent[data-index='" + index + "']");
+
+                    if (0 === index) {
+                        controller = self;
+                    } else if (6 === index) {
+                        controller = new controllerFactory(view, tabContent, {
+                            collectionType: "livetv"
+                        });
+                    } else {
+                        controller = new controllerFactory(view, params, tabContent);
+                    }
+
+                    tabControllers[index] = controller;
+
+                    if (controller.initTab) {
+                        controller.initTab();
+                    }
+                }
+
+                callback(controller);
+            });
+        }
+
+        function preLoadTab(page, index) {
+            getTabController(page, index, function (controller) {
+                if (renderedTabs.indexOf(index) === -1 && controller.preRender) {
+                    controller.preRender();
+                }
+            });
+        }
+
+        function loadTab(page, index) {
+            currentTabIndex = index;
+            getTabController(page, index, function (controller) {
+                initialTabIndex = null;
+
+                if (-1 == renderedTabs.indexOf(index)) {
+                    if (1 === index) {
+                        renderedTabs.push(index);
+                    }
+
+                    controller.renderTab();
+                } else if (controller.onShow) {
+                    controller.onShow();
+                }
+
+                currentTabController = controller;
+            });
+        }
+
+        function onInputCommand(evt) {
+            if (evt.detail.command === "search") {
+                evt.preventDefault();
+                Dashboard.navigate("search.html?collectionType=livetv");
+            }
+        }
+
+        var isViewRestored;
+        var self = this;
+        var currentTabIndex = parseInt(params.tab || getDefaultTabIndex("livetv"));
+        var initialTabIndex = currentTabIndex;
+        var lastFullRender = 0;
+        [].forEach.call(view.querySelectorAll(".sectionTitleTextButton-programs"), function (link) {
+            var href = link.href;
+
+            if (href) {
+                link.href = href + "&serverId=" + ApiClient.serverId();
+            }
+        });
+
+        self.initTab = function () {
+            var tabContent = view.querySelector(".pageTabContent[data-index='0']");
+            var containers = tabContent.querySelectorAll(".itemsContainer");
+
+            for (var i = 0, length = containers.length; i < length; i++) {
+                setScrollClasses(containers[i], enableScrollX());
+            }
+        };
+
+        self.renderTab = function () {
+            var tabContent = view.querySelector(".pageTabContent[data-index='0']");
+
+            if (enableFullRender()) {
+                reload(tabContent, true);
+                lastFullRender = new Date().getTime();
+            } else {
+                reload(tabContent);
+            }
+        };
+
+        var currentTabController;
+        var tabControllers = [];
+        var renderedTabs = [];
+        view.addEventListener("viewbeforeshow", function (evt) {
+            isViewRestored = evt.detail.isRestored;
+            initTabs();
+        });
+        view.addEventListener("viewshow", function (evt) {
+            isViewRestored = evt.detail.isRestored;
+
+            if (!isViewRestored) {
+                mainTabsManager.selectedTabIndex(initialTabIndex);
+            }
+
+            inputManager.on(window, onInputCommand);
+        });
+        view.addEventListener("viewbeforehide", function (e) {
+            if (currentTabController && currentTabController.onHide) {
+                currentTabController.onHide();
+            }
+
+            inputManager.off(window, onInputCommand);
+        });
+        view.addEventListener("viewdestroy", function (evt) {
+            tabControllers.forEach(function (tabController) {
+                if (tabController.destroy) {
+                    tabController.destroy();
+                }
+            });
+        });
+    };
+});

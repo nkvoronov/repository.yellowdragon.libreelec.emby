@@ -1,1 +1,28 @@
-"use strict";define(["require","css!./loadingLegacy"],(function(require){var loadingElem;return{show:function show(){var elem=loadingElem;elem||((elem=document.createElement("img")).src=require.toUrl(".").split("?")[0]+"/loader.gif",loadingElem=elem,elem.classList.add("loading-spinner"),document.body.appendChild(elem)),elem.classList.remove("hide")},hide:function hide(){loadingElem&&loadingElem.classList.add("hide")}}}));
+define(['require', 'css!./loadingLegacy'], function (require) {
+    'use strict';
+
+    var loadingElem;
+
+    return {
+        show: function () {
+            var elem = loadingElem;
+            if (!elem) {
+                elem = document.createElement("img");
+                elem.src = require.toUrl('.').split('?')[0] + '/loader.gif';
+
+                loadingElem = elem;
+                elem.classList.add('loading-spinner');
+
+                document.body.appendChild(elem);
+            }
+
+            elem.classList.remove('hide');
+        },
+        hide: function () {
+            var elem = loadingElem;
+            if (elem) {
+                elem.classList.add('hide');
+            }
+        }
+    };
+});

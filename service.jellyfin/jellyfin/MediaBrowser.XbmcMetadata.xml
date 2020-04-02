@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaBrowser.XbmcMetadata</name>
+    </assembly>
+    <members>
+        <member name="M:MediaBrowser.XbmcMetadata.Configuration.ConfigurationFactory.GetConfigurations">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.EntryPoint.RunAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.EntryPoint.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1" /> class.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.Logger">
+            <summary>
+            Gets the logger.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Fetches metadata for an item from one xml file
+            </summary>
+            <param name="item">The item.</param>
+            <param name="metadataFile">The metadata file.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Xml.XmlReaderSettings,System.Threading.CancellationToken)">
+            <summary>
+            Fetches the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="metadataFile">The metadata file.</param>
+            <param name="settings">The settings.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.GetPersonFromXmlNode(System.Xml.XmlReader)">
+            <summary>
+            Gets the persons from XML node.
+            </summary>
+            <param name="reader">The reader.</param>
+            <returns>IEnumerable{PersonInfo}.</returns>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.SplitNames(System.String)">
+            <summary>
+            Used to split names of comma or pipe delimeted genres and people
+            </summary>
+            <param name="value">The value.</param>
+            <returns>IEnumerable{System.String}.</returns>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.EpisodeNfoParser.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Episode},System.String,System.Xml.XmlReaderSettings,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.EpisodeNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Episode})">
+            <inheritdoc />
+        </member>
+        <member name="P:MediaBrowser.XbmcMetadata.Parsers.MovieNfoParser.SupportsUrlAfterClosingXmlTag">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.MovieNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.Video})">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.SeasonNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Season})">
+            <inheritdoc />
+        </member>
+        <member name="P:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser.SupportsUrlAfterClosingXmlTag">
+            <inheritdoc />
+        </member>
+        <member name="P:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser.MovieDbParserSearchString">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Series})">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.Audio.MusicAlbum},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.Audio.MusicArtist},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.GetMetadata(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.HasChanged(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseVideoNfoProvider`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseVideoNfoProvider`1.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Episode},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Season},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Series},System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.WriteCustomElements(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver.WriteCustomElements(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="P:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.GetSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the save path.
+            </summary>
+            <param name="item">The item.</param>
+            <returns><see cref="T:System.String" />.</returns>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets the name of the root element.
+            </summary>
+            <param name="item">The item.</param>
+            <returns><see cref="T:System.String" />.</returns>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.Save(MediaBrowser.Controller.Entities.BaseItem,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.AddCommonNodes(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager)">
+            <summary>
+            Adds the common nodes.
+            </summary>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.GetOutputTrailerUrl(System.String)">
+            <summary>
+            Gets the output trailer URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.WriteCustomElements(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.WriteCustomElements(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.WriteCustomElements(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver.GetRootElementName(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver.IsEnabledFor(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ItemUpdateType)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver.WriteCustomElements(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

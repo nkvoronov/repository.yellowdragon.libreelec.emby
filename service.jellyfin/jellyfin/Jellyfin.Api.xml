@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jellyfin.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Jellyfin.Api.Auth.CustomAuthenticationHandler">
+            <summary>
+            Custom authentication handler wrapping the legacy authentication.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Api.Auth.CustomAuthenticationHandler.#ctor(MediaBrowser.Controller.Net.IAuthService,Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Api.Auth.CustomAuthenticationHandler" /> class.
+            </summary>
+            <param name="authService">The jellyfin authentication service.</param>
+            <param name="options">Options monitor.</param>
+            <param name="logger">The logger.</param>
+            <param name="encoder">The url encoder.</param>
+            <param name="clock">The system clock.</param>
+        </member>
+        <member name="M:Jellyfin.Api.Auth.CustomAuthenticationHandler.HandleAuthenticateAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Api.Auth.FirstTimeSetupOrElevatedPolicy.FirstTimeSetupOrElevatedHandler">
+            <summary>
+            Authorization handler for requiring first time setup or elevated privileges.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Api.Auth.FirstTimeSetupOrElevatedPolicy.FirstTimeSetupOrElevatedHandler.#ctor(MediaBrowser.Common.Configuration.IConfigurationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Api.Auth.FirstTimeSetupOrElevatedPolicy.FirstTimeSetupOrElevatedHandler" /> class.
+            </summary>
+            <param name="configurationManager">The jellyfin configuration manager.</param>
+        </member>
+        <member name="M:Jellyfin.Api.Auth.FirstTimeSetupOrElevatedPolicy.FirstTimeSetupOrElevatedHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Jellyfin.Api.Auth.FirstTimeSetupOrElevatedPolicy.FirstTimeSetupOrElevatedRequirement)">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Api.Auth.FirstTimeSetupOrElevatedPolicy.FirstTimeSetupOrElevatedRequirement">
+            <summary>
+            The authorization requirement, requiring incomplete first time setup or elevated privileges, for the authorization handler.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.Auth.RequiresElevationPolicy.RequiresElevationHandler">
+            <summary>
+            Authorization handler for requiring elevated privileges.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Api.Auth.RequiresElevationPolicy.RequiresElevationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Jellyfin.Api.Auth.RequiresElevationPolicy.RequiresElevationRequirement)">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Api.Auth.RequiresElevationPolicy.RequiresElevationRequirement">
+            <summary>
+            The authorization requirement for requiring elevated privileges in the authorization handler.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.BaseJellyfinApiController">
+            <summary>
+            Base api controller for the API setting a default route.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.Constants.AuthenticationSchemes">
+            <summary>
+            Authentication schemes for user authentication in the API.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Api.Constants.AuthenticationSchemes.CustomAuthentication">
+            <summary>
+            Scheme name for the custom legacy authentication.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.Constants.Policies">
+            <summary>
+            Policies for the API authorization.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Api.Constants.Policies.FirstTimeSetupOrElevated">
+            <summary>
+            Policy name for requiring first time setup or elevated privileges.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Api.Constants.Policies.RequiresElevation">
+            <summary>
+            Policy name for requiring elevated privileges.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.Constants.UserRoles">
+            <summary>
+            Constants for user roles used in the authentication and authorization for the API.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Api.Constants.UserRoles.Guest">
+            <summary>
+            Guest user.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Api.Constants.UserRoles.User">
+            <summary>
+            Regular user with no special privileges.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Api.Constants.UserRoles.Administrator">
+            <summary>
+            Administrator user with elevated privileges.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.Controllers.StartupController">
+            <summary>
+            The startup wizard controller.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Api.Controllers.StartupController.#ctor(MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Library.IUserManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Api.Controllers.StartupController" /> class.
+            </summary>
+            <param name="config">The server configuration manager.</param>
+            <param name="userManager">The user manager.</param>
+        </member>
+        <member name="M:Jellyfin.Api.Controllers.StartupController.CompleteWizard">
+            <summary>
+            Api endpoint for completing the startup wizard.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Api.Controllers.StartupController.GetStartupConfiguration">
+            <summary>
+            Endpoint for getting the initial startup wizard configuration.
+            </summary>
+            <returns>The initial startup wizard configuration.</returns>
+        </member>
+        <member name="M:Jellyfin.Api.Controllers.StartupController.UpdateInitialConfiguration(System.String,System.String,System.String)">
+            <summary>
+            Endpoint for updating the initial startup wizard configuration.
+            </summary>
+            <param name="uiCulture">The UI language culture.</param>
+            <param name="metadataCountryCode">The metadata country code.</param>
+            <param name="preferredMetadataLanguage">The preferred language for metadata.</param>
+        </member>
+        <member name="M:Jellyfin.Api.Controllers.StartupController.SetRemoteAccess(System.Boolean,System.Boolean)">
+            <summary>
+            Endpoint for (dis)allowing remote access and UPnP.
+            </summary>
+            <param name="enableRemoteAccess">Enable remote access.</param>
+            <param name="enableAutomaticPortMapping">Enable UPnP.</param>
+        </member>
+        <member name="M:Jellyfin.Api.Controllers.StartupController.GetFirstUser">
+            <summary>
+            Endpoint for returning the first user.
+            </summary>
+            <returns>The first user.</returns>
+        </member>
+        <member name="M:Jellyfin.Api.Controllers.StartupController.UpdateUser(Jellyfin.Api.Models.StartupDtos.StartupUserDto)">
+            <summary>
+            Endpoint for updating the user name and password.
+            </summary>
+            <param name="startupUserDto">The DTO containing username and password.</param>
+            <returns>The async task.</returns>
+        </member>
+        <member name="T:Jellyfin.Api.Models.StartupDtos.StartupConfigurationDto">
+            <summary>
+            The startup configuration DTO.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Api.Models.StartupDtos.StartupConfigurationDto.UICulture">
+            <summary>
+            Gets or sets UI language culture.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Api.Models.StartupDtos.StartupConfigurationDto.MetadataCountryCode">
+            <summary>
+            Gets or sets the metadata country code.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Api.Models.StartupDtos.StartupConfigurationDto.PreferredMetadataLanguage">
+            <summary>
+            Gets or sets the preferred language for the metadata.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.Models.StartupDtos.StartupUserDto">
+            <summary>
+            The startup user DTO.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Api.Models.StartupDtos.StartupUserDto.Name">
+            <summary>
+            Gets or sets the username.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Api.Models.StartupDtos.StartupUserDto.Password">
+            <summary>
+            Gets or sets the user's password.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Api.MvcRoutePrefix">
+            <summary>
+            Route prefixing for ASP.NET MVC.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Api.MvcRoutePrefix.UseGeneralRoutePrefix(Microsoft.AspNetCore.Mvc.MvcOptions,System.String[])">
+            <summary>
+            Adds route prefixes to the MVC conventions.
+            </summary>
+            <param name="opts">The MVC options.</param>
+            <param name="prefixes">The list of prefixes.</param>
+        </member>
+    </members>
+</doc>
