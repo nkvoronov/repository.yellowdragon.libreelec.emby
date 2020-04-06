@@ -4846,10 +4846,10 @@
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetGraphicalSubtitleParam(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions,System.String)">
             <summary>
-            Gets the internal graphical subtitle param.
+            Gets the graphical subtitle param.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetOutputSizeParam(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions,System.String,System.Boolean)">
+        <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetOutputSizeParam(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions,System.String)">
             <summary>
             If we're going to put a fixed size on the command line, this will calculate it
             </summary>

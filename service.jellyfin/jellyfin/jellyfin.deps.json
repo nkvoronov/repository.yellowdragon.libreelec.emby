@@ -52,7 +52,7 @@
           }
         }
       },
-      "Jellyfin.SkiaSharp.NativeAssets.LinuxArm/1.68.0": {
+      "Jellyfin.SkiaSharp.NativeAssets.LinuxArm/1.68.1": {
         "dependencies": {
           "SkiaSharp": "1.68.1"
         },
@@ -2286,7 +2286,7 @@
           "Jellyfin.Common": "1.0.0",
           "Jellyfin.Controller": "1.0.0",
           "Jellyfin.Model": "1.0.0",
-          "Jellyfin.SkiaSharp.NativeAssets.LinuxArm": "1.68.0",
+          "Jellyfin.SkiaSharp.NativeAssets.LinuxArm": "1.68.1",
           "SkiaSharp": "1.68.1",
           "SkiaSharp.NativeAssets.Linux": "1.68.1"
         },
@@ -2416,12 +2416,12 @@
       "path": "ipnetwork2/2.4.0.126",
       "hashPath": "ipnetwork2.2.4.0.126.nupkg.sha512"
     },
-    "Jellyfin.SkiaSharp.NativeAssets.LinuxArm/1.68.0": {
+    "Jellyfin.SkiaSharp.NativeAssets.LinuxArm/1.68.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OcFhQn13sCn/RxWP+W2kkU6jcyldusnmutAQDT3+BV2ZECQoplCC+PYEqyQJP9/Q9cvvCEoZeoHTXVc01NjXDQ==",
-      "path": "jellyfin.skiasharp.nativeassets.linuxarm/1.68.0",
-      "hashPath": "jellyfin.skiasharp.nativeassets.linuxarm.1.68.0.nupkg.sha512"
+      "sha512": "sha512-cdNiz3BXCKV1hiSyyXTFX4/Uk94f1FfxrxFWOU5nypr5yjYA5FO8WcxVZyIpQLnI+QoMqh518OxMzaFimEFDMw==",
+      "path": "jellyfin.skiasharp.nativeassets.linuxarm/1.68.1",
+      "hashPath": "jellyfin.skiasharp.nativeassets.linuxarm.1.68.1.nupkg.sha512"
     },
     "Jellyfin.XmlTv/10.4.3": {
       "type": "package",
