@@ -43,6 +43,32 @@
         <member name="M:Emby.Dlna.ContentDirectory.ControlHandler.WriteResult(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Xml.XmlWriter)">
             <inheritdoc />
         </member>
+        <member name="M:Emby.Dlna.Didl.DidlBuilder.GetEpisodeDisplayName(MediaBrowser.Controller.Entities.TV.Episode,MediaBrowser.Controller.Entities.BaseItem)">
+            <summary>
+            Gets episode display name appropriate for the given context.
+            </summary>
+            <remarks>
+            If context is a season, this will return a string containing just episode number and name.
+            Otherwise the result will include series nams and season number.
+            </remarks>
+            <param name="episode">The episode.</param>
+            <param name="context">Current context.</param>
+            <returns>Formatted name of the episode.</returns>
+        </member>
+        <member name="M:Emby.Dlna.Didl.DidlBuilder.GetEpisodeIndexFullName(MediaBrowser.Controller.Entities.TV.Episode)">
+            <summary>
+            Gets complete episode number.
+            </summary>
+            <param name="episode">The episode.</param>
+            <returns>For single episodes returns just the number. For double episodes - current and ending numbers.</returns>
+        </member>
+        <member name="M:Emby.Dlna.Didl.DidlBuilder.GetEpisodeNumberDisplayName(MediaBrowser.Controller.Entities.TV.Episode)">
+            <summary>
+            Gets episode number formatted as 'S##E##'.
+            </summary>
+            <param name="episode">The episode.</param>
+            <returns>Formatted episode number.</returns>
+        </member>
         <member name="M:Emby.Dlna.Didl.DidlBuilder.AddCommonFields(MediaBrowser.Controller.Entities.BaseItem,System.Nullable{Emby.Dlna.ContentDirectory.StubType},MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter,Emby.Dlna.Didl.Filter)">
             <summary>
             Adds fields used by both items and folders

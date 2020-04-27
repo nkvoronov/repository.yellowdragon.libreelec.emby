@@ -2211,24 +2211,28 @@
             </summary>
             <value>The local ip address.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Threading.CancellationToken)">
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Threading.CancellationToken,System.Boolean)">
             <summary>
             Gets the local API URL.
             </summary>
+            <param name="cancellationToken">Token to cancel the request if needed.</param>
+            <param name="forceHttp">Whether to force usage of plain HTTP protocol.</param>
             <value>The local API URL.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.ReadOnlySpan{System.Char})">
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.ReadOnlySpan{System.Char},System.Boolean)">
             <summary>
             Gets the local API URL.
             </summary>
             <param name="hostname">The hostname.</param>
+            <param name="forceHttp">Whether to force usage of plain HTTP protocol.</param>
             <returns>The local API URL.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Net.IPAddress)">
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Net.IPAddress,System.Boolean)">
             <summary>
             Gets the local API URL.
             </summary>
             <param name="address">The IP address.</param>
+            <param name="forceHttp">Whether to force usage of plain HTTP protocol.</param>
             <returns>The local API URL.</returns>
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.RootFolderPath">
@@ -2297,9 +2301,14 @@
             </summary>
             <value>The user configuration directory path.</value>
         </member>
+        <member name="P:MediaBrowser.Controller.IServerApplicationPaths.DefaultInternalMetadataPath">
+            <summary>
+            Gets the default internal metadata path.
+            </summary>
+        </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.InternalMetadataPath">
             <summary>
-            Gets the internal metadata path.
+            Gets the internal metadata path, either a custom path or the default.
             </summary>
             <value>The internal metadata path.</value>
         </member>

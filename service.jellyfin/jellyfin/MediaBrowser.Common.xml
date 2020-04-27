@@ -30,10 +30,14 @@
         </member>
         <member name="M:MediaBrowser.Common.Configuration.EncodingConfigurationExtensions.GetTranscodePath(MediaBrowser.Common.Configuration.IConfigurationManager)">
             <summary>
-            Retrieves the transcoding temp path from the encoding configuration.
+            Retrieves the transcoding temp path from the encoding configuration, falling back to a default if no path
+            is specified in configuration. If the directory does not exist, it will be created.
             </summary>
-            <param name="configurationManager">The Configuration manager.</param>
+            <param name="configurationManager">The configuration manager.</param>
             <returns>The transcoding temp path.</returns>
+            <exception cref="T:System.UnauthorizedAccessException">If the directory does not exist, and the caller does not have the required permission to create it.</exception>
+            <exception cref="T:System.NotSupportedException">If there is a custom path transcoding path specified, but it is invalid.</exception>
+            <exception cref="T:System.IO.IOException">If the directory does not exist, and it also could not be created.</exception>
         </member>
         <member name="T:MediaBrowser.Common.Configuration.IApplicationPaths">
             <summary>

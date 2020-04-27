@@ -551,10 +551,10 @@
             <param name="address">The IPv6 address.</param>
             <returns>The IPv6 address without the scope id.</returns>
         </member>
-        <member name="M:Emby.Server.Implementations.ApplicationHost.GetLocalApiUrl(System.Net.IPAddress)">
+        <member name="M:Emby.Server.Implementations.ApplicationHost.GetLocalApiUrl(System.Net.IPAddress,System.Boolean)">
             <inheritdoc />
         </member>
-        <member name="M:Emby.Server.Implementations.ApplicationHost.GetLocalApiUrl(System.ReadOnlySpan{System.Char})">
+        <member name="M:Emby.Server.Implementations.ApplicationHost.GetLocalApiUrl(System.ReadOnlySpan{System.Char},System.Boolean)">
             <inheritdoc />
         </member>
         <member name="M:Emby.Server.Implementations.ApplicationHost.Shutdown">
@@ -748,6 +748,9 @@
             <summary>
             Updates the metadata path.
             </summary>
+            <exception cref="T:System.UnauthorizedAccessException">If the directory does not exist, and the caller does not have the required permission to create it.</exception>
+            <exception cref="T:System.NotSupportedException">If there is a custom path transcoding path specified, but it is invalid.</exception>
+            <exception cref="T:System.IO.IOException">If the directory does not exist, and it also could not be created.</exception>
         </member>
         <member name="M:Emby.Server.Implementations.Configuration.ServerConfigurationManager.ReplaceConfiguration(MediaBrowser.Model.Configuration.BaseApplicationConfiguration)">
             <summary>
@@ -5046,6 +5049,9 @@
             Gets the path to the user configuration directory.
             </summary>
             <value>The user configuration directory path.</value>
+        </member>
+        <member name="P:Emby.Server.Implementations.ServerApplicationPaths.DefaultInternalMetadataPath">
+            <inheritdoc/>
         </member>
         <member name="P:Emby.Server.Implementations.ServerApplicationPaths.InternalMetadataPath">
             <inheritdoc />
