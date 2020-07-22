@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jellyfin.Server.Implementations</name>
+    </assembly>
+    <members>
+        <member name="T:Jellyfin.Server.Implementations.Activity.ActivityManager">
+            <summary>
+            Manages the storage and retrieval of <see cref="T:Jellyfin.Data.Entities.ActivityLog"/> instances.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Activity.ActivityManager.#ctor(Jellyfin.Server.Implementations.JellyfinDbProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Server.Implementations.Activity.ActivityManager"/> class.
+            </summary>
+            <param name="provider">The Jellyfin database provider.</param>
+        </member>
+        <member name="E:Jellyfin.Server.Implementations.Activity.ActivityManager.EntryCreated">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Activity.ActivityManager.Create(Jellyfin.Data.Entities.ActivityLog)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Activity.ActivityManager.CreateAsync(Jellyfin.Data.Entities.ActivityLog)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Activity.ActivityManager.GetPagedResult(System.Func{System.Linq.IQueryable{Jellyfin.Data.Entities.ActivityLog},System.Linq.IQueryable{Jellyfin.Data.Entities.ActivityLog}},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Activity.ActivityManager.GetPagedResult(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Jellyfin.Server.Implementations.JellyfinDb">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDb.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Jellyfin.Server.Implementations.JellyfinDb})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Server.Implementations.JellyfinDb"/> class.
+            </summary>
+            <param name="options">The database context options.</param>
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.JellyfinDb.ConnectionString">
+            <summary>
+            Gets or sets the default connection string.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDb.SaveChanges">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDb.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDb.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Server.Implementations.JellyfinDbProvider">
+            <summary>
+            Factory class for generating new <see cref="T:Jellyfin.Server.Implementations.JellyfinDb"/> instances.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDbProvider.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Server.Implementations.JellyfinDbProvider"/> class.
+            </summary>
+            <param name="serviceProvider">The application's service provider.</param>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDbProvider.CreateContext">
+            <summary>
+            Creates a new <see cref="T:Jellyfin.Server.Implementations.JellyfinDb"/> context.
+            </summary>
+            <returns>The newly created context.</returns>
+        </member>
+        <member name="T:Jellyfin.Server.Implementations.Migrations.DesignTimeJellyfinDbFactory">
+            <summary>
+            The design time factory for <see cref="T:Jellyfin.Server.Implementations.JellyfinDb"/>.
+            This is only used for the creation of migrations and not during runtime.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider">
+            <summary>
+            The default authentication provider.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.#ctor(MediaBrowser.Model.Cryptography.ICryptoProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider"/> class.
+            </summary>
+            <param name="cryptographyProvider">The cryptography provider.</param>
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.IsEnabled">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.Authenticate(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.Authenticate(System.String,System.String,Jellyfin.Data.Entities.User)">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.HasPassword(Jellyfin.Data.Entities.User)">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.ChangePassword(Jellyfin.Data.Entities.User,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Server.Implementations.Users.DefaultPasswordResetProvider">
+            <summary>
+            The default password reset provider.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultPasswordResetProvider.#ctor(MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Model.Serialization.IJsonSerializer,MediaBrowser.Controller.Library.IUserManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Server.Implementations.Users.DefaultPasswordResetProvider"/> class.
+            </summary>
+            <param name="configurationManager">The configuration manager.</param>
+            <param name="jsonSerializer">The JSON serializer.</param>
+            <param name="userManager">The user manager.</param>
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.DefaultPasswordResetProvider.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.DefaultPasswordResetProvider.IsEnabled">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultPasswordResetProvider.RedeemPasswordResetPin(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.DefaultPasswordResetProvider.StartForgotPasswordProcess(Jellyfin.Data.Entities.User,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Server.Implementations.Users.InvalidAuthProvider">
+            <summary>
+            An invalid authentication provider.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.InvalidAuthProvider.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.InvalidAuthProvider.IsEnabled">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.InvalidAuthProvider.Authenticate(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.InvalidAuthProvider.HasPassword(Jellyfin.Data.Entities.User)">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.InvalidAuthProvider.ChangePassword(Jellyfin.Data.Entities.User,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Jellyfin.Server.Implementations.Users.UserManager">
+            <summary>
+            Manages the creation and retrieval of <see cref="T:Jellyfin.Data.Entities.User"/> instances.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.#ctor(Jellyfin.Server.Implementations.JellyfinDbProvider,MediaBrowser.Model.Cryptography.ICryptoProvider,MediaBrowser.Common.Net.INetworkManager,MediaBrowser.Common.IApplicationHost,MediaBrowser.Controller.Drawing.IImageProcessor,Microsoft.Extensions.Logging.ILogger{Jellyfin.Server.Implementations.Users.UserManager})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Server.Implementations.Users.UserManager"/> class.
+            </summary>
+            <param name="dbProvider">The database provider.</param>
+            <param name="cryptoProvider">The cryptography provider.</param>
+            <param name="networkManager">The network manager.</param>
+            <param name="appHost">The application host.</param>
+            <param name="imageProcessor">The image processor.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="E:Jellyfin.Server.Implementations.Users.UserManager.OnUserPasswordChanged">
+            <inheritdoc/>
+        </member>
+        <member name="E:Jellyfin.Server.Implementations.Users.UserManager.OnUserUpdated">
+            <inheritdoc/>
+        </member>
+        <member name="E:Jellyfin.Server.Implementations.Users.UserManager.OnUserCreated">
+            <inheritdoc/>
+        </member>
+        <member name="E:Jellyfin.Server.Implementations.Users.UserManager.OnUserDeleted">
+            <inheritdoc/>
+        </member>
+        <member name="E:Jellyfin.Server.Implementations.Users.UserManager.OnUserLockedOut">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.UserManager.Users">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Server.Implementations.Users.UserManager.UsersIds">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.GetUserById(System.Guid)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.GetUserByName(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.RenameUser(Jellyfin.Data.Entities.User,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.UpdateUser(Jellyfin.Data.Entities.User)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.UpdateUserAsync(Jellyfin.Data.Entities.User)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.CreateUser(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.DeleteUser(System.Guid)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.ResetPassword(Jellyfin.Data.Entities.User)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.ResetEasyPassword(Jellyfin.Data.Entities.User)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.ChangePassword(Jellyfin.Data.Entities.User,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.ChangeEasyPassword(Jellyfin.Data.Entities.User,System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.GetUserDto(Jellyfin.Data.Entities.User,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.AuthenticateUser(System.String,System.String,System.String,System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.StartForgotPasswordProcess(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.RedeemPasswordResetPin(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.AddParts(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Authentication.IAuthenticationProvider},System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Authentication.IPasswordResetProvider})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.Initialize">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.GetAuthenticationProviders">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.GetPasswordResetProviders">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.UpdateConfiguration(System.Guid,MediaBrowser.Model.Configuration.UserConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.UpdatePolicy(System.Guid,MediaBrowser.Model.Users.UserPolicy)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Implementations.Users.UserManager.ClearProfileImage(Jellyfin.Data.Entities.User)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

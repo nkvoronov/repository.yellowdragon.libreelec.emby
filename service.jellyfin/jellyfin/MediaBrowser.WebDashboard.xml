@@ -6,13 +6,13 @@
     <members>
         <member name="P:MediaBrowser.WebDashboard.Api.ConfigurationPageInfo.Name">
             <summary>
-            Gets the name.
+            Gets or sets the name.
             </summary>
             <value>The name.</value>
         </member>
         <member name="P:MediaBrowser.WebDashboard.Api.ConfigurationPageInfo.ConfigurationPageType">
             <summary>
-            Gets the type of the configuration page.
+            Gets or sets the type of the configuration page.
             </summary>
             <value>The type of the configuration page.</value>
         </member>
@@ -24,7 +24,7 @@
         </member>
         <member name="T:MediaBrowser.WebDashboard.Api.GetDashboardConfigurationPages">
             <summary>
-            Class GetDashboardConfigurationPages
+            Class GetDashboardConfigurationPages.
             </summary>
         </member>
         <member name="P:MediaBrowser.WebDashboard.Api.GetDashboardConfigurationPages.PageType">
@@ -35,7 +35,7 @@
         </member>
         <member name="T:MediaBrowser.WebDashboard.Api.GetDashboardConfigurationPage">
             <summary>
-            Class GetDashboardConfigurationPage
+            Class GetDashboardConfigurationPage.
             </summary>
         </member>
         <member name="P:MediaBrowser.WebDashboard.Api.GetDashboardConfigurationPage.Name">
@@ -46,7 +46,7 @@
         </member>
         <member name="T:MediaBrowser.WebDashboard.Api.GetDashboardResource">
             <summary>
-            Class GetDashboardResource
+            Class GetDashboardResource.
             </summary>
         </member>
         <member name="P:MediaBrowser.WebDashboard.Api.GetDashboardResource.ResourceName">
@@ -63,7 +63,7 @@
         </member>
         <member name="T:MediaBrowser.WebDashboard.Api.DashboardService">
             <summary>
-            Class DashboardService
+            Class DashboardService.
             </summary>
         </member>
         <member name="F:MediaBrowser.WebDashboard.Api.DashboardService._logger">
@@ -78,32 +78,37 @@
             </summary>
             <value>The HTTP result factory.</value>
         </member>
+        <member name="M:MediaBrowser.WebDashboard.Api.DashboardService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.WebDashboard.Api.DashboardService},MediaBrowser.Controller.IServerApplicationHost,Microsoft.Extensions.Configuration.IConfiguration,MediaBrowser.Controller.IResourceFileManager,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Net.IHttpResultFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.WebDashboard.Api.DashboardService" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="appHost">The application host.</param>
+            <param name="appConfig">The application configuration.</param>
+            <param name="resourceFileManager">The resource file manager.</param>
+            <param name="serverConfigurationManager">The server configuration manager.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="resultFactory">The result factory.</param>
+        </member>
         <member name="P:MediaBrowser.WebDashboard.Api.DashboardService.Request">
             <summary>
             Gets or sets the request context.
             </summary>
             <value>The request context.</value>
         </member>
-        <member name="F:MediaBrowser.WebDashboard.Api.DashboardService._appHost">
-            <summary>
-            The _app host
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.WebDashboard.Api.DashboardService._serverConfigurationManager">
-            <summary>
-            The _server configuration manager
-            </summary>
-        </member>
-        <member name="M:MediaBrowser.WebDashboard.Api.DashboardService.#ctor(MediaBrowser.Controller.IServerApplicationHost,MediaBrowser.Controller.IResourceFileManager,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Model.IO.IFileSystem,Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Net.IHttpResultFactory)">
-            <summary>
-            Initializes a new instance of the <see cref="T:MediaBrowser.WebDashboard.Api.DashboardService" /> class.
-            </summary>
-        </member>
         <member name="P:MediaBrowser.WebDashboard.Api.DashboardService.DashboardUIPath">
             <summary>
-            Gets the path for the web interface.
+            Gets the path of the directory containing the static web interface content, or null if the server is not
+            hosting the web client.
             </summary>
-            <value>The path for the web interface.</value>
+        </member>
+        <member name="M:MediaBrowser.WebDashboard.Api.DashboardService.GetDashboardUIPath(Microsoft.Extensions.Configuration.IConfiguration,MediaBrowser.Controller.Configuration.IServerConfigurationManager)">
+            <summary>
+            Gets the path of the directory containing the static web interface content.
+            </summary>
+            <param name="appConfig">The app configuration.</param>
+            <param name="serverConfigManager">The server configuration manager.</param>
+            <returns>The directory path, or null if the server is not hosting the web client.</returns>
         </member>
         <member name="M:MediaBrowser.WebDashboard.Api.DashboardService.Get(MediaBrowser.WebDashboard.Api.GetDashboardConfigurationPage)">
             <summary>
@@ -126,36 +131,17 @@
             <param name="request">The request.</param>
             <returns>System.Object.</returns>
         </member>
-        <member name="M:MediaBrowser.WebDashboard.Api.DashboardService.GetResourceStream(System.String,System.String,System.String)">
-            <summary>
-            Gets the resource stream.
-            </summary>
-        </member>
-        <member name="M:MediaBrowser.WebDashboard.Api.PackageCreator.ModifyHtml(System.String,System.IO.Stream,System.String,System.String,System.String)">
-            <summary>
-            Modifies the HTML by adding common meta tags, css and js.
-            </summary>
-            <returns>Task{Stream}.</returns>
-        </member>
-        <member name="M:MediaBrowser.WebDashboard.Api.PackageCreator.GetMetaTags(System.String)">
-            <summary>
-            Gets the meta tags.
-            </summary>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:MediaBrowser.WebDashboard.Api.PackageCreator.GetCommonJavascript(System.String,System.String)">
-            <summary>
-            Gets the common javascript.
-            </summary>
-            <param name="mode">The mode.</param>
-            <param name="version">The version.</param>
-            <returns>System.String.</returns>
-        </member>
         <member name="P:MediaBrowser.WebDashboard.ServerEntryPoint.PluginConfigurationPages">
             <summary>
-            Gets the list of plugin configuration pages
+            Gets the list of plugin configuration pages.
             </summary>
             <value>The configuration pages.</value>
+        </member>
+        <member name="M:MediaBrowser.WebDashboard.ServerEntryPoint.RunAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.WebDashboard.ServerEntryPoint.Dispose">
+            <inheritdoc />
         </member>
     </members>
 </doc>

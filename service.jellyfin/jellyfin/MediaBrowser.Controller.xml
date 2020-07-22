@@ -10,13 +10,22 @@
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Authentication.AuthenticationException.#ctor">
-            <inheritdoc />
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Controller.Authentication.AuthenticationException"/> class.
+            </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Authentication.AuthenticationException.#ctor(System.String)">
-            <inheritdoc />
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Controller.Authentication.AuthenticationException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
         </member>
         <member name="M:MediaBrowser.Controller.Authentication.AuthenticationException.#ctor(System.String,System.Exception)">
-            <inheritdoc />
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Controller.Authentication.AuthenticationException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
         </member>
         <member name="P:MediaBrowser.Controller.Channels.IChannel.Name">
             <summary>
@@ -75,7 +84,7 @@
             </summary>
             <param name="type">The type.</param>
             <param name="cancellationToken">The cancellation token.</param>
-            <returns>Task{DynamicImageInfo}.</returns>
+            <returns>Task{DynamicImageResponse}.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Channels.IChannel.GetSupportedChannelImages">
             <summary>
@@ -170,7 +179,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Channels.InternalChannelFeatures.MaxPageSize">
             <summary>
-            Represents the maximum number of records the channel allows retrieving at a time
+            Represents the maximum number of records the channel allows retrieving at a time.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Channels.InternalChannelFeatures.DefaultSortFields">
@@ -225,10 +234,10 @@
         </member>
         <member name="T:MediaBrowser.Controller.Chapters.IChapterManager">
             <summary>
-            Interface IChapterManager
+            Interface IChapterManager.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Chapters.IChapterManager.SaveChapters(System.String,System.Collections.Generic.List{MediaBrowser.Model.Entities.ChapterInfo})">
+        <member name="M:MediaBrowser.Controller.Chapters.IChapterManager.SaveChapters(System.Guid,System.Collections.Generic.IReadOnlyList{MediaBrowser.Model.Entities.ChapterInfo})">
             <summary>
             Saves the chapters.
             </summary>
@@ -292,7 +301,7 @@
             <param name="collectionId">The collection identifier.</param>
             <param name="itemIds">The item ids.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Collections.ICollectionManager.CollapseItemsWithinBoxSets(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Collections.ICollectionManager.CollapseItemsWithinBoxSets(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},Jellyfin.Data.Entities.User)">
             <summary>
             Collapses the items within box sets.
             </summary>
@@ -302,7 +311,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Configuration.IServerConfigurationManager">
             <summary>
-            Interface IServerConfigurationManager
+            Interface IServerConfigurationManager.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Configuration.IServerConfigurationManager.ApplicationPaths">
@@ -316,11 +325,6 @@
             Gets the configuration.
             </summary>
             <value>The configuration.</value>
-        </member>
-        <member name="E:MediaBrowser.Controller.Devices.IDeviceManager.CameraImageUploaded">
-            <summary>
-            Occurs when [camera image uploaded].
-            </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Devices.IDeviceManager.SaveCapabilities(System.String,MediaBrowser.Model.Session.ClientCapabilities)">
             <summary>
@@ -351,23 +355,7 @@
             <param name="query">The query.</param>
             <returns>IEnumerable&lt;DeviceInfo&gt;.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Devices.IDeviceManager.GetCameraUploadHistory(System.String)">
-            <summary>
-            Gets the upload history.
-            </summary>
-            <param name="deviceId">The device identifier.</param>
-            <returns>ContentUploadHistory.</returns>
-        </member>
-        <member name="M:MediaBrowser.Controller.Devices.IDeviceManager.AcceptCameraUpload(System.String,System.IO.Stream,MediaBrowser.Model.Devices.LocalFileInfo)">
-            <summary>
-            Accepts the upload.
-            </summary>
-            <param name="deviceId">The device identifier.</param>
-            <param name="stream">The stream.</param>
-            <param name="file">The file.</param>
-            <returns>Task.</returns>
-        </member>
-        <member name="M:MediaBrowser.Controller.Devices.IDeviceManager.CanAccessDevice(MediaBrowser.Controller.Entities.User,System.String)">
+        <member name="M:MediaBrowser.Controller.Devices.IDeviceManager.CanAccessDevice(Jellyfin.Data.Entities.User,System.String)">
             <summary>
             Determines whether this instance [can access device] the specified user identifier.
             </summary>
@@ -476,6 +464,15 @@
             <param name="path">The filepath of the image.</param>
             <returns>The image dimensions.</returns>
         </member>
+        <member name="M:MediaBrowser.Controller.Drawing.IImageEncoder.GetImageBlurHash(System.Int32,System.Int32,System.String)">
+            <summary>
+            Gets the blurhash of an image.
+            </summary>
+            <param name="xComp">Amount of X components of DCT to take.</param>
+            <param name="yComp">Amount of Y components of DCT to take.</param>
+            <param name="path">The filepath of the image.</param>
+            <returns>The blurhash.</returns>
+        </member>
         <member name="M:MediaBrowser.Controller.Drawing.IImageEncoder.EncodeImage(System.String,System.DateTime,System.String,System.Boolean,System.Nullable{MediaBrowser.Model.Drawing.ImageOrientation},System.Int32,MediaBrowser.Controller.Drawing.ImageProcessingOptions,MediaBrowser.Model.Drawing.ImageFormat)">
             <summary>
             Encode an image.
@@ -489,7 +486,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Drawing.IImageProcessor">
             <summary>
-            Interface IImageProcessor
+            Interface IImageProcessor.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Drawing.IImageProcessor.SupportedInputFormats">
@@ -509,7 +506,7 @@
             Gets the dimensions of the image.
             </summary>
             <param name="path">Path to the image file.</param>
-            <returns>ImageDimensions</returns>
+            <returns>ImageDimensions.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Drawing.IImageProcessor.GetImageDimensions(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.ItemImageInfo)">
             <summary>
@@ -517,16 +514,14 @@
             </summary>
             <param name="item">The base item.</param>
             <param name="info">The information.</param>
-            <returns>ImageDimensions</returns>
+            <returns>ImageDimensions.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Drawing.IImageProcessor.GetImageDimensions(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.ItemImageInfo,System.Boolean)">
+        <member name="M:MediaBrowser.Controller.Drawing.IImageProcessor.GetImageBlurHash(System.String)">
             <summary>
-            Gets the dimensions of the image.
+            Gets the blurhash of the image.
             </summary>
-            <param name="item">The base item.</param>
-            <param name="info">The information.</param>
-            <param name="updateItem">Whether or not the item info should be updated.</param>
-            <returns>ImageDimensions</returns>
+            <param name="path">Path to the image file.</param>
+            <returns>BlurHash.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Drawing.IImageProcessor.GetImageCacheTag(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.ItemImageInfo)">
             <summary>
@@ -601,7 +596,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Dto.IDtoService">
             <summary>
-            Interface IDtoService
+            Interface IDtoService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetDtoId(MediaBrowser.Controller.Entities.BaseItem)">
@@ -625,7 +620,7 @@
             <param name="item">The item.</param>
             <returns>System.Nullable&lt;System.Double&gt;.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetBaseItemDto(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Model.Querying.ItemFields[],MediaBrowser.Controller.Entities.User,MediaBrowser.Controller.Entities.BaseItem)">
+        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetBaseItemDto(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Model.Querying.ItemFields[],Jellyfin.Data.Entities.User,MediaBrowser.Controller.Entities.BaseItem)">
             <summary>
             Gets the base item dto.
             </summary>
@@ -634,7 +629,7 @@
             <param name="user">The user.</param>
             <param name="owner">The owner.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetBaseItemDto(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Dto.DtoOptions,MediaBrowser.Controller.Entities.User,MediaBrowser.Controller.Entities.BaseItem)">
+        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetBaseItemDto(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Dto.DtoOptions,Jellyfin.Data.Entities.User,MediaBrowser.Controller.Entities.BaseItem)">
             <summary>
             Gets the base item dto.
             </summary>
@@ -644,7 +639,7 @@
             <param name="owner">The owner.</param>
             <returns>BaseItemDto.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetBaseItemDtos(System.Collections.Generic.IReadOnlyList{MediaBrowser.Controller.Entities.BaseItem},MediaBrowser.Controller.Dto.DtoOptions,MediaBrowser.Controller.Entities.User,MediaBrowser.Controller.Entities.BaseItem)">
+        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetBaseItemDtos(System.Collections.Generic.IReadOnlyList{MediaBrowser.Controller.Entities.BaseItem},MediaBrowser.Controller.Dto.DtoOptions,Jellyfin.Data.Entities.User,MediaBrowser.Controller.Entities.BaseItem)">
             <summary>
             Gets the base item dtos.
             </summary>
@@ -653,7 +648,7 @@
             <param name="user">The user.</param>
             <param name="owner">The owner.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetItemByNameDto(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Dto.DtoOptions,System.Collections.Generic.List{MediaBrowser.Controller.Entities.BaseItem},MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Dto.IDtoService.GetItemByNameDto(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Dto.DtoOptions,System.Collections.Generic.List{MediaBrowser.Controller.Entities.BaseItem},Jellyfin.Data.Entities.User)">
             <summary>
             Gets the item by name dto.
             </summary>
@@ -666,7 +661,7 @@
         </member>
         <member name="F:MediaBrowser.Controller.Entities.AggregateFolder._virtualChildren">
             <summary>
-            The _virtual children
+            The _virtual children.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.AggregateFolder.VirtualChildren">
@@ -692,7 +687,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Audio.Audio">
             <summary>
-            Class Audio
+            Class Audio.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Audio.Audio.Artists">
@@ -721,7 +716,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Audio.MusicAlbum">
             <summary>
-            Class MusicAlbum
+            Class MusicAlbum.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Audio.MusicAlbum.AlbumArtists">
@@ -738,13 +733,13 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Audio.MusicArtist">
             <summary>
-            Class MusicArtist
+            Class MusicArtist.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Audio.MusicArtist.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
             <value>The containing folder path.</value>
         </member>
@@ -757,39 +752,39 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Audio.MusicArtist.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true or false indicating if changes were made.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Audio.MusicGenre">
             <summary>
-            Class MusicGenre
+            Class MusicGenre.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Audio.MusicGenre.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
             <value>The containing folder path.</value>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Audio.MusicGenre.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true or false indicating if changes were made.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.BaseItem">
             <summary>
-            Class BaseItem
+            Class BaseItem.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Entities.BaseItem.SupportedImageExtensions">
             <summary>
-            The supported image extensions
+            The supported image extensions.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Entities.BaseItem.TrailerFolderName">
             <summary>
-            The trailer folder name
+            The trailer folder name.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.BaseItem.Album">
@@ -844,7 +839,7 @@
         <member name="P:MediaBrowser.Controller.Entities.BaseItem.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.BaseItem.ServiceName">
@@ -855,7 +850,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Entities.BaseItem.ExternalId">
             <summary>
-            If this content came from an external service, the id of the content on that service
+            If this content came from an external service, the id of the content on that service.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.BaseItem.ExternalEtag">
@@ -872,7 +867,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Entities.BaseItem.PrimaryImagePath">
             <summary>
-            This is just a helper for convenience
+            This is just a helper for convenience.
             </summary>
             <value>The primary image path.</value>
         </member>
@@ -890,7 +885,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Entities.BaseItem.Logger">
             <summary>
-            The logger
+            The logger.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.ToString">
@@ -937,7 +932,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.FindParent``1">
             <summary>
-            Finds a parent of a given type
+            Finds a parent of a given type.
             </summary>
             <typeparam name="T"></typeparam>
             <returns>``0.</returns>
@@ -1033,7 +1028,7 @@
             </summary>
             <value>The parent index number.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetPlayAccess(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetPlayAccess(Jellyfin.Data.Entities.User)">
             <summary>
             Gets the play access.
             </summary>
@@ -1054,11 +1049,11 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.RefreshMetadata(MediaBrowser.Controller.Providers.MetadataRefreshOptions,System.Threading.CancellationToken)">
             <summary>
-            Overrides the base implementation to refresh metadata for local trailers
+            Overrides the base implementation to refresh metadata for local trailers.
             </summary>
             <param name="options">The options.</param>
             <param name="cancellationToken">The cancellation token.</param>
-            <returns>true if a provider reports we changed</returns>
+            <returns>true if a provider reports we changed.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.RefreshedOwnedItems(MediaBrowser.Controller.Providers.MetadataRefreshOptions,System.Collections.Generic.List{MediaBrowser.Model.IO.FileSystemMetadata},System.Threading.CancellationToken)">
             <summary>
@@ -1093,22 +1088,22 @@
             </summary>
             <returns>System.String.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.BaseItem.IsParentalAllowed(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.IsParentalAllowed(Jellyfin.Data.Entities.User)">
             <summary>
-            Determines if a given user has access to this item
+            Determines if a given user has access to this item.
             </summary>
             <param name="user">The user.</param>
             <returns><c>true</c> if [is parental allowed] [the specified user]; otherwise, <c>false</c>.</returns>
             <exception cref="T:System.ArgumentNullException">user</exception>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetBlockUnratedValue(MediaBrowser.Model.Users.UserPolicy)">
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetBlockUnratedValue(Jellyfin.Data.Entities.User)">
             <summary>
             Gets the block unrated value.
             </summary>
-            <param name="config">The configuration.</param>
+            <param name="user">The configuration.</param>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.BaseItem.IsVisible(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.IsVisible(Jellyfin.Data.Entities.User)">
             <summary>
             Determines if this folder should be visible to a given user.
             Default is just parental allowed. Can be overridden for more functionality.
@@ -1132,19 +1127,19 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.AddStudio(System.String)">
             <summary>
-            Adds a studio to the item
+            Adds a studio to the item.
             </summary>
             <param name="name">The name.</param>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.AddGenre(System.String)">
             <summary>
-            Adds a genre to the item
+            Adds a genre to the item.
             </summary>
             <param name="name">The name.</param>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.BaseItem.MarkPlayed(MediaBrowser.Controller.Entities.User,System.Nullable{System.DateTime},System.Boolean)">
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.MarkPlayed(Jellyfin.Data.Entities.User,System.Nullable{System.DateTime},System.Boolean)">
             <summary>
             Marks the played.
             </summary>
@@ -1154,7 +1149,7 @@
             <returns>Task.</returns>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.BaseItem.MarkUnplayed(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.MarkUnplayed(Jellyfin.Data.Entities.User)">
             <summary>
             Marks the unplayed.
             </summary>
@@ -1166,11 +1161,10 @@
             <summary>
             Do whatever refreshing is necessary when the filesystem pertaining to this item has changed.
             </summary>
-            <returns>Task.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.HasImage(MediaBrowser.Model.Entities.ImageType,System.Int32)">
             <summary>
-            Gets an image
+            Gets an image.
             </summary>
             <param name="type">The type.</param>
             <param name="imageIndex">Index of the image.</param>
@@ -1183,11 +1177,10 @@
             </summary>
             <param name="type">The type.</param>
             <param name="index">The index.</param>
-            <returns>Task.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.ValidateImages(MediaBrowser.Controller.Providers.IDirectoryService)">
             <summary>
-            Validates that images within the item are still on the file system
+            Validates that images within the item are still on the filesystem.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetImagePath(MediaBrowser.Model.Entities.ImageType,System.Int32)">
@@ -1209,6 +1202,15 @@
             <param name="imageIndex">Index of the image.</param>
             <returns>ItemImageInfo.</returns>
         </member>
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetImageIndex(MediaBrowser.Controller.Entities.ItemImageInfo)">
+            <summary>
+            Computes image index for given image or raises if no matching image found.
+            </summary>
+            <param name="image">Image to compute index for.</param>
+            <exception cref="T:System.ArgumentException">Image index cannot be computed as no matching image found.
+            </exception>
+            <returns>Image index.</returns>
+        </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.AddImages(MediaBrowser.Model.Entities.ImageType,System.Collections.Generic.List{MediaBrowser.Model.IO.FileSystemMetadata})">
             <summary>
             Adds the images.
@@ -1220,13 +1222,13 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetDeletePaths">
             <summary>
-            Gets the file system path to delete when the item is to be deleted
+            Gets the file system path to delete when the item is to be deleted.
             </summary>
             <returns></returns>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true if changes were made.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItem.UpdateRatingToItems(System.Collections.Generic.IList{MediaBrowser.Controller.Entities.BaseItem})">
@@ -1240,6 +1242,33 @@
             Gets or sets the remote trailers.
             </summary>
             <value>The remote trailers.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetExtras">
+            <summary>
+            Get all extras associated with this item, sorted by <see cref="P:MediaBrowser.Controller.Entities.BaseItem.SortName"/>.
+            </summary>
+            <returns>An enumerable containing the items.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetExtras(System.Collections.Generic.IReadOnlyCollection{MediaBrowser.Model.Entities.ExtraType})">
+            <summary>
+            Get all extras with specific types that are associated with this item.
+            </summary>
+            <param name="extraTypes">The types of extras to retrieve.</param>
+            <returns>An enumerable containing the extras.</returns>
+        </member>
+        <member name="F:MediaBrowser.Controller.Entities.BaseItem.DisplayExtraTypes">
+            <summary>
+            Extra types that should be counted and displayed as "Special Features" in the UI.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.Equals(MediaBrowser.Controller.Entities.BaseItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:MediaBrowser.Controller.Entities.BaseItem.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="M:MediaBrowser.Controller.Entities.BaseItemExtensions.GetImagePath(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Model.Entities.ImageType)">
             <summary>
@@ -1287,12 +1316,12 @@
         <member name="T:MediaBrowser.Controller.Entities.CollectionFolder">
             <summary>
             Specialized Folder class that points to a subset of the physical folders in the system.
-            It is created from the user-specific folders within the system root
+            It is created from the user-specific folders within the system root.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.CollectionFolder.DisplayPreferencesId">
             <summary>
-            Allow different display preferences for each collection folder
+            Allow different display preferences for each collection folder.
             </summary>
             <value>The display prefs id.</value>
         </member>
@@ -1317,7 +1346,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Extensions">
             <summary>
-            Class Extensions
+            Class Extensions.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Extensions.AddTrailerUrl(MediaBrowser.Controller.Entities.BaseItem,System.String)">
@@ -1327,7 +1356,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Folder">
             <summary>
-            Class Folder
+            Class Folder.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Folder.IsRoot">
@@ -1359,7 +1388,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Folder.RecursiveChildren">
             <summary>
-            thread-safe access to all recursive children of this folder - without regard to user
+            thread-safe access to all recursive children of this folder - without regard to user.
             </summary>
             <value>The recursive children.</value>
         </member>
@@ -1371,7 +1400,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Folder.ValidateChildren(System.IProgress{System.Double},System.Threading.CancellationToken,MediaBrowser.Controller.Providers.MetadataRefreshOptions,System.Boolean)">
             <summary>
-            Validates that the children of the folder still exist
+            Validates that the children of the folder still exist.
             </summary>
             <param name="progress">The progress.</param>
             <param name="cancellationToken">The cancellation token.</param>
@@ -1403,25 +1432,25 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Folder.GetNonCachedChildren(MediaBrowser.Controller.Providers.IDirectoryService)">
             <summary>
-            Get the children of this folder from the actual file system
+            Get the children of this folder from the actual file system.
             </summary>
             <returns>IEnumerable{BaseItem}.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Folder.GetCachedChildren">
             <summary>
-            Get our children from the repo - stubbed for now
+            Get our children from the repo - stubbed for now.
             </summary>
             <returns>IEnumerable{BaseItem}.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.Folder.AddChildren(MediaBrowser.Controller.Entities.User,System.Boolean,System.Collections.Generic.Dictionary{System.Guid,MediaBrowser.Controller.Entities.BaseItem},System.Boolean,MediaBrowser.Controller.Entities.InternalItemsQuery)">
+        <member name="M:MediaBrowser.Controller.Entities.Folder.AddChildren(Jellyfin.Data.Entities.User,System.Boolean,System.Collections.Generic.Dictionary{System.Guid,MediaBrowser.Controller.Entities.BaseItem},System.Boolean,MediaBrowser.Controller.Entities.InternalItemsQuery)">
             <summary>
             Adds the children to list.
             </summary>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.Folder.GetRecursiveChildren(MediaBrowser.Controller.Entities.User,System.Boolean)">
+        <member name="M:MediaBrowser.Controller.Entities.Folder.GetRecursiveChildren(Jellyfin.Data.Entities.User,System.Boolean)">
             <summary>
-            Gets allowed recursive children of an item
+            Gets allowed recursive children of an item.
             </summary>
             <param name="user">The user.</param>
             <param name="includeLinkedChildren">if set to <c>true</c> [include linked children].</param>
@@ -1457,7 +1486,7 @@
             </summary>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.Folder.MarkPlayed(MediaBrowser.Controller.Entities.User,System.Nullable{System.DateTime},System.Boolean)">
+        <member name="M:MediaBrowser.Controller.Entities.Folder.MarkPlayed(Jellyfin.Data.Entities.User,System.Nullable{System.DateTime},System.Boolean)">
             <summary>
             Marks the played.
             </summary>
@@ -1466,7 +1495,7 @@
             <param name="resetPosition">if set to <c>true</c> [reset position].</param>
             <returns>Task.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.Folder.MarkUnplayed(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Entities.Folder.MarkUnplayed(Jellyfin.Data.Entities.User)">
             <summary>
             Marks the unplayed.
             </summary>
@@ -1475,29 +1504,29 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Genre">
             <summary>
-            Class Genre
+            Class Genre.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Genre.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
             <value>The containing folder path.</value>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Genre.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true or false indicating if changes were made.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.ICollectionFolder">
             <summary>
-            This is just a marker interface to denote top level folders
+            This is just a marker interface to denote top level folders.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.IHasAspectRatio">
             <summary>
-            Interface IHasAspectRatio
+            Interface IHasAspectRatio.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.IHasAspectRatio.AspectRatio">
@@ -1508,7 +1537,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.IHasDisplayOrder">
             <summary>
-            Interface IHasDisplayOrder
+            Interface IHasDisplayOrder.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.IHasDisplayOrder.DisplayOrder">
@@ -1524,7 +1553,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.IHasScreenshots">
             <summary>
-            Interface IHasScreenshots
+            Interface IHasScreenshots.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.IHasSeries.SeriesName">
@@ -1582,7 +1611,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.IItemByName">
             <summary>
-            Marker interface
+            Marker interface.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.IMetadataContainer.RefreshAllMetadata(MediaBrowser.Controller.Providers.MetadataRefreshOptions,System.IProgress{System.Double},System.Threading.CancellationToken)">
@@ -1593,6 +1622,11 @@
             <param name="progress">The progress.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>Task.</returns>
+        </member>
+        <member name="P:MediaBrowser.Controller.Entities.InternalPeopleQuery.Limit">
+            <summary>
+            Gets or sets the maximum number of items the query should return.
+            </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.ISupportsBoxSetGrouping">
             <summary>
@@ -1625,14 +1659,20 @@
             </summary>
             <value>The date modified.</value>
         </member>
+        <member name="P:MediaBrowser.Controller.Entities.ItemImageInfo.BlurHash">
+            <summary>
+            Gets or sets the blurhash.
+            </summary>
+            <value>The blurhash.</value>
+        </member>
         <member name="P:MediaBrowser.Controller.Entities.LinkedChild.ItemId">
             <summary>
-            Serves as a cache
+            Serves as a cache.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Movies.BoxSet">
             <summary>
-            Class BoxSet
+            Class BoxSet.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Movies.BoxSet.LocalTrailerIds">
@@ -1649,7 +1689,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Movies.Movie">
             <summary>
-            Class Movie
+            Class Movie.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Movies.Movie.LocalTrailerIds">
@@ -1675,13 +1715,13 @@
         <member name="P:MediaBrowser.Controller.Entities.Person.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
             <value>The containing folder path.</value>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Person.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true or false indicating if changes were made.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.PersonInfo">
@@ -1721,29 +1761,29 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Studio">
             <summary>
-            Class Studio
+            Class Studio.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Studio.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
             <value>The containing folder path.</value>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Studio.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true or false indicating if changes were made.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Trailer">
             <summary>
-            Class Trailer
+            Class Trailer.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.TV.Episode">
             <summary>
-            Class Episode
+            Class Episode.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.TV.Episode.LocalTrailerIds">
@@ -1766,7 +1806,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Entities.TV.Episode.Series">
             <summary>
-            This Episode's Series Instance
+            This Episode's Series Instance.
             </summary>
             <value>The series.</value>
         </member>
@@ -1785,12 +1825,12 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.TV.Season">
             <summary>
-            Class Season
+            Class Season.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.TV.Season.Series">
             <summary>
-            This Episode's Series Instance
+            This Episode's Series Instance.
             </summary>
             <value>The series.</value>
         </member>
@@ -1800,7 +1840,7 @@
             </summary>
             <returns>System.String.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Entities.TV.Season.GetEpisodes(MediaBrowser.Controller.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
+        <member name="M:MediaBrowser.Controller.Entities.TV.Season.GetEpisodes(Jellyfin.Data.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
             <summary>
             Gets the episodes.
             </summary>
@@ -1813,13 +1853,13 @@
         </member>
         <member name="M:MediaBrowser.Controller.Entities.TV.Season.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true or false indicating if changes were made.
             </summary>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         </member>
         <member name="T:MediaBrowser.Controller.Entities.TV.Series">
             <summary>
-            Class Series
+            Class Series.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.TV.Series.LocalTrailerIds">
@@ -1830,7 +1870,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Entities.TV.Series.DisplayOrder">
             <summary>
-            airdate, dvd or absolute
+            airdate, dvd or absolute.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.TV.Series.Status">
@@ -1855,78 +1895,9 @@
             Filters the episodes by season.
             </summary>
         </member>
-        <member name="T:MediaBrowser.Controller.Entities.User">
-            <summary>
-            Class User
-            </summary>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.Password">
-            <summary>
-            Gets or sets the password.
-            </summary>
-            <value>The password.</value>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.Path">
-            <summary>
-            Gets or sets the path.
-            </summary>
-            <value>The path.</value>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.Name">
-            <summary>
-            Gets or sets the name.
-            </summary>
-            <value>The name.</value>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.ContainingFolderPath">
-            <summary>
-            Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
-            </summary>
-            <value>The containing folder path.</value>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.RootFolder">
-            <summary>
-            Gets the root folder.
-            </summary>
-            <value>The root folder.</value>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.LastLoginDate">
-            <summary>
-            Gets or sets the last login date.
-            </summary>
-            <value>The last login date.</value>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.LastActivityDate">
-            <summary>
-            Gets or sets the last activity date.
-            </summary>
-            <value>The last activity date.</value>
-        </member>
-        <member name="M:MediaBrowser.Controller.Entities.User.Rename(System.String)">
-            <summary>
-            Renames the user.
-            </summary>
-            <param name="newName">The new name.</param>
-            <returns>Task.</returns>
-            <exception cref="T:System.ArgumentNullException"></exception>
-        </member>
-        <member name="P:MediaBrowser.Controller.Entities.User.ConfigurationDirectoryPath">
-            <summary>
-            Gets the path to the user's configuration directory
-            </summary>
-            <value>The configuration directory path.</value>
-        </member>
-        <member name="M:MediaBrowser.Controller.Entities.User.GetConfigurationDirectoryPath(System.String)">
-            <summary>
-            Gets the configuration directory path.
-            </summary>
-            <param name="username">The username.</param>
-            <returns>System.String.</returns>
-        </member>
         <member name="T:MediaBrowser.Controller.Entities.UserItemData">
             <summary>
-            Class UserItemData
+            Class UserItemData.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.UserItemData.UserId">
@@ -1943,12 +1914,12 @@
         </member>
         <member name="F:MediaBrowser.Controller.Entities.UserItemData._rating">
             <summary>
-            The _rating
+            The _rating.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.UserItemData.Rating">
             <summary>
-            Gets or sets the users 0-10 rating
+            Gets or sets the users 0-10 rating.
             </summary>
             <value>The rating.</value>
             <exception cref="T:System.ArgumentOutOfRangeException">Rating;A 0 to 10 rating is required for UserItemData.</exception>
@@ -2025,7 +1996,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Video">
             <summary>
-            Class Video
+            Class Video.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Video.Timestamp">
@@ -2096,24 +2067,29 @@
         </member>
         <member name="T:MediaBrowser.Controller.Entities.Year">
             <summary>
-            Class Year
+            Class Year.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Entities.Year.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
             <value>The containing folder path.</value>
         </member>
         <member name="M:MediaBrowser.Controller.Entities.Year.BeforeMetadataRefresh(System.Boolean)">
             <summary>
-            This is called before any metadata refresh and returns true or false indicating if changes were made
+            This is called before any metadata refresh and returns true or false indicating if changes were made.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Extensions.ConfigurationExtensions">
             <summary>
             Configuration extensions for <c>MediaBrowser.Controller</c>.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Controller.Extensions.ConfigurationExtensions.HostWebClientKey">
+            <summary>
+            The key for a setting that indicates whether the application should host web client content.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Extensions.ConfigurationExtensions.FfmpegProbeSizeKey">
@@ -2123,26 +2099,51 @@
         </member>
         <member name="F:MediaBrowser.Controller.Extensions.ConfigurationExtensions.FfmpegAnalyzeDurationKey">
             <summary>
-            The key for the FFmpeg analyse duration option.
+            The key for the FFmpeg analyze duration option.
             </summary>
+        </member>
+        <member name="F:MediaBrowser.Controller.Extensions.ConfigurationExtensions.FfmpegPathKey">
+            <summary>
+            The key for the FFmpeg path option.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Controller.Extensions.ConfigurationExtensions.PlaylistsAllowDuplicatesKey">
+            <summary>
+            The key for a setting that indicates whether playlists should allow duplicate entries.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Controller.Extensions.ConfigurationExtensions.HostWebClient(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Gets a value indicating whether the application should host static web content from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            </summary>
+            <param name="configuration">The configuration to retrieve the value from.</param>
+            <returns>The parsed config value.</returns>
+            <exception cref="T:System.FormatException">The config value is not a valid bool string. See <see cref="M:System.Boolean.Parse(System.String)"/>.</exception>
         </member>
         <member name="M:MediaBrowser.Controller.Extensions.ConfigurationExtensions.GetFFmpegProbeSize(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Retrieves the FFmpeg probe size from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration" />.
+            Gets the FFmpeg probe size from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration" />.
             </summary>
-            <param name="configuration">This configuration.</param>
+            <param name="configuration">The configuration to read the setting from.</param>
             <returns>The FFmpeg probe size option.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Extensions.ConfigurationExtensions.GetFFmpegAnalyzeDuration(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Retrieves the FFmpeg analyse duration from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration" />.
+            Gets the FFmpeg analyze duration from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration" />.
             </summary>
-            <param name="configuration">This configuration.</param>
-            <returns>The FFmpeg analyse duration option.</returns>
+            <param name="configuration">The configuration to read the setting from.</param>
+            <returns>The FFmpeg analyze duration option.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.Extensions.ConfigurationExtensions.DoPlaylistsAllowDuplicates(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Gets a value indicating whether playlists should allow duplicate entries from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            </summary>
+            <param name="configuration">The configuration to read the setting from.</param>
+            <returns>True if playlists should allow duplicates, otherwise false.</returns>
         </member>
         <member name="T:MediaBrowser.Controller.Extensions.StringExtensions">
             <summary>
-            Class BaseExtensions
+            Class BaseExtensions.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.IO.FileData">
@@ -2166,7 +2167,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.IServerApplicationHost">
             <summary>
-            Interface IServerApplicationHost
+            Interface IServerApplicationHost.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetSystemInfo(System.Threading.CancellationToken)">
@@ -2187,11 +2188,10 @@
             </summary>
             <value>The HTTPS port.</value>
         </member>
-        <member name="P:MediaBrowser.Controller.IServerApplicationHost.EnableHttps">
+        <member name="P:MediaBrowser.Controller.IServerApplicationHost.ListenWithHttps">
             <summary>
-            Gets a value indicating whether [supports HTTPS].
+            Gets a value indicating whether the server should listen on an HTTPS port.
             </summary>
-            <value><c>true</c> if [supports HTTPS]; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationHost.HasUpdateAvailable">
             <summary>
@@ -2207,37 +2207,60 @@
         </member>
         <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalIpAddresses(System.Threading.CancellationToken)">
             <summary>
-            Gets the local ip address.
+            Gets all the local IP addresses of this API instance. Each address is validated by sending a 'ping' request
+            to the API that should exist at the address.
             </summary>
-            <value>The local ip address.</value>
+            <param name="cancellationToken">A cancellation token that can be used to cancel the task.</param>
+            <returns>A list containing all the local IP addresses of the server.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Threading.CancellationToken,System.Boolean)">
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Threading.CancellationToken)">
             <summary>
-            Gets the local API URL.
+            Gets a local (LAN) URL that can be used to access the API. The hostname used is the first valid configured
+            IP address that can be found via <see cref="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalIpAddresses(System.Threading.CancellationToken)"/>. HTTPS will be preferred when available.
             </summary>
-            <param name="cancellationToken">Token to cancel the request if needed.</param>
-            <param name="forceHttp">Whether to force usage of plain HTTP protocol.</param>
-            <value>The local API URL.</value>
+            <param name="cancellationToken">A cancellation token that can be used to cancel the task.</param>
+            <returns>The server URL.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.ReadOnlySpan{System.Char},System.Boolean)">
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLoopbackHttpApiUrl">
             <summary>
-            Gets the local API URL.
+            Gets a localhost URL that can be used to access the API using the loop-back IP address (127.0.0.1)
+            over HTTP (not HTTPS).
             </summary>
-            <param name="hostname">The hostname.</param>
-            <param name="forceHttp">Whether to force usage of plain HTTP protocol.</param>
-            <returns>The local API URL.</returns>
+            <returns>The API URL.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Net.IPAddress,System.Boolean)">
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.Net.IPAddress)">
             <summary>
-            Gets the local API URL.
+            Gets a local (LAN) URL that can be used to access the API. HTTPS will be preferred when available.
             </summary>
-            <param name="address">The IP address.</param>
-            <param name="forceHttp">Whether to force usage of plain HTTP protocol.</param>
-            <returns>The local API URL.</returns>
+            <param name="address">The IP address to use as the hostname in the URL.</param>
+            <returns>The API URL.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.GetLocalApiUrl(System.ReadOnlySpan{System.Char},System.String,System.Nullable{System.Int32})">
+            <summary>
+            Gets a local (LAN) URL that can be used to access the API.
+            Note: if passing non-null scheme or port it is up to the caller to ensure they form the correct pair.
+            </summary>
+            <param name="hostname">The hostname to use in the URL.</param>
+            <param name="scheme">
+            The scheme to use for the URL. If null, the scheme will be selected automatically,
+            preferring HTTPS, if available.
+            </param>
+            <param name="port">
+            The port to use for the URL. If null, the port will be selected automatically,
+            preferring the HTTPS port, if available.
+            </param>
+            <returns>The API URL.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.IServerApplicationHost.LaunchUrl(System.String)">
+            <summary>
+            Open a URL in an external browser window.
+            </summary>
+            <param name="url">The URL to open.</param>
+            <exception cref="T:System.NotSupportedException"><see cref="P:MediaBrowser.Controller.IServerApplicationHost.CanLaunchWebBrowser"/> is false.</exception>
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.RootFolderPath">
             <summary>
-            Gets the path to the base root media directory
+            Gets the path to the base root media directory.
             </summary>
             <value>The root folder path.</value>
         </member>
@@ -2249,13 +2272,13 @@
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.PeoplePath">
             <summary>
-            Gets the path to the People directory
+            Gets the path to the People directory.
             </summary>
             <value>The people path.</value>
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.GenrePath">
             <summary>
-            Gets the path to the Genre directory
+            Gets the path to the Genre directory.
             </summary>
             <value>The genre path.</value>
         </member>
@@ -2267,25 +2290,25 @@
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.StudioPath">
             <summary>
-            Gets the path to the Studio directory
+            Gets the path to the Studio directory.
             </summary>
             <value>The studio path.</value>
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.YearPath">
             <summary>
-            Gets the path to the Year directory
+            Gets the path to the Year directory.
             </summary>
             <value>The year path.</value>
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.GeneralPath">
             <summary>
-            Gets the path to the General IBN directory
+            Gets the path to the General IBN directory.
             </summary>
             <value>The general path.</value>
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.RatingsPath">
             <summary>
-            Gets the path to the Ratings IBN directory
+            Gets the path to the Ratings IBN directory.
             </summary>
             <value>The ratings path.</value>
         </member>
@@ -2297,7 +2320,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.IServerApplicationPaths.UserConfigurationDirectoryPath">
             <summary>
-            Gets the path to the user configuration directory
+            Gets the path to the user configuration directory.
             </summary>
             <value>The user configuration directory path.</value>
         </member>
@@ -2320,10 +2343,10 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.IIntroProvider">
             <summary>
-            Class BaseIntroProvider
+            Class BaseIntroProvider.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IIntroProvider.GetIntros(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.IIntroProvider.GetIntros(MediaBrowser.Controller.Entities.BaseItem,Jellyfin.Data.Entities.User)">
             <summary>
             Gets the intros.
             </summary>
@@ -2345,7 +2368,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.ILibraryManager">
             <summary>
-            Interface ILibraryManager
+            Interface ILibraryManager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryManager.ResolvePath(MediaBrowser.Model.IO.FileSystemMetadata,MediaBrowser.Controller.Entities.Folder)">
@@ -2358,7 +2381,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryManager.ResolvePaths(System.Collections.Generic.IEnumerable{MediaBrowser.Model.IO.FileSystemMetadata},MediaBrowser.Controller.Providers.IDirectoryService,MediaBrowser.Controller.Entities.Folder,MediaBrowser.Model.Configuration.LibraryOptions,System.String)">
             <summary>
-            Resolves a set of files into a list of BaseItem
+            Resolves a set of files into a list of BaseItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Library.ILibraryManager.RootFolder">
@@ -2369,7 +2392,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetPerson(System.String)">
             <summary>
-            Gets a Person
+            Gets a Person.
             </summary>
             <param name="name">The name.</param>
             <returns>Task{Person}.</returns>
@@ -2390,14 +2413,14 @@
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetStudio(System.String)">
             <summary>
-            Gets a Studio
+            Gets a Studio.
             </summary>
             <param name="name">The name.</param>
             <returns>Task{Studio}.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetGenre(System.String)">
             <summary>
-            Gets a Genre
+            Gets a Genre.
             </summary>
             <param name="name">The name.</param>
             <returns>Task{Genre}.</returns>
@@ -2411,7 +2434,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetYear(System.Int32)">
             <summary>
-            Gets a Year
+            Gets a Year.
             </summary>
             <param name="value">The value.</param>
             <returns>Task{Year}.</returns>
@@ -2428,7 +2451,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryManager.ValidateMediaLibrary(System.IProgress{System.Double},System.Threading.CancellationToken)">
             <summary>
-            Reloads the root media folder
+            Reloads the root media folder.
             </summary>
             <param name="progress">The progress.</param>
             <param name="cancellationToken">The cancellation token.</param>
@@ -2452,7 +2475,7 @@
             <param name="id">The id.</param>
             <returns>BaseItem.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetIntros(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetIntros(MediaBrowser.Controller.Entities.BaseItem,Jellyfin.Data.Entities.User)">
             <summary>
             Gets the intros.
             </summary>
@@ -2476,7 +2499,7 @@
             <param name="itemComparers">The item comparers.</param>
             <param name="postscanTasks">The postscan tasks.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.Sort(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},MediaBrowser.Controller.Entities.User,System.Collections.Generic.IEnumerable{System.String},MediaBrowser.Model.Entities.SortOrder)">
+        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.Sort(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},Jellyfin.Data.Entities.User,System.Collections.Generic.IEnumerable{System.String},MediaBrowser.Model.Entities.SortOrder)">
             <summary>
             Sorts the specified items.
             </summary>
@@ -2585,7 +2608,7 @@
             Deletes the item.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetNamedView(MediaBrowser.Controller.Entities.User,System.String,System.Guid,System.String,System.String)">
+        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetNamedView(Jellyfin.Data.Entities.User,System.String,System.Guid,System.String,System.String)">
             <summary>
             Gets the named view.
             </summary>
@@ -2595,7 +2618,7 @@
             <param name="viewType">Type of the view.</param>
             <param name="sortName">Name of the sort.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetNamedView(MediaBrowser.Controller.Entities.User,System.String,System.String,System.String)">
+        <member name="M:MediaBrowser.Controller.Library.ILibraryManager.GetNamedView(Jellyfin.Data.Entities.User,System.String,System.String,System.String)">
             <summary>
             Gets the named view.
             </summary>
@@ -2828,7 +2851,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.ILibraryPostScanTask">
             <summary>
-            An interface for tasks that run after the media library scan
+            An interface for tasks that run after the media library scan.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Library.ILibraryPostScanTask.Run(System.IProgress{System.Double},System.Threading.CancellationToken)">
@@ -2880,12 +2903,12 @@
             <param name="query">The query.</param>
             <returns>IEnumerable&lt;MediaAttachment&gt;.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IMediaSourceManager.GetPlaybackMediaSources(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.User,System.Boolean,System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:MediaBrowser.Controller.Library.IMediaSourceManager.GetPlaybackMediaSources(MediaBrowser.Controller.Entities.BaseItem,Jellyfin.Data.Entities.User,System.Boolean,System.Boolean,System.Threading.CancellationToken)">
             <summary>
             Gets the playack media sources.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IMediaSourceManager.GetStaticMediaSources(MediaBrowser.Controller.Entities.BaseItem,System.Boolean,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.IMediaSourceManager.GetStaticMediaSources(MediaBrowser.Controller.Entities.BaseItem,System.Boolean,Jellyfin.Data.Entities.User)">
             <summary>
             Gets the static media sources.
             </summary>
@@ -2940,7 +2963,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.IMetadataSaver">
             <summary>
-            Interface IMetadataSaver
+            Interface IMetadataSaver.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Library.IMetadataSaver.Name">
@@ -2965,17 +2988,17 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>Task.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IMusicManager.GetInstantMixFromItem(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
+        <member name="M:MediaBrowser.Controller.Library.IMusicManager.GetInstantMixFromItem(MediaBrowser.Controller.Entities.BaseItem,Jellyfin.Data.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
             <summary>
             Gets the instant mix from song.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IMusicManager.GetInstantMixFromArtist(MediaBrowser.Controller.Entities.Audio.MusicArtist,MediaBrowser.Controller.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
+        <member name="M:MediaBrowser.Controller.Library.IMusicManager.GetInstantMixFromArtist(MediaBrowser.Controller.Entities.Audio.MusicArtist,Jellyfin.Data.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
             <summary>
             Gets the instant mix from artist.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IMusicManager.GetInstantMixFromGenres(System.Collections.Generic.IEnumerable{System.String},MediaBrowser.Controller.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
+        <member name="M:MediaBrowser.Controller.Library.IMusicManager.GetInstantMixFromGenres(System.Collections.Generic.IEnumerable{System.String},Jellyfin.Data.Entities.User,MediaBrowser.Controller.Dto.DtoOptions)">
             <summary>
             Gets the instant mix from genre.
             </summary>
@@ -2994,7 +3017,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.ISearchEngine">
             <summary>
-            Interface ILibrarySearchEngine
+            Interface ILibrarySearchEngine.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Library.ISearchEngine.GetSearchHints(MediaBrowser.Model.Search.SearchQuery)">
@@ -3006,7 +3029,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.ItemChangeEventArgs">
             <summary>
-            Class ItemChangeEventArgs
+            Class ItemChangeEventArgs.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Library.ItemChangeEventArgs.Item">
@@ -3029,7 +3052,7 @@
         </member>
         <member name="F:MediaBrowser.Controller.Library.ItemResolveArgs._appPaths">
             <summary>
-            The _app paths
+            The _app paths.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Library.ItemResolveArgs.#ctor(MediaBrowser.Controller.IServerApplicationPaths,MediaBrowser.Controller.Providers.IDirectoryService)">
@@ -3163,21 +3186,21 @@
             <param name="reason">The reason.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserDataManager.GetUserDataDto(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.IUserDataManager.GetUserDataDto(MediaBrowser.Controller.Entities.BaseItem,Jellyfin.Data.Entities.User)">
             <summary>
             Gets the user data dto.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Library.IUserDataManager.GetAllUserData(System.Guid)">
             <summary>
-            Get all user data for the given user
+            Get all user data for the given user.
             </summary>
             <param name="userId"></param>
             <returns></returns>
         </member>
         <member name="M:MediaBrowser.Controller.Library.IUserDataManager.SaveAllUserData(System.Guid,MediaBrowser.Controller.Entities.UserItemData[],System.Threading.CancellationToken)">
             <summary>
-            Save the all provided user data for the given user
+            Save the all provided user data for the given user.
             </summary>
             <param name="userId"></param>
             <param name="userData"></param>
@@ -3186,12 +3209,37 @@
         </member>
         <member name="M:MediaBrowser.Controller.Library.IUserDataManager.UpdatePlayState(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.UserItemData,System.Nullable{System.Int64})">
             <summary>
-            Updates playstate for an item and returns true or false indicating if it was played to completion
+            Updates playstate for an item and returns true or false indicating if it was played to completion.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Library.IUserManager">
             <summary>
-            Interface IUserManager
+            Interface IUserManager.
+            </summary>
+        </member>
+        <member name="E:MediaBrowser.Controller.Library.IUserManager.OnUserUpdated">
+            <summary>
+            Occurs when a user is updated.
+            </summary>
+        </member>
+        <member name="E:MediaBrowser.Controller.Library.IUserManager.OnUserCreated">
+            <summary>
+            Occurs when a user is created.
+            </summary>
+        </member>
+        <member name="E:MediaBrowser.Controller.Library.IUserManager.OnUserDeleted">
+            <summary>
+            Occurs when a user is deleted.
+            </summary>
+        </member>
+        <member name="E:MediaBrowser.Controller.Library.IUserManager.OnUserPasswordChanged">
+            <summary>
+            Occurs when a user's password is changed.
+            </summary>
+        </member>
+        <member name="E:MediaBrowser.Controller.Library.IUserManager.OnUserLockedOut">
+            <summary>
+            Occurs when a user is locked out.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Library.IUserManager.Users">
@@ -3206,14 +3254,9 @@
             </summary>
             <value>The users ids.</value>
         </member>
-        <member name="E:MediaBrowser.Controller.Library.IUserManager.UserUpdated">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.Initialize">
             <summary>
-            Occurs when [user updated].
-            </summary>
-        </member>
-        <member name="E:MediaBrowser.Controller.Library.IUserManager.UserDeleted">
-            <summary>
-            Occurs when [user deleted].
+            Initializes the user manager and ensures that a user exists.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Library.IUserManager.GetUserById(System.Guid)">
@@ -3231,14 +3274,7 @@
             <param name="name">The name.</param>
             <returns>User.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.RefreshUsersMetadata(System.Threading.CancellationToken)">
-            <summary>
-            Refreshes metadata for each user
-            </summary>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>Task.</returns>
-        </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.RenameUser(MediaBrowser.Controller.Entities.User,System.String)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.RenameUser(Jellyfin.Data.Entities.User,System.String)">
             <summary>
             Renames the user.
             </summary>
@@ -3248,7 +3284,7 @@
             <exception cref="T:System.ArgumentNullException">user</exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.UpdateUser(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.UpdateUser(Jellyfin.Data.Entities.User)">
             <summary>
             Updates the user.
             </summary>
@@ -3256,54 +3292,55 @@
             <exception cref="T:System.ArgumentNullException">user</exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.UpdateUserAsync(Jellyfin.Data.Entities.User)">
+            <summary>
+            Updates the user.
+            </summary>
+            <param name="user">The user.</param>
+            <exception cref="T:System.ArgumentNullException">If user is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">If the provided user doesn't exist.</exception>
+            <returns>A task representing the update of the user.</returns>
+        </member>
         <member name="M:MediaBrowser.Controller.Library.IUserManager.CreateUser(System.String)">
             <summary>
-            Creates the user.
+            Creates a user with the specified name.
             </summary>
-            <param name="name">The name.</param>
-            <returns>User.</returns>
+            <param name="name">The name of the new user.</param>
+            <returns>The created user.</returns>
             <exception cref="T:System.ArgumentNullException">name</exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.DeleteUser(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.DeleteUser(System.Guid)">
             <summary>
-            Deletes the user.
+            Deletes the specified user.
             </summary>
-            <param name="user">The user.</param>
-            <returns>Task.</returns>
+            <param name="userId">The id of the user to be deleted.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.ResetPassword(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.ResetPassword(Jellyfin.Data.Entities.User)">
             <summary>
             Resets the password.
             </summary>
             <param name="user">The user.</param>
             <returns>Task.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.GetOfflineUserDto(MediaBrowser.Controller.Entities.User)">
-            <summary>
-            Gets the offline user dto.
-            </summary>
-            <param name="user">The user.</param>
-            <returns>UserDto.</returns>
-        </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.ResetEasyPassword(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.ResetEasyPassword(Jellyfin.Data.Entities.User)">
             <summary>
             Resets the easy password.
             </summary>
             <param name="user">The user.</param>
             <returns>Task.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.ChangePassword(MediaBrowser.Controller.Entities.User,System.String)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.ChangePassword(Jellyfin.Data.Entities.User,System.String)">
             <summary>
             Changes the password.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.ChangeEasyPassword(MediaBrowser.Controller.Entities.User,System.String,System.String)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.ChangeEasyPassword(Jellyfin.Data.Entities.User,System.String,System.String)">
             <summary>
             Changes the easy password.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.GetUserDto(MediaBrowser.Controller.Entities.User,System.String)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.GetUserDto(Jellyfin.Data.Entities.User,System.String)">
             <summary>
             Gets the user dto.
             </summary>
@@ -3331,45 +3368,33 @@
             <param name="pin">The pin.</param>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.GetUserPolicy(MediaBrowser.Controller.Entities.User)">
-            <summary>
-            Gets the user policy.
-            </summary>
-            <param name="user">The user.</param>
-            <returns>UserPolicy.</returns>
-        </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.GetUserConfiguration(MediaBrowser.Controller.Entities.User)">
-            <summary>
-            Gets the user configuration.
-            </summary>
-            <param name="user">The user.</param>
-            <returns>UserConfiguration.</returns>
-        </member>
         <member name="M:MediaBrowser.Controller.Library.IUserManager.UpdateConfiguration(System.Guid,MediaBrowser.Model.Configuration.UserConfiguration)">
             <summary>
-            Updates the configuration.
+            This method updates the user's configuration.
+            This is only included as a stopgap until the new API, using this internally is not recommended.
+            Instead, modify the user object directly, then call <see cref="M:MediaBrowser.Controller.Library.IUserManager.UpdateUser(Jellyfin.Data.Entities.User)"/>.
             </summary>
-            <param name="userId">The user identifier.</param>
-            <param name="newConfiguration">The new configuration.</param>
-            <returns>Task.</returns>
+            <param name="userId">The user's Id.</param>
+            <param name="config">The request containing the new user configuration.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.UpdateUserPolicy(System.Guid,MediaBrowser.Model.Users.UserPolicy)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.UpdatePolicy(System.Guid,MediaBrowser.Model.Users.UserPolicy)">
             <summary>
-            Updates the user policy.
+            This method updates the user's policy.
+            This is only included as a stopgap until the new API, using this internally is not recommended.
+            Instead, modify the user object directly, then call <see cref="M:MediaBrowser.Controller.Library.IUserManager.UpdateUser(Jellyfin.Data.Entities.User)"/>.
             </summary>
-            <param name="userId">The user identifier.</param>
-            <param name="userPolicy">The user policy.</param>
+            <param name="userId">The user's Id.</param>
+            <param name="policy">The request containing the new user policy.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.IUserManager.MakeValidUsername(System.String)">
+        <member name="M:MediaBrowser.Controller.Library.IUserManager.ClearProfileImage(Jellyfin.Data.Entities.User)">
             <summary>
-            Makes the valid username.
+            Clears the user's profile image.
             </summary>
-            <param name="username">The username.</param>
-            <returns>System.String.</returns>
+            <param name="user">The user.</param>
         </member>
         <member name="T:MediaBrowser.Controller.Library.PlaybackProgressEventArgs">
             <summary>
-            Holds information about a playback progress event
+            Holds information about a playback progress event.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Library.PlaybackStopEventArgs.PlayedToCompletion">
@@ -3380,25 +3405,25 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.Profiler">
             <summary>
-            Class Profiler
+            Class Profiler.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Library.Profiler._name">
             <summary>
-            The name
+            The name.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Library.Profiler._stopwatch">
             <summary>
-            The stopwatch
+            The stopwatch.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Library.Profiler._logger">
             <summary>
-            The _logger
+            The _logger.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Library.Profiler.#ctor(System.String,Microsoft.Extensions.Logging.ILogger)">
+        <member name="M:MediaBrowser.Controller.Library.Profiler.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{MediaBrowser.Controller.Library.Profiler})">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Controller.Library.Profiler" /> class.
             </summary>
@@ -3418,7 +3443,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.SearchHintInfo">
             <summary>
-            Class SearchHintInfo
+            Class SearchHintInfo.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Library.SearchHintInfo.Item">
@@ -3435,7 +3460,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.TVUtils">
             <summary>
-            Class TVUtils
+            Class TVUtils.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Library.TVUtils.GetAirDays(System.String)">
@@ -3447,7 +3472,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Library.UserDataSaveEventArgs">
             <summary>
-            Class UserDataSaveEventArgs
+            Class UserDataSaveEventArgs.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Library.UserDataSaveEventArgs.UserId">
@@ -3476,7 +3501,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.LiveTv.ChannelInfo">
             <summary>
-            Class ChannelInfo
+            Class ChannelInfo.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ChannelInfo.Name">
@@ -3511,13 +3536,13 @@
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ChannelInfo.ImagePath">
             <summary>
-            Supply the image path if it can be accessed directly from the file system
+            Supply the image path if it can be accessed directly from the file system.
             </summary>
             <value>The image path.</value>
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ChannelInfo.ImageUrl">
             <summary>
-            Supply the image url if it can be downloaded
+            Supply the image url if it can be downloaded.
             </summary>
             <value>The image URL.</value>
         </member>
@@ -3535,7 +3560,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.LiveTv.ILiveTvManager">
             <summary>
-            Manages all live tv services installed on the server
+            Manages all live tv services installed on the server.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ILiveTvManager.Services">
@@ -3629,7 +3654,7 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>Task{StreamResponseInfo}.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.LiveTv.ILiveTvManager.GetProgram(System.String,System.Threading.CancellationToken,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.LiveTv.ILiveTvManager.GetProgram(System.String,System.Threading.CancellationToken,Jellyfin.Data.Entities.User)">
             <summary>
             Gets the program.
             </summary>
@@ -3735,7 +3760,7 @@
             Gets the channel media sources.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.LiveTv.ILiveTvManager.AddInfoToProgramDto(System.Collections.Generic.IReadOnlyCollection{System.ValueTuple{MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Model.Dto.BaseItemDto}},MediaBrowser.Model.Querying.ItemFields[],MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.LiveTv.ILiveTvManager.AddInfoToProgramDto(System.Collections.Generic.IReadOnlyCollection{System.ValueTuple{MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Model.Dto.BaseItemDto}},MediaBrowser.Model.Querying.ItemFields[],Jellyfin.Data.Entities.User)">
             <summary>
             Adds the information to program dto.
             </summary>
@@ -3768,7 +3793,7 @@
             <param name="location">The location.</param>
             <returns>Task&lt;List&lt;NameIdPair&gt;&gt;.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.LiveTv.ILiveTvManager.AddChannelInfo(System.Collections.Generic.IReadOnlyCollection{System.ValueTuple{MediaBrowser.Model.Dto.BaseItemDto,MediaBrowser.Controller.LiveTv.LiveTvChannel}},MediaBrowser.Controller.Dto.DtoOptions,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.LiveTv.ILiveTvManager.AddChannelInfo(System.Collections.Generic.IReadOnlyCollection{System.ValueTuple{MediaBrowser.Model.Dto.BaseItemDto,MediaBrowser.Controller.LiveTv.LiveTvChannel}},MediaBrowser.Controller.Dto.DtoOptions,Jellyfin.Data.Entities.User)">
             <summary>
             Adds the channel information.
             </summary>
@@ -4093,7 +4118,7 @@
         <member name="P:MediaBrowser.Controller.LiveTv.LiveTvProgram.ContainingFolderPath">
             <summary>
             Returns the folder containing the item.
-            If the item is a folder, it returns the folder itself
+            If the item is a folder, it returns the folder itself.
             </summary>
             <value>The containing folder path.</value>
         </member>
@@ -4206,7 +4231,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ProgramInfo.Name">
             <summary>
-            Name of the program
+            Name of the program.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ProgramInfo.OfficialRating">
@@ -4280,13 +4305,13 @@
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ProgramInfo.ImagePath">
             <summary>
-            Supply the image path if it can be accessed directly from the file system
+            Supply the image path if it can be accessed directly from the file system.
             </summary>
             <value>The image path.</value>
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.ProgramInfo.ImageUrl">
             <summary>
-            Supply the image url if it can be downloaded
+            Supply the image url if it can be downloaded.
             </summary>
             <value>The image URL.</value>
         </member>
@@ -4544,13 +4569,13 @@
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.RecordingInfo.ImagePath">
             <summary>
-            Supply the image path if it can be accessed directly from the file system
+            Supply the image path if it can be accessed directly from the file system.
             </summary>
             <value>The image path.</value>
         </member>
         <member name="P:MediaBrowser.Controller.LiveTv.RecordingInfo.ImageUrl">
             <summary>
-            Supply the image url if it can be downloaded
+            Supply the image url if it can be downloaded.
             </summary>
             <value>The image URL.</value>
         </member>
@@ -4760,7 +4785,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetVideoEncoder(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions)">
             <summary>
-            Gets the name of the output video codec
+            Gets the name of the output video codec.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetUserAgentParam(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo)">
@@ -4772,7 +4797,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.InferAudioCodec(System.String)">
             <summary>
-            Infers the audio codec based on the url
+            Infers the audio codec based on the url.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.InferVideoCodec(System.String)">
@@ -4810,12 +4835,12 @@
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetVideoQualityParam(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,System.String,MediaBrowser.Model.Configuration.EncodingOptions,System.String)">
             <summary>
-            Gets the video bitrate to specify on the command line
+            Gets the video bitrate to specify on the command line.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetNumAudioChannelsParam(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Entities.MediaStream,System.String)">
             <summary>
-            Gets the number of audio channels to specify on the command line
+            Gets the number of audio channels to specify on the command line.
             </summary>
             <param name="state">The state.</param>
             <param name="audioStream">The audio stream.</param>
@@ -4845,7 +4870,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetMediaStream(System.Collections.Generic.IEnumerable{MediaBrowser.Model.Entities.MediaStream},System.Nullable{System.Int32},MediaBrowser.Model.Entities.MediaStreamType,System.Boolean)">
             <summary>
-            Determines which stream will be used for playback
+            Determines which stream will be used for playback.
             </summary>
             <param name="allStream">All stream.</param>
             <param name="desiredIndex">Index of the desired.</param>
@@ -4860,7 +4885,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetOutputSizeParam(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions,System.String)">
             <summary>
-            If we're going to put a fixed size on the command line, this will calculate it
+            If we're going to put a fixed size on the command line, this will calculate it.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetNumberOfThreads(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions,System.String)">
@@ -4870,17 +4895,25 @@
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetHardwareAcceleratedVideoDecoder(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions)">
             <summary>
-            Gets the name of the output video codec
+            Gets the ffmpeg option string for the hardware accelerated video decoder.
+            </summary>
+            <param name="state">The encoding job info.</param>
+            <param name="encodingOptions">The encoding options.</param>
+            <returns>The option string or null if none available.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.MediaEncoding.EncodingHelper.GetHwaccelType(MediaBrowser.Controller.MediaEncoding.EncodingJobInfo,MediaBrowser.Model.Configuration.EncodingOptions,System.String)">
+            <summary>
+            Gets a hwaccel type to use as a hardware decoder(dxva/vaapi) depending on the system
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.EncodingJobInfo.TargetVideoLevel">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.EncodingJobInfo.TargetVideoBitDepth">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.EncodingJobInfo.TargetRefFrames">
@@ -4891,37 +4924,37 @@
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.EncodingJobInfo.TargetFramerate">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.EncodingJobInfo.TargetPacketLength">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.EncodingJobInfo.TargetVideoProfile">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.MediaEncoding.TranscodingJobType">
             <summary>
-            Enum TranscodingJobType
+            Enum TranscodingJobType.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.MediaEncoding.TranscodingJobType.Progressive">
             <summary>
-            The progressive
+            The progressive.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.MediaEncoding.TranscodingJobType.Hls">
             <summary>
-            The HLS
+            The HLS.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.MediaEncoding.TranscodingJobType.Dash">
             <summary>
-            The dash
+            The dash.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.EncodingJobOptions.HasFixedResolution">
@@ -5038,14 +5071,14 @@
             </summary>
             <value>The index of the video stream.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.MediaEncoding.IEncodingManager.RefreshChapterImages(MediaBrowser.Controller.Entities.Video,MediaBrowser.Controller.Providers.IDirectoryService,System.Collections.Generic.List{MediaBrowser.Model.Entities.ChapterInfo},System.Boolean,System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:MediaBrowser.Controller.MediaEncoding.IEncodingManager.RefreshChapterImages(MediaBrowser.Controller.Entities.Video,MediaBrowser.Controller.Providers.IDirectoryService,System.Collections.Generic.IReadOnlyList{MediaBrowser.Model.Entities.ChapterInfo},System.Boolean,System.Boolean,System.Threading.CancellationToken)">
             <summary>
             Refreshes the chapter images.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.MediaEncoding.IMediaEncoder">
             <summary>
-            Interface IMediaEncoder
+            Interface IMediaEncoder.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.MediaEncoding.IMediaEncoder.EncoderLocation">
@@ -5059,11 +5092,25 @@
             </summary>
             <value>The encoder path.</value>
         </member>
+        <member name="M:MediaBrowser.Controller.MediaEncoding.IMediaEncoder.SupportsEncoder(System.String)">
+            <summary>
+            Whether given encoder codec is supported.
+            </summary>
+            <param name="encoder">The encoder.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.IMediaEncoder.SupportsDecoder(System.String)">
             <summary>
-            Supportses the decoder.
+            Whether given decoder codec is supported.
             </summary>
             <param name="decoder">The decoder.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.MediaEncoding.IMediaEncoder.SupportsHwaccel(System.String)">
+            <summary>
+            Whether given hardware acceleration type is supported.
+            </summary>
+            <param name="hwaccel">The hwaccel.</param>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.IMediaEncoder.ExtractAudioImage(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
@@ -5132,7 +5179,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.MediaEncoding.MediaEncoderHelpers">
             <summary>
-            Class MediaEncoderHelpers
+            Class MediaEncoderHelpers.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.MediaEncoding.MediaEncoderHelpers.GetInputArgument(MediaBrowser.Model.IO.IFileSystem,System.String,MediaBrowser.Model.IO.IIsoMount,System.Collections.Generic.IReadOnlyCollection{System.String})">
@@ -5167,9 +5214,9 @@
             <summary>
             The request filter is executed before the service.
             </summary>
-            <param name="request">The http request wrapper</param>
-            <param name="response">The http response wrapper</param>
-            <param name="requestDto">The request DTO</param>
+            <param name="request">The http request wrapper.</param>
+            <param name="response">The http response wrapper.</param>
+            <param name="requestDto">The request DTO.</param>
         </member>
         <member name="P:MediaBrowser.Controller.Net.AuthenticatedAttribute.Priority">
             <summary>
@@ -5181,7 +5228,7 @@
         </member>
         <member name="P:MediaBrowser.Controller.Net.AuthorizationInfo.UserId">
             <summary>
-            Gets or sets the user identifier.
+            Gets the user identifier.
             </summary>
             <value>The user identifier.</value>
         </member>
@@ -5217,14 +5264,14 @@
         </member>
         <member name="T:MediaBrowser.Controller.Net.BasePeriodicWebSocketListener`2">
             <summary>
-            Starts sending data over a web socket periodically when a message is received, and then stops when a corresponding stop message is received
+            Starts sending data over a web socket periodically when a message is received, and then stops when a corresponding stop message is received.
             </summary>
             <typeparam name="TReturnDataType">The type of the T return data type.</typeparam>
             <typeparam name="TStateType">The type of the T state type.</typeparam>
         </member>
         <member name="F:MediaBrowser.Controller.Net.BasePeriodicWebSocketListener`2._activeConnections">
             <summary>
-            The _active connections
+            The _active connections.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Net.BasePeriodicWebSocketListener`2.Name">
@@ -5241,7 +5288,7 @@
         </member>
         <member name="F:MediaBrowser.Controller.Net.BasePeriodicWebSocketListener`2.Logger">
             <summary>
-            The logger
+            The logger.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Net.BasePeriodicWebSocketListener`2.ProcessMessageAsync(MediaBrowser.Controller.Net.WebSocketMessageInfo)">
@@ -5253,13 +5300,13 @@
         </member>
         <member name="M:MediaBrowser.Controller.Net.BasePeriodicWebSocketListener`2.Start(MediaBrowser.Controller.Net.WebSocketMessageInfo)">
             <summary>
-            Starts sending messages over a web socket
+            Starts sending messages over a web socket.
             </summary>
             <param name="message">The message.</param>
         </member>
         <member name="M:MediaBrowser.Controller.Net.BasePeriodicWebSocketListener`2.Stop(MediaBrowser.Controller.Net.WebSocketMessageInfo)">
             <summary>
-            Stops sending messages over a web socket
+            Stops sending messages over a web socket.
             </summary>
             <param name="message">The message.</param>
         </member>
@@ -5280,6 +5327,11 @@
             Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             </summary>
         </member>
+        <member name="T:MediaBrowser.Controller.Net.IAuthorizationContext">
+            <summary>
+            IAuthorization context.
+            </summary>
+        </member>
         <member name="M:MediaBrowser.Controller.Net.IAuthorizationContext.GetAuthorizationInfo(System.Object)">
             <summary>
             Gets the authorization information.
@@ -5293,6 +5345,20 @@
             </summary>
             <param name="requestContext">The request context.</param>
             <returns>AuthorizationInfo.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.Net.IAuthorizationContext.GetAuthorizationInfo(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Gets the authorization information.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <returns>AuthorizationInfo.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.Net.IAuthService.Authenticate(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Authenticate request.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Authorization information. Null if unauthenticated.</returns>
         </member>
         <member name="T:MediaBrowser.Controller.Net.IHasResultFactory">
             <summary>
@@ -5308,7 +5374,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Net.IHttpResultFactory">
             <summary>
-            Interface IHttpResultFactory
+            Interface IHttpResultFactory.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Net.IHttpResultFactory.GetResult(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
@@ -5361,7 +5427,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Net.IHttpServer">
             <summary>
-            Interface IHttpServer
+            Interface IHttpServer.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Net.IHttpServer.UrlPrefixes">
@@ -5370,42 +5436,33 @@
             </summary>
             <value>The URL prefix.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.Net.IHttpServer.Stop">
-            <summary>
-            Stops this instance.
-            </summary>
-        </member>
         <member name="E:MediaBrowser.Controller.Net.IHttpServer.WebSocketConnected">
             <summary>
             Occurs when [web socket connected].
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Net.IHttpServer.Init(System.Collections.Generic.IEnumerable{MediaBrowser.Model.Services.IService},System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Net.IWebSocketListener},System.Collections.Generic.IEnumerable{System.String})">
+        <member name="M:MediaBrowser.Controller.Net.IHttpServer.Init(System.Collections.Generic.IEnumerable{System.Type},System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Net.IWebSocketListener},System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Inits this instance.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Net.IHttpServer.GlobalResponse">
             <summary>
-            If set, all requests will respond with this message
+            If set, all requests will respond with this message.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Controller.Net.IHttpServer.ProcessWebSocketRequest(Microsoft.AspNetCore.Http.HttpContext)">
+        <member name="M:MediaBrowser.Controller.Net.IHttpServer.RequestHandler(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
-            Sends the http context to the socket listener
+            The HTTP request handler.
             </summary>
-            <param name="ctx"></param>
+            <param name="context"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Net.IHttpServer.RequestHandler(MediaBrowser.Model.Services.IHttpRequest,System.String,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:MediaBrowser.Controller.Net.IHttpServer.GetDefaultCorsHeaders(MediaBrowser.Model.Services.IRequest)">
             <summary>
-            The HTTP request handler
+            Get the default CORS headers.
             </summary>
-            <param name="httpReq"></param>
-            <param name="urlString"></param>
-            <param name="host"></param>
-            <param name="localPath"></param>
-            <param name="cancellationToken"></param>
+            <param name="req"></param>
             <returns></returns>
         </member>
         <member name="E:MediaBrowser.Controller.Net.IWebSocketConnection.Closed">
@@ -5413,23 +5470,17 @@
             Occurs when [closed].
             </summary>
         </member>
-        <member name="P:MediaBrowser.Controller.Net.IWebSocketConnection.Id">
-            <summary>
-            Gets the id.
-            </summary>
-            <value>The id.</value>
-        </member>
         <member name="P:MediaBrowser.Controller.Net.IWebSocketConnection.LastActivityDate">
             <summary>
             Gets the last activity date.
             </summary>
             <value>The last activity date.</value>
         </member>
-        <member name="P:MediaBrowser.Controller.Net.IWebSocketConnection.Url">
+        <member name="P:MediaBrowser.Controller.Net.IWebSocketConnection.LastKeepAliveDate">
             <summary>
-            Gets or sets the URL.
+            Gets or sets the date of last Keeplive received.
             </summary>
-            <value>The URL.</value>
+            <value>The date of last Keeplive received.</value>
         </member>
         <member name="P:MediaBrowser.Controller.Net.IWebSocketConnection.QueryString">
             <summary>
@@ -5465,26 +5516,9 @@
             <returns>Task.</returns>
             <exception cref="T:System.ArgumentNullException">message</exception>
         </member>
-        <member name="M:MediaBrowser.Controller.Net.IWebSocketConnection.SendAsync(System.Byte[],System.Threading.CancellationToken)">
-            <summary>
-            Sends a message asynchronously.
-            </summary>
-            <param name="buffer">The buffer.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>Task.</returns>
-        </member>
-        <member name="M:MediaBrowser.Controller.Net.IWebSocketConnection.SendAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Sends a message asynchronously.
-            </summary>
-            <param name="text">The text.</param>
-            <param name="cancellationToken">The cancellation token.</param>
-            <returns>Task.</returns>
-            <exception cref="T:System.ArgumentNullException">buffer</exception>
-        </member>
         <member name="T:MediaBrowser.Controller.Net.IWebSocketListener">
              <summary>
-            This is an interface for listening to messages coming through a web socket connection
+            This is an interface for listening to messages coming through a web socket connection.
              </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Net.IWebSocketListener.ProcessMessageAsync(MediaBrowser.Controller.Net.WebSocketMessageInfo)">
@@ -5494,9 +5528,32 @@
             <param name="message">The message.</param>
             <returns>Task.</returns>
         </member>
+        <member name="T:MediaBrowser.Controller.Net.SecurityException">
+            <summary>
+            The exception that is thrown when a user is authenticated, but not authorized to access a requested resource.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Controller.Net.SecurityException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Controller.Net.SecurityException"/> class.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Controller.Net.SecurityException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Controller.Net.SecurityException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.Net.SecurityException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Controller.Net.SecurityException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
         <member name="T:MediaBrowser.Controller.Net.WebSocketMessageInfo">
             <summary>
-            Class WebSocketMessageInfo
+            Class WebSocketMessageInfo.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Net.WebSocketMessageInfo.Connection">
@@ -5546,7 +5603,7 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>Task.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Notifications.INotificationService.IsEnabledForUser(MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Notifications.INotificationService.IsEnabledForUser(Jellyfin.Data.Entities.User)">
             <summary>
             Determines whether [is enabled for user] [the specified user identifier].
             </summary>
@@ -5561,27 +5618,25 @@
         </member>
         <member name="T:MediaBrowser.Controller.Persistence.IDisplayPreferencesRepository">
             <summary>
-            Interface IDisplayPreferencesRepository
+            Interface IDisplayPreferencesRepository.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IDisplayPreferencesRepository.SaveDisplayPreferences(MediaBrowser.Model.Entities.DisplayPreferences,System.String,System.String,System.Threading.CancellationToken)">
             <summary>
-            Saves display preferences for an item
+            Saves display preferences for an item.
             </summary>
             <param name="displayPreferences">The display preferences.</param>
             <param name="userId">The user id.</param>
             <param name="client">The client.</param>
             <param name="cancellationToken">The cancellation token.</param>
-            <returns>Task.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IDisplayPreferencesRepository.SaveAllDisplayPreferences(System.Collections.Generic.IEnumerable{MediaBrowser.Model.Entities.DisplayPreferences},System.Guid,System.Threading.CancellationToken)">
             <summary>
-            Saves all display preferences for a user
+            Saves all display preferences for a user.
             </summary>
             <param name="displayPreferences">The display preferences.</param>
             <param name="userId">The user id.</param>
             <param name="cancellationToken">The cancellation token.</param>
-            <returns>Task.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IDisplayPreferencesRepository.GetDisplayPreferences(System.String,System.String,System.String)">
             <summary>
@@ -5601,22 +5656,21 @@
         </member>
         <member name="T:MediaBrowser.Controller.Persistence.IItemRepository">
             <summary>
-            Provides an interface to implement an Item repository
+            Provides an interface to implement an Item repository.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.SaveItem(MediaBrowser.Controller.Entities.BaseItem,System.Threading.CancellationToken)">
             <summary>
-            Saves an item
+            Saves an item.
             </summary>
             <param name="item">The item.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.DeleteItem(System.Guid,System.Threading.CancellationToken)">
+        <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.DeleteItem(System.Guid)">
             <summary>
             Deletes the item.
             </summary>
             <param name="id">The identifier.</param>
-            <param name="cancellationToken">The cancellation token.</param>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.SaveItems(System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},System.Threading.CancellationToken)">
             <summary>
@@ -5634,20 +5688,20 @@
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.GetChapters(MediaBrowser.Controller.Entities.BaseItem)">
             <summary>
-            Gets chapters for an item
+            Gets chapters for an item.
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.GetChapter(MediaBrowser.Controller.Entities.BaseItem,System.Int32)">
             <summary>
-            Gets a single chapter for an item
+            Gets a single chapter for an item.
             </summary>
             <param name="id"></param>
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.SaveChapters(System.Guid,System.Collections.Generic.List{MediaBrowser.Model.Entities.ChapterInfo})">
+        <member name="M:MediaBrowser.Controller.Persistence.IItemRepository.SaveChapters(System.Guid,System.Collections.Generic.IReadOnlyList{MediaBrowser.Model.Entities.ChapterInfo})">
             <summary>
             Saves the chapters.
             </summary>
@@ -5746,18 +5800,18 @@
         </member>
         <member name="T:MediaBrowser.Controller.Persistence.IRepository">
             <summary>
-            Provides a base interface for all the repository interfaces
+            Provides a base interface for all the repository interfaces.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Persistence.IRepository.Name">
             <summary>
-            Gets the name of the repository
+            Gets the name of the repository.
             </summary>
             <value>The name.</value>
         </member>
         <member name="T:MediaBrowser.Controller.Persistence.IUserDataRepository">
             <summary>
-            Provides an interface to implement a UserData repository
+            Provides an interface to implement a UserData repository.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IUserDataRepository.SaveUserData(System.Int64,System.String,MediaBrowser.Controller.Entities.UserItemData,System.Threading.CancellationToken)">
@@ -5780,37 +5834,19 @@
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IUserDataRepository.GetAllUserData(System.Int64)">
             <summary>
-            Return all user data associated with the given user
+            Return all user data associated with the given user.
             </summary>
             <param name="userId"></param>
             <returns></returns>
         </member>
         <member name="M:MediaBrowser.Controller.Persistence.IUserDataRepository.SaveAllUserData(System.Int64,MediaBrowser.Controller.Entities.UserItemData[],System.Threading.CancellationToken)">
             <summary>
-            Save all user data associated with the given user
+            Save all user data associated with the given user.
             </summary>
             <param name="userId"></param>
             <param name="userData"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
-        </member>
-        <member name="T:MediaBrowser.Controller.Persistence.IUserRepository">
-            <summary>
-            Provides an interface to implement a User repository
-            </summary>
-        </member>
-        <member name="M:MediaBrowser.Controller.Persistence.IUserRepository.DeleteUser(MediaBrowser.Controller.Entities.User)">
-            <summary>
-            Deletes the user.
-            </summary>
-            <param name="user">The user.</param>
-            <returns>Task.</returns>
-        </member>
-        <member name="M:MediaBrowser.Controller.Persistence.IUserRepository.RetrieveAllUsers">
-            <summary>
-            Retrieves all users.
-            </summary>
-            <returns>IEnumerable{User}.</returns>
         </member>
         <member name="P:MediaBrowser.Controller.Persistence.MediaAttachmentQuery.Index">
             <summary>
@@ -5856,7 +5892,7 @@
             <param name="options">The options.</param>
             <returns>Task&lt;Playlist&gt;.</returns>
         </member>
-        <member name="M:MediaBrowser.Controller.Playlists.IPlaylistManager.AddToPlaylist(System.String,System.Collections.Generic.IEnumerable{System.Guid},System.Guid)">
+        <member name="M:MediaBrowser.Controller.Playlists.IPlaylistManager.AddToPlaylist(System.String,System.Collections.Generic.ICollection{System.Guid},System.Guid)">
             <summary>
             Adds to playlist.
             </summary>
@@ -5891,7 +5927,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Plugins.IPluginConfigurationPage">
             <summary>
-            Interface IConfigurationPage
+            Interface IConfigurationPage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Plugins.IPluginConfigurationPage.Name">
@@ -5920,17 +5956,17 @@
         </member>
         <member name="T:MediaBrowser.Controller.Plugins.ConfigurationPageType">
             <summary>
-            Enum ConfigurationPageType
+            Enum ConfigurationPageType.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Plugins.ConfigurationPageType.PluginConfiguration">
             <summary>
-            The plugin configuration
+            The plugin configuration.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Plugins.ConfigurationPageType.None">
             <summary>
-            The none
+            The none.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Plugins.IServerEntryPoint">
@@ -5965,7 +6001,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Providers.ICustomMetadataProvider`1.FetchAsync(`0,MediaBrowser.Controller.Providers.MetadataRefreshOptions,System.Threading.CancellationToken)">
             <summary>
-            Fetches the asynchronous.
+            Fetches the metadata asynchronously.
             </summary>
             <param name="item">The item.</param>
             <param name="options">The options.</param>
@@ -5988,22 +6024,47 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>Task{DynamicImageResponse}.</returns>
         </member>
-        <member name="P:MediaBrowser.Controller.Providers.IExtrasProvider.Name">
+        <member name="T:MediaBrowser.Controller.Providers.IExternalId">
             <summary>
-            Gets the name.
+            Represents an identifier for an external provider.
             </summary>
-            <value>The name.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.Providers.IExtrasProvider.Supports(MediaBrowser.Controller.Entities.BaseItem)">
+        <member name="P:MediaBrowser.Controller.Providers.IExternalId.ProviderName">
             <summary>
-            Supportses the specified item.
+            Gets the display name of the provider associated with this ID type.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Controller.Providers.IExternalId.Key">
+            <summary>
+            Gets the unique key to distinguish this provider/type pair. This should be unique across providers.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Controller.Providers.IExternalId.Type">
+            <summary>
+            Gets the specific media type for this id. This is used to distinguish between the different
+            external id types for providers with multiple ids.
+            A null value indicates there is no specific media type associated with the external id, or this is the
+            default id for the external provider so there is no need to specify a type.
+            </summary>
+            <remarks>
+            This can be used along with the <see cref="P:MediaBrowser.Controller.Providers.IExternalId.ProviderName"/> to localize the external id on the client.
+            </remarks>
+        </member>
+        <member name="P:MediaBrowser.Controller.Providers.IExternalId.UrlFormatString">
+            <summary>
+            Gets the URL format string for this id.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Controller.Providers.IExternalId.Supports(MediaBrowser.Model.Entities.IHasProviderIds)">
+            <summary>
+            Determines whether this id supports a given item type.
             </summary>
             <param name="item">The item.</param>
-            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+            <returns>True if this item is supported, otherwise false.</returns>
         </member>
         <member name="T:MediaBrowser.Controller.Providers.IForcedProvider">
             <summary>
-            This is a marker interface that will cause a provider to run even if IsLocked=true
+            This is a marker interface that will cause a provider to run even if an item is locked from changes.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Providers.IHasItemChangeMonitor.HasChanged(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Providers.IDirectoryService)">
@@ -6016,7 +6077,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Providers.IImageProvider">
             <summary>
-            Interface IImageProvider
+            Interface IImageProvider.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Providers.IImageProvider.Name">
@@ -6027,14 +6088,14 @@
         </member>
         <member name="M:MediaBrowser.Controller.Providers.IImageProvider.Supports(MediaBrowser.Controller.Entities.BaseItem)">
             <summary>
-            Supportses the specified item.
+            Supports the specified item.
             </summary>
             <param name="item">The item.</param>
-            <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+            <returns><c>true</c> if the provider supports the item.</returns>
         </member>
         <member name="T:MediaBrowser.Controller.Providers.ILocalImageProvider">
             <summary>
-            This is just a marker interface
+            This is just a marker interface.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Providers.ILocalMetadataProvider`1.GetMetadata(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService,System.Threading.CancellationToken)">
@@ -6044,11 +6105,11 @@
             <param name="info">The information.</param>
             <param name="directoryService">The directory service.</param>
             <param name="cancellationToken">The cancellation token.</param>
-            <returns>Task{MetadataResult{`0}}.</returns>
+            <returns>Task{MetadataResult{0}}.</returns>
         </member>
         <member name="T:MediaBrowser.Controller.Providers.IMetadataProvider">
             <summary>
-            Marker interface
+            Marker interface.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Providers.IMetadataProvider.Name">
@@ -6062,7 +6123,7 @@
             Determines whether this instance can refresh the specified item.
             </summary>
             <param name="item">The item.</param>
-            <returns><c>true</c> if this instance can refresh the specified item; otherwise, <c>false</c>.</returns>
+            <returns><c>true</c> if this instance can refresh the specified item.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Providers.IMetadataService.RefreshMetadata(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Providers.MetadataRefreshOptions,System.Threading.CancellationToken)">
             <summary>
@@ -6081,7 +6142,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Providers.IProviderManager">
             <summary>
-            Interface IProviderManager
+            Interface IProviderManager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Providers.IProviderManager.QueueRefresh(System.Guid,MediaBrowser.Controller.Providers.MetadataRefreshOptions,MediaBrowser.Controller.Providers.RefreshPriority)">
@@ -6218,7 +6279,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Providers.IRemoteImageProvider">
             <summary>
-            Interface IImageProvider
+            Interface IImageProvider.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Providers.IRemoteImageProvider.GetSupportedImages(MediaBrowser.Controller.Entities.BaseItem)">
@@ -6282,54 +6343,24 @@
             </summary>
             <value>The year.</value>
         </member>
-        <member name="T:MediaBrowser.Controller.Providers.MetadataProviderPriority">
-            <summary>
-            Determines when a provider should execute, relative to others
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Controller.Providers.MetadataProviderPriority.First">
-            <summary>
-            The first
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Controller.Providers.MetadataProviderPriority.Second">
-            <summary>
-            The second
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Controller.Providers.MetadataProviderPriority.Third">
-            <summary>
-            The third
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Controller.Providers.MetadataProviderPriority.Fourth">
-            <summary>
-            The fourth
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Controller.Providers.MetadataProviderPriority.Last">
-            <summary>
-            The last
-            </summary>
-        </member>
         <member name="F:MediaBrowser.Controller.Providers.MetadataRefreshMode.None">
             <summary>
-            The none
+            The none.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Providers.MetadataRefreshMode.ValidationOnly">
             <summary>
-            The validation only
+            The validation only.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Providers.MetadataRefreshMode.Default">
             <summary>
-            Providers will be executed based on default rules
+            Providers will be executed based on default rules.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Providers.MetadataRefreshMode.FullRefresh">
             <summary>
-            All providers will be executed to search for new metadata
+            All providers will be executed to search for new metadata.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Providers.MetadataRefreshOptions.ReplaceAllMetadata">
@@ -6339,38 +6370,38 @@
         </member>
         <member name="M:MediaBrowser.Controller.Providers.MetadataResult`1.ResetPeople">
             <summary>
-            Not only does this clear, but initializes the list so that services can differentiate between a null list and zero people
+            Not only does this clear, but initializes the list so that services can differentiate between a null list and zero people.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Providers.RemoteSearchQuery`1.SearchProviderName">
             <summary>
-            If set will only search within the given provider
+            Will only search within the given provider when set.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Providers.RemoteSearchQuery`1.IncludeDisabledProviders">
             <summary>
-            Gets or sets a value indicating whether [include disabled providers].
+            Gets or sets a value indicating whether disabled providers should be included.
             </summary>
-            <value><c>true</c> if [include disabled providers]; otherwise, <c>false</c>.</value>
+            <value><c>true</c> if disabled providers should be included.</value>
         </member>
         <member name="T:MediaBrowser.Controller.Providers.VideoContentType">
             <summary>
-            Enum VideoContentType
+            Enum VideoContentType.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Providers.VideoContentType.Episode">
             <summary>
-            The episode
+            The episode.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Providers.VideoContentType.Movie">
             <summary>
-            The movie
+            The movie.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Resolvers.ItemResolver`1">
             <summary>
-            Class ItemResolver
+            Class ItemResolver.
             </summary>
             <typeparam name="T"></typeparam>
         </member>
@@ -6389,7 +6420,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Resolvers.ItemResolver`1.SetInitialItemValues(`0,MediaBrowser.Controller.Library.ItemResolveArgs)">
             <summary>
-            Sets initial values on the newly resolved item
+            Sets initial values on the newly resolved item.
             </summary>
             <param name="item">The item.</param>
             <param name="args">The args.</param>
@@ -6403,7 +6434,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Resolvers.IItemResolver">
             <summary>
-            Interface IItemResolver
+            Interface IItemResolver.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Resolvers.IItemResolver.ResolvePath(MediaBrowser.Controller.Library.ItemResolveArgs)">
@@ -6434,27 +6465,27 @@
         </member>
         <member name="T:MediaBrowser.Controller.Resolvers.ResolverPriority">
             <summary>
-            Enum ResolverPriority
+            Enum ResolverPriority.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Resolvers.ResolverPriority.First">
             <summary>
-            The first
+            The first.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Resolvers.ResolverPriority.Second">
             <summary>
-            The second
+            The second.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Resolvers.ResolverPriority.Third">
             <summary>
-            The third
+            The third.
             </summary>
         </member>
         <member name="F:MediaBrowser.Controller.Resolvers.ResolverPriority.Last">
             <summary>
-            The last
+            The last.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Security.AuthenticationInfo.Id">
@@ -6592,14 +6623,14 @@
             </summary>
             <value><c>true</c> if [supports media remote control]; otherwise, <c>false</c>.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.Session.ISessionController.SendMessage``1(System.String,System.String,``0,MediaBrowser.Controller.Session.ISessionController[],System.Threading.CancellationToken)">
+        <member name="M:MediaBrowser.Controller.Session.ISessionController.SendMessage``1(System.String,System.Guid,``0,System.Threading.CancellationToken)">
             <summary>
             Sends the message.
             </summary>
         </member>
         <member name="T:MediaBrowser.Controller.Session.ISessionManager">
             <summary>
-            Interface ISessionManager
+            Interface ISessionManager.
             </summary>
         </member>
         <member name="E:MediaBrowser.Controller.Session.ISessionManager.PlaybackStart">
@@ -6648,7 +6679,7 @@
             </summary>
             <value>The sessions.</value>
         </member>
-        <member name="M:MediaBrowser.Controller.Session.ISessionManager.LogSessionActivity(System.String,System.String,System.String,System.String,System.String,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Controller.Session.ISessionManager.LogSessionActivity(System.String,System.String,System.String,System.String,System.String,Jellyfin.Data.Entities.User)">
             <summary>
             Logs the user activity.
             </summary>
@@ -6661,14 +6692,14 @@
         </member>
         <member name="M:MediaBrowser.Controller.Session.ISessionManager.OnPlaybackStart(MediaBrowser.Model.Session.PlaybackStartInfo)">
             <summary>
-            Used to report that playback has started for an item
+            Used to report that playback has started for an item.
             </summary>
             <param name="info">The info.</param>
             <returns>Task.</returns>
         </member>
         <member name="M:MediaBrowser.Controller.Session.ISessionManager.OnPlaybackProgress(MediaBrowser.Model.Session.PlaybackProgressInfo)">
             <summary>
-            Used to report playback progress for an item
+            Used to report playback progress for an item.
             </summary>
             <param name="info">The info.</param>
             <returns>Task.</returns>
@@ -6676,7 +6707,7 @@
         </member>
         <member name="M:MediaBrowser.Controller.Session.ISessionManager.OnPlaybackStopped(MediaBrowser.Model.Session.PlaybackStopInfo)">
             <summary>
-            Used to report that playback has ended for an item
+            Used to report that playback has ended for an item.
             </summary>
             <param name="info">The info.</param>
             <returns>Task.</returns>
@@ -6716,6 +6747,24 @@
             <param name="controllingSessionId">The controlling session identifier.</param>
             <param name="sessionId">The session id.</param>
             <param name="command">The command.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.Session.ISessionManager.SendSyncPlayCommand(System.String,MediaBrowser.Model.SyncPlay.SendCommand,System.Threading.CancellationToken)">
+            <summary>
+            Sends the SyncPlayCommand.
+            </summary>
+            <param name="sessionId">The session id.</param>
+            <param name="command">The command.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:MediaBrowser.Controller.Session.ISessionManager.SendSyncPlayGroupUpdate``1(System.String,MediaBrowser.Model.SyncPlay.GroupUpdate{``0},System.Threading.CancellationToken)">
+            <summary>
+            Sends the SyncPlayGroupUpdate.
+            </summary>
+            <param name="sessionId">The session id.</param>
+            <param name="command">The group update.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>Task.</returns>
         </member>
@@ -6900,7 +6949,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Session.SessionInfo">
             <summary>
-            Class SessionInfo
+            Class SessionInfo.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Session.SessionInfo.RemoteEndPoint">
@@ -6957,6 +7006,12 @@
             </summary>
             <value>The name of the device.</value>
         </member>
+        <member name="P:MediaBrowser.Controller.Session.SessionInfo.DeviceType">
+            <summary>
+            Gets or sets the type of the device.
+            </summary>
+            <value>The type of the device.</value>
+        </member>
         <member name="P:MediaBrowser.Controller.Session.SessionInfo.NowPlayingItem">
             <summary>
             Gets or sets the now playing item.
@@ -6981,24 +7036,27 @@
             </summary>
             <value>The session controller.</value>
         </member>
-        <member name="P:MediaBrowser.Controller.Session.SessionInfo.SupportedCommands">
-            <summary>
-            Gets or sets the supported commands.
-            </summary>
-            <value>The supported commands.</value>
-        </member>
         <member name="P:MediaBrowser.Controller.Session.SessionInfo.IsActive">
             <summary>
             Gets a value indicating whether this instance is active.
             </summary>
             <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
         </member>
+        <member name="P:MediaBrowser.Controller.Session.SessionInfo.SupportedCommands">
+            <summary>
+            Gets or sets the supported commands.
+            </summary>
+            <value>The supported commands.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.Session.SessionInfo.Dispose">
+            <inheritdoc />
+        </member>
         <member name="M:MediaBrowser.Controller.Sorting.AlphanumComparator.Compare(System.String,System.String)">
             <inheritdoc />
         </member>
         <member name="T:MediaBrowser.Controller.Sorting.IBaseItemComparer">
             <summary>
-            Interface IBaseItemComparer
+            Interface IBaseItemComparer.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Sorting.IBaseItemComparer.Name">
@@ -7009,7 +7067,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Sorting.IUserBaseItemComparer">
             <summary>
-            Represents a BaseItem comparer that requires a User to perform it's comparison
+            Represents a BaseItem comparer that requires a User to perform it's comparison.
             </summary>
         </member>
         <member name="P:MediaBrowser.Controller.Sorting.IUserBaseItemComparer.User">
@@ -7121,7 +7179,7 @@
         </member>
         <member name="T:MediaBrowser.Controller.Sync.IRemoteSyncProvider">
             <summary>
-            A marker interface
+            A marker interface.
             </summary>
         </member>
         <member name="M:MediaBrowser.Controller.Sync.IServerSyncProvider.SendFile(MediaBrowser.Model.Sync.SyncJob,System.String,System.IO.Stream,System.Boolean,System.String[],MediaBrowser.Model.Sync.SyncTarget,System.IProgress{System.Double},System.Threading.CancellationToken)">
@@ -7176,6 +7234,247 @@
             Gets or sets the identifier.
             </summary>
             <value>The identifier.</value>
+        </member>
+        <member name="T:MediaBrowser.Controller.SyncPlay.GroupInfo">
+            <summary>
+            Class GroupInfo.
+            </summary>
+            <remarks>
+            Class is not thread-safe, external locking is required when accessing methods.
+            </remarks>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupInfo.DefaultPing">
+            <summary>
+            Gets the default ping value used for sessions.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupInfo.GroupId">
+            <summary>
+            Gets or sets the group identifier.
+            </summary>
+            <value>The group identifier.</value>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupInfo.PlayingItem">
+            <summary>
+            Gets or sets the playing item.
+            </summary>
+            <value>The playing item.</value>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupInfo.IsPaused">
+            <summary>
+            Gets or sets a value indicating whether playback is paused.
+            </summary>
+            <value>Playback is paused.</value>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupInfo.PositionTicks">
+            <summary>
+            Gets or sets a value indicating whether there are position ticks.
+            </summary>
+            <value>The position ticks.</value>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupInfo.LastActivity">
+            <summary>
+            Gets or sets the last activity.
+            </summary>
+            <value>The last activity.</value>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupInfo.Participants">
+            <summary>
+            Gets the participants.
+            </summary>
+            <value>The participants, or members of the group.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.ContainsSession(System.String)">
+            <summary>
+            Checks if a session is in this group.
+            </summary>
+            <value><c>true</c> if the session is in this group; <c>false</c> otherwise.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.AddSession(MediaBrowser.Controller.Session.SessionInfo)">
+            <summary>
+            Adds the session to the group.
+            </summary>
+            <param name="session">The session.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.RemoveSession(MediaBrowser.Controller.Session.SessionInfo)">
+            <summary>
+            Removes the session from the group.
+            </summary>
+            <param name="session">The session.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.UpdatePing(MediaBrowser.Controller.Session.SessionInfo,System.Int64)">
+            <summary>
+            Updates the ping of a session.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="ping">The ping.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.GetHighestPing">
+            <summary>
+            Gets the highest ping in the group.
+            </summary>
+            <value name="session">The highest ping in the group.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.SetBuffering(MediaBrowser.Controller.Session.SessionInfo,System.Boolean)">
+            <summary>
+            Sets the session's buffering state.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="isBuffering">The state.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.IsBuffering">
+            <summary>
+            Gets the group buffering state.
+            </summary>
+            <value><c>true</c> if there is a session buffering in the group; <c>false</c> otherwise.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.GroupInfo.IsEmpty">
+            <summary>
+            Checks if the group is empty.
+            </summary>
+            <value><c>true</c> if the group is empty; <c>false</c> otherwise.</value>
+        </member>
+        <member name="T:MediaBrowser.Controller.SyncPlay.GroupMember">
+            <summary>
+            Class GroupMember.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupMember.IsBuffering">
+            <summary>
+            Gets or sets a value indicating whether this member is buffering.
+            </summary>
+            <value><c>true</c> if member is buffering; <c>false</c> otherwise.</value>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupMember.Session">
+            <summary>
+            Gets or sets the session.
+            </summary>
+            <value>The session.</value>
+        </member>
+        <member name="P:MediaBrowser.Controller.SyncPlay.GroupMember.Ping">
+            <summary>
+            Gets or sets the ping.
+            </summary>
+            <value>The ping.</value>
+        </member>
+        <member name="T:MediaBrowser.Controller.SyncPlay.ISyncPlayController">
+            <summary>
+            Interface ISyncPlayController.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.GetGroupId">
+            <summary>
+            Gets the group id.
+            </summary>
+            <value>The group id.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.GetPlayingItemId">
+            <summary>
+            Gets the playing item id.
+            </summary>
+            <value>The playing item id.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.IsGroupEmpty">
+            <summary>
+            Checks if the group is empty.
+            </summary>
+            <value>If the group is empty.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.CreateGroup(MediaBrowser.Controller.Session.SessionInfo,System.Threading.CancellationToken)">
+            <summary>
+            Initializes the group with the session's info.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.SessionJoin(MediaBrowser.Controller.Session.SessionInfo,MediaBrowser.Model.SyncPlay.JoinGroupRequest,System.Threading.CancellationToken)">
+            <summary>
+            Adds the session to the group.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.SessionLeave(MediaBrowser.Controller.Session.SessionInfo,System.Threading.CancellationToken)">
+            <summary>
+            Removes the session from the group.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.HandleRequest(MediaBrowser.Controller.Session.SessionInfo,MediaBrowser.Model.SyncPlay.PlaybackRequest,System.Threading.CancellationToken)">
+            <summary>
+            Handles the requested action by the session.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="request">The requested action.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayController.GetInfo">
+            <summary>
+            Gets the info about the group for the clients.
+            </summary>
+            <value>The group info for the clients.</value>
+        </member>
+        <member name="T:MediaBrowser.Controller.SyncPlay.ISyncPlayManager">
+            <summary>
+            Interface ISyncPlayManager.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayManager.NewGroup(MediaBrowser.Controller.Session.SessionInfo,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new group.
+            </summary>
+            <param name="session">The session that's creating the group.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayManager.JoinGroup(MediaBrowser.Controller.Session.SessionInfo,System.Guid,MediaBrowser.Model.SyncPlay.JoinGroupRequest,System.Threading.CancellationToken)">
+            <summary>
+            Adds the session to a group.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="groupId">The group id.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayManager.LeaveGroup(MediaBrowser.Controller.Session.SessionInfo,System.Threading.CancellationToken)">
+            <summary>
+            Removes the session from a group.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayManager.ListGroups(MediaBrowser.Controller.Session.SessionInfo,System.Guid)">
+            <summary>
+            Gets list of available groups for a session.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="filterItemId">The item id to filter by.</param>
+            <value>The list of available groups.</value>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayManager.HandleRequest(MediaBrowser.Controller.Session.SessionInfo,MediaBrowser.Model.SyncPlay.PlaybackRequest,System.Threading.CancellationToken)">
+            <summary>
+            Handle a request by a session in a group.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayManager.AddSessionToGroup(MediaBrowser.Controller.Session.SessionInfo,MediaBrowser.Controller.SyncPlay.ISyncPlayController)">
+            <summary>
+            Maps a session to a group.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="group">The group.</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:MediaBrowser.Controller.SyncPlay.ISyncPlayManager.RemoveSessionFromGroup(MediaBrowser.Controller.Session.SessionInfo,MediaBrowser.Controller.SyncPlay.ISyncPlayController)">
+            <summary>
+            Unmaps a session from a group.
+            </summary>
+            <param name="session">The session.</param>
+            <param name="group">The group.</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
         </member>
         <member name="M:MediaBrowser.Controller.TV.ITVSeriesManager.GetNextUp(MediaBrowser.Model.Querying.NextUpQuery,MediaBrowser.Controller.Dto.DtoOptions)">
             <summary>

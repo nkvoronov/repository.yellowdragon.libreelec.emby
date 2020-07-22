@@ -4,6 +4,21 @@
         <name>MediaBrowser.Common</name>
     </assembly>
     <members>
+        <member name="T:MediaBrowser.Common.Configuration.ConfigurationStore">
+            <summary>
+            Describes a single entry in the application configuration.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Common.Configuration.ConfigurationStore.Key">
+            <summary>
+            Gets or sets the unique identifier for the configuration.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Common.Configuration.ConfigurationStore.ConfigurationType">
+            <summary>
+            Gets or sets the type used to store the data for this configuration entry.
+            </summary>
+        </member>
         <member name="P:MediaBrowser.Common.Configuration.ConfigurationUpdateEventArgs.Key">
             <summary>
             Gets or sets the key.
@@ -41,30 +56,33 @@
         </member>
         <member name="T:MediaBrowser.Common.Configuration.IApplicationPaths">
             <summary>
-            Interface IApplicationPaths
+            Interface IApplicationPaths.
             </summary>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.ProgramDataPath">
             <summary>
-            Gets the path to the program data folder
+            Gets the path to the program data folder.
             </summary>
             <value>The program data path.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.WebPath">
             <summary>
-            Gets the path to the web UI resources folder
+            Gets the path to the web UI resources folder.
             </summary>
-            <value>The web UI resources path.</value>
+            <remarks>
+            This value is not relevant if the server is configured to not host any static web content. Additionally,
+            the value for <see cref="P:MediaBrowser.Model.Configuration.ServerConfiguration.DashboardSourcePath"/> takes precedence over this one.
+            </remarks>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.ProgramSystemPath">
             <summary>
-            Gets the path to the program system folder
+            Gets the path to the program system folder.
             </summary>
             <value>The program data path.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.DataPath">
             <summary>
-            Gets the folder path to the data directory
+            Gets the folder path to the data directory.
             </summary>
             <value>The data directory.</value>
         </member>
@@ -76,43 +94,43 @@
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.PluginsPath">
             <summary>
-            Gets the path to the plugin directory
+            Gets the path to the plugin directory.
             </summary>
             <value>The plugins path.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.PluginConfigurationsPath">
             <summary>
-            Gets the path to the plugin configurations directory
+            Gets the path to the plugin configurations directory.
             </summary>
             <value>The plugin configurations path.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.LogDirectoryPath">
             <summary>
-            Gets the path to the log directory
+            Gets the path to the log directory.
             </summary>
             <value>The log directory path.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.ConfigurationDirectoryPath">
             <summary>
-            Gets the path to the application configuration root directory
+            Gets the path to the application configuration root directory.
             </summary>
             <value>The configuration directory path.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.SystemConfigurationFilePath">
             <summary>
-            Gets the path to the system configuration file
+            Gets the path to the system configuration file.
             </summary>
             <value>The system configuration file path.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.CachePath">
             <summary>
-            Gets the folder path to the cache directory
+            Gets the folder path to the cache directory.
             </summary>
             <value>The cache directory.</value>
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IApplicationPaths.TempDirectory">
             <summary>
-            Gets the folder path to the temp directory within the cache folder
+            Gets the folder path to the temp directory within the cache folder.
             </summary>
             <value>The temp directory.</value>
         </member>
@@ -134,33 +152,6 @@
             </summary>
             <returns>The configuration store.</returns>
         </member>
-        <member name="T:MediaBrowser.Common.Configuration.ConfigurationStore">
-            <summary>
-            Describes a single entry in the application configuration.
-            </summary>
-        </member>
-        <member name="P:MediaBrowser.Common.Configuration.ConfigurationStore.Key">
-            <summary>
-            Gets or sets the unique identifier for the configuration.
-            </summary>
-        </member>
-        <member name="P:MediaBrowser.Common.Configuration.ConfigurationStore.ConfigurationType">
-            <summary>
-            Gets or sets the type used to store the data for this configuration entry.
-            </summary>
-        </member>
-        <member name="T:MediaBrowser.Common.Configuration.IValidatingConfiguration">
-            <summary>
-            A configuration store that can be validated.
-            </summary>
-        </member>
-        <member name="M:MediaBrowser.Common.Configuration.IValidatingConfiguration.Validate(System.Object,System.Object)">
-            <summary>
-            Validation method to be invoked before saving the configuration.
-            </summary>
-            <param name="oldConfig">The old configuration.</param>
-            <param name="newConfig">The new configuration.</param>
-        </member>
         <member name="E:MediaBrowser.Common.Configuration.IConfigurationManager.NamedConfigurationUpdating">
             <summary>
             Occurs when [configuration updating].
@@ -178,7 +169,7 @@
         </member>
         <member name="P:MediaBrowser.Common.Configuration.IConfigurationManager.CommonApplicationPaths">
             <summary>
-            Gets or sets the application paths.
+            Gets the application paths.
             </summary>
             <value>The application paths.</value>
         </member>
@@ -226,6 +217,18 @@
             </summary>
             <param name="factories">The factories.</param>
         </member>
+        <member name="T:MediaBrowser.Common.Configuration.IValidatingConfiguration">
+            <summary>
+            A configuration store that can be validated.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Common.Configuration.IValidatingConfiguration.Validate(System.Object,System.Object)">
+            <summary>
+            Validation method to be invoked before saving the configuration.
+            </summary>
+            <param name="oldConfig">The old configuration.</param>
+            <param name="newConfig">The new configuration.</param>
+        </member>
         <member name="T:MediaBrowser.Common.Cryptography.Constants">
             <summary>
             Class containing global constants for Jellyfin Cryptography.
@@ -241,12 +244,12 @@
             The default amount of iterations for hashing passwords.
             </summary>
         </member>
-        <member name="T:MediaBrowser.Common.Cryptography.Extensions">
+        <member name="T:MediaBrowser.Common.Cryptography.CryptoExtensions">
             <summary>
             Class containing extension methods for working with Jellyfin cryptography objects.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Common.Cryptography.Extensions.CreatePasswordHash(MediaBrowser.Model.Cryptography.ICryptoProvider,System.String)">
+        <member name="M:MediaBrowser.Common.Cryptography.CryptoExtensions.CreatePasswordHash(MediaBrowser.Model.Cryptography.ICryptoProvider,System.String)">
             <summary>
             Creates a new <see cref="T:MediaBrowser.Common.Cryptography.PasswordHash" /> instance.
             </summary>
@@ -354,6 +357,40 @@
             </summary>
             <param name="message">The message.</param>
         </member>
+        <member name="T:MediaBrowser.Common.Extensions.ProcessExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Diagnostics.Process"/>.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Common.Extensions.ProcessExtensions.WaitForExitAsync(System.Diagnostics.Process,System.TimeSpan)">
+            <summary>
+            Asynchronously wait for the process to exit.
+            </summary>
+            <param name="process">The process to wait for.</param>
+            <param name="timeout">The duration to wait before cancelling waiting for the task.</param>
+            <returns>True if the task exited normally, false if the timeout elapsed before the process exited.</returns>
+            <exception cref="T:System.InvalidOperationException">If <see cref="P:System.Diagnostics.Process.EnableRaisingEvents"/> is not set to true for the process.</exception>
+        </member>
+        <member name="M:MediaBrowser.Common.Extensions.ProcessExtensions.WaitForExitAsync(System.Diagnostics.Process,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously wait for the process to exit.
+            </summary>
+            <param name="process">The process to wait for.</param>
+            <param name="cancelToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for the process to exit.</param>
+            <returns>True if the task exited normally, false if cancelled before the process exited.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Extensions.ProcessExtensions.HasExitedSafe(System.Diagnostics.Process)">
+            <summary>
+            Gets a value indicating whether the associated process has been terminated using
+            <see cref="P:System.Diagnostics.Process.HasExited"/>. This is safe to call even if there is no operating system process
+            associated with the <see cref="T:System.Diagnostics.Process"/>.
+            </summary>
+            <param name="process">The process to check the exit status for.</param>
+            <returns>
+            True if the operating system process referenced by the <see cref="T:System.Diagnostics.Process"/> component has
+            terminated, or if there is no associated operating system process; otherwise, false.
+            </returns>
+        </member>
         <member name="M:MediaBrowser.Common.Extensions.RateLimitExceededException.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Common.Extensions.RateLimitExceededException" /> class.
@@ -400,6 +437,28 @@
             <param name="list">The list that should get shuffled.</param>
             <param name="rng">The random number generator to use.</param>
             <typeparam name="T">The type.</typeparam>
+        </member>
+        <member name="T:MediaBrowser.Common.Extensions.StringExtensions">
+            <summary>
+            Extensions methods to simplify string operations.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Common.Extensions.StringExtensions.LeftPart(System.ReadOnlySpan{System.Char},System.Char)">
+            <summary>
+            Returns the part on the left of the <c>needle</c>.
+            </summary>
+            <param name="haystack">The string to seek.</param>
+            <param name="needle">The needle to find.</param>
+            <returns>The part left of the <paramref name="needle" />.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Extensions.StringExtensions.LeftPart(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.StringComparison)">
+            <summary>
+            Returns the part on the left of the <c>needle</c>.
+            </summary>
+            <param name="haystack">The string to seek.</param>
+            <param name="needle">The needle to find.</param>
+            <param name="stringComparison">One of the enumeration values that specifies the rules for the search.</param>
+            <returns>The part left of the <c>needle</c>.</returns>
         </member>
         <member name="T:MediaBrowser.Common.Hex">
             <summary>
@@ -466,12 +525,6 @@
             Gets a value indicating whether this instance can self restart.
             </summary>
             <value><c>true</c> if this instance can self restart; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:MediaBrowser.Common.IApplicationHost.SystemUpdateLevel">
-            <summary>
-            Gets the version class of the system.
-            </summary>
-            <value><see cref="F:MediaBrowser.Model.Updates.PackageVersionClass.Release" /> or <see cref="F:MediaBrowser.Model.Updates.PackageVersionClass.Beta" />.</value>
         </member>
         <member name="P:MediaBrowser.Common.IApplicationHost.ApplicationVersion">
             <summary>
@@ -540,12 +593,11 @@
             </summary>
             <param name="plugin">The plugin.</param>
         </member>
-        <member name="M:MediaBrowser.Common.IApplicationHost.InitAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:MediaBrowser.Common.IApplicationHost.Init(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Inits this instance.
+            Initializes this instance.
             </summary>
             <param name="serviceCollection">The service collection.</param>
-            <returns>A task.</returns>
         </member>
         <member name="M:MediaBrowser.Common.IApplicationHost.CreateInstance(System.Type)">
             <summary>
@@ -575,6 +627,53 @@
         </member>
         <member name="M:MediaBrowser.Common.Json.Converters.JsonInt32Converter.Write(System.Text.Json.Utf8JsonWriter,System.Int32,System.Text.Json.JsonSerializerOptions)">
             <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.Common.Json.Converters.JsonNonStringKeyDictionaryConverter`2">
+            <summary>
+            Converter for Dictionaries without string key.
+            TODO This can be removed when System.Text.Json supports Dictionaries with non-string keys.
+            </summary>
+            <typeparam name="TKey">Type of key.</typeparam>
+            <typeparam name="TValue">Type of value.</typeparam>
+        </member>
+        <member name="M:MediaBrowser.Common.Json.Converters.JsonNonStringKeyDictionaryConverter`2.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Read JSON.
+            </summary>
+            <param name="reader">The Utf8JsonReader.</param>
+            <param name="typeToConvert">The type to convert.</param>
+            <param name="options">The json serializer options.</param>
+            <returns>Typed dictionary.</returns>
+            <exception cref="T:System.NotSupportedException">Not supported.</exception>
+        </member>
+        <member name="M:MediaBrowser.Common.Json.Converters.JsonNonStringKeyDictionaryConverter`2.Write(System.Text.Json.Utf8JsonWriter,System.Collections.Generic.IDictionary{`0,`1},System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Write dictionary as Json.
+            </summary>
+            <param name="writer">The Utf8JsonWriter.</param>
+            <param name="value">The dictionary value.</param>
+            <param name="options">The Json serializer options.</param>
+        </member>
+        <member name="T:MediaBrowser.Common.Json.Converters.JsonNonStringKeyDictionaryConverterFactory">
+            <summary>
+            https://github.com/dotnet/runtime/issues/30524#issuecomment-524619972.
+            TODO This can be removed when System.Text.Json supports Dictionaries with non-string keys.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Common.Json.Converters.JsonNonStringKeyDictionaryConverterFactory.CanConvert(System.Type)">
+            <summary>
+            Only convert objects that implement IDictionary and do not have string keys.
+            </summary>
+            <param name="typeToConvert">Type convert.</param>
+            <returns>Conversion ability.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Json.Converters.JsonNonStringKeyDictionaryConverterFactory.CreateConverter(System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Create converter for generic dictionary type.
+            </summary>
+            <param name="typeToConvert">Type to convert.</param>
+            <param name="options">Json serializer options.</param>
+            <returns>JsonConverter for given type.</returns>
         </member>
         <member name="T:MediaBrowser.Common.Json.JsonDefaults">
             <summary>
@@ -733,9 +832,20 @@
             <param name="options">The options.</param>
             <returns>Task{HttpResponseInfo}.</returns>
         </member>
+        <member name="P:MediaBrowser.Common.Net.INetworkManager.LocalSubnetsFn">
+            <summary>
+            Gets or sets a function to return the list of user defined LAN addresses.
+            </summary>
+        </member>
         <member name="M:MediaBrowser.Common.Net.INetworkManager.GetRandomUnusedTcpPort">
             <summary>
-            Gets a random port number that is currently available.
+            Gets a random port TCP number that is currently available.
+            </summary>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Net.INetworkManager.GetRandomUnusedUdpPort">
+            <summary>
+            Gets a random port UDP number that is currently available.
             </summary>
             <returns>System.Int32.</returns>
         </member>
@@ -752,12 +862,58 @@
             <param name="endpoint">The endpoint.</param>
             <returns><c>true</c> if [is in private address space] [the specified endpoint]; otherwise, <c>false</c>.</returns>
         </member>
+        <member name="M:MediaBrowser.Common.Net.INetworkManager.IsInPrivateAddressSpaceAndLocalSubnet(System.String)">
+            <summary>
+            Determines whether [is in private address space 10.x.x.x] [the specified endpoint] and exists in the subnets returned by GetSubnets().
+            </summary>
+            <param name="endpoint">The endpoint.</param>
+            <returns><c>true</c> if [is in private address space 10.x.x.x] [the specified endpoint]; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="M:MediaBrowser.Common.Net.INetworkManager.IsInLocalNetwork(System.String)">
             <summary>
             Determines whether [is in local network] [the specified endpoint].
             </summary>
             <param name="endpoint">The endpoint.</param>
             <returns><c>true</c> if [is in local network] [the specified endpoint]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Net.INetworkManager.GetLocalIpAddresses">
+            <summary>
+            Investigates an caches a list of interface addresses, excluding local link and LAN excluded addresses.
+            </summary>
+            <returns>The list of ipaddresses.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Net.INetworkManager.IsAddressInSubnets(System.String,System.String[])">
+            <summary>
+            Checks if the given address falls within the ranges given in [subnets]. The addresses in subnets can be hosts or subnets in the CIDR format.
+            </summary>
+            <param name="addressString">The address to check.</param>
+            <param name="subnets">If true, check against addresses in the LAN settings surrounded by brackets ([]).</param>
+            <returns><c>true</c>if the address is in at least one of the given subnets, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Net.INetworkManager.IsAddressInSubnets(System.Net.IPAddress,System.Boolean,System.Boolean)">
+            <summary>
+            Returns true if address is in the LAN list in the config file.
+            </summary>
+            <param name="address">The address to check.</param>
+            <param name="excludeInterfaces">If true, check against addresses in the LAN settings which have [] arroud and return true if it matches the address give in address.</param>
+            <param name="excludeRFC">If true, returns false if address is in the 127.x.x.x or 169.128.x.x range.</param>
+            <returns><c>false</c>if the address isn't in the LAN list, <c>true</c> if the address has been defined as a LAN address.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Net.INetworkManager.IsInSameSubnet(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+            Checks if address is in the LAN list in the config file.
+            </summary>
+            <param name="address1">Source address to check.</param>
+            <param name="address2">Destination address to check against.</param>
+            <param name="subnetMask">Destination subnet to check against.</param>
+            <returns><c>true/false</c>depending on whether address1 is in the same subnet as IPAddress2 with subnetMask.</returns>
+        </member>
+        <member name="M:MediaBrowser.Common.Net.INetworkManager.GetLocalIpSubnetMask(System.Net.IPAddress)">
+            <summary>
+            Returns the subnet mask of an interface with the given address.
+            </summary>
+            <param name="address">The address to check.</param>
+            <returns>Returns the subnet mask of an interface with the given address, or null if an interface match cannot be found.</returns>
         </member>
         <member name="T:MediaBrowser.Common.Plugins.BasePlugin">
             <summary>
@@ -800,6 +956,11 @@
             </summary>
             <value>The data folder path.</value>
         </member>
+        <member name="P:MediaBrowser.Common.Plugins.BasePlugin.CanUninstall">
+            <summary>
+            Gets a value indicating whether the plugin can be uninstalled.
+            </summary>
+        </member>
         <member name="M:MediaBrowser.Common.Plugins.BasePlugin.GetPluginInfo">
             <summary>
             Gets the plugin info.
@@ -808,7 +969,7 @@
         </member>
         <member name="M:MediaBrowser.Common.Plugins.BasePlugin.OnUninstalling">
             <summary>
-            Called when just before the plugin is uninstalled from the server.
+            Called just before the plugin is uninstalled from the server.
             </summary>
         </member>
         <member name="M:MediaBrowser.Common.Plugins.BasePlugin.SetAttributes(System.String,System.String,System.Version)">
@@ -830,7 +991,7 @@
         </member>
         <member name="F:MediaBrowser.Common.Plugins.BasePlugin`1._configurationSaveLock">
             <summary>
-            The save lock.
+            The configuration save lock.
             </summary>
         </member>
         <member name="F:MediaBrowser.Common.Plugins.BasePlugin`1._configuration">
@@ -871,7 +1032,7 @@
         </member>
         <member name="P:MediaBrowser.Common.Plugins.BasePlugin`1.Configuration">
             <summary>
-            Gets or sets the plugin's configuration.
+            Gets or sets the plugin configuration.
             </summary>
             <value>The configuration.</value>
         </member>
@@ -889,7 +1050,7 @@
         </member>
         <member name="P:MediaBrowser.Common.Plugins.BasePlugin`1.MediaBrowser#Common#Plugins#IHasPluginConfiguration#Configuration">
             <summary>
-            Gets the plugin's configuration.
+            Gets the plugin configuration.
             </summary>
             <value>The configuration.</value>
         </member>
@@ -942,6 +1103,11 @@
             </summary>
             <value>The assembly file path.</value>
         </member>
+        <member name="P:MediaBrowser.Common.Plugins.IPlugin.CanUninstall">
+            <summary>
+            Gets a value indicating whether the plugin can be uninstalled.
+            </summary>
+        </member>
         <member name="P:MediaBrowser.Common.Plugins.IPlugin.DataFolderPath">
             <summary>
             Gets the full path to the data folder, where the plugin can store any miscellaneous files needed.
@@ -981,13 +1147,13 @@
         </member>
         <member name="T:MediaBrowser.Common.Progress.ActionableProgress`1">
             <summary>
-            Class ActionableProgress
+            Class ActionableProgress.
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T">The type for the action parameter.</typeparam>
         </member>
         <member name="F:MediaBrowser.Common.Progress.ActionableProgress`1._action">
             <summary>
-            The _actions
+            The _actions.
             </summary>
         </member>
         <member name="M:MediaBrowser.Common.Progress.ActionableProgress`1.RegisterAction(System.Action{`0})">
@@ -1019,6 +1185,14 @@
             Gets the completed installations.
             </summary>
         </member>
+        <member name="M:MediaBrowser.Common.Updates.IInstallationManager.GetPackages(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Parses a plugin manifest at the supplied URL.
+            </summary>
+            <param name="manifest">The URL to query.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>Task{IReadOnlyList{PackageInfo}}.</returns>
+        </member>
         <member name="M:MediaBrowser.Common.Updates.IInstallationManager.GetAvailablePackages(System.Threading.CancellationToken)">
             <summary>
             Gets all available packages.
@@ -1035,16 +1209,7 @@
             <param name="guid">The id of the plugin.</param>
             <returns>All plugins matching the requirements.</returns>
         </member>
-        <member name="M:MediaBrowser.Common.Updates.IInstallationManager.GetCompatibleVersions(System.Collections.Generic.IEnumerable{MediaBrowser.Model.Updates.PackageVersionInfo},System.Version,MediaBrowser.Model.Updates.PackageVersionClass)">
-            <summary>
-            Returns all compatible versions ordered from newest to oldest.
-            </summary>
-            <param name="availableVersions">The available version of the plugin.</param>
-            <param name="minVersion">The minimum required version of the plugin.</param>
-            <param name="classification">The classification of updates.</param>
-            <returns>All compatible versions ordered from newest to oldest.</returns>
-        </member>
-        <member name="M:MediaBrowser.Common.Updates.IInstallationManager.GetCompatibleVersions(System.Collections.Generic.IEnumerable{MediaBrowser.Model.Updates.PackageInfo},System.String,System.Guid,System.Version,MediaBrowser.Model.Updates.PackageVersionClass)">
+        <member name="M:MediaBrowser.Common.Updates.IInstallationManager.GetCompatibleVersions(System.Collections.Generic.IEnumerable{MediaBrowser.Model.Updates.PackageInfo},System.String,System.Guid,System.Version)">
             <summary>
             Returns all compatible versions ordered from newest to oldest.
             </summary>
@@ -1052,7 +1217,6 @@
             <param name="name">The name.</param>
             <param name="guid">The guid of the plugin.</param>
             <param name="minVersion">The minimum required version of the plugin.</param>
-            <param name="classification">The classification.</param>
             <returns>All compatible versions ordered from newest to oldest.</returns>
         </member>
         <member name="M:MediaBrowser.Common.Updates.IInstallationManager.GetAvailablePluginUpdates(System.Threading.CancellationToken)">
@@ -1062,7 +1226,7 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The available plugin updates.</returns>
         </member>
-        <member name="M:MediaBrowser.Common.Updates.IInstallationManager.InstallPackage(MediaBrowser.Model.Updates.PackageVersionInfo,System.Threading.CancellationToken)">
+        <member name="M:MediaBrowser.Common.Updates.IInstallationManager.InstallPackage(MediaBrowser.Model.Updates.InstallationInfo,System.Threading.CancellationToken)">
             <summary>
             Installs the package.
             </summary>

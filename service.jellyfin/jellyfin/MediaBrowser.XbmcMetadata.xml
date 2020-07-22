@@ -4,7 +4,7 @@
         <name>MediaBrowser.XbmcMetadata</name>
     </assembly>
     <members>
-        <member name="M:MediaBrowser.XbmcMetadata.Configuration.ConfigurationFactory.GetConfigurations">
+        <member name="M:MediaBrowser.XbmcMetadata.Configuration.NfoConfigurationFactory.GetConfigurations">
             <inheritdoc />
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.EntryPoint.RunAsync">
@@ -17,6 +17,9 @@
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1" /> class.
             </summary>
+            <param name="logger">The logger.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
         </member>
         <member name="P:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.Logger">
             <summary>
@@ -25,13 +28,13 @@
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Threading.CancellationToken)">
             <summary>
-            Fetches metadata for an item from one xml file
+            Fetches metadata for an item from one xml file.
             </summary>
             <param name="item">The item.</param>
             <param name="metadataFile">The metadata file.</param>
             <param name="cancellationToken">The cancellation token.</param>
-            <exception cref="T:System.ArgumentNullException">
-            </exception>
+            <exception cref="T:System.ArgumentNullException"><c>item</c> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException"><c>metadataFile</c> is <c>null</c> or empty.</exception>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Xml.XmlReaderSettings,System.Threading.CancellationToken)">
             <summary>
@@ -51,10 +54,23 @@
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.BaseNfoParser`1.SplitNames(System.String)">
             <summary>
-            Used to split names of comma or pipe delimeted genres and people
+            Used to split names of comma or pipe delimeted genres and people.
             </summary>
             <param name="value">The value.</param>
             <returns>IEnumerable{System.String}.</returns>
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Parsers.EpisodeNfoParser">
+            <summary>
+            Nfo parser for episodes.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.EpisodeNfoParser.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Parsers.EpisodeNfoParser"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.EpisodeNfoParser.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Episode},System.String,System.Xml.XmlReaderSettings,System.Threading.CancellationToken)">
             <inheritdoc />
@@ -62,14 +78,53 @@
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.EpisodeNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Episode})">
             <inheritdoc />
         </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Parsers.MovieNfoParser">
+            <summary>
+            Nfo parser for movies.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.MovieNfoParser.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Parsers.MovieNfoParser"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
         <member name="P:MediaBrowser.XbmcMetadata.Parsers.MovieNfoParser.SupportsUrlAfterClosingXmlTag">
             <inheritdoc />
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.MovieNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.Video})">
             <inheritdoc />
         </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Parsers.SeasonNfoParser">
+            <summary>
+            Nfo parser for seasons.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.SeasonNfoParser.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Parsers.SeasonNfoParser"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.SeasonNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Season})">
             <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser">
+            <summary>
+            Nfo parser for series.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
         </member>
         <member name="P:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser.SupportsUrlAfterClosingXmlTag">
             <inheritdoc />
@@ -80,11 +135,39 @@
         <member name="M:MediaBrowser.XbmcMetadata.Parsers.SeriesNfoParser.FetchDataFromXmlNode(System.Xml.XmlReader,MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Series})">
             <inheritdoc />
         </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider">
+            <summary>
+            Nfo provider for albums.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider},MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.Audio.MusicAlbum},System.String,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.AlbumNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
             <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider">
+            <summary>
+            Nfo provider for artists.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider.#ctor(MediaBrowser.Model.IO.IFileSystem,Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider},MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.Audio.MusicArtist},System.String,System.Threading.CancellationToken)">
             <inheritdoc />
@@ -92,13 +175,10 @@
         <member name="M:MediaBrowser.XbmcMetadata.Providers.ArtistNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
             <inheritdoc />
         </member>
+        <member name="P:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.Name">
+            <inheritdoc />
+        </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.GetMetadata(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService,System.Threading.CancellationToken)">
-            <inheritdoc />
-        </member>
-        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.Fetch(MediaBrowser.Controller.Providers.MetadataResult{`0},System.String,System.Threading.CancellationToken)">
-            <inheritdoc />
-        </member>
-        <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
             <inheritdoc />
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseNfoProvider`1.HasChanged(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Providers.IDirectoryService)">
@@ -110,11 +190,67 @@
         <member name="M:MediaBrowser.XbmcMetadata.Providers.BaseVideoNfoProvider`1.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
             <inheritdoc />
         </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider">
+            <summary>
+            Nfo provider for episodes.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider},MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Episode},System.String,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.EpisodeNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
             <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.MovieNfoProvider">
+            <summary>
+            Nfo provider for movies.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.MovieNfoProvider.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.MovieNfoProvider},MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.MovieNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.MusicVideoNfoProvider">
+            <summary>
+            Nfo provider for music videos.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.MusicVideoNfoProvider.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.MusicVideoNfoProvider},MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.MusicVideoNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider">
+            <summary>
+            Nfo provider for seasons.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider},MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Season},System.String,System.Threading.CancellationToken)">
             <inheritdoc />
@@ -122,11 +258,55 @@
         <member name="M:MediaBrowser.XbmcMetadata.Providers.SeasonNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
             <inheritdoc />
         </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider">
+            <summary>
+            Nfo provider for series.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider},MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider.Fetch(MediaBrowser.Controller.Providers.MetadataResult{MediaBrowser.Controller.Entities.TV.Series},System.String,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Providers.SeriesNfoProvider.GetXmlFile(MediaBrowser.Controller.Providers.ItemInfo,MediaBrowser.Controller.Providers.IDirectoryService)">
             <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Providers.VideoNfoProvider">
+            <summary>
+            Nfo provider for videos.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Providers.VideoNfoProvider.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Providers.VideoNfoProvider},MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Configuration.IConfigurationManager,MediaBrowser.Controller.Providers.IProviderManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Providers.VideoNfoProvider"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="fileSystem">The file system.</param>
+            <param name="config">the configuration manager.</param>
+            <param name="providerManager">The provider manager.</param>
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver">
+            <summary>
+            Nfo saver for albums.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.#ctor(MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="configurationManager">the server configuration manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="userManager">The user manager.</param>
+            <param name="userDataManager">The user data manager.</param>
+            <param name="logger">The logger.</param>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
@@ -142,6 +322,22 @@
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.AlbumNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver">
+            <summary>
+            Nfo saver for artsist.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver.#ctor(MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="configurationManager">the server configuration manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="userManager">The user manager.</param>
+            <param name="userDataManager">The user data manager.</param>
+            <param name="logger">The logger.</param>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.ArtistNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
@@ -184,11 +380,10 @@
         <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.Save(MediaBrowser.Controller.Entities.BaseItem,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.AddCommonNodes(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager)">
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.AddCommonNodes(MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,MediaBrowser.Controller.Configuration.IServerConfigurationManager)">
             <summary>
             Adds the common nodes.
             </summary>
-            <returns>Task.</returns>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.BaseNfoSaver.GetOutputTrailerUrl(System.String)">
             <summary>
@@ -196,6 +391,22 @@
             </summary>
             <param name="url">The URL.</param>
             <returns>System.String.</returns>
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver">
+            <summary>
+            Nfo saver for episodes.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.#ctor(MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="configurationManager">the server configuration manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="userManager">The user manager.</param>
+            <param name="userDataManager">The user data manager.</param>
+            <param name="logger">The logger.</param>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
@@ -212,6 +423,22 @@
         <member name="M:MediaBrowser.XbmcMetadata.Savers.EpisodeNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
         </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver">
+            <summary>
+            Nfo saver for movies.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.#ctor(MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="configurationManager">the server configuration manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="userManager">The user manager.</param>
+            <param name="userDataManager">The user data manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
         </member>
@@ -227,6 +454,22 @@
         <member name="M:MediaBrowser.XbmcMetadata.Savers.MovieNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
         </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver">
+            <summary>
+            Nfo saver for seasons.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.#ctor(MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="configurationManager">the server configuration manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="userManager">The user manager.</param>
+            <param name="userDataManager">The user data manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
         </member>
@@ -241,6 +484,22 @@
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.SeasonNfoSaver.GetTagsUsed(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver">
+            <summary>
+            Nfo saver for series.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver.#ctor(MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.IUserDataManager,Microsoft.Extensions.Logging.ILogger{MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="configurationManager">the server configuration manager.</param>
+            <param name="libraryManager">The library manager.</param>
+            <param name="userManager">The user manager.</param>
+            <param name="userDataManager">The user data manager.</param>
+            <param name="logger">The logger.</param>
         </member>
         <member name="M:MediaBrowser.XbmcMetadata.Savers.SeriesNfoSaver.GetLocalSavePath(MediaBrowser.Controller.Entities.BaseItem)">
             <inheritdoc />

@@ -132,7 +132,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Channels.ChannelFeatures.MaxPageSize">
             <summary>
-            Represents the maximum number of records the channel allows retrieving at a time
+            Represents the maximum number of records the channel allows retrieving at a time.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Channels.ChannelFeatures.AutoRefreshLevels">
@@ -196,7 +196,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Channels.ChannelQuery.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -214,7 +214,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Channels.ChannelQuery.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -255,9 +255,14 @@
             The number 50 can be any number, so long as it doesn't clash with any of the ProtoMember numbers either here or in subclasses.
             </summary>
         </member>
+        <member name="M:MediaBrowser.Model.Configuration.BaseApplicationConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Configuration.BaseApplicationConfiguration" /> class.
+            </summary>
+        </member>
         <member name="P:MediaBrowser.Model.Configuration.BaseApplicationConfiguration.LogFileRetentionDays">
             <summary>
-            The number of days we should retain log files
+            Gets or sets the number of days we should retain log files.
             </summary>
             <value>The log file retention days.</value>
         </member>
@@ -275,21 +280,16 @@
         </member>
         <member name="P:MediaBrowser.Model.Configuration.BaseApplicationConfiguration.PreviousVersion">
             <summary>
-            Last known version that was ran using the configuration.
+            Gets or sets the last known version that was ran using the configuration.
             </summary>
             <value>The version from previous run.</value>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.BaseApplicationConfiguration.PreviousVersionStr">
             <summary>
-            Stringified PreviousVersion to be stored/loaded,
-            because System.Version itself isn't xml-serializable
+            Gets or sets the stringified PreviousVersion to be stored/loaded,
+            because System.Version itself isn't xml-serializable.
             </summary>
-            <value>String value of PreviousVersion</value>
-        </member>
-        <member name="M:MediaBrowser.Model.Configuration.BaseApplicationConfiguration.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Configuration.BaseApplicationConfiguration" /> class.
-            </summary>
+            <value>String value of PreviousVersion.</value>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.EncodingOptions.EncoderAppPath">
             <summary>
@@ -368,7 +368,7 @@
         </member>
         <member name="T:MediaBrowser.Model.Configuration.MetadataPluginType">
             <summary>
-            Enum MetadataPluginType
+            Enum MetadataPluginType.
             </summary>
         </member>
         <member name="T:MediaBrowser.Model.Configuration.ServerConfiguration">
@@ -378,9 +378,13 @@
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.EnableUPnP">
             <summary>
-            Gets or sets a value indicating whether [enable u pn p].
+            Gets or sets a value indicating whether to enable automatic port forwarding.
             </summary>
-            <value><c>true</c> if [enable u pn p]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.EnableMetrics">
+            <summary>
+            Gets or sets a value indicating whether to enable prometheus metrics exporting.
+            </summary>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.PublicPort">
             <summary>
@@ -408,15 +412,22 @@
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.EnableHttps">
             <summary>
-            Gets or sets a value indicating whether [use HTTPS].
+            Gets or sets a value indicating whether to use HTTPS.
             </summary>
-            <value><c>true</c> if [use HTTPS]; otherwise, <c>false</c>.</value>
+            <remarks>
+            In order for HTTPS to be used, in addition to setting this to true, valid values must also be
+            provided for <see cref="P:MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePath"/> and <see cref="P:MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePassword"/>.
+            </remarks>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePath">
             <summary>
-            Gets or sets the value pointing to the file system where the ssl certificate is located..
+            Gets or sets the filesystem path of an X.509 certificate to use for SSL.
             </summary>
-            <value>The value pointing to the file system where the ssl certificate is located..</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePassword">
+            <summary>
+            Gets or sets the password required to access the X.509 certificate data in the file specified by <see cref="P:MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePath"/>.
+            </summary>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.IsPortAuthorized">
             <summary>
@@ -450,19 +461,19 @@
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.SortReplaceCharacters">
             <summary>
-            Characters to be replaced with a ' ' in strings to create a sort name
+            Characters to be replaced with a ' ' in strings to create a sort name.
             </summary>
             <value>The sort replace characters.</value>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.SortRemoveCharacters">
             <summary>
-            Characters to be removed from strings to create a sort name
+            Characters to be removed from strings to create a sort name.
             </summary>
             <value>The sort remove characters.</value>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.SortRemoveWords">
             <summary>
-            Words to be removed from strings to create a sort name
+            Words to be removed from strings to create a sort name.
             </summary>
             <value>The sort remove words.</value>
         </member>
@@ -501,15 +512,20 @@
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.DashboardSourcePath">
             <summary>
-            Allows the dashboard to be served from a custom path.
+            Gets or sets a custom path to serve the dashboard from.
             </summary>
-            <value>The dashboard source path.</value>
+            <value>The dashboard source path, or null if the default path should be used.</value>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.ImageSavingConvention">
             <summary>
             Gets or sets the image saving convention.
             </summary>
             <value>The image saving convention.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Configuration.ServerConfiguration.RequireHttps">
+            <summary>
+            Gets or sets a value indicating whether the server should force connections over HTTPS.
+            </summary>
         </member>
         <member name="M:MediaBrowser.Model.Configuration.ServerConfiguration.#ctor">
             <summary>
@@ -518,7 +534,7 @@
         </member>
         <member name="T:MediaBrowser.Model.Configuration.UserConfiguration">
             <summary>
-            Class UserConfiguration
+            Class UserConfiguration.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Configuration.UserConfiguration.AudioLanguagePreference">
@@ -616,7 +632,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Dlna.AudioOptions.MaxBitrate">
             <summary>
-            The application's configured quality setting
+            The application's configured quality setting.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.AudioOptions.Context">
@@ -768,27 +784,27 @@
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetAudioStream">
             <summary>
-            Returns the audio stream that will be used
+            Returns the audio stream that will be used.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetVideoStream">
             <summary>
-            Returns the video stream that will be used
+            Returns the video stream that will be used.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetAudioSampleRate">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetAudioBitDepth">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetVideoBitDepth">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetRefFrames">
@@ -799,22 +815,22 @@
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetFramerate">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetVideoLevel">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetPacketLength">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetVideoProfile">
             <summary>
-            Predicts the audio sample rate that will be in the output stream
+            Predicts the audio sample rate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetVideoCodecTag">
@@ -825,42 +841,42 @@
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetAudioBitrate">
             <summary>
-            Predicts the audio bitrate that will be in the output stream
+            Predicts the audio bitrate that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetAudioChannels">
             <summary>
-            Predicts the audio channels that will be in the output stream
+            Predicts the audio channels that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetAudioCodec">
             <summary>
-            Predicts the audio codec that will be in the output stream
+            Predicts the audio codec that will be in the output stream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dlna.StreamInfo.TargetSize">
             <summary>
-            Predicts the audio channels that will be in the output stream
+            Predicts the audio channels that will be in the output stream.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Dlna.SubtitleDeliveryMethod.Encode">
             <summary>
-            The encode
+            The encode.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Dlna.SubtitleDeliveryMethod.Embed">
             <summary>
-            The embed
+            The embed.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Dlna.SubtitleDeliveryMethod.External">
             <summary>
-            The external
+            The external.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Dlna.SubtitleDeliveryMethod.Hls">
             <summary>
-            The HLS
+            The HLS.
             </summary>
         </member>
         <member name="T:MediaBrowser.Model.Dlna.VideoOptions">
@@ -891,7 +907,7 @@
             <param name="currentHeight">Height of the current.</param>
             <param name="currentWidth">Width of the current.</param>
             <param name="newHeight">The new height.</param>
-            <returns>the new width</returns>
+            <returns>The new width.</returns>
         </member>
         <member name="M:MediaBrowser.Model.Drawing.DrawingUtils.GetNewHeight(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -1223,7 +1239,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Dto.BaseItemDto.UserData">
             <summary>
-            User data for this item based on the user it's being requested for
+            User data for this item based on the user it's being requested for.
             </summary>
             <value>The user data.</value>
         </member>
@@ -1424,6 +1440,13 @@
             Gets or sets the series thumb image tag.
             </summary>
             <value>The series thumb image tag.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Dto.BaseItemDto.ImageBlurHashes">
+            <summary>
+            Gets or sets the blurhashes for the image tags.
+            Maps image type to dictionary mapping image tag to blurhash value.
+            </summary>
+            <value>The blurhashes.</value>
         </member>
         <member name="P:MediaBrowser.Model.Dto.BaseItemDto.SeriesStudio">
             <summary>
@@ -1681,6 +1704,12 @@
             </summary>
             <value>The primary image tag.</value>
         </member>
+        <member name="P:MediaBrowser.Model.Dto.BaseItemPerson.ImageBlurHashes">
+            <summary>
+            Gets or sets the primary image blurhash.
+            </summary>
+            <value>The primary image blurhash.</value>
+        </member>
         <member name="P:MediaBrowser.Model.Dto.BaseItemPerson.HasPrimaryImage">
             <summary>
             Gets a value indicating whether this instance has primary image.
@@ -1745,9 +1774,9 @@
             </summary>
             <value>The index of the image.</value>
         </member>
-        <member name="F:MediaBrowser.Model.Dto.ImageInfo.ImageTag">
+        <member name="P:MediaBrowser.Model.Dto.ImageInfo.ImageTag">
             <summary>
-            The image tag
+            Gets or sets the image tag.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dto.ImageInfo.Path">
@@ -1755,6 +1784,12 @@
             Gets or sets the path.
             </summary>
             <value>The path.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Dto.ImageInfo.BlurHash">
+            <summary>
+            Gets or sets the blurhash.
+            </summary>
+            <value>The blurhash.</value>
         </member>
         <member name="P:MediaBrowser.Model.Dto.ImageInfo.Height">
             <summary>
@@ -1777,6 +1812,11 @@
         <member name="T:MediaBrowser.Model.Dto.ImageOptions">
             <summary>
             Class ImageOptions.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Model.Dto.ImageOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Dto.ImageOptions" /> class.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dto.ImageOptions.ImageType">
@@ -1824,7 +1864,7 @@
         <member name="P:MediaBrowser.Model.Dto.ImageOptions.Tag">
             <summary>
             Gets or sets the image tag.
-            If set this will result in strong, unconditional response caching
+            If set this will result in strong, unconditional response caching.
             </summary>
             <value>The hash.</value>
         </member>
@@ -1869,11 +1909,6 @@
             Gets or sets the color of the background.
             </summary>
             <value>The color of the background.</value>
-        </member>
-        <member name="M:MediaBrowser.Model.Dto.ImageOptions.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Dto.ImageOptions" /> class.
-            </summary>
         </member>
         <member name="T:MediaBrowser.Model.Dto.ItemCounts">
             <summary>
@@ -1952,26 +1987,9 @@
             </summary>
             <value>The item count.</value>
         </member>
-        <member name="T:MediaBrowser.Model.Dto.ItemIndex">
-            <summary>
-            Class ItemIndex.
-            </summary>
-        </member>
-        <member name="P:MediaBrowser.Model.Dto.ItemIndex.Name">
-            <summary>
-            Gets or sets the name.
-            </summary>
-            <value>The name.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Dto.ItemIndex.ItemCount">
-            <summary>
-            Gets or sets the item count.
-            </summary>
-            <value>The item count.</value>
-        </member>
         <member name="P:MediaBrowser.Model.Dto.MediaSourceInfo.IsRemote">
             <summary>
-            Differentiate internet url vs local network
+            Differentiate internet url vs local network.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Dto.NameIdPair.Name">
@@ -2284,12 +2302,12 @@
         </member>
         <member name="P:MediaBrowser.Model.Entities.DisplayPreferences.Client">
             <summary>
-            Gets or sets the client
+            Gets or sets the client.
             </summary>
         </member>
         <member name="T:MediaBrowser.Model.Entities.IHasProviderIds">
             <summary>
-            Since BaseItem and DTOBaseItem both have ProviderIds, this interface helps avoid code repition by using extension methods.
+            Since BaseItem and DTOBaseItem both have ProviderIds, this interface helps avoid code repetition by using extension methods.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.IHasProviderIds.ProviderIds">
@@ -2363,6 +2381,11 @@
             The box rear.
             </summary>
         </member>
+        <member name="F:MediaBrowser.Model.Entities.ImageType.Profile">
+            <summary>
+            The user profile image.
+            </summary>
+        </member>
         <member name="T:MediaBrowser.Model.Entities.IsoType">
             <summary>
             Enum IsoType.
@@ -2380,7 +2403,12 @@
         </member>
         <member name="T:MediaBrowser.Model.Entities.LibraryUpdateInfo">
             <summary>
-            Class LibraryUpdateInfo
+            Class LibraryUpdateInfo.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Model.Entities.LibraryUpdateInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Entities.LibraryUpdateInfo"/> class.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.LibraryUpdateInfo.FoldersAddedTo">
@@ -2412,11 +2440,6 @@
             Gets or sets the items updated.
             </summary>
             <value>The items updated.</value>
-        </member>
-        <member name="M:MediaBrowser.Model.Entities.LibraryUpdateInfo.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Entities.LibraryUpdateInfo"/> class.
-            </summary>
         </member>
         <member name="T:MediaBrowser.Model.Entities.LocationType">
             <summary>
@@ -2492,7 +2515,7 @@
         </member>
         <member name="T:MediaBrowser.Model.Entities.MediaStream">
             <summary>
-            Class MediaStream
+            Class MediaStream.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.MediaStream.Codec">
@@ -2513,11 +2536,53 @@
             </summary>
             <value>The language.</value>
         </member>
+        <member name="P:MediaBrowser.Model.Entities.MediaStream.ColorTransfer">
+            <summary>
+            Gets or sets the color transfer.
+            </summary>
+            <value>The color transfer.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Entities.MediaStream.ColorPrimaries">
+            <summary>
+            Gets or sets the color primaries.
+            </summary>
+            <value>The color primaries.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Entities.MediaStream.ColorSpace">
+            <summary>
+            Gets or sets the color space.
+            </summary>
+            <value>The color space.</value>
+        </member>
         <member name="P:MediaBrowser.Model.Entities.MediaStream.Comment">
             <summary>
             Gets or sets the comment.
             </summary>
             <value>The comment.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Entities.MediaStream.TimeBase">
+            <summary>
+            Gets or sets the time base.
+            </summary>
+            <value>The time base.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Entities.MediaStream.CodecTimeBase">
+            <summary>
+            Gets or sets the codec time base.
+            </summary>
+            <value>The codec time base.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Entities.MediaStream.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Entities.MediaStream.VideoRange">
+            <summary>
+            Gets or sets the video range.
+            </summary>
+            <value>The video range.</value>
         </member>
         <member name="P:MediaBrowser.Model.Entities.MediaStream.IsInterlaced">
             <summary>
@@ -2737,119 +2802,119 @@
             The book.
             </summary>
         </member>
-        <member name="T:MediaBrowser.Model.Entities.MetadataFields">
+        <member name="T:MediaBrowser.Model.Entities.MetadataField">
             <summary>
             Enum MetadataFields.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.Cast">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.Cast">
             <summary>
             The cast.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.Genres">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.Genres">
             <summary>
             The genres.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.ProductionLocations">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.ProductionLocations">
             <summary>
             The production locations.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.Studios">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.Studios">
             <summary>
             The studios.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.Tags">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.Tags">
             <summary>
             The tags.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.Name">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.Name">
             <summary>
             The name.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.Overview">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.Overview">
             <summary>
             The overview.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.Runtime">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.Runtime">
             <summary>
             The runtime.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataFields.OfficialRating">
+        <member name="F:MediaBrowser.Model.Entities.MetadataField.OfficialRating">
             <summary>
             The official rating.
             </summary>
         </member>
-        <member name="T:MediaBrowser.Model.Entities.MetadataProviders">
+        <member name="T:MediaBrowser.Model.Entities.MetadataProvider">
             <summary>
-            Enum MetadataProviders
+            Enum MetadataProviders.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataProviders.Imdb">
+        <member name="F:MediaBrowser.Model.Entities.MetadataProvider.Imdb">
             <summary>
-            The imdb
+            The imdb.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataProviders.Tmdb">
+        <member name="F:MediaBrowser.Model.Entities.MetadataProvider.Tmdb">
             <summary>
-            The TMDB
+            The TMDB.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataProviders.Tvdb">
+        <member name="F:MediaBrowser.Model.Entities.MetadataProvider.Tvdb">
             <summary>
-            The TVDB
+            The TVDB.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataProviders.Tvcom">
+        <member name="F:MediaBrowser.Model.Entities.MetadataProvider.Tvcom">
             <summary>
-            The tvcom
+            The tvcom.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Entities.MetadataProviders.TmdbCollection">
+        <member name="F:MediaBrowser.Model.Entities.MetadataProvider.TmdbCollection">
             <summary>
-            Tmdb Collection Id
+            Tmdb Collection Id.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.PackageReviewInfo.id">
             <summary>
-            The package id (database key) for this review
+            Gets or sets the package id (database key) for this review.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.PackageReviewInfo.rating">
             <summary>
-            The rating value
+            Gets or sets the rating value.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.PackageReviewInfo.recommend">
             <summary>
-            Whether or not this review recommends this item
+            Gets or sets whether or not this review recommends this item.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.PackageReviewInfo.title">
             <summary>
-            A short description of the review
+            Gets or sets a short description of the review.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.PackageReviewInfo.review">
             <summary>
-            A full review
+            Gets or sets the full review.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.PackageReviewInfo.timestamp">
             <summary>
-            Time of review
+            Gets or sets the time of review.
             </summary>
         </member>
         <member name="T:MediaBrowser.Model.Entities.ParentalRating">
             <summary>
-            Class ParentalRating
+            Class ParentalRating.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.ParentalRating.Name">
@@ -2914,7 +2979,7 @@
             Class ProviderIdsExtensions.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.HasProviderId(MediaBrowser.Model.Entities.IHasProviderIds,MediaBrowser.Model.Entities.MetadataProviders)">
+        <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.HasProviderId(MediaBrowser.Model.Entities.IHasProviderIds,MediaBrowser.Model.Entities.MetadataProvider)">
             <summary>
             Determines whether [has provider identifier] [the specified instance].
             </summary>
@@ -2922,9 +2987,9 @@
             <param name="provider">The provider.</param>
             <returns><c>true</c> if [has provider identifier] [the specified instance]; otherwise, <c>false</c>.</returns>
         </member>
-        <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.GetProviderId(MediaBrowser.Model.Entities.IHasProviderIds,MediaBrowser.Model.Entities.MetadataProviders)">
+        <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.GetProviderId(MediaBrowser.Model.Entities.IHasProviderIds,MediaBrowser.Model.Entities.MetadataProvider)">
             <summary>
-            Gets a provider id
+            Gets a provider id.
             </summary>
             <param name="instance">The instance.</param>
             <param name="provider">The provider.</param>
@@ -2932,7 +2997,7 @@
         </member>
         <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.GetProviderId(MediaBrowser.Model.Entities.IHasProviderIds,System.String)">
             <summary>
-            Gets a provider id
+            Gets a provider id.
             </summary>
             <param name="instance">The instance.</param>
             <param name="name">The name.</param>
@@ -2940,15 +3005,15 @@
         </member>
         <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.SetProviderId(MediaBrowser.Model.Entities.IHasProviderIds,System.String,System.String)">
             <summary>
-            Sets a provider id
+            Sets a provider id.
             </summary>
             <param name="instance">The instance.</param>
             <param name="name">The name.</param>
             <param name="value">The value.</param>
         </member>
-        <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.SetProviderId(MediaBrowser.Model.Entities.IHasProviderIds,MediaBrowser.Model.Entities.MetadataProviders,System.String)">
+        <member name="M:MediaBrowser.Model.Entities.ProviderIdsExtensions.SetProviderId(MediaBrowser.Model.Entities.IHasProviderIds,MediaBrowser.Model.Entities.MetadataProvider,System.String)">
             <summary>
-            Sets a provider id
+            Sets a provider id.
             </summary>
             <param name="instance">The instance.</param>
             <param name="provider">The provider.</param>
@@ -3061,7 +3126,7 @@
         </member>
         <member name="T:MediaBrowser.Model.Entities.VirtualFolderInfo">
             <summary>
-            Used to hold information about a user's list of configured virtual folders
+            Used to hold information about a user's list of configured virtual folders.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Entities.VirtualFolderInfo.Name">
@@ -3116,11 +3181,6 @@
             Initializes a new instance of the <see cref="T:MediaBrowser.Model.Events.GenericEventArgs`1"/> class.
             </summary>
             <param name="arg">The argument.</param>
-        </member>
-        <member name="M:MediaBrowser.Model.Events.GenericEventArgs`1.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Events.GenericEventArgs`1"/> class.
-            </summary>
         </member>
         <member name="T:MediaBrowser.Model.Extensions.StringHelper">
             <summary>
@@ -3260,24 +3320,32 @@
         </member>
         <member name="T:MediaBrowser.Model.IO.FileSystemEntryInfo">
             <summary>
-            Class FileSystemEntryInfo
+            Class FileSystemEntryInfo.
             </summary>
+        </member>
+        <member name="M:MediaBrowser.Model.IO.FileSystemEntryInfo.#ctor(System.String,System.String,MediaBrowser.Model.IO.FileSystemEntryType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Model.IO.FileSystemEntryInfo" /> class.
+            </summary>
+            <param name="name">The filename.</param>
+            <param name="path">The file path.</param>
+            <param name="type">The file type.</param>
         </member>
         <member name="P:MediaBrowser.Model.IO.FileSystemEntryInfo.Name">
             <summary>
-            Gets or sets the name.
+            Gets the name.
             </summary>
             <value>The name.</value>
         </member>
         <member name="P:MediaBrowser.Model.IO.FileSystemEntryInfo.Path">
             <summary>
-            Gets or sets the path.
+            Gets the path.
             </summary>
             <value>The path.</value>
         </member>
         <member name="P:MediaBrowser.Model.IO.FileSystemEntryInfo.Type">
             <summary>
-            Gets or sets the type.
+            Gets the type.
             </summary>
             <value>The type.</value>
         </member>
@@ -3551,7 +3619,6 @@
             <param name="isoPath">The iso path.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>IsoMount.</returns>
-            <exception cref="T:System.ArgumentNullException">isoPath</exception>
             <exception cref="T:System.IO.IOException">Unable to create mount.</exception>
         </member>
         <member name="M:MediaBrowser.Model.IO.IIsoManager.CanMount(System.String)">
@@ -3574,7 +3641,7 @@
         </member>
         <member name="P:MediaBrowser.Model.IO.IIsoMount.IsoPath">
             <summary>
-            Gets or sets the iso path.
+            Gets the iso path.
             </summary>
             <value>The iso path.</value>
         </member>
@@ -3583,6 +3650,12 @@
             Gets the mounted path.
             </summary>
             <value>The mounted path.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.IO.IIsoMounter.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
         </member>
         <member name="M:MediaBrowser.Model.IO.IIsoMounter.Mount(System.String,System.Threading.CancellationToken)">
             <summary>
@@ -3600,12 +3673,6 @@
             </summary>
             <param name="path">The path.</param>
             <returns><c>true</c> if this instance can mount the specified path; otherwise, <c>false</c>.</returns>
-        </member>
-        <member name="P:MediaBrowser.Model.IO.IIsoMounter.Name">
-            <summary>
-            Gets the name.
-            </summary>
-            <value>The name.</value>
         </member>
         <member name="T:MediaBrowser.Model.IO.IODefaults">
             <summary>
@@ -3645,7 +3712,7 @@
         </member>
         <member name="T:MediaBrowser.Model.IO.IZipClient">
             <summary>
-            Interface IZipClient
+            Interface IZipClient.
             </summary>
         </member>
         <member name="M:MediaBrowser.Model.IO.IZipClient.ExtractAll(System.String,System.String,System.Boolean)">
@@ -3842,7 +3909,7 @@
         </member>
         <member name="F:MediaBrowser.Model.LiveTv.ChannelType.TV">
             <summary>
-            The TV
+            The TV.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.LiveTv.ChannelType.Radio">
@@ -3911,7 +3978,7 @@
         </member>
         <member name="P:MediaBrowser.Model.LiveTv.LiveTvChannelQuery.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -3923,13 +3990,13 @@
         </member>
         <member name="P:MediaBrowser.Model.LiveTv.LiveTvChannelQuery.IsNews">
             <summary>
-            Used to specific whether to return news or not
+            Used to specific whether to return news or not.
             </summary>
             <remarks>If set to null, all programs will be returned</remarks>
         </member>
         <member name="P:MediaBrowser.Model.LiveTv.LiveTvChannelQuery.IsMovie">
             <summary>
-            Used to specific whether to return movies or not
+            Used to specific whether to return movies or not.
             </summary>
             <remarks>If set to null, all programs will be returned</remarks>
         </member>
@@ -3947,7 +4014,7 @@
         </member>
         <member name="P:MediaBrowser.Model.LiveTv.LiveTvChannelQuery.SortOrder">
             <summary>
-            The sort order to return results with
+            The sort order to return results with.
             </summary>
             <value>The sort order.</value>
         </member>
@@ -4047,7 +4114,7 @@
         </member>
         <member name="P:MediaBrowser.Model.LiveTv.RecordingQuery.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -4071,7 +4138,7 @@
         </member>
         <member name="P:MediaBrowser.Model.LiveTv.RecordingQuery.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -4142,7 +4209,7 @@
         </member>
         <member name="P:MediaBrowser.Model.LiveTv.SeriesTimerQuery.SortBy">
             <summary>
-            Gets or sets the sort by - SortName, Priority
+            Gets or sets the sort by - SortName, Priority.
             </summary>
             <value>The sort by.</value>
         </member>
@@ -4366,12 +4433,12 @@
         </member>
         <member name="T:MediaBrowser.Model.Net.MimeTypes">
             <summary>
-            Class MimeTypes
+            Class MimeTypes.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Net.MimeTypes._videoFileExtensions">
             <summary>
-            Any extension in this list is considered a video file
+            Any extension in this list is considered a video file.
             </summary>
         </member>
         <member name="M:MediaBrowser.Model.Net.MimeTypes.GetMimeType(System.String,System.Boolean)">
@@ -4381,27 +4448,27 @@
         </member>
         <member name="P:MediaBrowser.Model.Net.NetworkShare.Server">
             <summary>
-            The name of the computer that this share belongs to
+            The name of the computer that this share belongs to.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Net.NetworkShare.Name">
             <summary>
-            Share name
+            Share name.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Net.NetworkShare.Path">
             <summary>
-            Local path
+            Local path.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Net.NetworkShare.ShareType">
             <summary>
-            Share type
+            Share type.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Net.NetworkShare.Remark">
             <summary>
-            Comment
+            Comment.
             </summary>
         </member>
         <member name="T:MediaBrowser.Model.Net.NetworkShareType">
@@ -4441,17 +4508,22 @@
         </member>
         <member name="P:MediaBrowser.Model.Net.SocketReceiveResult.Buffer">
             <summary>
-            The buffer to place received data into.
+            Gets or sets the buffer to place received data into.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Net.SocketReceiveResult.ReceivedBytes">
             <summary>
-            The number of bytes received.
+            Gets or sets the number of bytes received.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Net.SocketReceiveResult.RemoteEndPoint">
             <summary>
             The <see cref="T:System.Net.IPEndPoint"/> the data was received from.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Model.Net.SocketReceiveResult.LocalIPAddress">
+            <summary>
+            The local <see cref="T:System.Net.IPAddress"/>.
             </summary>
         </member>
         <member name="T:MediaBrowser.Model.Net.WebSocketMessage`1">
@@ -4474,7 +4546,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Notifications.NotificationOption.DisabledMonitorUsers">
             <summary>
-            User Ids to not monitor (it's opt out)
+            User Ids to not monitor (it's opt out).
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Notifications.NotificationOption.SendToUsers">
@@ -4504,36 +4576,6 @@
             <summary>
             The corresponding type name used in configuration. Not for display.
             </summary>
-        </member>
-        <member name="P:MediaBrowser.Model.Playlists.PlaylistItemQuery.Id">
-            <summary>
-            Gets or sets the identifier.
-            </summary>
-            <value>The identifier.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Playlists.PlaylistItemQuery.UserId">
-            <summary>
-            Gets or sets the user identifier.
-            </summary>
-            <value>The user identifier.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Playlists.PlaylistItemQuery.StartIndex">
-            <summary>
-            Gets or sets the start index.
-            </summary>
-            <value>The start index.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Playlists.PlaylistItemQuery.Limit">
-            <summary>
-            Gets or sets the limit.
-            </summary>
-            <value>The limit.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Playlists.PlaylistItemQuery.Fields">
-            <summary>
-            Gets or sets the fields.
-            </summary>
-            <value>The fields.</value>
         </member>
         <member name="T:MediaBrowser.Model.Plugins.BasePluginConfiguration">
             <summary>
@@ -4575,29 +4617,115 @@
             </summary>
             <value>The unique id.</value>
         </member>
+        <member name="P:MediaBrowser.Model.Plugins.PluginInfo.CanUninstall">
+            <summary>
+            Gets or sets a value indicating whether the plugin can be uninstalled.
+            </summary>
+        </member>
         <member name="P:MediaBrowser.Model.Plugins.PluginInfo.ImageUrl">
             <summary>
             Gets or sets the image URL.
             </summary>
             <value>The image URL.</value>
         </member>
+        <member name="T:MediaBrowser.Model.Providers.ExternalIdInfo">
+            <summary>
+            Represents the external id information for serialization to the client.
+            </summary>
+        </member>
         <member name="P:MediaBrowser.Model.Providers.ExternalIdInfo.Name">
             <summary>
-            Gets or sets the name.
+            Gets or sets the display name of the external id provider (IE: IMDB, MusicBrainz, etc).
             </summary>
-            <value>The name.</value>
         </member>
         <member name="P:MediaBrowser.Model.Providers.ExternalIdInfo.Key">
             <summary>
-            Gets or sets the key.
+            Gets or sets the unique key for this id. This key should be unique across all providers.
             </summary>
-            <value>The key.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Providers.ExternalIdInfo.Type">
+            <summary>
+            Gets or sets the specific media type for this id. This is used to distinguish between the different
+            external id types for providers with multiple ids.
+            A null value indicates there is no specific media type associated with the external id, or this is the
+            default id for the external provider so there is no need to specify a type.
+            </summary>
+            <remarks>
+            This can be used along with the <see cref="P:MediaBrowser.Model.Providers.ExternalIdInfo.Name"/> to localize the external id on the client.
+            </remarks>
         </member>
         <member name="P:MediaBrowser.Model.Providers.ExternalIdInfo.UrlFormatString">
             <summary>
             Gets or sets the URL format string.
             </summary>
-            <value>The URL format string.</value>
+        </member>
+        <member name="T:MediaBrowser.Model.Providers.ExternalIdMediaType">
+            <summary>
+            The specific media type of an <see cref="T:MediaBrowser.Model.Providers.ExternalIdInfo"/>.
+            </summary>
+            <remarks>
+            Client applications may use this as a translation key.
+            </remarks>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Album">
+            <summary>
+            A music album.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.AlbumArtist">
+            <summary>
+            The artist of a music album.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Artist">
+            <summary>
+            The artist of a media item.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.BoxSet">
+            <summary>
+            A boxed set of media.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Episode">
+            <summary>
+            A series episode.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Movie">
+            <summary>
+            A movie.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.OtherArtist">
+            <summary>
+            An alternative artist apart from the main artist.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Person">
+            <summary>
+            A person.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.ReleaseGroup">
+            <summary>
+            A release group.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Season">
+            <summary>
+            A single season of a series.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Series">
+            <summary>
+            A series.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.Providers.ExternalIdMediaType.Track">
+            <summary>
+            A music track.
+            </summary>
         </member>
         <member name="P:MediaBrowser.Model.Providers.ExternalUrl.Name">
             <summary>
@@ -4616,11 +4744,23 @@
             Class ImageProviderInfo.
             </summary>
         </member>
+        <member name="M:MediaBrowser.Model.Providers.ImageProviderInfo.#ctor(System.String,MediaBrowser.Model.Entities.ImageType[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaBrowser.Model.Providers.ImageProviderInfo" /> class.
+            </summary>
+            <param name="name">The name of the image provider.</param>
+            <param name="supportedImages">The image types supported by the image provider.</param>
+        </member>
         <member name="P:MediaBrowser.Model.Providers.ImageProviderInfo.Name">
             <summary>
-            Gets or sets the name.
+            Gets the name.
             </summary>
             <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Providers.ImageProviderInfo.SupportedImages">
+            <summary>
+            Gets the supported image types.
+            </summary>
         </member>
         <member name="T:MediaBrowser.Model.Providers.RemoteImageInfo">
             <summary>
@@ -4787,23 +4927,6 @@
             </summary>
             <value>The start item identifier.</value>
         </member>
-        <member name="T:MediaBrowser.Model.Querying.ItemCountsQuery">
-            <summary>
-            Class ItemCountsQuery.
-            </summary>
-        </member>
-        <member name="P:MediaBrowser.Model.Querying.ItemCountsQuery.UserId">
-            <summary>
-            Gets or sets the user id.
-            </summary>
-            <value>The user id.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Querying.ItemCountsQuery.IsFavorite">
-            <summary>
-            Gets or sets a value indicating whether this instance is favorite.
-            </summary>
-            <value><c>null</c> if [is favorite] contains no value, <c>true</c> if [is favorite]; otherwise, <c>false</c>.</value>
-        </member>
         <member name="T:MediaBrowser.Model.Querying.ItemFields">
             <summary>
             Used to control the data that gets attached to DtoBaseItems.
@@ -4811,187 +4934,187 @@
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.AirTime">
             <summary>
-            The air time
+            The air time.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.CanDelete">
             <summary>
-            The can delete
+            The can delete.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.CanDownload">
             <summary>
-            The can download
+            The can download.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ChannelInfo">
             <summary>
-            The channel information
+            The channel information.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Chapters">
             <summary>
-            The chapters
+            The chapters.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.CumulativeRunTimeTicks">
             <summary>
-            The cumulative run time ticks
+            The cumulative run time ticks.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.CustomRating">
             <summary>
-            The custom rating
+            The custom rating.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.DateCreated">
             <summary>
-            The date created of the item
+            The date created of the item.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.DateLastMediaAdded">
             <summary>
-            The date last media added
+            The date last media added.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.DisplayPreferencesId">
             <summary>
-            Item display preferences
+            Item display preferences.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Etag">
             <summary>
-            The etag
+            The etag.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ExternalUrls">
             <summary>
-            The external urls
+            The external urls.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Genres">
             <summary>
-            Genres
+            Genres.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.HomePageUrl">
             <summary>
-            The home page URL
+            The home page URL.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ItemCounts">
             <summary>
-            The item counts
+            The item counts.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.MediaSourceCount">
             <summary>
-            The media source count
+            The media source count.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.MediaSources">
             <summary>
-            The media versions
+            The media versions.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Overview">
             <summary>
-            The item overview
+            The item overview.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ParentId">
             <summary>
-            The id of the item's parent
+            The id of the item's parent.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Path">
             <summary>
-            The physical path of the item
+            The physical path of the item.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.People">
             <summary>
-            The list of people for the item
+            The list of people for the item.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ProductionLocations">
             <summary>
-            The production locations
+            The production locations.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ProviderIds">
             <summary>
-            Imdb, tmdb, etc
+            Imdb, tmdb, etc.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.PrimaryImageAspectRatio">
             <summary>
-            The aspect ratio of the primary image
+            The aspect ratio of the primary image.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Settings">
             <summary>
-            The settings
+            The settings.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ScreenshotImageTags">
             <summary>
-            The screenshot image tags
+            The screenshot image tags.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.SeriesStudio">
             <summary>
-            The series studio
+            The series studio.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.SortName">
             <summary>
-            The sort name of the item
+            The sort name of the item.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.SpecialEpisodeNumbers">
             <summary>
-            The special episode numbers
+            The special episode numbers.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Studios">
             <summary>
-            The studios of the item
+            The studios of the item.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.SyncInfo">
             <summary>
-            The synchronize information
+            The synchronize information.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Taglines">
             <summary>
-            The taglines of the item
+            The taglines of the item.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.Tags">
             <summary>
-            The tags
+            The tags.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.RemoteTrailers">
             <summary>
-            The trailer url of the item
+            The trailer url of the item.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.MediaStreams">
             <summary>
-            The media streams
+            The media streams.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.SeasonUserData">
             <summary>
-            The season user data
+            The season user data.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemFields.ServiceName">
             <summary>
-            The service name
+            The service name.
             </summary>
         </member>
         <member name="T:MediaBrowser.Model.Querying.ItemFilter">
@@ -5046,82 +5169,82 @@
         </member>
         <member name="T:MediaBrowser.Model.Querying.ItemSortBy">
             <summary>
-            These represent sort orders that are known by the core
+            These represent sort orders that are known by the core.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.Album">
             <summary>
-            The album
+            The album.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.AlbumArtist">
             <summary>
-            The album artist
+            The album artist.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.Artist">
             <summary>
-            The artist
+            The artist.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.DateCreated">
             <summary>
-            The date created
+            The date created.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.OfficialRating">
             <summary>
-            The official rating
+            The official rating.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.DatePlayed">
             <summary>
-            The date played
+            The date played.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.PremiereDate">
             <summary>
-            The premiere date
+            The premiere date.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.SortName">
             <summary>
-            The sort name
+            The sort name.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.Random">
             <summary>
-            The random
+            The random.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.Runtime">
             <summary>
-            The runtime
+            The runtime.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.CommunityRating">
             <summary>
-            The community rating
+            The community rating.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.ProductionYear">
             <summary>
-            The production year
+            The production year.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.PlayCount">
             <summary>
-            The play count
+            The play count.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Querying.ItemSortBy.CriticRating">
             <summary>
-            The critic rating
+            The critic rating.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Querying.LatestItemsQuery.UserId">
             <summary>
-            The user to localize search results for
+            The user to localize search results for.
             </summary>
             <value>The user id.</value>
         </member>
@@ -5139,13 +5262,13 @@
         </member>
         <member name="P:MediaBrowser.Model.Querying.LatestItemsQuery.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Model.Querying.LatestItemsQuery.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -5241,13 +5364,13 @@
         </member>
         <member name="P:MediaBrowser.Model.Querying.NextUpQuery.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Model.Querying.NextUpQuery.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -5277,7 +5400,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Querying.QueryResult`1.TotalRecordCount">
             <summary>
-            The total number of records available
+            The total number of records available.
             </summary>
             <value>The total record count.</value>
         </member>
@@ -5289,7 +5412,7 @@
         </member>
         <member name="T:MediaBrowser.Model.Querying.ThemeMediaResult">
             <summary>
-            Class ThemeMediaResult
+            Class ThemeMediaResult.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Querying.ThemeMediaResult.OwnerId">
@@ -5318,13 +5441,13 @@
         </member>
         <member name="P:MediaBrowser.Model.Querying.UpcomingEpisodesQuery.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Model.Querying.UpcomingEpisodesQuery.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -5508,7 +5631,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Search.SearchQuery.UserId">
             <summary>
-            The user to localize search results for
+            The user to localize search results for.
             </summary>
             <value>The user id.</value>
         </member>
@@ -5526,7 +5649,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Search.SearchQuery.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -5709,57 +5832,57 @@
         </member>
         <member name="P:MediaBrowser.Model.Services.ApiMemberAttribute.ExcludeInSchema">
             <summary>
-            Whether to exclude this property from being included in the ModelSchema
+            Whether to exclude this property from being included in the ModelSchema.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHasRequestFilter.Priority">
             <summary>
-            Order in which Request Filters are executed.
-            &lt;0 Executed before global request filters
-            &gt;0 Executed after global request filters
+            Gets the order in which Request Filters are executed.
+            &lt;0 Executed before global request filters.
+            &gt;0 Executed after global request filters.
             </summary>
         </member>
         <member name="M:MediaBrowser.Model.Services.IHasRequestFilter.RequestFilter(MediaBrowser.Model.Services.IRequest,Microsoft.AspNetCore.Http.HttpResponse,System.Object)">
             <summary>
             The request filter is executed before the service.
             </summary>
-            <param name="req">The http request wrapper</param>
-            <param name="res">The http response wrapper</param>
-            <param name="requestDto">The request DTO</param>
+            <param name="req">The http request wrapper.</param>
+            <param name="res">The http response wrapper.</param>
+            <param name="requestDto">The request DTO.</param>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHttpRequest.HttpMethod">
             <summary>
-            The HTTP Verb
+            Gets the HTTP Verb.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHttpRequest.Accept">
             <summary>
-            The value of the Accept HTTP Request Header
+            Gets the value of the Accept HTTP Request Header.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHttpResult.Status">
             <summary>
-            The HTTP Response Status
+            The HTTP Response Status.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHttpResult.StatusCode">
             <summary>
-            The HTTP Response Status Code
+            The HTTP Response Status Code.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHttpResult.ContentType">
             <summary>
-            The HTTP Response ContentType
+            The HTTP Response ContentType.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHttpResult.Response">
             <summary>
-            Response DTO
+            Response DTO.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IHttpResult.RequestContext">
             <summary>
-            Holds the request call context
+            Holds the request call context.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IRequest.OperationName">
@@ -5774,12 +5897,12 @@
         </member>
         <member name="P:MediaBrowser.Model.Services.IRequest.ContentType">
             <summary>
-            The request ContentType
+            The request ContentType.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IRequest.ResponseContentType">
             <summary>
-            The expected Response ContentType for this request
+            The expected Response ContentType for this request.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IRequest.Items">
@@ -5794,17 +5917,17 @@
         </member>
         <member name="P:MediaBrowser.Model.Services.IRequest.Authorization">
             <summary>
-            The value of the Authorization Header used to send the Api Key, null if not available
+            The value of the Authorization Header used to send the Api Key, null if not available.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IRequest.UrlReferrer">
             <summary>
-            The value of the Referrer, null if not available
+            The value of the Referrer, null if not available.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Services.IRequiresRequestStream.RequestStream">
             <summary>
-            The raw Http Request Input Stream
+            The raw Http Request Input Stream.
             </summary>
         </member>
         <member name="M:MediaBrowser.Model.Services.QueryParamCollection.Add(System.String,System.String)">
@@ -5817,8 +5940,8 @@
             Gets or sets a query parameter value by name. A query may contain multiple values of the same name
             (i.e. "x=1&amp;x=2"), in which case the value is an array, which works for both getting and setting.
             </summary>
-            <param name="name">The query parameter name</param>
-            <returns>The query parameter value or array of values</returns>
+            <param name="name">The query parameter name.</param>
+            <returns>The query parameter value or array of values.</returns>
         </member>
         <member name="M:MediaBrowser.Model.Services.RouteAttribute.#ctor(System.String)">
             <summary>
@@ -6190,7 +6313,7 @@
         </member>
         <member name="T:MediaBrowser.Model.Session.PlayRequest">
             <summary>
-            Class PlayRequest
+            Class PlayRequest.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Session.PlayRequest.ItemIds">
@@ -6201,7 +6324,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Session.PlayRequest.StartPositionTicks">
             <summary>
-            Gets or sets the start position ticks that the first item should be played at
+            Gets or sets the start position ticks that the first item should be played at.
             </summary>
             <value>The start position ticks.</value>
         </member>
@@ -6304,17 +6427,17 @@
         </member>
         <member name="F:MediaBrowser.Model.Sync.SyncCategory.Latest">
             <summary>
-            The latest
+            The latest.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Sync.SyncCategory.NextUp">
             <summary>
-            The next up
+            The next up.
             </summary>
         </member>
         <member name="F:MediaBrowser.Model.Sync.SyncCategory.Resume">
             <summary>
-            The resume
+            The resume.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Sync.SyncJob.Id">
@@ -6443,6 +6566,271 @@
             </summary>
             <value>The identifier.</value>
         </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.GroupInfoView">
+            <summary>
+            Class GroupInfoView.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupInfoView.GroupId">
+            <summary>
+            Gets or sets the group identifier.
+            </summary>
+            <value>The group identifier.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupInfoView.PlayingItemId">
+            <summary>
+            Gets or sets the playing item id.
+            </summary>
+            <value>The playing item id.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupInfoView.PlayingItemName">
+            <summary>
+            Gets or sets the playing item name.
+            </summary>
+            <value>The playing item name.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupInfoView.PositionTicks">
+            <summary>
+            Gets or sets the position ticks.
+            </summary>
+            <value>The position ticks.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupInfoView.Participants">
+            <summary>
+            Gets or sets the participants.
+            </summary>
+            <value>The participants.</value>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.GroupUpdate`1">
+            <summary>
+            Class GroupUpdate.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupUpdate`1.GroupId">
+            <summary>
+            Gets or sets the group identifier.
+            </summary>
+            <value>The group identifier.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupUpdate`1.Type">
+            <summary>
+            Gets or sets the update type.
+            </summary>
+            <value>The update type.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.GroupUpdate`1.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>The data.</value>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.GroupUpdateType">
+            <summary>
+            Enum GroupUpdateType.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.UserJoined">
+            <summary>
+            The user-joined update. Tells members of a group about a new user.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.UserLeft">
+            <summary>
+            The user-left update. Tells members of a group that a user left.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.GroupJoined">
+            <summary>
+            The group-joined update. Tells a user that the group has been joined.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.GroupLeft">
+            <summary>
+            The group-left update. Tells a user that the group has been left.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.GroupWait">
+            <summary>
+            The group-wait update. Tells members of the group that a user is buffering.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.PrepareSession">
+            <summary>
+            The prepare-session update. Tells a user to load some content.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.NotInGroup">
+            <summary>
+            The not-in-group error. Tells a user that they don't belong to a group.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.GroupDoesNotExist">
+            <summary>
+            The group-does-not-exist error. Sent when trying to join a non-existing group.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.CreateGroupDenied">
+            <summary>
+            The create-group-denied error. Sent when a user tries to create a group without required permissions.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.JoinGroupDenied">
+            <summary>
+            The join-group-denied error. Sent when a user tries to join a group without required permissions.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.GroupUpdateType.LibraryAccessDenied">
+            <summary>
+            The library-access-denied error. Sent when a user tries to join a group without required access to the library.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.JoinGroupRequest">
+            <summary>
+            Class JoinGroupRequest.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.JoinGroupRequest.GroupId">
+            <summary>
+            Gets or sets the Group id.
+            </summary>
+            <value>The Group id to join.</value>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.PlaybackRequest">
+            <summary>
+            Class PlaybackRequest.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.PlaybackRequest.Type">
+            <summary>
+            Gets or sets the request type.
+            </summary>
+            <value>The request type.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.PlaybackRequest.When">
+            <summary>
+            Gets or sets when the request has been made by the client.
+            </summary>
+            <value>The date of the request.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.PlaybackRequest.PositionTicks">
+            <summary>
+            Gets or sets the position ticks.
+            </summary>
+            <value>The position ticks.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.PlaybackRequest.Ping">
+            <summary>
+            Gets or sets the ping time.
+            </summary>
+            <value>The ping time.</value>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.PlaybackRequestType">
+            <summary>
+            Enum PlaybackRequestType.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.PlaybackRequestType.Play">
+            <summary>
+            A user is requesting a play command for the group.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.PlaybackRequestType.Pause">
+            <summary>
+            A user is requesting a pause command for the group.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.PlaybackRequestType.Seek">
+            <summary>
+            A user is requesting a seek command for the group.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.PlaybackRequestType.Buffer">
+            <summary>
+            A user is signaling that playback is buffering.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.PlaybackRequestType.Ready">
+            <summary>
+            A user is signaling that playback resumed.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.PlaybackRequestType.Ping">
+            <summary>
+            A user is reporting its ping.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.SendCommand">
+            <summary>
+            Class SendCommand.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.SendCommand.GroupId">
+            <summary>
+            Gets or sets the group identifier.
+            </summary>
+            <value>The group identifier.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.SendCommand.When">
+            <summary>
+            Gets or sets the UTC time when to execute the command.
+            </summary>
+            <value>The UTC time when to execute the command.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.SendCommand.PositionTicks">
+            <summary>
+            Gets or sets the position ticks.
+            </summary>
+            <value>The position ticks.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.SendCommand.Command">
+            <summary>
+            Gets or sets the command.
+            </summary>
+            <value>The command.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.SendCommand.EmittedAt">
+            <summary>
+            Gets or sets the UTC time when this command has been emitted.
+            </summary>
+            <value>The UTC time when this command has been emitted.</value>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.SendCommandType">
+            <summary>
+            Enum SendCommandType.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.SendCommandType.Play">
+            <summary>
+            The play command. Instructs users to start playback.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.SendCommandType.Pause">
+            <summary>
+            The pause command. Instructs users to pause playback.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Model.SyncPlay.SendCommandType.Seek">
+            <summary>
+            The seek command. Instructs users to seek to a specified time.
+            </summary>
+        </member>
+        <member name="T:MediaBrowser.Model.SyncPlay.UtcTimeResponse">
+            <summary>
+            Class UtcTimeResponse.
+            </summary>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.UtcTimeResponse.RequestReceptionTime">
+            <summary>
+            Gets or sets the UTC time when request has been received.
+            </summary>
+            <value>The UTC time when request has been received.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.SyncPlay.UtcTimeResponse.ResponseTransmissionTime">
+            <summary>
+            Gets or sets the UTC time when response has been sent.
+            </summary>
+            <value>The UTC time when response has been sent.</value>
+        </member>
         <member name="P:MediaBrowser.Model.System.LogFile.DateCreated">
             <summary>
             Gets or sets the date created.
@@ -6521,7 +6909,7 @@
         </member>
         <member name="T:MediaBrowser.Model.System.SystemInfo">
             <summary>
-            Class SystemInfo
+            Class SystemInfo.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.System.SystemInfo.OperatingSystemDisplayName">
@@ -6608,24 +6996,6 @@
             </summary>
             <value>The transcode path.</value>
         </member>
-        <member name="P:MediaBrowser.Model.System.SystemInfo.HttpServerPortNumber">
-            <summary>
-            Gets or sets the HTTP server port number.
-            </summary>
-            <value>The HTTP server port number.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.System.SystemInfo.SupportsHttps">
-            <summary>
-            Gets or sets a value indicating whether [enable HTTPS].
-            </summary>
-            <value><c>true</c> if [enable HTTPS]; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.System.SystemInfo.HttpsPortNumber">
-            <summary>
-            Gets or sets the HTTPS server port number.
-            </summary>
-            <value>The HTTPS server port number.</value>
-        </member>
         <member name="P:MediaBrowser.Model.System.SystemInfo.HasUpdateAvailable">
             <summary>
             Gets or sets a value indicating whether this instance has update available.
@@ -6641,18 +7011,6 @@
             <summary>
             Provides the MAC address and port for wake-on-LAN functionality.
             </summary>
-        </member>
-        <member name="P:MediaBrowser.Model.System.WakeOnLanInfo.MacAddress">
-            <summary>
-            Returns the MAC address of the device.
-            </summary>
-            <value>The MAC address.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.System.WakeOnLanInfo.Port">
-            <summary>
-            Returns the wake-on-LAN port.
-            </summary>
-            <value>The wake-on-LAN port.</value>
         </member>
         <member name="M:MediaBrowser.Model.System.WakeOnLanInfo.#ctor(System.Net.NetworkInformation.PhysicalAddress)">
             <summary>
@@ -6671,6 +7029,18 @@
             Initializes a new instance of the <see cref="T:MediaBrowser.Model.System.WakeOnLanInfo" /> class.
             </summary>
         </member>
+        <member name="P:MediaBrowser.Model.System.WakeOnLanInfo.MacAddress">
+            <summary>
+            Gets the MAC address of the device.
+            </summary>
+            <value>The MAC address.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.System.WakeOnLanInfo.Port">
+            <summary>
+            Gets or sets the wake-on-LAN port.
+            </summary>
+            <value>The wake-on-LAN port.</value>
+        </member>
         <member name="P:MediaBrowser.Model.Tasks.IConfigurableScheduledTask.IsHidden">
             <summary>
             Gets a value indicating whether this instance is hidden.
@@ -6685,14 +7055,19 @@
         </member>
         <member name="T:MediaBrowser.Model.Tasks.IScheduledTask">
             <summary>
-            Interface IScheduledTaskWorker
+            Interface IScheduledTaskWorker.
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Tasks.IScheduledTask.Name">
             <summary>
-            Gets the name of the task
+            Gets the name of the task.
             </summary>
             <value>The name.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Tasks.IScheduledTask.Key">
+            <summary>
+            Gets the key of the task.
+            </summary>
         </member>
         <member name="P:MediaBrowser.Model.Tasks.IScheduledTask.Description">
             <summary>
@@ -6708,7 +7083,7 @@
         </member>
         <member name="M:MediaBrowser.Model.Tasks.IScheduledTask.Execute(System.Threading.CancellationToken,System.IProgress{System.Double})">
             <summary>
-            Executes the task
+            Executes the task.
             </summary>
             <param name="cancellationToken">The cancellation token.</param>
             <param name="progress">The progress.</param>
@@ -6774,7 +7149,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Tasks.IScheduledTaskWorker.Triggers">
             <summary>
-            Gets the triggers that define when the task will run
+            Gets the triggers that define when the task will run.
             </summary>
             <value>The triggers.</value>
             <exception cref="T:System.ArgumentNullException">value</exception>
@@ -6792,7 +7167,7 @@
         </member>
         <member name="P:MediaBrowser.Model.Tasks.ITaskManager.ScheduledTasks">
             <summary>
-            Gets the list of Scheduled Tasks
+            Gets the list of Scheduled Tasks.
             </summary>
             <value>The scheduled tasks.</value>
         </member>
@@ -7079,38 +7454,16 @@
             </summary>
             <value>The maximum runtime ticks.</value>
         </member>
-        <member name="T:MediaBrowser.Model.Updates.CheckForUpdateResult">
-            <summary>
-            Class CheckForUpdateResult.
-            </summary>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.CheckForUpdateResult.IsUpdateAvailable">
-            <summary>
-            Gets or sets a value indicating whether this instance is update available.
-            </summary>
-            <value><c>true</c> if this instance is update available; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.CheckForUpdateResult.AvailableVersion">
-            <summary>
-            Gets or sets the available version.
-            </summary>
-            <value>The available version.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.CheckForUpdateResult.Package">
-            <summary>
-            Get or sets package information for an available update
-            </summary>
-        </member>
         <member name="T:MediaBrowser.Model.Updates.InstallationInfo">
             <summary>
             Class InstallationInfo.
             </summary>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.InstallationInfo.Id">
+        <member name="P:MediaBrowser.Model.Updates.InstallationInfo.Guid">
             <summary>
-            Gets or sets the id.
+            Gets or sets the guid.
             </summary>
-            <value>The id.</value>
+            <value>The guid.</value>
         </member>
         <member name="P:MediaBrowser.Model.Updates.InstallationInfo.Name">
             <summary>
@@ -7118,34 +7471,34 @@
             </summary>
             <value>The name.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.InstallationInfo.AssemblyGuid">
-            <summary>
-            Gets or sets the assembly guid.
-            </summary>
-            <value>The guid of the assembly.</value>
-        </member>
         <member name="P:MediaBrowser.Model.Updates.InstallationInfo.Version">
             <summary>
             Gets or sets the version.
             </summary>
             <value>The version.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.InstallationInfo.UpdateClass">
+        <member name="P:MediaBrowser.Model.Updates.InstallationInfo.Changelog">
             <summary>
-            Gets or sets the update class.
+            Gets or sets the changelog for this version.
             </summary>
-            <value>The update class.</value>
+            <value>The changelog.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Updates.InstallationInfo.SourceUrl">
+            <summary>
+            Gets or sets the source URL.
+            </summary>
+            <value>The source URL.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Updates.InstallationInfo.Checksum">
+            <summary>
+            Gets or sets a checksum for the binary.
+            </summary>
+            <value>The checksum.</value>
         </member>
         <member name="T:MediaBrowser.Model.Updates.PackageInfo">
             <summary>
             Class PackageInfo.
             </summary>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.id">
-            <summary>
-            The internal id of this package.
-            </summary>
-            <value>The id.</value>
         </member>
         <member name="P:MediaBrowser.Model.Updates.PackageInfo.name">
             <summary>
@@ -7153,59 +7506,17 @@
             </summary>
             <value>The name.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.shortDescription">
+        <member name="P:MediaBrowser.Model.Updates.PackageInfo.description">
             <summary>
-            Gets or sets the short description.
+            Gets or sets a long description of the plugin containing features or helpful explanations.
             </summary>
-            <value>The short description.</value>
+            <value>The description.</value>
         </member>
         <member name="P:MediaBrowser.Model.Updates.PackageInfo.overview">
             <summary>
-            Gets or sets the overview.
+            Gets or sets a short overview of what the plugin does.
             </summary>
             <value>The overview.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.isPremium">
-            <summary>
-            Gets or sets a value indicating whether this instance is premium.
-            </summary>
-            <value><c>true</c> if this instance is premium; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.adult">
-            <summary>
-            Gets or sets a value indicating whether this instance is adult only content.
-            </summary>
-            <value><c>true</c> if this instance is adult; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.richDescUrl">
-            <summary>
-            Gets or sets the rich desc URL.
-            </summary>
-            <value>The rich desc URL.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.thumbImage">
-            <summary>
-            Gets or sets the thumb image.
-            </summary>
-            <value>The thumb image.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.previewImage">
-            <summary>
-            Gets or sets the preview image.
-            </summary>
-            <value>The preview image.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.type">
-            <summary>
-            Gets or sets the type.
-            </summary>
-            <value>The type.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.targetFilename">
-            <summary>
-            Gets or sets the target filename.
-            </summary>
-            <value>The target filename.</value>
         </member>
         <member name="P:MediaBrowser.Model.Updates.PackageInfo.owner">
             <summary>
@@ -7219,66 +7530,12 @@
             </summary>
             <value>The category.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.tileColor">
-            <summary>
-            Gets or sets the catalog tile color.
-            </summary>
-            <value>The owner.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.featureId">
-            <summary>
-            Gets or sets the feature id of this package (if premium).
-            </summary>
-            <value>The feature id.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.regInfo">
-            <summary>
-            Gets or sets the registration info for this package (if premium).
-            </summary>
-            <value>The registration info.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.price">
-            <summary>
-            Gets or sets the price for this package (if premium).
-            </summary>
-            <value>The price.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.targetSystem">
-            <summary>
-            Gets or sets the target system for this plug-in (Server, MBTheater, MBClassic).
-            </summary>
-            <value>The target system.</value>
-        </member>
         <member name="P:MediaBrowser.Model.Updates.PackageInfo.guid">
             <summary>
-            The guid of the assembly associated with this package (if a plug-in).
+            The guid of the assembly associated with this plugin.
             This is used to identify the proper item for automatic updates.
             </summary>
             <value>The name.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.totalRatings">
-            <summary>
-            Gets or sets the total number of ratings for this package.
-            </summary>
-            <value>The total ratings.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.avgRating">
-            <summary>
-            Gets or sets the average rating for this package .
-            </summary>
-            <value>The rating.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.isRegistered">
-            <summary>
-            Gets or sets whether or not this package is registered.
-            </summary>
-            <value>True if registered.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.expDate">
-            <summary>
-            Gets or sets the expiration date for this package.
-            </summary>
-            <value>Expiration Date.</value>
         </member>
         <member name="P:MediaBrowser.Model.Updates.PackageInfo.versions">
             <summary>
@@ -7286,133 +7543,68 @@
             </summary>
             <value>The versions.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.enableInAppStore">
-            <summary>
-            Gets or sets a value indicating whether [enable in application store].
-            </summary>
-            <value><c>true</c> if [enable in application store]; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageInfo.installs">
-            <summary>
-            Gets or sets the installs.
-            </summary>
-            <value>The installs.</value>
-        </member>
         <member name="M:MediaBrowser.Model.Updates.PackageInfo.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Model.Updates.PackageInfo"/> class.
             </summary>
         </member>
-        <member name="T:MediaBrowser.Model.Updates.PackageTargetSystem">
+        <member name="T:MediaBrowser.Model.Updates.RepositoryInfo">
             <summary>
-            Enum PackageType.
+            Class RepositoryInfo.
             </summary>
         </member>
-        <member name="F:MediaBrowser.Model.Updates.PackageTargetSystem.Server">
-            <summary>
-            Server.
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Model.Updates.PackageTargetSystem.MBTheater">
-            <summary>
-            MB Theater.
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Model.Updates.PackageTargetSystem.MBClassic">
-            <summary>
-            MB Classic.
-            </summary>
-        </member>
-        <member name="T:MediaBrowser.Model.Updates.PackageVersionClass">
-            <summary>
-            Enum PackageVersionClass.
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Model.Updates.PackageVersionClass.Release">
-            <summary>
-            The release.
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Model.Updates.PackageVersionClass.Beta">
-            <summary>
-            The beta.
-            </summary>
-        </member>
-        <member name="F:MediaBrowser.Model.Updates.PackageVersionClass.Dev">
-            <summary>
-            The dev.
-            </summary>
-        </member>
-        <member name="T:MediaBrowser.Model.Updates.PackageVersionInfo">
-            <summary>
-            Class PackageVersionInfo.
-            </summary>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.name">
+        <member name="P:MediaBrowser.Model.Updates.RepositoryInfo.Name">
             <summary>
             Gets or sets the name.
             </summary>
             <value>The name.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.guid">
+        <member name="P:MediaBrowser.Model.Updates.RepositoryInfo.Url">
             <summary>
-            Gets or sets the guid.
+            Gets or sets the URL.
             </summary>
-            <value>The guid.</value>
+            <value>The URL.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.versionStr">
+        <member name="T:MediaBrowser.Model.Updates.VersionInfo">
             <summary>
-            Gets or sets the version STR.
-            </summary>
-            <value>The version STR.</value>
-        </member>
-        <member name="F:MediaBrowser.Model.Updates.PackageVersionInfo._version">
-            <summary>
-            The _version
+            Class PackageVersionInfo.
             </summary>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.Version">
+        <member name="P:MediaBrowser.Model.Updates.VersionInfo.version">
             <summary>
             Gets or sets the version.
-            Had to make this an interpreted property since Protobuf can't handle Version
             </summary>
             <value>The version.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.classification">
+        <member name="P:MediaBrowser.Model.Updates.VersionInfo.changelog">
             <summary>
-            Gets or sets the classification.
+            Gets or sets the changelog for this version.
             </summary>
-            <value>The classification.</value>
+            <value>The changelog.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.description">
+        <member name="P:MediaBrowser.Model.Updates.VersionInfo.targetAbi">
             <summary>
-            Gets or sets the description.
+            Gets or sets the ABI that this version was built against.
             </summary>
-            <value>The description.</value>
+            <value>The target ABI version.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.requiredVersionStr">
-            <summary>
-            Gets or sets the required version STR.
-            </summary>
-            <value>The required version STR.</value>
-        </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.sourceUrl">
+        <member name="P:MediaBrowser.Model.Updates.VersionInfo.sourceUrl">
             <summary>
             Gets or sets the source URL.
             </summary>
             <value>The source URL.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.checksum">
+        <member name="P:MediaBrowser.Model.Updates.VersionInfo.checksum">
             <summary>
-            Gets or sets the source URL.
+            Gets or sets a checksum for the binary.
             </summary>
-            <value>The source URL.</value>
+            <value>The checksum.</value>
         </member>
-        <member name="P:MediaBrowser.Model.Updates.PackageVersionInfo.targetFilename">
+        <member name="P:MediaBrowser.Model.Updates.VersionInfo.timestamp">
             <summary>
-            Gets or sets the target filename.
+            Gets or sets a timestamp of when the binary was built.
             </summary>
-            <value>The target filename.</value>
+            <value>The timestamp.</value>
         </member>
         <member name="P:MediaBrowser.Model.Users.ForgotPasswordResult.Action">
             <summary>
@@ -7473,6 +7665,12 @@
             Gets or sets a value indicating whether [enable synchronize].
             </summary>
             <value><c>true</c> if [enable synchronize]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:MediaBrowser.Model.Users.UserPolicy.SyncPlayAccess">
+            <summary>
+            Gets or sets a value indicating what SyncPlay features the user can access.
+            </summary>
+            <value>Access level to SyncPlay features.</value>
         </member>
     </members>
 </doc>

@@ -71,13 +71,13 @@
         </member>
         <member name="M:Emby.Dlna.Didl.DidlBuilder.AddCommonFields(MediaBrowser.Controller.Entities.BaseItem,System.Nullable{Emby.Dlna.ContentDirectory.StubType},MediaBrowser.Controller.Entities.BaseItem,System.Xml.XmlWriter,Emby.Dlna.Didl.Filter)">
             <summary>
-            Adds fields used by both items and folders
+            Adds fields used by both items and folders.
             </summary>
         </member>
         <member name="M:Emby.Dlna.DlnaManager.ReserializeProfile(MediaBrowser.Model.Dlna.DeviceProfile)">
             <summary>
             Recreates the object using serialization, to ensure it's not a subclass.
-            If it's a subclass it may not serlialize properly to xml (different root element tag name)
+            If it's a subclass it may not serlialize properly to xml (different root element tag name).
             </summary>
             <param name="profile"></param>
             <returns></returns>
@@ -127,15 +127,25 @@
         </member>
         <member name="M:Emby.Dlna.PlayTo.Device.SetVolume(System.Int32,System.Threading.CancellationToken)">
             <summary>
-            Sets volume on a scale of 0-100
+            Sets volume on a scale of 0-100.
             </summary>
         </member>
-        <member name="M:Emby.Dlna.PlayTo.PlayToController.PlayItems(System.Collections.Generic.IEnumerable{Emby.Dlna.PlayTo.PlaylistItem})">
+        <member name="M:Emby.Dlna.PlayTo.PlayToController.PlayItems(System.Collections.Generic.IEnumerable{Emby.Dlna.PlayTo.PlaylistItem},System.Threading.CancellationToken)">
             <summary>
             Plays the items.
             </summary>
             <param name="items">The items.</param>
-            <returns></returns>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns><c>true</c> on success.</returns>
+        </member>
+        <member name="M:Emby.Dlna.PlayTo.PlayToController.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.PlayTo.PlayToController.SendMessage``1(System.String,System.Guid,``0,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Emby.Dlna.PlayTo.PlayToManager.Dispose">
+            <inheritdoc />
         </member>
         <member name="M:Emby.Dlna.Server.DescriptionXmlBuilder.Escape(System.String)">
             <summary>Replaces invalid XML characters in a string with their valid XML equivalent.</summary>

@@ -1,0 +1,2750 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jellyfin.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Jellyfin.Data.Entities.AccessSchedule">
+            <summary>
+            An entity representing a user's access schedule.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.AccessSchedule.#ctor(Jellyfin.Data.Enums.DynamicDayOfWeek,System.Double,System.Double,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.AccessSchedule"/> class.
+            </summary>
+            <param name="dayOfWeek">The day of the week.</param>
+            <param name="startHour">The start hour.</param>
+            <param name="endHour">The end hour.</param>
+            <param name="userId">The associated user's id.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.AccessSchedule.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.AccessSchedule"/> class.
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.AccessSchedule.Id">
+            <summary>
+            Gets or sets the id of this instance.
+            </summary>
+            <remarks>
+            Identity, Indexed, Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.AccessSchedule.UserId">
+            <summary>
+            Gets or sets the id of the associated user.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.AccessSchedule.DayOfWeek">
+            <summary>
+            Gets or sets the day of week.
+            </summary>
+            <value>The day of week.</value>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.AccessSchedule.StartHour">
+            <summary>
+            Gets or sets the start hour.
+            </summary>
+            <value>The start hour.</value>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.AccessSchedule.EndHour">
+            <summary>
+            Gets or sets the end hour.
+            </summary>
+            <value>The end hour.</value>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.AccessSchedule.Create(Jellyfin.Data.Enums.DynamicDayOfWeek,System.Double,System.Double,System.Guid)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="dayOfWeek">The day of the week.</param>
+            <param name="startHour">The start hour.</param>
+            <param name="endHour">The end hour.</param>
+            <param name="userId">The associated user's id.</param>
+            <returns>The newly created instance.</returns>
+        </member>
+        <member name="T:Jellyfin.Data.Entities.ActivityLog">
+            <summary>
+            An entity referencing an activity log entry.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ActivityLog.#ctor(System.String,System.String,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.ActivityLog"/> class.
+            Public constructor with required data.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+            <param name="userId">The user id.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ActivityLog.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.ActivityLog"/> class.
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ActivityLog.Create(System.String,System.String,System.Guid)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+            <param name="userId">The user's id.</param>
+            <returns>The new <see cref="T:Jellyfin.Data.Entities.ActivityLog"/> instance.</returns>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.Id">
+            <summary>
+            Gets or sets the identity of this instance.
+            This is the key in the backing database.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.Name">
+            <summary>
+            Gets or sets the name.
+            Required, Max length = 512.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.Overview">
+            <summary>
+            Gets or sets the overview.
+            Max length = 512.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.ShortOverview">
+            <summary>
+            Gets or sets the short overview.
+            Max length = 512.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.Type">
+            <summary>
+            Gets or sets the type.
+            Required, Max length = 256.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.UserId">
+            <summary>
+            Gets or sets the user id.
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.ItemId">
+            <summary>
+            Gets or sets the item id.
+            Max length = 256.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.DateCreated">
+            <summary>
+            Gets or sets the date created. This should be in UTC.
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.LogSeverity">
+            <summary>
+            Gets or sets the log severity. Default is <see cref="F:Microsoft.Extensions.Logging.LogLevel.Trace"/>.
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ActivityLog.RowVersion">
+            <summary>
+            Gets or sets the row version.
+            Required, ConcurrencyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ActivityLog.OnSavingChanges">
+            <inheritdoc />
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Artwork.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Artwork.CreateArtworkUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Artwork.#ctor(System.String,Jellyfin.Data.Enums.ArtKind,Jellyfin.Data.Entities.Metadata,Jellyfin.Data.Entities.PersonRole)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="path"></param>
+            <param name="kind"></param>
+            <param name="_metadata0"></param>
+            <param name="_personrole1"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Artwork.Create(System.String,Jellyfin.Data.Enums.ArtKind,Jellyfin.Data.Entities.Metadata,Jellyfin.Data.Entities.PersonRole)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="path"></param>
+            <param name="kind"></param>
+            <param name="_metadata0"></param>
+            <param name="_personrole1"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Artwork._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Artwork.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Artwork._Path">
+            <summary>
+            Backing field for Path.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Artwork.Path">
+            <summary>
+            Required, Max length = 65535
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Artwork._Kind">
+            <summary>
+            Backing field for Kind.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Artwork.Kind">
+            <summary>
+            Indexed, Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Artwork.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Book.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Book.CreateBookUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Book.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Book.Create(System.Guid,System.DateTime)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.BookMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.BookMetadata.CreateBookMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.BookMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Book)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_book0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.BookMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Book)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_book0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.BookMetadata._ISBN">
+            <summary>
+            Backing field for ISBN.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Chapter.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Chapter.CreateChapterUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Chapter.#ctor(System.String,System.Int64,Jellyfin.Data.Entities.Release)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="timestart"></param>
+            <param name="_release0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Chapter.Create(System.String,System.Int64,Jellyfin.Data.Entities.Release)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="timestart"></param>
+            <param name="_release0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Chapter._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Chapter.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Chapter._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Chapter.Name">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Chapter._Language">
+            <summary>
+            Backing field for Language.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Chapter.Language">
+            <summary>
+            Required, Min length = 3, Max length = 3
+            ISO-639-3 3-character language codes.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Chapter._TimeStart">
+            <summary>
+            Backing field for TimeStart.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Chapter.TimeStart">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Chapter._TimeEnd">
+            <summary>
+            Backing field for TimeEnd.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Chapter.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Collection.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Collection._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Collection.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Collection._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Collection.Name">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Collection.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CollectionItem.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CollectionItem.CreateCollectionItemUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CollectionItem.#ctor(Jellyfin.Data.Entities.Collection,Jellyfin.Data.Entities.CollectionItem,Jellyfin.Data.Entities.CollectionItem)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="_collection0"></param>
+            <param name="_collectionitem1"></param>
+            <param name="_collectionitem2"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CollectionItem.Create(Jellyfin.Data.Entities.Collection,Jellyfin.Data.Entities.CollectionItem,Jellyfin.Data.Entities.CollectionItem)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="_collection0"></param>
+            <param name="_collectionitem1"></param>
+            <param name="_collectionitem2"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.CollectionItem._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CollectionItem.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CollectionItem.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CollectionItem.LibraryItem">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CollectionItem.Next">
+            <remarks>
+            TODO check if this properly updated dependant and has the proper principal relationship
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CollectionItem.Previous">
+            <remarks>
+            TODO check if this properly updated dependant and has the proper principal relationship
+            </remarks>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Company.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Company.CreateCompanyUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Company.#ctor(Jellyfin.Data.Entities.MovieMetadata,Jellyfin.Data.Entities.SeriesMetadata,Jellyfin.Data.Entities.MusicAlbumMetadata,Jellyfin.Data.Entities.BookMetadata,Jellyfin.Data.Entities.Company)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="_moviemetadata0"></param>
+            <param name="_seriesmetadata1"></param>
+            <param name="_musicalbummetadata2"></param>
+            <param name="_bookmetadata3"></param>
+            <param name="_company4"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Company.Create(Jellyfin.Data.Entities.MovieMetadata,Jellyfin.Data.Entities.SeriesMetadata,Jellyfin.Data.Entities.MusicAlbumMetadata,Jellyfin.Data.Entities.BookMetadata,Jellyfin.Data.Entities.Company)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="_moviemetadata0"></param>
+            <param name="_seriesmetadata1"></param>
+            <param name="_musicalbummetadata2"></param>
+            <param name="_bookmetadata3"></param>
+            <param name="_company4"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Company._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Company.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Company.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CompanyMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CompanyMetadata.CreateCompanyMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CompanyMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Company)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_company0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CompanyMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Company)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_company0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.CompanyMetadata._Description">
+            <summary>
+            Backing field for Description.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CompanyMetadata.Description">
+            <summary>
+            Max length = 65535
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.CompanyMetadata._Headquarters">
+            <summary>
+            Backing field for Headquarters.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CompanyMetadata.Headquarters">
+            <summary>
+            Max length = 255
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.CompanyMetadata._Country">
+            <summary>
+            Backing field for Country.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CompanyMetadata.Country">
+            <summary>
+            Max length = 2
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.CompanyMetadata._Homepage">
+            <summary>
+            Backing field for Homepage.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.CompanyMetadata.Homepage">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItem.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItem.CreateCustomItemUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItem.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItem.Create(System.Guid,System.DateTime)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItemMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItemMetadata.CreateCustomItemMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItemMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.CustomItem)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_customitem0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.CustomItemMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.CustomItem)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_customitem0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Episode.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Episode.CreateEpisodeUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Episode.#ctor(System.Guid,System.DateTime,Jellyfin.Data.Entities.Season)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+            <param name="_season0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Episode.Create(System.Guid,System.DateTime,Jellyfin.Data.Entities.Season)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+            <param name="_season0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Episode._EpisodeNumber">
+            <summary>
+            Backing field for EpisodeNumber.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.EpisodeMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.EpisodeMetadata.CreateEpisodeMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.EpisodeMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Episode)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_episode0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.EpisodeMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Episode)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_episode0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.EpisodeMetadata._Outline">
+            <summary>
+            Backing field for Outline.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.EpisodeMetadata.Outline">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.EpisodeMetadata._Plot">
+            <summary>
+            Backing field for Plot.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.EpisodeMetadata.Plot">
+            <summary>
+            Max length = 65535
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.EpisodeMetadata._Tagline">
+            <summary>
+            Backing field for Tagline.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.EpisodeMetadata.Tagline">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Genre.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Genre.CreateGenreUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Genre.#ctor(System.String,Jellyfin.Data.Entities.Metadata)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="name"></param>
+            <param name="_metadata0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Genre.Create(System.String,Jellyfin.Data.Entities.Metadata)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="name"></param>
+            <param name="_metadata0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Genre._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Genre.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Genre._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Genre.Name">
+            <summary>
+            Indexed, Required, Max length = 255
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Genre.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Data.Entities.Group">
+            <summary>
+            An entity representing a group.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Group.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.Group"/> class.
+            Public constructor with required data.
+            </summary>
+            <param name="name">The name of the group.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Group.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.Group"/> class.
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Group.Id">
+            <summary>
+            Gets or sets the id of this group.
+            </summary>
+            <remarks>
+            Identity, Indexed, Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Group.Name">
+            <summary>
+            Gets or sets the group's name.
+            </summary>
+            <remarks>
+            Required, Max length = 255.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Group.RowVersion">
+            <summary>
+            Gets or sets the row version.
+            </summary>
+            <remarks>
+            Required, Concurrency Token.
+            </remarks>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Group.Create(System.String)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="name">The name of this group.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Group.HasPermission(Jellyfin.Data.Enums.PermissionKind)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Group.SetPermission(Jellyfin.Data.Enums.PermissionKind,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Library.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Library.CreateLibraryUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Library.#ctor(System.String)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Library.Create(System.String)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Library._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Library.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Library._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Library.Name">
+            <summary>
+            Required, Max length = 1024
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Library.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.LibraryItem.#ctor">
+            <summary>
+            Default constructor. Protected due to being abstract.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.LibraryItem.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.LibraryItem._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryItem.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.LibraryItem._UrlId">
+            <summary>
+            Backing field for UrlId.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryItem.UrlId">
+            <summary>
+            Indexed, Required
+            This is whats gets displayed in the Urls and API requests. This could also be a string.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.LibraryItem._DateAdded">
+            <summary>
+            Backing field for DateAdded.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryItem.DateAdded">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryItem.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryItem.LibraryRoot">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.LibraryRoot.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.LibraryRoot.CreateLibraryRootUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.LibraryRoot.#ctor(System.String)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="path">Absolute Path.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.LibraryRoot.Create(System.String)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="path">Absolute Path.</param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.LibraryRoot._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryRoot.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.LibraryRoot._Path">
+            <summary>
+            Backing field for Path.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryRoot.Path">
+            <summary>
+            Required, Max length = 65535
+            Absolute Path.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.LibraryRoot._NetworkPath">
+            <summary>
+            Backing field for NetworkPath.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryRoot.NetworkPath">
+            <summary>
+            Max length = 65535
+            Absolute network path, for example for transcoding sattelites.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryRoot.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.LibraryRoot.Library">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFile.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFile.CreateMediaFileUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFile.#ctor(System.String,Jellyfin.Data.Enums.MediaFileKind,Jellyfin.Data.Entities.Release)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="path">Relative to the LibraryRoot.</param>
+            <param name="kind"></param>
+            <param name="_release0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFile.Create(System.String,Jellyfin.Data.Enums.MediaFileKind,Jellyfin.Data.Entities.Release)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="path">Relative to the LibraryRoot.</param>
+            <param name="kind"></param>
+            <param name="_release0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MediaFile._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MediaFile.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MediaFile._Path">
+            <summary>
+            Backing field for Path.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MediaFile.Path">
+            <summary>
+            Required, Max length = 65535
+            Relative to the LibraryRoot.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MediaFile._Kind">
+            <summary>
+            Backing field for Kind.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MediaFile.Kind">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MediaFile.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFileStream.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFileStream.CreateMediaFileStreamUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFileStream.#ctor(System.Int32,Jellyfin.Data.Entities.MediaFile)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="streamnumber"></param>
+            <param name="_mediafile0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MediaFileStream.Create(System.Int32,Jellyfin.Data.Entities.MediaFile)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="streamnumber"></param>
+            <param name="_mediafile0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MediaFileStream._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MediaFileStream.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MediaFileStream._StreamNumber">
+            <summary>
+            Backing field for StreamNumber.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MediaFileStream.StreamNumber">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MediaFileStream.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Metadata.#ctor">
+            <summary>
+            Default constructor. Protected due to being abstract.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Metadata.#ctor(System.String,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._Title">
+            <summary>
+            Backing field for Title.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.Title">
+            <summary>
+            Required, Max length = 1024
+            The title or name of the object.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._OriginalTitle">
+            <summary>
+            Backing field for OriginalTitle.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.OriginalTitle">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._SortTitle">
+            <summary>
+            Backing field for SortTitle.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.SortTitle">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._Language">
+            <summary>
+            Backing field for Language.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.Language">
+            <summary>
+            Required, Min length = 3, Max length = 3
+            ISO-639-3 3-character language codes.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._ReleaseDate">
+            <summary>
+            Backing field for ReleaseDate.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._DateAdded">
+            <summary>
+            Backing field for DateAdded.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.DateAdded">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Metadata._DateModified">
+            <summary>
+            Backing field for DateModified.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.DateModified">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Metadata.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProvider.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProvider.CreateMetadataProviderUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProvider.#ctor(System.String)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProvider.Create(System.String)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MetadataProvider._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MetadataProvider.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MetadataProvider._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MetadataProvider.Name">
+            <summary>
+            Required, Max length = 1024
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MetadataProvider.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProviderId.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProviderId.CreateMetadataProviderIdUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProviderId.#ctor(System.String,Jellyfin.Data.Entities.Metadata,Jellyfin.Data.Entities.Person,Jellyfin.Data.Entities.PersonRole,Jellyfin.Data.Entities.RatingSource)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="providerid"></param>
+            <param name="_metadata0"></param>
+            <param name="_person1"></param>
+            <param name="_personrole2"></param>
+            <param name="_ratingsource3"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MetadataProviderId.Create(System.String,Jellyfin.Data.Entities.Metadata,Jellyfin.Data.Entities.Person,Jellyfin.Data.Entities.PersonRole,Jellyfin.Data.Entities.RatingSource)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="providerid"></param>
+            <param name="_metadata0"></param>
+            <param name="_person1"></param>
+            <param name="_personrole2"></param>
+            <param name="_ratingsource3"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MetadataProviderId._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MetadataProviderId.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MetadataProviderId._ProviderId">
+            <summary>
+            Backing field for ProviderId.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MetadataProviderId.ProviderId">
+            <summary>
+            Required, Max length = 255
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MetadataProviderId.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MetadataProviderId.MetadataProvider">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Movie.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Movie.CreateMovieUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Movie.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Movie.Create(System.Guid,System.DateTime)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MovieMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MovieMetadata.CreateMovieMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MovieMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Movie)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_movie0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MovieMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Movie)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_movie0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MovieMetadata._Outline">
+            <summary>
+            Backing field for Outline.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MovieMetadata.Outline">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MovieMetadata._Plot">
+            <summary>
+            Backing field for Plot.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MovieMetadata.Plot">
+            <summary>
+            Max length = 65535
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MovieMetadata._Tagline">
+            <summary>
+            Backing field for Tagline.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MovieMetadata.Tagline">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MovieMetadata._Country">
+            <summary>
+            Backing field for Country.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MovieMetadata.Country">
+            <summary>
+            Max length = 2
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbum.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbum.CreateMusicAlbumUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbum.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbum.Create(System.Guid,System.DateTime)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbumMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbumMetadata.CreateMusicAlbumMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbumMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.MusicAlbum)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_musicalbum0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.MusicAlbumMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.MusicAlbum)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_musicalbum0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MusicAlbumMetadata._Barcode">
+            <summary>
+            Backing field for Barcode.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MusicAlbumMetadata.Barcode">
+            <summary>
+            Max length = 255
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MusicAlbumMetadata._LabelNumber">
+            <summary>
+            Backing field for LabelNumber.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MusicAlbumMetadata.LabelNumber">
+            <summary>
+            Max length = 255
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.MusicAlbumMetadata._Country">
+            <summary>
+            Backing field for Country.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.MusicAlbumMetadata.Country">
+            <summary>
+            Max length = 2
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Data.Entities.Permission">
+            <summary>
+            An entity representing whether the associated user has a specific permission.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Permission.#ctor(Jellyfin.Data.Enums.PermissionKind,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.Permission"/> class.
+            Public constructor with required data.
+            </summary>
+            <param name="kind">The permission kind.</param>
+            <param name="value">The value of this permission.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Permission.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.Permission"/> class.
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Permission.Id">
+            <summary>
+            Gets or sets the id of this permission.
+            </summary>
+            <remarks>
+            Identity, Indexed, Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Permission.Kind">
+            <summary>
+            Gets or sets the type of this permission.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Permission.Value">
+            <summary>
+            Gets or sets a value indicating whether the associated user has this permission.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Permission.RowVersion">
+            <summary>
+            Gets or sets the row version.
+            </summary>
+            <remarks>
+            Required, ConcurrencyToken.
+            </remarks>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Permission.Create(Jellyfin.Data.Enums.PermissionKind,System.Boolean)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="kind">The permission kind.</param>
+            <param name="value">The value of this permission.</param>
+            <returns>The newly created instance.</returns>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Permission.OnSavingChanges">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Person.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Person.CreatePersonUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Person.#ctor(System.Guid,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Person.Create(System.Guid,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Person._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Person.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Person._UrlId">
+            <summary>
+            Backing field for UrlId.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Person.UrlId">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Person._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Person.Name">
+            <summary>
+            Required, Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Person._SourceId">
+            <summary>
+            Backing field for SourceId.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Person.SourceId">
+            <summary>
+            Max length = 255
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Person._DateAdded">
+            <summary>
+            Backing field for DateAdded.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Person.DateAdded">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Person._DateModified">
+            <summary>
+            Backing field for DateModified.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Person.DateModified">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Person.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PersonRole.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PersonRole.CreatePersonRoleUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PersonRole.#ctor(Jellyfin.Data.Enums.PersonRoleType,Jellyfin.Data.Entities.Metadata)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="type"></param>
+            <param name="_metadata0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PersonRole.Create(Jellyfin.Data.Enums.PersonRoleType,Jellyfin.Data.Entities.Metadata)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="type"></param>
+            <param name="_metadata0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.PersonRole._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.PersonRole.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.PersonRole._Role">
+            <summary>
+            Backing field for Role.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.PersonRole.Role">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.PersonRole._Type">
+            <summary>
+            Backing field for Type.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.PersonRole.Type">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.PersonRole.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.PersonRole.Person">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Photo.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Photo.CreatePhotoUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Photo.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Photo.Create(System.Guid,System.DateTime)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PhotoMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PhotoMetadata.CreatePhotoMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PhotoMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Photo)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_photo0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.PhotoMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Photo)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_photo0"></param>
+        </member>
+        <member name="T:Jellyfin.Data.Entities.Preference">
+            <summary>
+            An entity representing a preference attached to a user or group.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Preference.#ctor(Jellyfin.Data.Enums.PreferenceKind,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.Preference"/> class.
+            Public constructor with required data.
+            </summary>
+            <param name="kind">The preference kind.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Preference.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.Preference"/> class.
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Preference.Id">
+            <summary>
+            Gets or sets the id of this preference.
+            </summary>
+            <remarks>
+            Identity, Indexed, Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Preference.Kind">
+            <summary>
+            Gets or sets the type of this preference.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Preference.Value">
+            <summary>
+            Gets or sets the value of this preference.
+            </summary>
+            <remarks>
+            Required, Max length = 65535.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Preference.RowVersion">
+            <summary>
+            Gets or sets the row version.
+            </summary>
+            <remarks>
+            Required, ConcurrencyToken.
+            </remarks>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Preference.Create(Jellyfin.Data.Enums.PreferenceKind,System.String)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="kind">The preference kind.</param>
+            <param name="value">The value.</param>
+            <returns>The new instance.</returns>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Preference.OnSavingChanges">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ProviderMapping.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ProviderMapping.CreateProviderMappingUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ProviderMapping.#ctor(System.String,System.String,System.String,Jellyfin.Data.Entities.User,Jellyfin.Data.Entities.Group)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="providername"></param>
+            <param name="providersecrets"></param>
+            <param name="providerdata"></param>
+            <param name="_user0"></param>
+            <param name="_group1"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.ProviderMapping.Create(System.String,System.String,System.String,Jellyfin.Data.Entities.User,Jellyfin.Data.Entities.Group)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="providername"></param>
+            <param name="providersecrets"></param>
+            <param name="providerdata"></param>
+            <param name="_user0"></param>
+            <param name="_group1"></param>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ProviderMapping.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ProviderMapping.ProviderName">
+            <summary>
+            Required, Max length = 255
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ProviderMapping.ProviderSecrets">
+            <summary>
+            Required, Max length = 65535
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ProviderMapping.ProviderData">
+            <summary>
+            Required, Max length = 65535
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.ProviderMapping.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Rating.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Rating.CreateRatingUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Rating.#ctor(System.Double,Jellyfin.Data.Entities.Metadata)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="value"></param>
+            <param name="_metadata0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Rating.Create(System.Double,Jellyfin.Data.Entities.Metadata)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="value"></param>
+            <param name="_metadata0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Rating._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Rating.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Rating._Value">
+            <summary>
+            Backing field for Value.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Rating.Value">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Rating._Votes">
+            <summary>
+            Backing field for Votes.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Rating.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Rating.RatingType">
+            <summary>
+            If this is NULL it&apos;s the internal user rating.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Data.Entities.RatingSource">
+            <summary>
+            This is the entity to store review ratings, not age ratings.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.RatingSource.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.RatingSource.CreateRatingSourceUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.RatingSource.#ctor(System.Double,System.Double,Jellyfin.Data.Entities.Rating)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="maximumvalue"></param>
+            <param name="minimumvalue"></param>
+            <param name="_rating0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.RatingSource.Create(System.Double,System.Double,Jellyfin.Data.Entities.Rating)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="maximumvalue"></param>
+            <param name="minimumvalue"></param>
+            <param name="_rating0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.RatingSource._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.RatingSource.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.RatingSource._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.RatingSource.Name">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.RatingSource._MaximumValue">
+            <summary>
+            Backing field for MaximumValue.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.RatingSource.MaximumValue">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.RatingSource._MinimumValue">
+            <summary>
+            Backing field for MinimumValue.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.RatingSource.MinimumValue">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.RatingSource.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Release.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Release.CreateReleaseUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Release.#ctor(System.String,Jellyfin.Data.Entities.Movie,Jellyfin.Data.Entities.Episode,Jellyfin.Data.Entities.Track,Jellyfin.Data.Entities.CustomItem,Jellyfin.Data.Entities.Book,Jellyfin.Data.Entities.Photo)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="name"></param>
+            <param name="_movie0"></param>
+            <param name="_episode1"></param>
+            <param name="_track2"></param>
+            <param name="_customitem3"></param>
+            <param name="_book4"></param>
+            <param name="_photo5"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Release.Create(System.String,Jellyfin.Data.Entities.Movie,Jellyfin.Data.Entities.Episode,Jellyfin.Data.Entities.Track,Jellyfin.Data.Entities.CustomItem,Jellyfin.Data.Entities.Book,Jellyfin.Data.Entities.Photo)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="name"></param>
+            <param name="_movie0"></param>
+            <param name="_episode1"></param>
+            <param name="_track2"></param>
+            <param name="_customitem3"></param>
+            <param name="_book4"></param>
+            <param name="_photo5"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Release._Id">
+            <summary>
+            Backing field for Id.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Release.Id">
+            <summary>
+            Identity, Indexed, Required.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Release._Name">
+            <summary>
+            Backing field for Name.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Release.Name">
+            <summary>
+            Required, Max length = 1024
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Release.RowVersion">
+            <summary>
+            Required, ConcurrenyToken.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Season.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Season.CreateSeasonUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Season.#ctor(System.Guid,System.DateTime,Jellyfin.Data.Entities.Series)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+            <param name="_series0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Season.Create(System.Guid,System.DateTime,Jellyfin.Data.Entities.Series)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+            <param name="_series0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Season._SeasonNumber">
+            <summary>
+            Backing field for SeasonNumber.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeasonMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeasonMetadata.CreateSeasonMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeasonMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Season)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_season0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeasonMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Season)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_season0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.SeasonMetadata._Outline">
+            <summary>
+            Backing field for Outline.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.SeasonMetadata.Outline">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Series.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Series.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Series.Create(System.Guid,System.DateTime)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Series._AirsDayOfWeek">
+            <summary>
+            Backing field for AirsDayOfWeek.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Series._AirsTime">
+            <summary>
+            Backing field for AirsTime.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.Series.AirsTime">
+            <summary>
+            The time the show airs, ignore the date portion.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Series._FirstAired">
+            <summary>
+            Backing field for FirstAired.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeriesMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeriesMetadata.CreateSeriesMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeriesMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Series)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_series0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.SeriesMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Series)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_series0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.SeriesMetadata._Outline">
+            <summary>
+            Backing field for Outline.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.SeriesMetadata.Outline">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.SeriesMetadata._Plot">
+            <summary>
+            Backing field for Plot.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.SeriesMetadata.Plot">
+            <summary>
+            Max length = 65535
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.SeriesMetadata._Tagline">
+            <summary>
+            Backing field for Tagline.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.SeriesMetadata.Tagline">
+            <summary>
+            Max length = 1024
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.SeriesMetadata._Country">
+            <summary>
+            Backing field for Country.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.SeriesMetadata.Country">
+            <summary>
+            Max length = 2
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Track.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Track.CreateTrackUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Track.#ctor(System.Guid,System.DateTime,Jellyfin.Data.Entities.MusicAlbum)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+            <param name="_musicalbum0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.Track.Create(System.Guid,System.DateTime,Jellyfin.Data.Entities.MusicAlbum)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="urlid">This is whats gets displayed in the Urls and API requests. This could also be a string.</param>
+            <param name="_musicalbum0"></param>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.Track._TrackNumber">
+            <summary>
+            Backing field for TrackNumber.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.TrackMetadata.#ctor">
+            <summary>
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.TrackMetadata.CreateTrackMetadataUnsafe">
+            <summary>
+            Replaces default constructor, since it's protected. Caller assumes responsibility for setting all required values before saving.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.TrackMetadata.#ctor(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Track)">
+            <summary>
+            Public constructor with required data.
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_track0"></param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.TrackMetadata.Create(System.String,System.String,System.DateTime,System.DateTime,Jellyfin.Data.Entities.Track)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="title">The title or name of the object.</param>
+            <param name="language">ISO-639-3 3-character language codes.</param>
+            <param name="_track0"></param>
+        </member>
+        <member name="T:Jellyfin.Data.Entities.User">
+            <summary>
+            An entity representing a user.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Entities.User.Delimiter">
+            <summary>
+            The values being delimited here are Guids, so commas work as they do not appear in Guids.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.User"/> class.
+            Public constructor with required data.
+            </summary>
+            <param name="username">The username for the new user.</param>
+            <param name="authenticationProviderId">The Id of the user's authentication provider.</param>
+            <param name="passwordResetProviderId">The Id of the user's password reset provider.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Data.Entities.User"/> class.
+            Default constructor. Protected due to required properties, but present because EF needs it.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.Id">
+            <summary>
+            Gets or sets the Id of the user.
+            </summary>
+            <remarks>
+            Identity, Indexed, Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.Username">
+            <summary>
+            Gets or sets the user's name.
+            </summary>
+            <remarks>
+            Required, Max length = 255.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.Password">
+            <summary>
+            Gets or sets the user's password, or <c>null</c> if none is set.
+            </summary>
+            <remarks>
+            Max length = 65535.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.EasyPassword">
+            <summary>
+            Gets or sets the user's easy password, or <c>null</c> if none is set.
+            </summary>
+            <remarks>
+            Max length = 65535.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.MustUpdatePassword">
+            <summary>
+            Gets or sets a value indicating whether the user must update their password.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.AudioLanguagePreference">
+            <summary>
+            Gets or sets the audio language preference.
+            </summary>
+            <remarks>
+            Max length = 255.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.AuthenticationProviderId">
+            <summary>
+            Gets or sets the authentication provider id.
+            </summary>
+            <remarks>
+            Required, Max length = 255.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.PasswordResetProviderId">
+            <summary>
+            Gets or sets the password reset provider id.
+            </summary>
+            <remarks>
+            Required, Max length = 255.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.InvalidLoginAttemptCount">
+            <summary>
+            Gets or sets the invalid login attempt count.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.LastActivityDate">
+            <summary>
+            Gets or sets the last activity date.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.LastLoginDate">
+            <summary>
+            Gets or sets the last login date.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.LoginAttemptsBeforeLockout">
+            <summary>
+            Gets or sets the number of login attempts the user can make before they are locked out.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.SubtitleMode">
+            <summary>
+            Gets or sets the subtitle mode.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.PlayDefaultAudioTrack">
+            <summary>
+            Gets or sets a value indicating whether the default audio track should be played.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.SubtitleLanguagePreference">
+            <summary>
+            Gets or sets the subtitle language preference.
+            </summary>
+            <remarks>
+            Max length = 255.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.DisplayMissingEpisodes">
+            <summary>
+            Gets or sets a value indicating whether missing episodes should be displayed.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.DisplayCollectionsView">
+            <summary>
+            Gets or sets a value indicating whether to display the collections view.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.EnableLocalPassword">
+            <summary>
+            Gets or sets a value indicating whether the user has a local password.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.HidePlayedInLatest">
+            <summary>
+            Gets or sets a value indicating whether the server should hide played content in "Latest".
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.RememberAudioSelections">
+            <summary>
+            Gets or sets a value indicating whether to remember audio selections on played content.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.RememberSubtitleSelections">
+            <summary>
+            Gets or sets a value indicating whether to remember subtitle selections on played content.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.EnableNextEpisodeAutoPlay">
+            <summary>
+            Gets or sets a value indicating whether to enable auto-play for the next episode.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.EnableAutoLogin">
+            <summary>
+            Gets or sets a value indicating whether the user should auto-login.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.EnableUserPreferenceAccess">
+            <summary>
+            Gets or sets a value indicating whether the user can change their preferences.
+            </summary>
+            <remarks>
+            Required.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.MaxParentalAgeRating">
+            <summary>
+            Gets or sets the maximum parental age rating.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.RemoteClientBitrateLimit">
+            <summary>
+            Gets or sets the remote client bitrate limit.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.InternalId">
+            <summary>
+            Gets or sets the internal id.
+            This is a temporary stopgap for until the library db is migrated.
+            This corresponds to the value of the index of this user in the library db.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.ProfileImage">
+            <summary>
+            Gets or sets the user's profile image. Can be <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.RowVersion">
+            <summary>
+            Gets or sets the row version.
+            </summary>
+            <remarks>
+            Required, Concurrency Token.
+            </remarks>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.AccessSchedules">
+            <summary>
+            Gets or sets the list of access schedules this user has.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.Permissions">
+            <summary>
+            Gets or sets the list of permissions this user has.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.Entities.User.Preferences">
+            <summary>
+            Gets or sets the list of preferences this user has.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.Create(System.String,System.String,System.String)">
+            <summary>
+            Static create function (for use in LINQ queries, etc.)
+            </summary>
+            <param name="username">The username for the created user.</param>
+            <param name="authenticationProviderId">The Id of the user's authentication provider.</param>
+            <param name="passwordResetProviderId">The Id of the user's password reset provider.</param>
+            <returns>The created instance.</returns>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.OnSavingChanges">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.HasPermission(Jellyfin.Data.Enums.PermissionKind)">
+            <summary>
+            Checks whether the user has the specified permission.
+            </summary>
+            <param name="kind">The permission kind.</param>
+            <returns><c>True</c> if the user has the specified permission.</returns>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.SetPermission(Jellyfin.Data.Enums.PermissionKind,System.Boolean)">
+            <summary>
+            Sets the given permission kind to the provided value.
+            </summary>
+            <param name="kind">The permission kind.</param>
+            <param name="value">The value to set.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.GetPreference(Jellyfin.Data.Enums.PreferenceKind)">
+            <summary>
+            Gets the user's preferences for the given preference kind.
+            </summary>
+            <param name="preference">The preference kind.</param>
+            <returns>A string array containing the user's preferences.</returns>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.SetPreference(Jellyfin.Data.Enums.PreferenceKind,System.String[])">
+            <summary>
+            Sets the specified preference to the given value.
+            </summary>
+            <param name="preference">The preference kind.</param>
+            <param name="values">The values.</param>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.IsParentalScheduleAllowed">
+            <summary>
+            Checks whether this user is currently allowed to use the server.
+            </summary>
+            <returns><c>True</c> if the current time is within an access schedule, or there are no access schedules.</returns>
+        </member>
+        <member name="M:Jellyfin.Data.Entities.User.IsFolderGrouped(System.Guid)">
+            <summary>
+            Checks whether the provided folder is in this user's grouped folders.
+            </summary>
+            <param name="id">The Guid of the folder.</param>
+            <returns><c>True</c> if the folder is in the user's grouped folders.</returns>
+        </member>
+        <member name="T:Jellyfin.Data.Enums.PermissionKind">
+            <summary>
+            The types of user permissions.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.IsAdministrator">
+            <summary>
+            Whether the user is an administrator.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.IsHidden">
+            <summary>
+            Whether the user is hidden.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.IsDisabled">
+            <summary>
+            Whether the user is disabled.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableSharedDeviceControl">
+            <summary>
+            Whether the user can control shared devices.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableRemoteAccess">
+            <summary>
+            Whether the user can access the server remotely.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableLiveTvManagement">
+            <summary>
+            Whether the user can manage live tv.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableLiveTvAccess">
+            <summary>
+            Whether the user can access live tv.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableMediaPlayback">
+            <summary>
+            Whether the user can play media.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableAudioPlaybackTranscoding">
+            <summary>
+            Whether the server should transcode audio for the user if requested.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableVideoPlaybackTranscoding">
+            <summary>
+            Whether the server should transcode video for the user if requested.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableContentDeletion">
+            <summary>
+            Whether the user can delete content.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableContentDownloading">
+            <summary>
+            Whether the user can download content.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableSyncTranscoding">
+            <summary>
+            Whether to enable sync transcoding for the user.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableMediaConversion">
+            <summary>
+            Whether the user can do media conversion.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableAllDevices">
+            <summary>
+            Whether the user has access to all devices.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableAllChannels">
+            <summary>
+            Whether the user has access to all channels.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableAllFolders">
+            <summary>
+            Whether the user has access to all folders.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnablePublicSharing">
+            <summary>
+            Whether to enable public sharing for the user.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnableRemoteControlOfOtherUsers">
+            <summary>
+            Whether the user can remotely control other users.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.EnablePlaybackRemuxing">
+            <summary>
+            Whether the user is permitted to do playback remuxing.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PermissionKind.ForceRemoteSourceTranscoding">
+            <summary>
+            Whether the server should force transcoding on remote connections for the user.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Data.Enums.PreferenceKind">
+            <summary>
+            The types of user preferences.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.BlockedTags">
+            <summary>
+            A list of blocked tags.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.BlockedChannels">
+            <summary>
+            A list of blocked channels.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.BlockedMediaFolders">
+            <summary>
+            A list of blocked media folders.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.EnabledDevices">
+            <summary>
+            A list of enabled devices.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.EnabledChannels">
+            <summary>
+            A list of enabled channels.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.EnabledFolders">
+            <summary>
+            A list of enabled folders.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.EnableContentDeletionFromFolders">
+            <summary>
+            A list of folders to allow content deletion from.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.LatestItemExcludes">
+            <summary>
+            A list of latest items to exclude.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.MyMediaExcludes">
+            <summary>
+            A list of media to exclude.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.GroupedFolders">
+            <summary>
+            A list of grouped folders.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.BlockUnratedItems">
+            <summary>
+            A list of unrated items to block.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.PreferenceKind.OrderedViews">
+            <summary>
+            A list of ordered views.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Data.Enums.SyncPlayAccess">
+            <summary>
+            Enum SyncPlayAccess.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.SyncPlayAccess.CreateAndJoinGroups">
+            <summary>
+            User can create groups and join them.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.SyncPlayAccess.JoinGroups">
+            <summary>
+            User can only join already existing groups.
+            </summary>
+        </member>
+        <member name="F:Jellyfin.Data.Enums.SyncPlayAccess.None">
+            <summary>
+            SyncPlay is disabled for the user.
+            </summary>
+        </member>
+        <member name="T:Jellyfin.Data.IHasPermissions">
+            <summary>
+            An abstraction representing an entity that has permissions.
+            </summary>
+        </member>
+        <member name="P:Jellyfin.Data.IHasPermissions.Permissions">
+            <summary>
+            Gets a collection containing this entity's permissions.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Data.IHasPermissions.HasPermission(Jellyfin.Data.Enums.PermissionKind)">
+            <summary>
+            Checks whether this entity has the specified permission kind.
+            </summary>
+            <param name="kind">The kind of permission.</param>
+            <returns><c>true</c> if this entity has the specified permission, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Jellyfin.Data.IHasPermissions.SetPermission(Jellyfin.Data.Enums.PermissionKind,System.Boolean)">
+            <summary>
+            Sets the specified permission to the provided value.
+            </summary>
+            <param name="kind">The kind of permission.</param>
+            <param name="value">The value to set.</param>
+        </member>
+    </members>
+</doc>

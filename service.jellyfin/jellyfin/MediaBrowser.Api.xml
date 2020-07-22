@@ -26,10 +26,10 @@
         </member>
         <member name="F:MediaBrowser.Api.ApiEntryPoint._activeTranscodingJobs">
             <summary>
-            The active transcoding jobs
+            The active transcoding jobs.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Api.ApiEntryPoint.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Session.ISessionManager,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Library.IMediaSourceManager)">
+        <member name="M:MediaBrowser.Api.ApiEntryPoint.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.ApiEntryPoint},MediaBrowser.Controller.Session.ISessionManager,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Library.IMediaSourceManager)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.ApiEntryPoint" /> class.
             </summary>
@@ -76,7 +76,7 @@
         <member name="M:MediaBrowser.Api.ApiEntryPoint.OnTranscodeFailedToStart(System.String,MediaBrowser.Controller.MediaEncoding.TranscodingJobType,MediaBrowser.Api.Playback.StreamState)">
             <summary>
             <summary>
-            The progressive
+            The progressive.
             </summary>
             Called when [transcode failed to start].
             </summary>
@@ -144,7 +144,7 @@
         </member>
         <member name="T:MediaBrowser.Api.BaseApiService">
             <summary>
-            Class BaseApiService
+            Class BaseApiService.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.BaseApiService.Logger">
@@ -213,7 +213,7 @@
         </member>
         <member name="P:MediaBrowser.Api.GetChannels.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -237,7 +237,7 @@
         </member>
         <member name="P:MediaBrowser.Api.GetChannelItems.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -267,7 +267,7 @@
         </member>
         <member name="P:MediaBrowser.Api.GetLatestChannelItems.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -279,22 +279,22 @@
         </member>
         <member name="T:MediaBrowser.Api.GetConfiguration">
             <summary>
-            Class GetConfiguration
+            Class GetConfiguration.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UpdateConfiguration">
             <summary>
-            Class UpdateConfiguration
+            Class UpdateConfiguration.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.ConfigurationService._jsonSerializer">
             <summary>
-            The _json serializer
+            The _json serializer.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.ConfigurationService._configurationManager">
             <summary>
-            The _configuration manager
+            The _configuration manager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.ConfigurationService.Get(MediaBrowser.Api.GetConfiguration)">
@@ -312,7 +312,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UpdateDisplayPreferences">
             <summary>
-            Class UpdateDisplayPreferences
+            Class UpdateDisplayPreferences.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UpdateDisplayPreferences.DisplayPreferencesId">
@@ -329,17 +329,17 @@
         </member>
         <member name="T:MediaBrowser.Api.DisplayPreferencesService">
             <summary>
-            Class DisplayPreferencesService
+            Class DisplayPreferencesService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.DisplayPreferencesService._displayPreferencesManager">
             <summary>
-            The _display preferences manager
+            The _display preferences manager.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.DisplayPreferencesService._jsonSerializer">
             <summary>
-            The _json serializer
+            The _json serializer.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.DisplayPreferencesService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.DisplayPreferencesService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Model.Serialization.IJsonSerializer,MediaBrowser.Controller.Persistence.IDisplayPreferencesRepository)">
@@ -363,7 +363,7 @@
         </member>
         <member name="T:MediaBrowser.Api.GetDirectoryContents">
             <summary>
-            Class GetDirectoryContents
+            Class GetDirectoryContents.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.GetDirectoryContents.Path">
@@ -398,12 +398,12 @@
         </member>
         <member name="T:MediaBrowser.Api.GetDrives">
             <summary>
-            Class GetDrives
+            Class GetDrives.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.GetNetworkDevices">
             <summary>
-            Class GetNetworkComputers
+            Class GetNetworkComputers.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.GetParentPath.Path">
@@ -414,12 +414,12 @@
         </member>
         <member name="T:MediaBrowser.Api.EnvironmentService">
             <summary>
-            Class EnvironmentService
+            Class EnvironmentService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.EnvironmentService._networkManager">
             <summary>
-            The _network manager
+            The _network manager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.EnvironmentService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.EnvironmentService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Common.Net.INetworkManager,MediaBrowser.Model.IO.IFileSystem)">
@@ -444,7 +444,7 @@
         </member>
         <member name="M:MediaBrowser.Api.EnvironmentService.GetDrives">
             <summary>
-            Gets the list that is returned when an empty path is supplied
+            Gets the list that is returned when an empty path is supplied.
             </summary>
             <returns>IEnumerable{FileSystemEntryInfo}.</returns>
         </member>
@@ -476,7 +476,7 @@
         </member>
         <member name="T:MediaBrowser.Api.IHasItemFields">
             <summary>
-            Interface IHasItemFields
+            Interface IHasItemFields.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.IHasItemFields.Fields">
@@ -499,7 +499,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.GetGeneralImage">
             <summary>
-            Class GetGeneralImage
+            Class GetGeneralImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.GetGeneralImage.Name">
@@ -510,7 +510,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.GetRatingImage">
             <summary>
-            Class GetRatingImage
+            Class GetRatingImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.GetRatingImage.Name">
@@ -527,7 +527,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.GetMediaInfoImage">
             <summary>
-            Class GetMediaInfoImage
+            Class GetMediaInfoImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.GetMediaInfoImage.Name">
@@ -544,12 +544,12 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.ImageByNameService">
             <summary>
-            Class ImageByNameService
+            Class ImageByNameService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Images.ImageByNameService._appPaths">
             <summary>
-            The _app paths
+            The _app paths.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Images.ImageByNameService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Images.ImageByNameService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Model.IO.IFileSystem)">
@@ -580,27 +580,27 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.ImageRequest">
             <summary>
-            Class ImageRequest
+            Class ImageRequest.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.ImageRequest.MaxWidth">
             <summary>
-            The max width
+            The max width.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.ImageRequest.MaxHeight">
             <summary>
-            The max height
+            The max height.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.ImageRequest.Width">
             <summary>
-            The width
+            The width.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.ImageRequest.Height">
             <summary>
-            The height
+            The height.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.ImageRequest.Quality">
@@ -617,7 +617,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.DeleteImageRequest">
             <summary>
-            Class DeleteImageRequest
+            Class DeleteImageRequest.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.DeleteImageRequest.Type">
@@ -651,7 +651,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.UpdateItemImageIndex">
             <summary>
-            Class UpdateItemImageIndex
+            Class UpdateItemImageIndex.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.UpdateItemImageIndex.Id">
@@ -680,7 +680,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.GetItemByNameImage">
             <summary>
-            Class GetPersonImage
+            Class GetPersonImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.GetItemByNameImage.Name">
@@ -691,7 +691,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.GetUserImage">
             <summary>
-            Class GetUserImage
+            Class GetUserImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.GetUserImage.Id">
@@ -702,7 +702,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.DeleteItemImage">
             <summary>
-            Class DeleteItemImage
+            Class DeleteItemImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.DeleteItemImage.Id">
@@ -713,7 +713,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.DeleteUserImage">
             <summary>
-            Class DeleteUserImage
+            Class DeleteUserImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.DeleteUserImage.Id">
@@ -724,7 +724,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Images.PostUserImage">
             <summary>
-            Class PostUserImage
+            Class PostUserImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.PostUserImage.Id">
@@ -735,13 +735,13 @@
         </member>
         <member name="P:MediaBrowser.Api.Images.PostUserImage.RequestStream">
             <summary>
-            The raw Http Request Input Stream
+            The raw Http Request Input Stream.
             </summary>
             <value>The request stream.</value>
         </member>
         <member name="T:MediaBrowser.Api.Images.PostItemImage">
             <summary>
-            Class PostItemImage
+            Class PostItemImage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Images.PostItemImage.Id">
@@ -752,13 +752,13 @@
         </member>
         <member name="P:MediaBrowser.Api.Images.PostItemImage.RequestStream">
             <summary>
-            The raw Http Request Input Stream
+            The raw Http Request Input Stream.
             </summary>
             <value>The request stream.</value>
         </member>
         <member name="T:MediaBrowser.Api.Images.ImageService">
             <summary>
-            Class ImageService
+            Class ImageService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Images.ImageService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Images.ImageService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Providers.IProviderManager,MediaBrowser.Controller.Drawing.IImageProcessor,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Net.IAuthorizationContext)">
@@ -877,7 +877,7 @@
         </member>
         <member name="P:MediaBrowser.Api.Images.BaseRemoteImageRequest.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -980,7 +980,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Library.GetCriticReviews">
             <summary>
-            Class GetCriticReviews
+            Class GetCriticReviews.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Library.GetCriticReviews.Id">
@@ -997,13 +997,13 @@
         </member>
         <member name="P:MediaBrowser.Api.Library.GetCriticReviews.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="T:MediaBrowser.Api.Library.GetThemeSongs">
             <summary>
-            Class GetThemeSongs
+            Class GetThemeSongs.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Library.GetThemeSongs.UserId">
@@ -1020,7 +1020,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Library.GetThemeVideos">
             <summary>
-            Class GetThemeVideos
+            Class GetThemeVideos.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Library.GetThemeVideos.UserId">
@@ -1037,7 +1037,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Library.GetThemeMedia">
             <summary>
-            Class GetThemeVideos
+            Class GetThemeVideos.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Library.GetThemeMedia.UserId">
@@ -1066,7 +1066,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Library.GetPhyscialPaths">
             <summary>
-            Class GetPhyscialPaths
+            Class GetPhyscialPaths.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Library.GetDownload.Id">
@@ -1077,10 +1077,10 @@
         </member>
         <member name="T:MediaBrowser.Api.Library.LibraryService">
             <summary>
-            Class LibraryService
+            Class LibraryService.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Api.Library.LibraryService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Library.LibraryService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Providers.IProviderManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext,MediaBrowser.Model.Activity.IActivityManager,MediaBrowser.Model.Globalization.ILocalizationManager,MediaBrowser.Controller.Library.ILibraryMonitor)">
+        <member name="M:MediaBrowser.Api.Library.LibraryService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Library.LibraryService},Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Movies.MoviesService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Providers.IProviderManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext,MediaBrowser.Model.Activity.IActivityManager,MediaBrowser.Model.Globalization.ILocalizationManager,MediaBrowser.Controller.Library.ILibraryMonitor)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.Library.LibraryService" /> class.
             </summary>
@@ -1154,7 +1154,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Library.GetVirtualFolders">
             <summary>
-            Class GetDefaultVirtualFolders
+            Class GetDefaultVirtualFolders.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Library.GetVirtualFolders.UserId">
@@ -1261,17 +1261,17 @@
         </member>
         <member name="T:MediaBrowser.Api.Library.LibraryStructureService">
             <summary>
-            Class LibraryStructureService
+            Class LibraryStructureService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Library.LibraryStructureService._appPaths">
             <summary>
-            The _app paths
+            The _app paths.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Library.LibraryStructureService._libraryManager">
             <summary>
-            The _library manager
+            The _library manager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Library.LibraryStructureService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Library.LibraryStructureService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.ILibraryMonitor)">
@@ -1324,7 +1324,7 @@
         </member>
         <member name="T:MediaBrowser.Api.LiveTv.GetLiveTvInfo">
             <summary>
-            This is insecure right now to avoid windows phone refactoring
+            This is insecure right now to avoid windows phone refactoring.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.LiveTv.GetChannels.StartIndex">
@@ -1335,13 +1335,13 @@
         </member>
         <member name="P:MediaBrowser.Api.LiveTv.GetChannels.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Api.LiveTv.GetChannels.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -1359,25 +1359,25 @@
         </member>
         <member name="P:MediaBrowser.Api.LiveTv.GetRecordings.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
         <member name="P:MediaBrowser.Api.LiveTv.GetRecordingSeries.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
         <member name="P:MediaBrowser.Api.LiveTv.GetPrograms.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
         <member name="P:MediaBrowser.Api.LiveTv.GetRecommendedPrograms.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -1388,32 +1388,32 @@
         </member>
         <member name="T:MediaBrowser.Api.GetCultures">
             <summary>
-            Class GetCultures
+            Class GetCultures.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.GetCountries">
             <summary>
-            Class GetCountries
+            Class GetCountries.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.GetParentalRatings">
             <summary>
-            Class ParentalRatings
+            Class ParentalRatings.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.GetLocalizationOptions">
             <summary>
-            Class ParentalRatings
+            Class ParentalRatings.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.LocalizationService">
             <summary>
-            Class CulturesService
+            Class CulturesService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.LocalizationService._localization">
             <summary>
-            The _localization
+            The _localization.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.LocalizationService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.LocalizationService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Model.Globalization.ILocalizationManager)">
@@ -1457,47 +1457,52 @@
         </member>
         <member name="T:MediaBrowser.Api.Movies.MoviesService">
             <summary>
-            Class MoviesService
+            Class MoviesService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Movies.MoviesService._userManager">
             <summary>
-            The _user manager
+            The _user manager.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Api.Movies.MoviesService.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
+        <member name="M:MediaBrowser.Api.Movies.MoviesService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Movies.MoviesService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.Movies.MoviesService" /> class.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.Movies.TrailersService">
             <summary>
-            Class TrailersService
+            Class TrailersService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Movies.TrailersService._userManager">
             <summary>
-            The _user manager
+            The _user manager.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Movies.TrailersService._libraryManager">
             <summary>
-            The _library manager
+            The _library manager.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.Movies.TrailersService._logger">
+            <summary>
+            The logger for the created <see cref="T:MediaBrowser.Api.UserLibrary.ItemsService"/> instances.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Music.AlbumsService._userManager">
             <summary>
-            The _user manager
+            The _user manager.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Music.AlbumsService._userDataRepository">
             <summary>
-            The _user data repository
+            The _user data repository.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Music.AlbumsService._libraryManager">
             <summary>
-            The _library manager
+            The _library manager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Music.AlbumsService.Get(MediaBrowser.Api.Music.GetSimilarAlbums)">
@@ -1519,7 +1524,7 @@
         </member>
         <member name="T:MediaBrowser.Api.GetPackage">
             <summary>
-            Class GetPackage
+            Class GetPackage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.GetPackage.Name">
@@ -1536,18 +1541,12 @@
         </member>
         <member name="T:MediaBrowser.Api.GetPackages">
             <summary>
-            Class GetPackages
+            Class GetPackages.
             </summary>
-        </member>
-        <member name="P:MediaBrowser.Api.GetPackages.PackageType">
-            <summary>
-            Gets or sets the name.
-            </summary>
-            <value>The name.</value>
         </member>
         <member name="T:MediaBrowser.Api.InstallPackage">
             <summary>
-            Class InstallPackage
+            Class InstallPackage.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.InstallPackage.Name">
@@ -1568,15 +1567,9 @@
             </summary>
             <value>The version.</value>
         </member>
-        <member name="P:MediaBrowser.Api.InstallPackage.UpdateClass">
-            <summary>
-            Gets or sets the update class.
-            </summary>
-            <value>The update class.</value>
-        </member>
         <member name="T:MediaBrowser.Api.CancelPackageInstallation">
             <summary>
-            Class CancelPackageInstallation
+            Class CancelPackageInstallation.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.CancelPackageInstallation.Id">
@@ -1587,7 +1580,7 @@
         </member>
         <member name="T:MediaBrowser.Api.PackageService">
             <summary>
-            Class PackageService
+            Class PackageService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.PackageService.Get(MediaBrowser.Api.GetPackage)">
@@ -1619,7 +1612,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.BaseStreamingService">
             <summary>
-            Class BaseStreamingService
+            Class BaseStreamingService.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Playback.BaseStreamingService.UserManager">
@@ -1652,7 +1645,7 @@
             </summary>
             <value>The type of the transcoding job.</value>
         </member>
-        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Model.IO.IIsoManager,MediaBrowser.Controller.MediaEncoding.IMediaEncoder,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Dlna.IDlnaManager,MediaBrowser.Controller.Devices.IDeviceManager,MediaBrowser.Controller.Library.IMediaSourceManager,MediaBrowser.Model.Serialization.IJsonSerializer,MediaBrowser.Controller.Net.IAuthorizationContext,MediaBrowser.Controller.MediaEncoding.EncodingHelper)">
+        <member name="M:MediaBrowser.Api.Playback.BaseStreamingService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Playback.BaseStreamingService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Model.IO.IIsoManager,MediaBrowser.Controller.MediaEncoding.IMediaEncoder,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Controller.Dlna.IDlnaManager,MediaBrowser.Controller.Devices.IDeviceManager,MediaBrowser.Controller.Library.IMediaSourceManager,MediaBrowser.Model.Serialization.IJsonSerializer,MediaBrowser.Controller.Net.IAuthorizationContext,MediaBrowser.Controller.MediaEncoding.EncodingHelper)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.Playback.BaseStreamingService" /> class.
             </summary>
@@ -1734,7 +1727,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.Hls.BaseHlsService">
             <summary>
-            Class BaseHlsService
+            Class BaseHlsService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Playback.Hls.BaseHlsService.GetAudioArguments(MediaBrowser.Api.Playback.StreamState,MediaBrowser.Model.Configuration.EncodingOptions)">
@@ -1786,9 +1779,61 @@
             </summary>
             <value>The segment id.</value>
         </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.GetOutputVideoCodecLevel(MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Get the H.26X level of the output video stream.
+            </summary>
+            <param name="state">StreamState of the current stream.</param>
+            <returns>H.26X level of the output video stream.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.GetPlaylistAudioCodecs(MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Gets a formatted string of the output audio codec, for use in the CODECS field.
+            </summary>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylistCodecsField(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState)"/>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.GetPlaylistVideoCodecs(MediaBrowser.Api.Playback.StreamState,System.String,System.Int32)"/>
+            <param name="state">StreamState of the current stream.</param>
+            <returns>Formatted audio codec string.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.GetPlaylistVideoCodecs(MediaBrowser.Api.Playback.StreamState,System.String,System.Int32)">
+            <summary>
+            Gets a formatted string of the output video codec, for use in the CODECS field.
+            </summary>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylistCodecsField(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState)"/>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.GetPlaylistAudioCodecs(MediaBrowser.Api.Playback.StreamState)"/>
+            <param name="state">StreamState of the current stream.</param>
+            <returns>Formatted video codec string.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylistCodecsField(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Appends a CODECS field containing formatted strings of
+            the active streams output video and audio codecs.
+            </summary>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylist(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState,System.String,System.Int32,System.String)"/>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.GetPlaylistVideoCodecs(MediaBrowser.Api.Playback.StreamState,System.String,System.Int32)"/>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.GetPlaylistAudioCodecs(MediaBrowser.Api.Playback.StreamState)"/>
+            <param name="builder">StringBuilder to append the field to.</param>
+            <param name="state">StreamState of the current stream.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylistFramerateField(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Appends a FRAME-RATE field containing the framerate of the output stream.
+            </summary>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylist(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState,System.String,System.Int32,System.String)"/>
+            <param name="builder">StringBuilder to append the field to.</param>
+            <param name="state">StreamState of the current stream.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylistResolutionField(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState)">
+            <summary>
+            Appends a RESOLUTION field containing the resolution of the output stream.
+            </summary>
+            <seealso cref="M:MediaBrowser.Api.Playback.Hls.DynamicHlsService.AppendPlaylist(System.Text.StringBuilder,MediaBrowser.Api.Playback.StreamState,System.String,System.Int32,System.String)"/>
+            <param name="builder">StringBuilder to append the field to.</param>
+            <param name="state">StreamState of the current stream.</param>
+        </member>
         <member name="T:MediaBrowser.Api.Playback.Hls.GetHlsAudioSegmentLegacy">
             <summary>
-            Class GetHlsAudioSegment
+            Class GetHlsAudioSegment.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsAudioSegmentLegacy.Id">
@@ -1805,7 +1850,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.Hls.GetHlsPlaylistLegacy">
             <summary>
-            Class GetHlsVideoSegment
+            Class GetHlsVideoSegment.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsPlaylistLegacy.Id">
@@ -1816,7 +1861,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.Hls.GetHlsVideoSegmentLegacy">
             <summary>
-            Class GetHlsVideoSegment
+            Class GetHlsVideoSegment.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Playback.Hls.GetHlsVideoSegmentLegacy.SegmentId">
@@ -1841,7 +1886,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.Hls.VideoHlsService">
             <summary>
-            Class VideoHlsService
+            Class VideoHlsService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Playback.Hls.VideoHlsService.GetAudioArguments(MediaBrowser.Api.Playback.StreamState,MediaBrowser.Model.Configuration.EncodingOptions)">
@@ -1854,14 +1899,60 @@
             Gets the video arguments.
             </summary>
         </member>
+        <member name="T:MediaBrowser.Api.Playback.HlsCodecStringFactory">
+            <summary>
+            Get various codec strings for use in HLS playlists.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.HlsCodecStringFactory.GetMP3String">
+            <summary>
+            Gets a MP3 codec string.
+            </summary>
+            <returns>MP3 codec string.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.HlsCodecStringFactory.GetAACString(System.String)">
+            <summary>
+            Gets an AAC codec string.
+            </summary>
+            <param name="profile">AAC profile.</param>
+            <returns>AAC codec string.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.HlsCodecStringFactory.GetH264String(System.String,System.Int32)">
+            <summary>
+            Gets a H.264 codec string.
+            </summary>
+            <param name="profile">H.264 profile.</param>
+            <param name="level">H.264 level.</param>
+            <returns>H.264 string.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.HlsCodecStringFactory.GetH265String(System.String,System.Int32)">
+            <summary>
+            Gets a H.265 codec string.
+            </summary>
+            <param name="profile">H.265 profile.</param>
+            <param name="level">H.265 level.</param>
+            <returns>H.265 string.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.HlsCodecStringFactory.GetAC3String">
+            <summary>
+            Gets an AC-3 codec string.
+            </summary>
+            <returns>AC-3 codec string.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Playback.HlsCodecStringFactory.GetEAC3String">
+            <summary>
+            Gets an E-AC-3 codec string.
+            </summary>
+            <returns>E-AC-3 codec string.</returns>
+        </member>
         <member name="T:MediaBrowser.Api.Playback.Progressive.GetAudioStream">
             <summary>
-            Class GetAudioStream
+            Class GetAudioStream.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.Playback.Progressive.AudioService">
             <summary>
-            Class AudioService
+            Class AudioService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Playback.Progressive.AudioService.Get(MediaBrowser.Api.Playback.Progressive.GetAudioStream)">
@@ -1880,7 +1971,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService">
             <summary>
-            Class BaseProgressiveStreamingService
+            Class BaseProgressiveStreamingService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Playback.Progressive.BaseProgressiveStreamingService.GetOutputFileExtension(MediaBrowser.Api.Playback.StreamState)">
@@ -1933,12 +2024,12 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.Progressive.GetVideoStream">
             <summary>
-            Class GetVideoStream
+            Class GetVideoStream.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.Playback.Progressive.VideoService">
             <summary>
-            Class VideoService
+            Class VideoService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.Playback.Progressive.VideoService.Get(MediaBrowser.Api.Playback.Progressive.GetVideoStream)">
@@ -1957,17 +2048,17 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.StaticRemoteStreamWriter">
             <summary>
-            Class StaticRemoteStreamWriter
+            Class StaticRemoteStreamWriter.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Playback.StaticRemoteStreamWriter._response">
             <summary>
-            The _input stream
+            The _input stream.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.Playback.StaticRemoteStreamWriter._options">
             <summary>
-            The _options
+            The _options.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Playback.StaticRemoteStreamWriter.Headers">
@@ -1978,7 +2069,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Playback.StreamRequest">
             <summary>
-            Class StreamRequest
+            Class StreamRequest.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Playback.VideoStreamRequest.HasFixedResolution">
@@ -2019,24 +2110,24 @@
         </member>
         <member name="P:MediaBrowser.Api.GetPlaylistItems.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Api.GetPlaylistItems.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
         <member name="T:MediaBrowser.Api.GetPlugins">
             <summary>
-            Class Plugins
+            Class Plugins.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UninstallPlugin">
             <summary>
-            Class UninstallPlugin
+            Class UninstallPlugin.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UninstallPlugin.Id">
@@ -2047,7 +2138,7 @@
         </member>
         <member name="T:MediaBrowser.Api.GetPluginConfiguration">
             <summary>
-            Class GetPluginConfiguration
+            Class GetPluginConfiguration.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.GetPluginConfiguration.Id">
@@ -2058,7 +2149,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UpdatePluginConfiguration">
             <summary>
-            Class UpdatePluginConfiguration
+            Class UpdatePluginConfiguration.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UpdatePluginConfiguration.Id">
@@ -2069,33 +2160,33 @@
         </member>
         <member name="P:MediaBrowser.Api.UpdatePluginConfiguration.RequestStream">
             <summary>
-            The raw Http Request Input Stream
+            The raw Http Request Input Stream.
             </summary>
             <value>The request stream.</value>
         </member>
         <member name="T:MediaBrowser.Api.GetPluginSecurityInfo">
             <summary>
-            Class GetPluginSecurityInfo
+            Class GetPluginSecurityInfo.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UpdatePluginSecurityInfo">
             <summary>
-            Class UpdatePluginSecurityInfo
+            Class UpdatePluginSecurityInfo.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.PluginService">
             <summary>
-            Class PluginsService
+            Class PluginsService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.PluginService._jsonSerializer">
             <summary>
-            The _json serializer
+            The _json serializer.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.PluginService._appHost">
             <summary>
-            The _app host
+            The _app host.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.PluginService.Get(MediaBrowser.Api.GetRegistrationStatus)">
@@ -2146,7 +2237,7 @@
         </member>
         <member name="T:MediaBrowser.Api.ScheduledTasks.GetScheduledTask">
             <summary>
-            Class GetScheduledTask
+            Class GetScheduledTask.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.ScheduledTasks.GetScheduledTask.Id">
@@ -2157,12 +2248,12 @@
         </member>
         <member name="T:MediaBrowser.Api.ScheduledTasks.GetScheduledTasks">
             <summary>
-            Class GetScheduledTasks
+            Class GetScheduledTasks.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.ScheduledTasks.StartScheduledTask">
             <summary>
-            Class StartScheduledTask
+            Class StartScheduledTask.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.ScheduledTasks.StartScheduledTask.Id">
@@ -2173,7 +2264,7 @@
         </member>
         <member name="T:MediaBrowser.Api.ScheduledTasks.StopScheduledTask">
             <summary>
-            Class StopScheduledTask
+            Class StopScheduledTask.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.ScheduledTasks.StopScheduledTask.Id">
@@ -2184,7 +2275,7 @@
         </member>
         <member name="T:MediaBrowser.Api.ScheduledTasks.UpdateScheduledTaskTriggers">
             <summary>
-            Class UpdateScheduledTaskTriggers
+            Class UpdateScheduledTaskTriggers.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.ScheduledTasks.UpdateScheduledTaskTriggers.Id">
@@ -2195,7 +2286,7 @@
         </member>
         <member name="T:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService">
             <summary>
-            Class ScheduledTasksService
+            Class ScheduledTasksService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.ScheduledTasks.ScheduledTaskService._taskManager">
@@ -2248,7 +2339,7 @@
         </member>
         <member name="T:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener">
             <summary>
-            Class ScheduledTasksWebSocketListener
+            Class ScheduledTasksWebSocketListener.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener.TaskManager">
@@ -2263,7 +2354,7 @@
             </summary>
             <value>The name.</value>
         </member>
-        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Model.Tasks.ITaskManager)">
+        <member name="M:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener},MediaBrowser.Model.Tasks.ITaskManager)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.ScheduledTasks.ScheduledTasksWebSocketListener" /> class.
             </summary>
@@ -2276,7 +2367,7 @@
         </member>
         <member name="T:MediaBrowser.Api.GetSearchHints">
             <summary>
-            Class GetSearchHints
+            Class GetSearchHints.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.GetSearchHints.StartIndex">
@@ -2287,7 +2378,7 @@
         </member>
         <member name="P:MediaBrowser.Api.GetSearchHints.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -2299,18 +2390,18 @@
         </member>
         <member name="P:MediaBrowser.Api.GetSearchHints.SearchTerm">
             <summary>
-            Search characters used to find items
+            Search characters used to find items.
             </summary>
             <value>The index by.</value>
         </member>
         <member name="T:MediaBrowser.Api.SearchService">
             <summary>
-            Class SearchService
+            Class SearchService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.SearchService._searchEngine">
             <summary>
-            The _search engine
+            The _search engine.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.SearchService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.SearchService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.ISearchEngine,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Drawing.IImageProcessor)">
@@ -2345,7 +2436,7 @@
         </member>
         <member name="T:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener">
             <summary>
-            Class SessionInfoWebSocketListener
+            Class SessionInfoWebSocketListener.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener.Name">
@@ -2356,10 +2447,10 @@
         </member>
         <member name="F:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener._sessionManager">
             <summary>
-            The _kernel
+            The _kernel.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Session.ISessionManager)">
+        <member name="M:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.Sessions.SessionInfoWebSocketListener},MediaBrowser.Controller.Session.ISessionManager)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener"/> class.
             </summary>
@@ -2369,6 +2460,9 @@
             Gets the data to send.
             </summary>
             <returns>Task{SystemInfo}.</returns>
+        </member>
+        <member name="M:MediaBrowser.Api.Sessions.SessionInfoWebSocketListener.Dispose(System.Boolean)">
+            <inheritdoc />
         </member>
         <member name="T:MediaBrowser.Api.Sessions.GetSessions">
             <summary>
@@ -2388,13 +2482,13 @@
         </member>
         <member name="P:MediaBrowser.Api.Sessions.DisplayContent.ItemType">
             <summary>
-            Artist, Genre, Studio, Person, or any kind of BaseItem
+            Artist, Genre, Studio, Person, or any kind of BaseItem.
             </summary>
             <value>The type of the item.</value>
         </member>
         <member name="P:MediaBrowser.Api.Sessions.DisplayContent.ItemId">
             <summary>
-            Artist name, genre name, item Id, etc
+            Artist name, genre name, item Id, etc.
             </summary>
             <value>The item identifier.</value>
         </member>
@@ -2507,7 +2601,7 @@
         </member>
         <member name="T:MediaBrowser.Api.BaseGetSimilarItemsFromItem">
             <summary>
-            Class BaseGetSimilarItemsFromItem
+            Class BaseGetSimilarItemsFromItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.BaseGetSimilarItemsFromItem.Id">
@@ -2524,19 +2618,19 @@
         </member>
         <member name="P:MediaBrowser.Api.BaseGetSimilarItems.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Api.BaseGetSimilarItems.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
         <member name="T:MediaBrowser.Api.SimilarItemsHelper">
             <summary>
-            Class SimilarItemsHelper
+            Class SimilarItemsHelper.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.SimilarItemsHelper.GetSimilaritems(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Library.ILibraryManager,System.Collections.Generic.IEnumerable{MediaBrowser.Controller.Entities.BaseItem},System.Func{MediaBrowser.Controller.Entities.BaseItem,System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},System.Collections.Generic.List{MediaBrowser.Controller.Entities.PersonInfo},MediaBrowser.Controller.Entities.BaseItem,System.Int32})">
@@ -2577,6 +2671,112 @@
             </summary>
             <value>The id.</value>
         </member>
+        <member name="P:MediaBrowser.Api.SyncPlay.SyncPlayJoin.GroupId">
+            <summary>
+            Gets or sets the Group id.
+            </summary>
+            <value>The Group id to join.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.SyncPlay.SyncPlayList.FilterItemId">
+            <summary>
+            Gets or sets the filter item id.
+            </summary>
+            <value>The filter item id.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.SyncPlay.SyncPlayBuffering.When">
+            <summary>
+            Gets or sets the date used to pin PositionTicks in time.
+            </summary>
+            <value>The date related to PositionTicks.</value>
+        </member>
+        <member name="P:MediaBrowser.Api.SyncPlay.SyncPlayBuffering.BufferingDone">
+            <summary>
+            Gets or sets whether this is a buffering or a ready request.
+            </summary>
+            <value><c>true</c> if buffering is complete; <c>false</c> otherwise.</value>
+        </member>
+        <member name="T:MediaBrowser.Api.SyncPlay.SyncPlayService">
+            <summary>
+            Class SyncPlayService.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.SyncPlay.SyncPlayService._sessionContext">
+            <summary>
+            The session context.
+            </summary>
+        </member>
+        <member name="F:MediaBrowser.Api.SyncPlay.SyncPlayService._syncPlayManager">
+            <summary>
+            The SyncPlay manager.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlayNew)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlayJoin)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlayLeave)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Get(MediaBrowser.Api.SyncPlay.SyncPlayList)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <value>The requested list of groups.</value>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlayPlay)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlayPause)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlaySeek)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlayBuffering)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.SyncPlayService.Post(MediaBrowser.Api.SyncPlay.SyncPlayPing)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="T:MediaBrowser.Api.SyncPlay.TimeSyncService">
+            <summary>
+            Class TimeSyncService.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.Api.SyncPlay.TimeSyncService.Get(MediaBrowser.Api.SyncPlay.GetUtcTime)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <value>The current UTC time response.</value>
+        </member>
         <member name="P:MediaBrowser.Api.System.GetActivityLogs.StartIndex">
             <summary>
             Skips over a given number of items within the results. Use for paging.
@@ -2585,13 +2785,13 @@
         </member>
         <member name="P:MediaBrowser.Api.System.GetActivityLogs.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="T:MediaBrowser.Api.System.ActivityLogWebSocketListener">
             <summary>
-            Class SessionInfoWebSocketListener
+            Class SessionInfoWebSocketListener.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.System.ActivityLogWebSocketListener.Name">
@@ -2602,7 +2802,7 @@
         </member>
         <member name="F:MediaBrowser.Api.System.ActivityLogWebSocketListener._activityManager">
             <summary>
-            The _kernel
+            The _kernel.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.System.ActivityLogWebSocketListener.GetDataToSend">
@@ -2611,14 +2811,17 @@
             </summary>
             <returns>Task{SystemInfo}.</returns>
         </member>
+        <member name="M:MediaBrowser.Api.System.ActivityLogWebSocketListener.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
         <member name="T:MediaBrowser.Api.System.GetSystemInfo">
             <summary>
-            Class GetSystemInfo
+            Class GetSystemInfo.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.System.RestartApplication">
             <summary>
-            Class RestartApplication
+            Class RestartApplication.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.System.ShutdownApplication">
@@ -2628,12 +2831,12 @@
         </member>
         <member name="T:MediaBrowser.Api.System.SystemService">
             <summary>
-            Class SystemInfoService
+            Class SystemInfoService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.System.SystemService._appHost">
             <summary>
-            The _app host
+            The _app host.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.System.SystemService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.System.SystemService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.IServerApplicationHost,MediaBrowser.Model.IO.IFileSystem,MediaBrowser.Common.Net.INetworkManager)">
@@ -2712,7 +2915,7 @@
         </member>
         <member name="T:MediaBrowser.Api.GetNextUpEpisodes">
             <summary>
-            Class GetNextUpEpisodes
+            Class GetNextUpEpisodes.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.GetNextUpEpisodes.UserId">
@@ -2729,13 +2932,13 @@
         </member>
         <member name="P:MediaBrowser.Api.GetNextUpEpisodes.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Api.GetNextUpEpisodes.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -2759,13 +2962,13 @@
         </member>
         <member name="P:MediaBrowser.Api.GetUpcomingEpisodes.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Api.GetUpcomingEpisodes.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -2783,7 +2986,7 @@
         </member>
         <member name="P:MediaBrowser.Api.GetEpisodes.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -2795,7 +2998,7 @@
         </member>
         <member name="P:MediaBrowser.Api.GetEpisodes.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
@@ -2807,23 +3010,23 @@
         </member>
         <member name="P:MediaBrowser.Api.GetSeasons.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
         <member name="T:MediaBrowser.Api.TvShowsService">
             <summary>
-            Class TvShowsService
+            Class TvShowsService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.TvShowsService._userManager">
             <summary>
-            The _user manager
+            The _user manager.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.TvShowsService._libraryManager">
             <summary>
-            The _library manager
+            The _library manager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.TvShowsService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.TvShowsService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.TV.ITVSeriesManager,MediaBrowser.Controller.Net.IAuthorizationContext)">
@@ -2852,7 +3055,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetArtists">
             <summary>
-            Class GetArtists
+            Class GetArtists.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetArtist.Name">
@@ -2869,7 +3072,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.ArtistsService">
             <summary>
-            Class ArtistsService
+            Class ArtistsService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.ArtistsService.Get(MediaBrowser.Api.UserLibrary.GetArtist)">
@@ -2910,11 +3113,11 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1">
             <summary>
-            Class BaseItemsByNameService
+            Class BaseItemsByNameService.
             </summary>
             <typeparam name="TItemType">The type of the T item type.</typeparam>
         </member>
-        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserDataManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
+        <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.UserLibrary.BaseItemsByNameService{`0}},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Controller.Library.IUserDataManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1" /> class.
             </summary>
@@ -2930,7 +3133,7 @@
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.LibraryManager">
             <summary>
-            Gets the library manager
+            Gets the library manager.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.BaseItemsByNameService`1.GetResult(MediaBrowser.Api.UserLibrary.GetItemsByName)">
@@ -2961,7 +3164,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetItemsByName">
             <summary>
-            Class GetItemsByName
+            Class GetItemsByName.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.MaxOfficialRating">
@@ -2978,13 +3181,13 @@
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Limit">
             <summary>
-            The maximum number of items to return
+            The maximum number of items to return.
             </summary>
             <value>The limit.</value>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Recursive">
             <summary>
-            Whether or not to perform the query recursively
+            Whether or not to perform the query recursively.
             </summary>
             <value><c>true</c> if recursive; otherwise, <c>false</c>.</value>
         </member>
@@ -3002,7 +3205,7 @@
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Fields">
             <summary>
-            Fields to return within the items, in addition to basic information
+            Fields to return within the items, in addition to basic information.
             </summary>
             <value>The fields.</value>
         </member>
@@ -3020,13 +3223,13 @@
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Filters">
             <summary>
-            Filters to apply to the results
+            Filters to apply to the results.
             </summary>
             <value>The filters.</value>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.IsFavorite">
             <summary>
-            Gets or sets the Isfavorite option
+            Gets or sets the Isfavorite option.
             </summary>
             <value>IsFavorite</value>
         </member>
@@ -3044,37 +3247,37 @@
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.SortBy">
             <summary>
-            What to sort the results by
+            What to sort the results by.
             </summary>
             <value>The sort by.</value>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Genres">
             <summary>
-            Limit results to items containing specific genres
+            Limit results to items containing specific genres.
             </summary>
             <value>The genres.</value>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Years">
             <summary>
-            Limit results to items containing specific years
+            Limit results to items containing specific years.
             </summary>
             <value>The years.</value>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Person">
             <summary>
-            Limit results to items containing a specific person
+            Limit results to items containing a specific person.
             </summary>
             <value>The person.</value>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.PersonTypes">
             <summary>
-            If the Person filter is used, this can also be used to restrict to a specific person type
+            If the Person filter is used, this can also be used to restrict to a specific person type.
             </summary>
             <value>The type of the person.</value>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.BaseItemsRequest.Studios">
             <summary>
-            Limit results to items containing specific studios
+            Limit results to items containing specific studios.
             </summary>
             <value>The studios.</value>
         </member>
@@ -3140,12 +3343,12 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetGenres">
             <summary>
-            Class GetGenres
+            Class GetGenres.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetGenre">
             <summary>
-            Class GetGenre
+            Class GetGenre.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetGenre.Name">
@@ -3162,7 +3365,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GenresService">
             <summary>
-            Class GenresService
+            Class GenresService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.GenresService.Get(MediaBrowser.Api.UserLibrary.GetGenre)">
@@ -3196,25 +3399,25 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetItems">
             <summary>
-            Class GetItems
+            Class GetItems.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.ItemsService">
             <summary>
-            Class ItemsService
+            Class ItemsService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.UserLibrary.ItemsService._userManager">
             <summary>
-            The _user manager
+            The _user manager.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.UserLibrary.ItemsService._libraryManager">
             <summary>
-            The _library manager
+            The _library manager.
             </summary>
         </member>
-        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.#ctor(Microsoft.Extensions.Logging.ILogger,MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Model.Globalization.ILocalizationManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
+        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.#ctor(Microsoft.Extensions.Logging.ILogger{MediaBrowser.Api.UserLibrary.ItemsService},MediaBrowser.Controller.Configuration.IServerConfigurationManager,MediaBrowser.Controller.Net.IHttpResultFactory,MediaBrowser.Controller.Library.IUserManager,MediaBrowser.Controller.Library.ILibraryManager,MediaBrowser.Model.Globalization.ILocalizationManager,MediaBrowser.Controller.Dto.IDtoService,MediaBrowser.Controller.Net.IAuthorizationContext)">
             <summary>
             Initializes a new instance of the <see cref="T:MediaBrowser.Api.UserLibrary.ItemsService" /> class.
             </summary>
@@ -3236,14 +3439,14 @@
             </summary>
             <param name="request">The request.</param>
         </member>
-        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.GetQueryResult(MediaBrowser.Api.UserLibrary.GetItems,MediaBrowser.Controller.Dto.DtoOptions,MediaBrowser.Controller.Entities.User)">
+        <member name="M:MediaBrowser.Api.UserLibrary.ItemsService.GetQueryResult(MediaBrowser.Api.UserLibrary.GetItems,MediaBrowser.Controller.Dto.DtoOptions,Jellyfin.Data.Entities.User)">
             <summary>
             Gets the items to serialize.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.DateCreatedComparer">
             <summary>
-            Class DateCreatedComparer
+            Class DateCreatedComparer.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.DateCreatedComparer.Compare(MediaBrowser.Controller.Entities.BaseItem,MediaBrowser.Controller.Entities.BaseItem)">
@@ -3297,12 +3500,12 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetPersons">
             <summary>
-            Class GetPersons
+            Class GetPersons.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetPerson">
             <summary>
-            Class GetPerson
+            Class GetPerson.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetPerson.Name">
@@ -3319,7 +3522,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.PersonsService">
             <summary>
-            Class PersonsService
+            Class PersonsService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.PersonsService.Get(MediaBrowser.Api.UserLibrary.GetPerson)">
@@ -3353,7 +3556,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.MarkPlayedItem">
             <summary>
-            Class MarkPlayedItem
+            Class MarkPlayedItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.MarkPlayedItem.UserId">
@@ -3370,7 +3573,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.MarkUnplayedItem">
             <summary>
-            Class MarkUnplayedItem
+            Class MarkUnplayedItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.MarkUnplayedItem.UserId">
@@ -3387,7 +3590,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.OnPlaybackStart">
             <summary>
-            Class OnPlaybackStart
+            Class OnPlaybackStart.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackStart.UserId">
@@ -3404,7 +3607,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.OnPlaybackProgress">
             <summary>
-            Class OnPlaybackProgress
+            Class OnPlaybackProgress.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackProgress.UserId">
@@ -3427,7 +3630,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.OnPlaybackStopped">
             <summary>
-            Class OnPlaybackStopped
+            Class OnPlaybackStopped.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.OnPlaybackStopped.UserId">
@@ -3478,7 +3681,7 @@
             </summary>
             <param name="request">The request.</param>
         </member>
-        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.UpdatePlayedStatus(MediaBrowser.Controller.Entities.User,System.String,System.Boolean,System.Nullable{System.DateTime})">
+        <member name="M:MediaBrowser.Api.UserLibrary.PlaystateService.UpdatePlayedStatus(Jellyfin.Data.Entities.User,System.String,System.Boolean,System.Nullable{System.DateTime})">
             <summary>
             Updates the played status.
             </summary>
@@ -3490,12 +3693,12 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetStudios">
             <summary>
-            Class GetStudios
+            Class GetStudios.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetStudio">
             <summary>
-            Class GetStudio
+            Class GetStudio.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetStudio.Name">
@@ -3512,7 +3715,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.StudiosService">
             <summary>
-            Class StudiosService
+            Class StudiosService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.StudiosService.Get(MediaBrowser.Api.UserLibrary.GetStudio)">
@@ -3546,7 +3749,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetItem">
             <summary>
-            Class GetItem
+            Class GetItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetItem.UserId">
@@ -3563,7 +3766,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetRootFolder">
             <summary>
-            Class GetItem
+            Class GetItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetRootFolder.UserId">
@@ -3574,7 +3777,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetIntros">
             <summary>
-            Class GetIntros
+            Class GetIntros.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetIntros.UserId">
@@ -3591,7 +3794,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.MarkFavoriteItem">
             <summary>
-            Class MarkFavoriteItem
+            Class MarkFavoriteItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.MarkFavoriteItem.UserId">
@@ -3608,7 +3811,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.UnmarkFavoriteItem">
             <summary>
-            Class UnmarkFavoriteItem
+            Class UnmarkFavoriteItem.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.UnmarkFavoriteItem.UserId">
@@ -3625,7 +3828,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.DeleteUserItemRating">
             <summary>
-            Class ClearUserItemRating
+            Class ClearUserItemRating.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.DeleteUserItemRating.UserId">
@@ -3642,7 +3845,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.UpdateUserItemRating">
             <summary>
-            Class UpdateUserItemRating
+            Class UpdateUserItemRating.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.UpdateUserItemRating.UserId">
@@ -3665,7 +3868,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetLocalTrailers">
             <summary>
-            Class GetLocalTrailers
+            Class GetLocalTrailers.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetLocalTrailers.UserId">
@@ -3682,7 +3885,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetSpecialFeatures">
             <summary>
-            Class GetSpecialFeatures
+            Class GetSpecialFeatures.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetSpecialFeatures.UserId">
@@ -3705,7 +3908,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.UserLibraryService">
             <summary>
-            Class UserLibraryService
+            Class UserLibraryService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.UserLibraryService.Get(MediaBrowser.Api.UserLibrary.GetSpecialFeatures)">
@@ -3797,12 +4000,12 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetYears">
             <summary>
-            Class GetYears
+            Class GetYears.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.GetYear">
             <summary>
-            Class GetYear
+            Class GetYear.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UserLibrary.GetYear.Year">
@@ -3819,7 +4022,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UserLibrary.YearsService">
             <summary>
-            Class YearsService
+            Class YearsService.
             </summary>
         </member>
         <member name="M:MediaBrowser.Api.UserLibrary.YearsService.Get(MediaBrowser.Api.UserLibrary.GetYear)">
@@ -3853,12 +4056,12 @@
         </member>
         <member name="T:MediaBrowser.Api.GetUsers">
             <summary>
-            Class GetUsers
+            Class GetUsers.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.GetUser">
             <summary>
-            Class GetUser
+            Class GetUser.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.GetUser.Id">
@@ -3869,7 +4072,7 @@
         </member>
         <member name="T:MediaBrowser.Api.DeleteUser">
             <summary>
-            Class DeleteUser
+            Class DeleteUser.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.DeleteUser.Id">
@@ -3880,7 +4083,7 @@
         </member>
         <member name="T:MediaBrowser.Api.AuthenticateUser">
             <summary>
-            Class AuthenticateUser
+            Class AuthenticateUser.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.AuthenticateUser.Id">
@@ -3897,7 +4100,7 @@
         </member>
         <member name="T:MediaBrowser.Api.AuthenticateUserByName">
             <summary>
-            Class AuthenticateUser
+            Class AuthenticateUser.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.AuthenticateUserByName.Username">
@@ -3914,7 +4117,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UpdateUserPassword">
             <summary>
-            Class UpdateUserPassword
+            Class UpdateUserPassword.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UpdateUserPassword.Id">
@@ -3937,7 +4140,7 @@
         </member>
         <member name="T:MediaBrowser.Api.UpdateUserEasyPassword">
             <summary>
-            Class UpdateUserEasyPassword
+            Class UpdateUserEasyPassword.
             </summary>
         </member>
         <member name="P:MediaBrowser.Api.UpdateUserEasyPassword.Id">
@@ -3960,27 +4163,27 @@
         </member>
         <member name="T:MediaBrowser.Api.UpdateUser">
             <summary>
-            Class UpdateUser
+            Class UpdateUser.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UpdateUserPolicy">
             <summary>
-            Class UpdateUser
+            Class UpdateUser.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UpdateUserConfiguration">
             <summary>
-            Class UpdateUser
+            Class UpdateUser.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.CreateUserByName">
             <summary>
-            Class CreateUser
+            Class CreateUser.
             </summary>
         </member>
         <member name="T:MediaBrowser.Api.UserService">
             <summary>
-            Class UsersService
+            Class UsersService.
             </summary>
         </member>
         <member name="F:MediaBrowser.Api.UserService._userManager">

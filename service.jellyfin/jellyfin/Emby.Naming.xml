@@ -40,7 +40,7 @@
             <value>The type.</value>
         </member>
         <member name="M:Emby.Naming.AudioBook.AudioBookFileInfo.CompareTo(Emby.Naming.AudioBook.AudioBookFileInfo)">
-            <inheritdoc/>
+            <inheritdoc />
         </member>
         <member name="T:Emby.Naming.AudioBook.AudioBookInfo">
             <summary>
@@ -83,17 +83,17 @@
         </member>
         <member name="F:Emby.Naming.Common.MediaType.Audio">
             <summary>
-            The audio
+            The audio.
             </summary>
         </member>
         <member name="F:Emby.Naming.Common.MediaType.Photo">
             <summary>
-            The photo
+            The photo.
             </summary>
         </member>
         <member name="F:Emby.Naming.Common.MediaType.Video">
             <summary>
-            The video
+            The video.
             </summary>
         </member>
         <member name="P:Emby.Naming.Subtitles.SubtitleInfo.Path">
@@ -191,7 +191,7 @@
         </member>
         <member name="P:Emby.Naming.TV.SeasonPathParserResult.Success">
             <summary>
-            Gets or sets a value indicating whether this <see cref="T:Emby.Naming.TV.SeasonPathParserResult"/> is success.
+            Gets or sets a value indicating whether this <see cref="T:Emby.Naming.TV.SeasonPathParserResult" /> is success.
             </summary>
             <value><c>true</c> if success; otherwise, <c>false</c>.</value>
         </member>
@@ -229,43 +229,49 @@
             </summary>
             <value>The rule.</value>
         </member>
+        <member name="T:Emby.Naming.Video.ExtraRule">
+            <summary>
+            A rule used to match a file path with an <see cref="T:MediaBrowser.Model.Entities.ExtraType"/>.
+            </summary>
+        </member>
         <member name="P:Emby.Naming.Video.ExtraRule.Token">
             <summary>
-            Gets or sets the token.
+            Gets or sets the token to use for matching against the file path.
             </summary>
-            <value>The token.</value>
         </member>
         <member name="P:Emby.Naming.Video.ExtraRule.ExtraType">
             <summary>
-            Gets or sets the type of the extra.
+            Gets or sets the type of the extra to return when matched.
             </summary>
-            <value>The type of the extra.</value>
         </member>
         <member name="P:Emby.Naming.Video.ExtraRule.RuleType">
             <summary>
             Gets or sets the type of the rule.
             </summary>
-            <value>The type of the rule.</value>
         </member>
         <member name="P:Emby.Naming.Video.ExtraRule.MediaType">
             <summary>
-            Gets or sets the type of the media.
+            Gets or sets the type of the media to return when matched.
             </summary>
-            <value>The type of the media.</value>
         </member>
         <member name="F:Emby.Naming.Video.ExtraRuleType.Suffix">
             <summary>
-            The suffix
+            Match <see cref="P:Emby.Naming.Video.ExtraRule.Token"/> against a suffix in the file name.
             </summary>
         </member>
         <member name="F:Emby.Naming.Video.ExtraRuleType.Filename">
             <summary>
-            The filename
+            Match <see cref="P:Emby.Naming.Video.ExtraRule.Token"/> against the file name, excluding the file extension.
             </summary>
         </member>
         <member name="F:Emby.Naming.Video.ExtraRuleType.Regex">
             <summary>
-            The regex
+            Match <see cref="P:Emby.Naming.Video.ExtraRule.Token"/> against the file name, including the file extension.
+            </summary>
+        </member>
+        <member name="F:Emby.Naming.Video.ExtraRuleType.DirectoryName">
+            <summary>
+            Match <see cref="P:Emby.Naming.Video.ExtraRule.Token"/> against the name of the directory containing the file.
             </summary>
         </member>
         <member name="P:Emby.Naming.Video.Format3DResult.Is3D">

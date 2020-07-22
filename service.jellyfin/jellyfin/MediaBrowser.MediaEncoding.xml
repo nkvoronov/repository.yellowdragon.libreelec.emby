@@ -18,7 +18,7 @@
         </member>
         <member name="T:MediaBrowser.MediaEncoding.BdInfo.BdInfoExaminer">
             <summary>
-            Class BdInfoExaminer
+            Class BdInfoExaminer.
             </summary>
         </member>
         <member name="M:MediaBrowser.MediaEncoding.BdInfo.BdInfoExaminer.GetDiscInfo(System.String)">
@@ -98,7 +98,7 @@
         </member>
         <member name="T:MediaBrowser.MediaEncoding.Encoder.MediaEncoder">
             <summary>
-            Class MediaEncoder
+            Class MediaEncoder.
             </summary>
         </member>
         <member name="F:MediaBrowser.MediaEncoding.Encoder.MediaEncoder.DefaultImageExtractionTimeout">
@@ -132,7 +132,7 @@
             Validates the supplied FQPN to ensure it is a ffmpeg utility.
             If checks pass, global variable FFmpegPath and EncoderLocation are updated.
             </summary>
-            <param name="path">FQPN to test</param>
+            <param name="path">FQPN to test.</param>
             <param name="location">Location (External, Custom, System) of tool</param>
             <returns></returns>
         </member>
@@ -168,7 +168,7 @@
         </member>
         <member name="F:MediaBrowser.MediaEncoding.Encoder.MediaEncoder.UsCulture">
             <summary>
-            The us culture
+            The us culture.
             </summary>
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Encoder.MediaEncoder.Dispose">
@@ -194,7 +194,7 @@
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.FFProbeHelpers.GetDictionaryValue(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String)">
             <summary>
-            Gets a string from an FFProbeResult tags dictionary
+            Gets a string from an FFProbeResult tags dictionary.
             </summary>
             <param name="tags">The tags.</param>
             <param name="key">The key.</param>
@@ -202,7 +202,7 @@
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.FFProbeHelpers.GetDictionaryNumericValue(System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
             <summary>
-            Gets an int from an FFProbeResult tags dictionary
+            Gets an int from an FFProbeResult tags dictionary.
             </summary>
             <param name="tags">The tags.</param>
             <param name="key">The key.</param>
@@ -210,7 +210,7 @@
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.FFProbeHelpers.GetDictionaryDateTime(System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
             <summary>
-            Gets a DateTime from an FFProbeResult tags dictionary
+            Gets a DateTime from an FFProbeResult tags dictionary.
             </summary>
             <param name="tags">The tags.</param>
             <param name="key">The key.</param>
@@ -218,7 +218,7 @@
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.FFProbeHelpers.ConvertDictionaryToCaseInsensitive(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
             <summary>
-            Converts a dictionary to case insensitive
+            Converts a dictionary to case insensitive.
             </summary>
             <param name="dict">The dict.</param>
             <returns>Dictionary{System.StringSystem.String}.</returns>
@@ -549,16 +549,28 @@
             </summary>
             <value>The disposition.</value>
         </member>
+        <member name="P:MediaBrowser.MediaEncoding.Probing.MediaStreamInfo.ColorTransfer">
+            <summary>
+            Gets or sets the color transfer.
+            </summary>
+            <value>The color transfer.</value>
+        </member>
+        <member name="P:MediaBrowser.MediaEncoding.Probing.MediaStreamInfo.ColorPrimaries">
+            <summary>
+            Gets or sets the color primaries.
+            </summary>
+            <value>The color primaries.</value>
+        </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.ProbeResultNormalizer.GetMediaAttachment(MediaBrowser.MediaEncoding.Probing.MediaStreamInfo)">
             <summary>
-            Converts ffprobe stream info to our MediaAttachment class
+            Converts ffprobe stream info to our MediaAttachment class.
             </summary>
             <param name="streamInfo">The stream info.</param>
             <returns>MediaAttachments.</returns>
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.ProbeResultNormalizer.GetMediaStream(System.Boolean,MediaBrowser.MediaEncoding.Probing.MediaStreamInfo,MediaBrowser.MediaEncoding.Probing.MediaFormatInfo)">
             <summary>
-            Converts ffprobe stream info to our MediaStream class
+            Converts ffprobe stream info to our MediaStream class.
             </summary>
             <param name="isAudio">if set to <c>true</c> [is info].</param>
             <param name="streamInfo">The stream info.</param>
@@ -567,7 +579,7 @@
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.ProbeResultNormalizer.GetDictionaryValue(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String)">
             <summary>
-            Gets a string from an FFProbeResult tags dictionary
+            Gets a string from an FFProbeResult tags dictionary.
             </summary>
             <param name="tags">The tags.</param>
             <param name="key">The key.</param>
@@ -591,7 +603,7 @@
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.ProbeResultNormalizer.FetchStudios(MediaBrowser.Model.MediaInfo.MediaInfo,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
             <summary>
-            Gets the studios from the tags collection
+            Gets the studios from the tags collection.
             </summary>
             <param name="info">The info.</param>
             <param name="tags">The tags.</param>
@@ -599,7 +611,7 @@
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Probing.ProbeResultNormalizer.FetchGenres(MediaBrowser.Model.MediaInfo.MediaInfo,System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
-            Gets the genres from the tags collection
+            Gets the genres from the tags collection.
             </summary>
             <param name="info">The information.</param>
             <param name="tags">The tags.</param>
@@ -653,7 +665,7 @@
         </member>
         <member name="F:MediaBrowser.MediaEncoding.Subtitles.SubtitleEncoder._semaphoreLocks">
             <summary>
-            The _semaphoreLocks
+            The _semaphoreLocks.
             </summary>
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Subtitles.SubtitleEncoder.GetLock(System.String)">
@@ -709,6 +721,14 @@
             <returns>Task.</returns>
         </member>
         <member name="M:MediaBrowser.MediaEncoding.Subtitles.SubtitleEncoder.GetSubtitleFileCharacterSet(System.String,System.String,MediaBrowser.Model.MediaInfo.MediaProtocol,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:MediaBrowser.MediaEncoding.Subtitles.VttWriter">
+            <summary>
+            Subtitle writer for the WebVTT format.
+            </summary>
+        </member>
+        <member name="M:MediaBrowser.MediaEncoding.Subtitles.VttWriter.Write(MediaBrowser.Model.MediaInfo.SubtitleTrackInfo,System.IO.Stream,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
     </members>
