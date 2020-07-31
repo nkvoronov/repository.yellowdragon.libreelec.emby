@@ -47,6 +47,9 @@
         <member name="M:Jellyfin.Server.Implementations.JellyfinDb.SaveChanges">
             <inheritdoc/>
         </member>
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDb.Dispose">
+            <inheritdoc/>
+        </member>
         <member name="M:Jellyfin.Server.Implementations.JellyfinDb.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
             <inheritdoc />
         </member>

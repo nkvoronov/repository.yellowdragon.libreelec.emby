@@ -92,6 +92,11 @@
             Gets the display name of the migration.
             </summary>
         </member>
+        <member name="P:Jellyfin.Server.Migrations.IMigrationRoutine.PerformOnNewInstall">
+            <summary>
+            Gets a value indicating whether to perform migration on a new install.
+            </summary>
+        </member>
         <member name="M:Jellyfin.Server.Migrations.IMigrationRoutine.Perform">
             <summary>
             Execute the migration routine.
@@ -169,6 +174,9 @@
         <member name="P:Jellyfin.Server.Migrations.Routines.AddDefaultPluginRepository.Name">
             <inheritdoc/>
         </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.AddDefaultPluginRepository.PerformOnNewInstall">
+            <inheritdoc/>
+        </member>
         <member name="M:Jellyfin.Server.Migrations.Routines.AddDefaultPluginRepository.Perform">
             <inheritdoc/>
         </member>
@@ -188,6 +196,9 @@
             <inheritdoc/>
         </member>
         <member name="P:Jellyfin.Server.Migrations.Routines.CreateUserLoggingConfigFile.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.CreateUserLoggingConfigFile.PerformOnNewInstall">
             <inheritdoc/>
         </member>
         <member name="M:Jellyfin.Server.Migrations.Routines.CreateUserLoggingConfigFile.Perform">
@@ -212,6 +223,9 @@
         <member name="P:Jellyfin.Server.Migrations.Routines.DisableTranscodingThrottling.Name">
             <inheritdoc/>
         </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.DisableTranscodingThrottling.PerformOnNewInstall">
+            <inheritdoc/>
+        </member>
         <member name="M:Jellyfin.Server.Migrations.Routines.DisableTranscodingThrottling.Perform">
             <inheritdoc/>
         </member>
@@ -232,6 +246,9 @@
             <inheritdoc/>
         </member>
         <member name="P:Jellyfin.Server.Migrations.Routines.MigrateActivityLogDb.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.MigrateActivityLogDb.PerformOnNewInstall">
             <inheritdoc/>
         </member>
         <member name="M:Jellyfin.Server.Migrations.Routines.MigrateActivityLogDb.Perform">
@@ -257,7 +274,33 @@
         <member name="P:Jellyfin.Server.Migrations.Routines.MigrateUserDb.Name">
             <inheritdoc/>
         </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.MigrateUserDb.PerformOnNewInstall">
+            <inheritdoc/>
+        </member>
         <member name="M:Jellyfin.Server.Migrations.Routines.MigrateUserDb.Perform">
+            <inheritdoc/>
+        </member>
+        <member name="T:Jellyfin.Server.Migrations.Routines.ReaddDefaultPluginRepository">
+            <summary>
+            Migration to initialize system configuration with the default plugin repository.
+            </summary>
+        </member>
+        <member name="M:Jellyfin.Server.Migrations.Routines.ReaddDefaultPluginRepository.#ctor(MediaBrowser.Controller.Configuration.IServerConfigurationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Jellyfin.Server.Migrations.Routines.ReaddDefaultPluginRepository"/> class.
+            </summary>
+            <param name="serverConfigurationManager">Instance of the <see cref="T:MediaBrowser.Controller.Configuration.IServerConfigurationManager"/> interface.</param>
+        </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.ReaddDefaultPluginRepository.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.ReaddDefaultPluginRepository.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.ReaddDefaultPluginRepository.PerformOnNewInstall">
+            <inheritdoc/>
+        </member>
+        <member name="M:Jellyfin.Server.Migrations.Routines.ReaddDefaultPluginRepository.Perform">
             <inheritdoc/>
         </member>
         <member name="T:Jellyfin.Server.Migrations.Routines.RemoveDuplicateExtras">
@@ -269,6 +312,9 @@
             <inheritdoc/>
         </member>
         <member name="P:Jellyfin.Server.Migrations.Routines.RemoveDuplicateExtras.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:Jellyfin.Server.Migrations.Routines.RemoveDuplicateExtras.PerformOnNewInstall">
             <inheritdoc/>
         </member>
         <member name="M:Jellyfin.Server.Migrations.Routines.RemoveDuplicateExtras.Perform">

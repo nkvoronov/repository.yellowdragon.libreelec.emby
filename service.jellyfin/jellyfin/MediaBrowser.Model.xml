@@ -4546,12 +4546,12 @@
         </member>
         <member name="P:MediaBrowser.Model.Notifications.NotificationOption.DisabledMonitorUsers">
             <summary>
-            User Ids to not monitor (it's opt out).
+            Gets or sets user Ids to not monitor (it's opt out).
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Notifications.NotificationOption.SendToUsers">
             <summary>
-            User Ids to send to (if SendToUserMode == Custom)
+            Gets or sets user Ids to send to (if SendToUserMode == Custom).
             </summary>
         </member>
         <member name="P:MediaBrowser.Model.Notifications.NotificationOption.Enabled">
