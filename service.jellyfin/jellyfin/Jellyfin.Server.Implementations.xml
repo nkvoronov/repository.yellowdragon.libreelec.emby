@@ -61,11 +61,12 @@
             Factory class for generating new <see cref="T:Jellyfin.Server.Implementations.JellyfinDb"/> instances.
             </summary>
         </member>
-        <member name="M:Jellyfin.Server.Implementations.JellyfinDbProvider.#ctor(System.IServiceProvider)">
+        <member name="M:Jellyfin.Server.Implementations.JellyfinDbProvider.#ctor(System.IServiceProvider,MediaBrowser.Common.Configuration.IApplicationPaths)">
             <summary>
             Initializes a new instance of the <see cref="T:Jellyfin.Server.Implementations.JellyfinDbProvider"/> class.
             </summary>
             <param name="serviceProvider">The application's service provider.</param>
+            <param name="appPaths">The application paths.</param>
         </member>
         <member name="M:Jellyfin.Server.Implementations.JellyfinDbProvider.CreateContext">
             <summary>

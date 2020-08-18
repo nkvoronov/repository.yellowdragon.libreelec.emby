@@ -39,23 +39,23 @@
           }
         }
       },
-      "BlurHashSharp/1.0.1": {
+      "BlurHashSharp/1.1.0": {
         "runtime": {
           "lib/netcoreapp3.1/BlurHashSharp.dll": {
-            "assemblyVersion": "1.0.1.0",
-            "fileVersion": "1.0.1.0"
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
-      "BlurHashSharp.SkiaSharp/1.0.0": {
+      "BlurHashSharp.SkiaSharp/1.1.0": {
         "dependencies": {
-          "BlurHashSharp": "1.0.1",
+          "BlurHashSharp": "1.1.0",
           "SkiaSharp": "1.68.3"
         },
         "runtime": {
           "lib/netcoreapp3.1/BlurHashSharp.SkiaSharp.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
@@ -100,11 +100,11 @@
           }
         }
       },
-      "Jellyfin.XmlTv/10.6.0-pre1": {
+      "Jellyfin.XmlTv/10.6.2": {
         "runtime": {
           "lib/netstandard2.1/Jellyfin.XmlTv.dll": {
-            "assemblyVersion": "10.6.0.0",
-            "fileVersion": "10.6.0.0"
+            "assemblyVersion": "10.6.2.0",
+            "fileVersion": "10.6.2.0"
           }
         }
       },
@@ -2367,7 +2367,7 @@
           "Jellyfin.Controller": "1.0.0",
           "Jellyfin.Model": "1.0.0",
           "Jellyfin.Naming": "1.0.0",
-          "Jellyfin.XmlTv": "10.6.0-pre1",
+          "Jellyfin.XmlTv": "10.6.2",
           "MediaBrowser.Api": "1.0.0",
           "MediaBrowser.LocalMetadata": "1.0.0",
           "MediaBrowser.MediaEncoding": "1.0.0",
@@ -2441,8 +2441,8 @@
       },
       "Jellyfin.Drawing.Skia/1.0.0": {
         "dependencies": {
-          "BlurHashSharp": "1.0.1",
-          "BlurHashSharp.SkiaSharp": "1.0.0",
+          "BlurHashSharp": "1.1.0",
+          "BlurHashSharp.SkiaSharp": "1.1.0",
           "Jellyfin.Common": "1.0.0",
           "Jellyfin.Controller": "1.0.0",
           "Jellyfin.Model": "1.0.0",
@@ -2573,19 +2573,19 @@
       "path": "bdinfo/0.7.6.1",
       "hashPath": "bdinfo.0.7.6.1.nupkg.sha512"
     },
-    "BlurHashSharp/1.0.1": {
+    "BlurHashSharp/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aJ41G/or0//VCCWnVfH2jfOrfWWEW7rzxwJ4m10L3W0m/ZNTpWtVjqsoTaNjMARfiwXMkYzQMfTbFV44T+tfoQ==",
-      "path": "blurhashsharp/1.0.1",
-      "hashPath": "blurhashsharp.1.0.1.nupkg.sha512"
+      "sha512": "sha512-19X/9bl8WH9ojLV9CZZK6JNgQD1sE2R5SORuQwwVSlspGHZO6mSTb3RM1Wi9oVrFYNQDbSTkNKapvnBI6C0AJA==",
+      "path": "blurhashsharp/1.1.0",
+      "hashPath": "blurhashsharp.1.1.0.nupkg.sha512"
     },
-    "BlurHashSharp.SkiaSharp/1.0.0": {
+    "BlurHashSharp.SkiaSharp/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-m94g4CO/sGbht4IdnoDaWOGKetUhNUhp32tXCU53DMCLLsqH1yh8DqOKrh8XlidG99caKBfUrlMyEKfj0WSZ9Q==",
-      "path": "blurhashsharp.skiasharp/1.0.0",
-      "hashPath": "blurhashsharp.skiasharp.1.0.0.nupkg.sha512"
+      "sha512": "sha512-6vok1B+cYpLPGp77v1TdWLCmvWI0hwJfJLW8TcMIJ7fwmydbj+E2qY3PJ3xCMNNUJh1RTTWcgV0WgtAFej3E3g==",
+      "path": "blurhashsharp.skiasharp/1.1.0",
+      "hashPath": "blurhashsharp.skiasharp.1.1.0.nupkg.sha512"
     },
     "CommandLineParser/2.8.0": {
       "type": "package",
@@ -2615,12 +2615,12 @@
       "path": "jellyfin.skiasharp.nativeassets.linuxarm/1.68.1",
       "hashPath": "jellyfin.skiasharp.nativeassets.linuxarm.1.68.1.nupkg.sha512"
     },
-    "Jellyfin.XmlTv/10.6.0-pre1": {
+    "Jellyfin.XmlTv/10.6.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QjA5rXTVjtNo1ftJO8GZF3HV5tlP/U7Pco5rOwkKKPL9MWNApnigCYmivnkACTw8YR4iwAPTM0uZ9sJXfb5+9w==",
-      "path": "jellyfin.xmltv/10.6.0-pre1",
-      "hashPath": "jellyfin.xmltv.10.6.0-pre1.nupkg.sha512"
+      "sha512": "sha512-qE+zaeWBw6GVyRIrShOOsenliysv4JJWP4dMKOq510GuqXNkhccz4zwlxIbTs5m9qyZqTZyeszfN0MN0jWM6Nw==",
+      "path": "jellyfin.xmltv/10.6.2",
+      "hashPath": "jellyfin.xmltv.10.6.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",
