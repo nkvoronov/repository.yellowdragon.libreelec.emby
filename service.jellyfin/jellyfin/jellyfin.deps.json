@@ -67,11 +67,11 @@
           }
         }
       },
-      "DotNet.Glob/3.0.9": {
+      "DotNet.Glob/3.1.0": {
         "runtime": {
           "lib/netcoreapp2.1/DotNet.Glob.dll": {
-            "assemblyVersion": "3.0.9.0",
-            "fileVersion": "3.0.9.0"
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -2356,7 +2356,7 @@
       },
       "Emby.Server.Implementations/1.0.0": {
         "dependencies": {
-          "DotNet.Glob": "3.0.9",
+          "DotNet.Glob": "3.1.0",
           "Emby.Dlna": "1.0.0",
           "Emby.Drawing": "1.0.0",
           "Emby.Notifications": "1.0.0",
@@ -2594,12 +2594,12 @@
       "path": "commandlineparser/2.8.0",
       "hashPath": "commandlineparser.2.8.0.nupkg.sha512"
     },
-    "DotNet.Glob/3.0.9": {
+    "DotNet.Glob/3.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tfISNzB/4pmCCWFwaloMUaKddzLa0UJ6RxWSfVhY4a69smqhth3DlyM72/fFI2wsbHPbWQUFYan1F3YiOugkoA==",
-      "path": "dotnet.glob/3.0.9",
-      "hashPath": "dotnet.glob.3.0.9.nupkg.sha512"
+      "sha512": "sha512-i6x0hDsFWg6Ke2isaNAcHQ9ChxBvTJu2cSmBY+Jtjiv2W4q6y9QlA3JKYuZqJ573TAZmpAn65Qf3sRpjvZ1gmw==",
+      "path": "dotnet.glob/3.1.0",
+      "hashPath": "dotnet.glob.3.1.0.nupkg.sha512"
     },
     "IPNetwork2/2.5.211": {
       "type": "package",

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="service.jellyfin"
        name="Jellyfin Server"
-       version="9.2.0.23"
+       version="9.2.0.24"
        provider-name="Team LibreELEC">
   <requires>
     <import addon="os.libreelec.tv" version="9.2"/>
@@ -15,7 +15,7 @@
   <extension point="xbmc.addon.metadata">
     <summary>Jellyfin Server: The Free Software Media System</summary>
     <description>
-Jellyfin Server (10.6.3) is the Free Software Media System that puts you in control of managing and streaming your media.There are no strings attached, no premium licenses or features, and no hidden agendas.
+Jellyfin Server (10.6.4) is the Free Software Media System that puts you in control of managing and streaming your media.There are no strings attached, no premium licenses or features, and no hidden agendas.
     </description>
     <disclaimer>
 
